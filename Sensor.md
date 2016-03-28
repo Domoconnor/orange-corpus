@@ -253,7 +253,7 @@ We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our exp
         // Save to file 
         // ...
  ~~~
- <p style="text-align: center; ">Code snippet from Java Serial Receiver </p>
+ <p style="text-align: center ">Code snippet from Java Serial Receiver </p>
 
 Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate.
 
