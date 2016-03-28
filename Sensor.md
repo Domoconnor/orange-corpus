@@ -82,7 +82,6 @@ The next step was to process the data, there were many ways to handle this from 
 		<td> Description </td>
 		<td> Pros </td>
 		<td> Cons </td>
-		<td> IOT Microconroller Boards </td>
 	</tr>
 	<tr>
 		<td> IOT Microcontroller Boards </td>
@@ -228,6 +227,8 @@ Even with all its functionality switched off the device consumes more amps than 
 ######Conclusion
 
 We did experiment with the FRDM K64F, but for a functioning sensor we used the Uno for power management efficiency. Our experiments with the FRDM K64F consisted of testing the circuit we had made (Amplifying Microphone circuit) already and then calculating a sound wave based on those values.
+
+
 
 ### Bibliography
 
