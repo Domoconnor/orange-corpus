@@ -52,7 +52,7 @@ We spoke to another client that was meant to be present at the original meeting 
 
 <p class="todo">DO WE INCLUDE PHOTO OF THE RESIDENTS HOUSES ON GOOGLE MAPS?</p>
 
-<img src="OrangeStreet_dist.jpg">
+<img src="images/OrangeStreet_dist.jpg">
 
 #####Vendor Communication
 
