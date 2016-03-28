@@ -1,7 +1,3 @@
-<style>
-	.todo{ color:red }
-</style>
+### <a name="server">Server</a> 
+[Back to contents.](#contents)
 
-#Orange Street
-
-### <a name="server"></a>Server [cont.](#contents)
