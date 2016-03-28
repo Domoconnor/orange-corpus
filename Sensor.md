@@ -226,9 +226,28 @@ Even with all its functionality switched off the device consumes more amps than 
 
 ######Conclusion
 
-We did experiment with the FRDM K64F, but for a functioning sensor we used the Uno for power management efficiency. Our experiments with the FRDM K64F consisted of testing the circuit we had made (Amplifying Microphone circuit) already and then calculating a sound wave based on those values.
+We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using Java we have written a program that talks on serial to the boards which prints out values as fast as it can from the AMP. With these values our program samples 50 times in a second, long enough to gauge a sound wave. Using the minimum and maximum samples we calculate the range and pass all these values along to a file to be saved.
 
+~~~Java
+        /* Calculate the range of 50 samples */
+        int i = 50;
+        int max = data[0];
+        int min = max;
+        int range;
+        int j;
 
+        while (i-- > 1) {
+            j = data[i];
+            if (j > max) {
+                max = j;
+            }
+            if (j < min) {
+                min = j;
+            }
+        }
+ ~~~
+
+Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate.
 
 ### Bibliography
 
