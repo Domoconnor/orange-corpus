@@ -22,3 +22,8 @@ The Case was designed in a way that was intended to aim our microphone at the no
 Based on our [client interaction](#client_interaction) we decided that we had to make a device that measured the volume of the sound in Orange Street, collecting the data and sending it back to a server so that it is stored and can be accessed by the client to use.
 
 The specification for the sensor meant that it had to accurately collect sound data, last for a reasonable amount of time (around a month) without being charged and be weatherproof.
+
+##### Microphone
+
+
+
