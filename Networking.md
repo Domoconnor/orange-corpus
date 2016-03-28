@@ -6,6 +6,7 @@
 
 ### <a name="networking"></a>Networking [cont.](#contents)
 
+
 Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we need. The coordinator is capable of addressing each node on the network as well as the nodes being able to address the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
 
 Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and firmware. We are using API mode when handling XBee modules on our network, as this firmware allows us to have much more control over the network.
@@ -18,11 +19,72 @@ IMAGE 2
 
 Researching technologies
 
-Because we decided that we were working with a wireless network based on our aims<span class="todo"> link to </span> and so we had to investigate potential solutions on how to transfer data, limitations like strength, distance, maximum payload and power usage all came to mind. The most obvious solution was WiFi, although with much investigation it became the least likely solution.
+Because we decided that we were working with a wireless network based on our aims<span class="todo"> link to why we chose to use wireless</span> Investigating potential solutions considerations of strength, distance, maximum payload size and power usage have to be made. The most obvious solution is WiFi.
 
-Here is a graph that we formulated over common low power wireless solutions, aside WiFi - but that was added just for reference.
+Here is a table that we formulated over common wireless solutions: 
  
-IMAGE 3
+<table>
+	<tr>
+		<td></td>
+		<td>Range (line of sight)</td>
+		<td>Range (Urban)</td>
+		<td>Frequency</td>
+		<td>Current Consumption (max)</td>
+		<td>Power Consumption (sleep)</td>
+		<td>Voltage</td>
+		<td>Data Rate (s)</td>
+	</tr>
+	<tr>
+		<td>Wi-Fi</td>
+		<td>100m</td>
+		<td>20m</td>
+		<td>2.4GHz/5GHz</td>
+		<td>300ma (depending on traffic)</td>
+		<td>Varies</td>
+		<td>>=5v</td>
+		<td>Varies</td>
+	</tr>
+	<tr>
+		<td>Bluetooth</td>
+		<td>100m</td>
+		<td>20 - 30m</td>
+		<td>2.4GHz</td>
+		<td>< 30mA</td>
+		<td>Varies</td>
+		<td>N/A</td>
+		<td>1 - 3Mbits</td>
+	</tr>
+	<tr>
+		<td>Bluetooth Low Energy</td>
+		<td>100m</td>
+		<td>< 100m</td>
+		<td>2.4GHz</td>
+		<td>< 15mA</td>
+		<td>Varies</td>
+		<td>N/A</td>
+		<td>1Mbit</td>
+	</tr>
+	<tr>
+		<td>XBee XSC</td>
+		<td>9500m</td>
+		<td>610m</td>
+		<td>902 - 928MHz</td>
+		<td>60mA(R) 265mA(T)</td>
+		<td>45uA</td>
+		<td>3.3v</td>
+		<td>10Kbits</td>
+	</tr>
+	<tr>
+		<td>XBee Series 2</td>
+		<td>120m</td>
+		<td>40m</td>
+		<td>2.4GHz</td>
+		<td>40mA (R & T)</td>
+		<td>< 1uA</td>
+		<td>3.3v</td>
+		<td>250Kbits</td>
+	</tr>
+</table>
 
 WiFi
 
