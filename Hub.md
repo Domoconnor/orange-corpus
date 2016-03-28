@@ -26,6 +26,7 @@ Upon a series of failed attempts, once a successful attempt is made the Hub will
 
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
+
 ### Initial Premise
 
 Unlike the sensor, power consumption was not an issue as the client told us that we could connect to a power outlet. It didn't need to be outside the clients premisses either. This meant we could use any feasible board for this role. We needed a board that could offer the most useful functionality towards our project.
