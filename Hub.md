@@ -9,23 +9,26 @@
 Image Here
 (The finished Hub, requiring only ethernet and power it is capable of coordinating the entire network.)
 
-The Hub, a Raspberry Pi Model B+ running Raspbian Jessie Lite, is the coordinator on the network. All traffic is sent to it. It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
-The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
-Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all stored data and delete it afterwards to clear space in memory. 
-The Hub is able to handle data coming in from multiple sources at once, packet fragmentation and identifying nodes on the network.
-The Hub required a case that could fit the XBee module in, we 3D printed a case that could handle this requirement and left space to fit other modules in as well if needed.
-
-The hub is the coordinator for all the data going through our network. It is located in our clients house, connected to their router and powered by the mains to make sure that it is constantly running. It is always listening for incoming data from our sensor and clock. When the hub collects data from a node on the network it has to then decides what action to take with this data. 
-
-
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
 ######<a name="hub_board"></a>Board
 
-The hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite
+The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
 ######<a name="hub_xbee"></a>Communication / XBee
+
+The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
+
+######<a name="hub_processing"></a>Processing Role
+
+It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
+The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
+
+Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
+
 ######<a name="hub_case"></a>Case
+
+The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the 
 
 #### Initial Premise
 
