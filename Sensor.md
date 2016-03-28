@@ -29,13 +29,13 @@ The specification for the sensor meant that it had to accurately collect sound d
 
 After talking to the client the important part of the diagram would remain constant throughout the process, which was the amplifying circuit. For a microphone to be able to produce a voltage signal able to be processed for data it must be amplified, we know for certain we are measuring noise levels in this project and so this is a crucial step.
 
-#IMAGE 1
+###IMAGE 1
 
 The basic place to start is a non-inverting amplifying circuit, used with any op-amp it effectively calculates the gain based on two resistor values going into an inverting and non-inverting input. (Gain= 1+ (R2/R1)
 
 The OP-AMP IC we’ve been using is the MCP 6002, the datasheet can be found here. (http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf)
 
-#IMAGE 2
+###IMAGE 2
 
 It’s an IC with two OP-AMPS and isn’t designed for anything too complicated, for the time being it’s perfect to get a basic amplifying circuit built.
 
@@ -45,7 +45,7 @@ Most microphones that feed into a amplifying circuit are biased by a resistor va
 
 So far, we’re looking at a circuit like this.
 
-#IMAGE 3
+###IMAGE 3
 
 Other solutions that can be found on the web include using a different IC (As opposed to the MCP 6002) and modifying the circuit above. 
 
@@ -136,45 +136,46 @@ The next step was to process the data, there were many ways to handle this from 
 			</ul>
 		</td>
 	</tr>
+</table>
 
-For the purpose of a prototype we decided to work with a IOT Microcontroller, but which one - we need to investigate common IOT Microcontroller modules, ones that are ideal for our implementation of this IOT device. 
-Arduino Microcontroller Boards
+For the purpose of a prototype we decided to work with a IOT Microcontroller, we need to investigate common IOT Microcontroller modules, ones that are ideal for our implementation of this IOT device. 
+
+######Arduino Microcontroller Boards
 
 Arguably one of the most popular development boards commercially available, has a full function IDE written in C++. Multiple different boards designed for different purposes, all having sharing the basic functionality (such as analog inputs) while offering unique differences. They allow for shields to be placed into them which add even further adaptability, allowing for 3rd party hardware to be interfaced easily into the device. This functionality can be as simple as an SD card reader, a WiFi chip or even an external clock. 
 
 Which one suited our best needs? What did we need in a device?
-Low power
-Within reasonable price range 
-Relatively small
-Ability to interface with certain components (Backup mediums if network is down, an external clock to keep track of time, an ADC input and form of digital output to transfer data to a wireless module).
+<ul>
+	<li>Low power</li>
+	<li>Within reasonable price range</li> 
+	<li>Relatively small</li>
+	<li>Ability to interface with certain components (Backup mediums if network is down, an external clock to keep track of time, an ADC input and form of digital output to transfer data to a wireless module).</li>
+</ul>
 
 This narrowed down our choices to the following Arduino devices.
+<ul>
+	<li>Arduino Nano</li>
+	<li>Arduino Pro Mini</li>
+	<li>Arduino Macro</li>
+	<li>Arduino Uno</li>
+</ul>
 
-Arduino Nano
-Arduino Pro Mini
-Arduino Macro
-Arduino Uno
+###IMAGE 4
 
-IMAGE 4
+######Arduino Nano
 
-
-
-
-Arduino Nano
-IMAGE 5
-
-
-
+###IMAGE 5
 
 (https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf)
 
 “The ATmega168 has 16 KB of flash memory for storing code (of which 2 KB is used for the bootloader); the ATmega328has 32 KB, (also with 2 KB used for the bootloader). The ATmega168 has 1 KB of SRAM and 512 bytes of EEPROM (which can be read and written with the EEPROM library); the ATmega328 has 2 KB of SRAM and 1 KB of EEPROM” (Arduino.cc, n.d.)
-
-Serial: 0 (RX) and 1 (TX). Used to receive (RX) and transmit (TX) TTL serial data. These pins are connected to the corresponding pins of the FTDI USB-to-TTL Serial chip.
-External Interrupts: 2 and 3. These pins can be configured to trigger an interrupt on a low value, a rising or falling edge, or a change in value. See the attachInterrupt() function for details.
-PWM: 3, 5, 6, 9, 10, and 11. Provide 8-bit PWM output with the analogWrite() function.
-SPI: 10 (SS), 11 (MOSI), 12 (MISO), 13 (SCK). These pins support SPI communication, which, although provided by the underlying hardware, is not currently included in the Arduino language.
-LED: 13. There is a built-in LED connected to digital pin 13. When the pin is HIGH value, the LED is on, when the pin is LOW, it's off.
+<ul>
+	<li>Serial: 0 (RX) and 1 (TX). Used to receive (RX) and transmit (TX) TTL serial data. These pins are connected to the corresponding pins of the FTDI USB-to-TTL Serial chip.</li>
+	<li>External Interrupts: 2 and 3. These pins can be configured to trigger an interrupt on a low value, a rising or falling edge, or a change in value. See the attachInterrupt() function for details.</li>
+	<li>PWM: 3, 5, 6, 9, 10, and 11. Provide 8-bit PWM output with the analogWrite() function.</li>
+	<li>SPI: 10 (SS), 11 (MOSI), 12 (MISO), 13 (SCK). These pins support SPI communication, which, although provided by the underlying hardware, is not currently included in the Arduino language.</li>
+	<li>LED: 13. There is a built-in LED connected to digital pin 13. When the pin is HIGH value, the LED is on, when the pin is LOW, it's off.</li>
+</ul>
 
 The nano is a small device that has all the functionality that we ideally would want, it has connections over Serial, I2C and SPI (Although supported by hardware, not supported by Arduino libraries).
 
@@ -182,44 +183,27 @@ It requires a minimum of 5v operating power, anything below and functionality is
 
 It can run the ATMega 168 or 328, we would ideally use the 328 as it offers much more space (EEPROM, SRAM and Flash memory) and is a later iteration over the 168. The dimensions of the device are 0.73” x 1.70”.
 
+######Arduino Pro Mini 
 
-Arduino Pro Mini 
-IMAGE 6
+###IMAGE 6
 
 (http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf)
 
 Essentially the Pro Mini is identical to the Arduino Nano except for the added ability of lower bootloader space and the ability to run at 3.3v over 5v and other small differences that do not add much to our required project.
 
-“There are two version of the Pro Mini. One runs at 3.3V and 8 MHz, the other at 5V and 16 MHz...
+“There are two version of the Pro Mini. One runs at 3.3V and 8 MHz, the other at 5V and 16 MHz... The ATmega328 has 32 kB of flash memory for storing code (of which 0.5kB is used for the bootloader). It has 2 kB of SRAM and 1kBs of EEPROM.“ (Arduino.cc, n.d.)
 
-The ATmega328 has 32 kB of flash memory for storing code (of which 0.5kB is used for the bootloader). It has 2 kB of SRAM and 1kBs of EEPROM.“ (Arduino.cc, n.d.)
+######Arduino Macro
 
+###IMAGE 7
 
-
-
-
-
-
-
-Arduino Macro
-
-IMAGE 7
 The macros dimensions come to 48cm x 18mm, it takes a minimum of 6v volts however this is not recommended as the device may become unresponsive due to low power, ideal voltage is 7-12v.
 
 It takes up 4KB of its bootloader, leaving 28KB for programmable memory. The microcontroller used is the ATmega32U4 at a clock frequency of 16MHz, it offers all the same functionality as the previous two boards.
 
+######Arduino Uno
 
-
-
-
-
-
-
-
-
-
-Arduino Uno
-IMAGE 8
+###IMAGE 8
 
 The Uno sticks out in this comparison due to its size difference against the previous 3, which begs the question - why then? Simply put, the Arduino Uno is a very friendly board to use, and for prototyping would be ideal as we would not need to worry about many problems that we could face when going straight in with one of the other solutions. It also shares a lot of common ground with the other 3, except for its size.
 
@@ -227,12 +211,9 @@ It runs the ATmega328P, which has slight differences to the ATmega328 (Slight po
 
 The biggest benefit for us, was that the Uno would offer easy adaptability and help quickly work with a prototype while we decide which microcontrollers to use, their frequency, and work on breadboards instead of soldering straight away. 
 
+######MBED FRDM-K64F
 
-
-
-
-MBED FRDM-K64F
-IMAGE 9
+###IMAGE 9
 
 Another popular developer of IOT boards, using ARM based architecture instead of AVRs. The argument between these two processor architecture is often put down to ARM is powerful, and AVR is not so much. There are variants on the processors but otherwise they tend to stick to those groups. MBEDs have an online compiler and IDE, which works in a similar fashion to Arduinos but is effectively always online which comes with its own problems such as requiring internet access. 
 
@@ -240,14 +221,14 @@ The most ideal MBED board we found was the FRDM-K64F which is regarded as the fl
 
 Even with all its functionality switched off the device consumes more amps than one of the arduino boards. However we decided that this board would be ideal if used for our hub, as during that period power will not be a concern. 
 
-Rocket Scream
+######Rocket Scream
 
 ....
-Conclusion
+
+######Conclusion
 
 We did experiment with the FRDM K64F, but for a functioning sensor we used the Uno for power management efficiency. Our experiments with the FRDM K64F consisted of testing the circuit we had made (Amplifying Microphone circuit) already and then calculating a sound wave based on those values.
 
+### Bibliography
 
-
-
-
+Arduino.cc, (n.d.). Arduino - ArduinoBoardProMini. [online] Available at: https://www.arduino.cc/en/Main/ArduinoBoardProMini [Accessed 16 Jan. 2016].
