@@ -75,7 +75,7 @@ Internal storage could be managed using a SD card of any size meaning data loggi
 
 However with all this, the Pi did lack the speed of other boards that didn’t require a OS to maintain. It also didn't offer built in WiFi unlike the Yun, but we were unlikely to use this anyway due to potentially changing security of a WiFi network. 
 
-####Conclusion
+####Research Conclusion
 
 We decided to use a Raspberry Pi (Model B+ 512MB) over other solutions. While the Arduino and FRDM K64F boards offered speed, they lacked remote accessing and long term storage and would require more adaptions to work around this. The Microserver was too large, expensive and potentially noisy. The Yun while very promising lacked internal hardware to match the Pi as well being double the price. The Pi offered a full operating system while maintaining a small size, better secure networking and remote access for updating on the network. This meant that if a bug was found in our code we could remotely update in on the hub, we would also be able to access any logged debug information from the program. 
 

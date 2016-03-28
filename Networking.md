@@ -2,10 +2,11 @@
 	.todo{ color:red }
 </style>
 
-#Orange Street
+[toc]
 
-### <a name="networking"></a>Networking [cont.](#contents)
-
+<a name="networking"></a>
+##Networking [cont.](#contents)
+###Description
 
 Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we need. The coordinator is capable of addressing each node on the network as well as the nodes being able to address the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
 
@@ -13,11 +14,21 @@ Due to the configuration behind each XBee module we were able to have full contr
 
 The sensors were programmed in C++ and the Hub was programmed in Python, so we have written two Libraries to be able to communicate in the format the XBee modules expected. Using these libraries we can have greater control over the API mode letting us know when nodes disappear on the network, or that a packet failed to transmit to name a few.
 
-IMAGE1
+<p class="todo">Might need to change to fit format ^
+
+IMAGE 1
 
 IMAGE 2
 
-Researching technologies
+###Previous Work
+
+####Iteration 1
+
+#####What We Need
+
+Based on how we aim to solve the problem, with multiple sensors sending data back to a hub. <span class="todo">reference initial ideas page</span> Our networking solution needs to allow us to have a hub that can have multiple sensors connected wirelessly. The network needs to allow us to communicate data reliably. The data we are expecting to be sending between the sensors and the hub is only going to be ≈ 2000 bits an hour based on the fact that we are going to send a timestamp and an averaged hourly value as a 'long' and an 'int'. 
+
+#####Researching Technologies
 
 Because we decided that we were working with a wireless network based on our aims<span class="todo"> link to why we chose to use wireless</span> Investigating potential solutions considerations of strength, distance, maximum payload size and power usage have to be made. The most obvious solution is WiFi.
 
@@ -35,13 +46,13 @@ Here is a table that we formulated over common wireless solutions:
 		<td>Data Rate (s)</td>
 	</tr>
 	<tr>
-		<td>Wi-Fi</td>
+		<td>WiFi</td>
 		<td>100m</td>
 		<td>20m</td>
 		<td>2.4GHz/5GHz</td>
-		<td>300ma (depending on traffic)</td>
+		<td>300mA</td>
 		<td>Varies</td>
-		<td>>=5v</td>
+		<td>>= 5v</td>
 		<td>Varies</td>
 	</tr>
 	<tr>
@@ -49,7 +60,7 @@ Here is a table that we formulated over common wireless solutions:
 		<td>100m</td>
 		<td>20 - 30m</td>
 		<td>2.4GHz</td>
-		<td>< 30mA</td>
+		<td>30mA</td>
 		<td>Varies</td>
 		<td>N/A</td>
 		<td>1 - 3Mbits</td>
@@ -59,7 +70,7 @@ Here is a table that we formulated over common wireless solutions:
 		<td>100m</td>
 		<td>< 100m</td>
 		<td>2.4GHz</td>
-		<td>< 15mA</td>
+		<td>15mA</td>
 		<td>Varies</td>
 		<td>N/A</td>
 		<td>1Mbit</td>
@@ -86,14 +97,21 @@ Here is a table that we formulated over common wireless solutions:
 	</tr>
 </table>
 
-WiFi
+<br>
+*WiFi*
 
-WiFi is very commercially known and accepted by all as a form wireless data transfer, so our clients would be aware of its existence. However WiFI is in no way real way designed for systems that are meant to last in theory months on end. Hence why our smartphones can lose power quickly once tapped in the local WiFi.
+WiFi is widely used and accepted as a way to wirelessly transmit data. This means our clients should be familiar with it in some sense. However WiFi is not really intended to be used in devices that need to be situated in one place for an extended amount of time. This is because WiFi can use a lot of power when sending and receiving data. Hence why smartphones can lose power quickly while connected to a WiFi network.
 
-For our application we did not expect to be sending anything more than 10 kilobytes a day, so to have the ability to send upwards of 10 megabytes was overkill in our perspective. 
+Because we shouldn't be sending anything more than ≈7 kilobytes a day, therefore the ability to send upwards of 10 megabytes might be overkill. 
 
-However the real selling point to using WiFi comes in two forms. Not only can we transmit longer distances but we access straight to the clients home WiFi. This could in theory also lead to the elimination of the hubs, however this would only lead towards more problems regarding data processing and one of our mains goals was to have a battery life that lasted as long as possible. One of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
-Bluetooth and Bluetooth LE (Low Energy)
+However, the main reasons why we would want to use WiFi comes in two forms. Not only can we transmit reasonable distances but we can directly connect devices to the clients home WiFi.<span class="todo"> do we want to link to where the client said we could use wifi?</span> This could, in theory, lead to the elimination of the hubs which would result in problems regarding data processing. The sensor would have to do all of its data processing onboard meaning it could effect the timing of the capture of our data.
+
+One of our mains goals for the sensor is to make the battery as long as possible . WiFi is one of the more power consuming options, so using WiFi with or without a hub our sensor would have to use much more power when receiving and transmitting data making the battery life less than desirable. 
+
+Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
+
+<br>
+*Bluetooth and Bluetooth Low Energy*
 
 Bluetooth is also a viable alternative for transferring over a low bandwidth where speed is not too key an issue. Depending on how often we schedule the device to transmit data. Since the range on this is considerably lower (5-30 meters) so we would have to consider integrating this with a hub of some kind to forward our data. Fortunately some of the properties across Orange Street feature flat rooftops; upon which we could attach peripherals such as antennas if we need to.  
 
@@ -101,25 +119,14 @@ Bluetooth smart devices have a typically very low sleep current which equates to
 
 Bluetooth works on a dynamic network topology called PAN, which supports up to 8 other devices and a minimum of two, although we don’t plan on having an abundance of sensors in one house (Minimum most likely 3) 
 
-IEEE 802
-
-IEEE standard 802.15.4 intends to offer the fundamental lower network layers of a type of wireless personal area network (WPAN) which focuses on low-cost, low-speed ubiquitous communication between devices. 
-
-Two types of network node:
-
-A full-function device (FFD). It can serve as the coordinator of a personal area network just as it may function as a common node. It implements a general model of communication which allows it to talk to any other device: it may also relay messages, in which case it is dubbed a coordinator (PAN coordinator when it is in charge of the whole network).
-
-A reduced-function devices (RFD). These are meant to be extremely simple devices with very modest resource and communication requirements; due to this, they can only communicate with FFDs and can never act as coordinators.
-
-Although this was a low powered solution, its range is too little - although we plan on having devices communicate in houses only, (sensors to hubs) with this solution we would lack power to punch signals through walls, making our sensors have to be within line of sight of the hub.
-
-ZigBee (XBEE) S2 and XSC
+<br>
+*XBee S2 and XSC*
 
 We found that the S2 in particular was more than adequate for our desires, having one of the lower current draws for transmitting/receiving data, especially that of in sleep with a good data rate (250kbps) and working on a mesh network topology.  Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network than other alternatives.
 
 The XBee can also be programmed manually to work on its own meaning in theory we could eliminate the Microcontroller entirely, however this solution leads to problems involving working out the current time and large packet payloads. We may come back to it at a later point, but for now we decided to use it purely for as means for A-B for our data. 
 
-Conclusion, Configuring the XBee
+#####Conclusion, Configuring the XBee
 
 Testing the range of the XBee S2 revealed some problems that were unseen before such as the range being weaker than expected when facing an urban environment. The shed being the receiver's location is simply a building in an open courtyard surrounded by other buildings. The moment we entered another building the Xbee’s communication would experience huge packet loss and eventually fail entirely. This lead to a new problem, how could we guarantee data's arrival. If the nodes on the network were out of range how could we display this to our client in a meaningful manner?
 
@@ -127,7 +134,7 @@ IMAGE 4
 
 Although we didn’t need XBee’s to be able to communicate huge distances (beyond 25m) it did raise concerns - causing us to later research API mode and ways of ensuring packet robustness.
 
-Setting up the XBee
+####Setting up the XBee
 
 XBees have microcontrollers onboard that store and control the instructions that let them know where data is being sent, sleep functionality, node hopping, retry attempts and much more. For our network we needed to configure each XBee to work within our desired parameters.
 
@@ -149,7 +156,7 @@ We needed one hub per house which could communicate and route data between senso
 
 IMAGE 7
 
-API vs AT
+####API vs AT
 
 We used API mode over AT mode in the end as this offered more configurability for our network, however it was more overhead in terms of setting up. We would need to account for packet formats, error checking and versatility. With AT mode a lot of this is covered for you, however nearly all of it is hidden away and meant that we couldn’t use it.
 
@@ -187,6 +194,6 @@ Although simple in principle, this was not possible with the use of AT mode (Wit
 
 IMAGE 10
 
-Conclusion
+###Conclusion
 
 After testing the XBees on multiple platforms, their range and customizability make them perfect for a small mesh network of sensors to hubs. For our IOT based project they seem more than suitable to fit the role for low-powered sensors reporting back. 
