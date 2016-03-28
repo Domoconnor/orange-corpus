@@ -23,21 +23,19 @@ Based on our [client interaction](#client_interaction) we decided that we had to
 
 The specification for the sensor meant that it had to accurately collect sound data, last for a reasonable amount of time (around a month) without being charged and be weatherproof.
 
-##### Microphone
+##### Microphone Iteration 1
 
-3.2.2.  Hardware
-
-The Microphone Amplifying Circuit
+######The Microphone Amplifying Circuit
 
 After talking to the client the important part of the diagram would remain constant throughout the process, which was the amplifying circuit. For a microphone to be able to produce a voltage signal able to be processed for data it must be amplified, we know for certain we are measuring noise levels in this project and so this is a crucial step.
 
-IMAGE 1
+#IMAGE 1
 
 The basic place to start is a non-inverting amplifying circuit, used with any op-amp it effectively calculates the gain based on two resistor values going into an inverting and non-inverting input. (Gain= 1+ (R2/R1)
 
 The OP-AMP IC we’ve been using is the MCP 6002, the datasheet can be found here. (http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf)
 
-IMAGE 2
+#IMAGE 2
 
 It’s an IC with two OP-AMPS and isn’t designed for anything too complicated, for the time being it’s perfect to get a basic amplifying circuit built.
 
@@ -45,92 +43,104 @@ Looking at the microphone itself, it’s a very basic condenser microphone that 
 
 Most microphones that feed into a amplifying circuit are biased by a resistor value and then thrown down to ground (0v), one could use a potential to guarantee the voltage level applied to a microphone also.
 
-
-
-
-
-
-
 So far, we’re looking at a circuit like this.
 
-IMAGE 3
+#IMAGE 3
 
 Other solutions that can be found on the web include using a different IC (As opposed to the MCP 6002) and modifying the circuit above. 
 
 List of other IC’s and amplifiers we looked into.
 
-
-IC Chip
-Link
-NE5535, TL071, OPA 371
-http://www.zen22142.zen.co.uk/Circuits/Audio/lf071_mic.htm
-LM386
-http://www.learningaboutelectronics.com/Articles/Microphone-amplifier-circuit.php
-LM353
-http://www.ece.ucsb.edu/Faculty/rodwell/Classes/ece2c/labs/Lab1b-2C2007.pdf
-MCP 6002
-http://www.aiscube.com/main/downloads/RVHS/RV_lesson_301112.pdf
-
+<table>
+	<tr>
+		<td>IC Chip</td>
+		<td>Link</td>
+	</tr>
+	<tr>
+		<td>NE5535, TL071, OPA 371</td>
+		<td>http://www.zen22142.zen.co.uk/Circuits/Audio/lf071_mic.htm</td>
+	</tr>
+	<tr>
+		<td>LM386</td>
+		<td>http://www.learningaboutelectronics.com/Articles/Microphone-amplifier-circuit.php</td>
+	</tr>
+	<tr>
+		<td>MCP 6002</td>
+		<td>http://www.aiscube.com/main/downloads/RVHS/RV_lesson_301112.pdf</td>
+	</tr>
+</table>
 
 Although some may seem more suitable than others, as of right now we’ve focused on having a working circuit. In the long term, once we are happy with this solution we will most likely have a pre-built circuit instead of designing the non-inverting amplifier ourselves and choosing which OP-AMP to use. 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Processing the Data
+######Processing the Data
 
 The next step was to process the data, there were many ways to handle this from Microcontrollers to all-in-one IOT boards. We researched the following methods of taking data from a microphone to then process.
 
-Potential Idea
-Description
-Pros
-Cons
-IOT Microcontroller Boards
-A whole board designed to handle multiple functions, such as Wifi/3G/Bluetooth with sensors, a built in microcontroller and more.
-A lot of built in features to reduce complexity of building communications between chips.
-Widely available, often designed for IOT solutions. 
-
-Often a lot of unneeded accessories (such as temperature sensor)
-Increase the physical size of the device based on           unneeded extras
-
-Microcontrollers 
-Singular processors, adjustable clock speeds, do not have the functionality of some of the features present on a microcontroller. 
-A lot more freedom in deciding how to run the device.
-Removes any unnecessary features.
-Allows to scale down size of the sensor considerably.
-
-Longer to produce and build together as can take more components.
-More complicated, requires further electronics knowledge.
-
-Barebones
-Using only modules to handle the work, avoiding any form of major processing.
-Potentially reduce power usage.
-Removes any unnecessary features of a Microcontroller.
-Allows to scale down size of the sensor considerably.
-A lot more freedom in deciding how to run the device.
-
-Longer to produce and build together as can take more components.
-Much more complicated, requires further electronics knowledge.
-Difficult to prototype a sensor without a Microcontroller..
+<table>
+	<tr>
+		<td> Potential Idea </td>
+		<td> Description </td>
+		<td> Pros </td>
+		<td> Cons </td>
+		<td> IOT Microconroller Boards </td>
+	</tr>
+	<tr>
+		<td> IOT Microcontroller Boards </td>
+		<td> A whole board designed to handle multiple functions, such as Wifi/3G/Bluetooth with sensors, a built in microcontroller and more.</td>
+		<td> 
+			<ul>
+				<li>A lot of built in features to reduce complexity of building communications between chips.</li>
+				<li>Widely available, often designed for IOT solutions.</li>
+			</ul>
+		</td>
+		<td> 
+			<ul>
+				<li>Often a lot of unneeded accessories (such as temperature sensor)</li>
+				<li>Increase the physical size of the device based on unneeded extras</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td> Microcontrollers  </td>
+		<td>Singular processors, adjustable clock speeds, do not have the functionality of some of the features present on a microcontroller.</td>
+		<td> 
+			<ul>
+				<li>A lot more freedom in deciding how to run the device.</li>
+				<li>Removes any unnecessary features.</li>
+				<li>Allows to scale down size of the sensor considerably.</li>
+			</ul>
+		</td>
+		<td> 
+			<ul>
+				<li>Longer to produce and build together as can take more components.</li>
+				<li>More complicated, requires further electronics knowledge.</li>
+			</ul>
+		</td>
+	</tr>
+	<tr>
+		<td> Barebones  </td>
+		<td>Using only modules to handle the work, avoiding any form of major processing.</td>
+		<td> 
+			<ul>
+				<li>Potentially reduce power usage.</li>
+				<li>Removes any unnecessary features of a Microcontroller.</li>
+				<li>Allows to scale down size of the sensor considerably.</li>
+				<li>A lot more freedom in deciding how to run the device.</li>
+			</ul>
+		</td>
+		<td> 
+			<ul>
+				<li>Longer to produce and build together as can take more components.</li>
+				<li>Much more complicated, requires further electronics knowledge.</li>
+				<li>Difficult to prototype a sensor without a Microcontroller.</li>
+			</ul>
+		</td>
+	</tr>
 
 For the purpose of a prototype we decided to work with a IOT Microcontroller, but which one - we need to investigate common IOT Microcontroller modules, ones that are ideal for our implementation of this IOT device. 
 Arduino Microcontroller Boards
 
-Arguably one of the most popular development boards commercially available, has a full function IDE written in a hybrid of C. Multiple different boards designed for different purposes, all having sharing the basic functionality (such as analog inputs) while offering unique exceptions. They allow for shields to be placed into them which add even further adaptability, allowing for 3rd party hardware to be interfaced easily into the device. This functionality can be as simple as an SD card reader, a WiFi chip or even an external clock. 
+Arguably one of the most popular development boards commercially available, has a full function IDE written in C++. Multiple different boards designed for different purposes, all having sharing the basic functionality (such as analog inputs) while offering unique differences. They allow for shields to be placed into them which add even further adaptability, allowing for 3rd party hardware to be interfaced easily into the device. This functionality can be as simple as an SD card reader, a WiFi chip or even an external clock. 
 
 Which one suited our best needs? What did we need in a device?
 Low power
