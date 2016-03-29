@@ -168,6 +168,9 @@ INSERT PICTURE OF MBEDS
 
 The MBEDs is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an MBED to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components.
 
+* Code for MBED receiver
+* Code for MBED transmitter
+
 #####Testing Range
 
 We know roughly the distance of an XBee from its datasheet, however our clients home and in particular Canterbury has very old structures. These structures have very thick walls, we need to know whether our XBees can transmit through these obstacles or whether we need to boost the signal. We modified the previous code used to test between FRDM K64Fs to calculate latency between packets and then walked around parts of campus determining if we had enough packet loss for concern.
