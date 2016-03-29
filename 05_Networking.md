@@ -254,7 +254,7 @@ We would use:
 self.serial.write(bytearray.fromhex('7E 00 17 10 01 00 13 A2 00 40 C1 FD 49 FF FE 00 00 48 65 79 20 57 6F 72 6C 64 A7')) # API method
 ~~~
 
-However for true implementation we would this to return some indicator of whether message was transmitted successfully or not. For example:
+However for true implementation we would want this to return some indicator of whether the message was transmitted successfully or not. For example:
 
 ~~~python
 response = transmit(bytearray.fromhex('7E 00 17 10 01 00 13 A2 00 40 C1 FD 49 FF FE 00 00 48 65 79 20 57 6F 72 6C 64 A7')) # API method
