@@ -196,7 +196,15 @@ So we’re likely to be able to send around 150 bytes in a single packet (RF dat
 
 The other solution to this problem could be to transmit more frequently, every minute over an hour but battery usage would be the main concern. 
 
-A concern was raised regarding the issue of multiple sensors, as of right now we have no way of knowing who is sending data to the hub and this is an issue we’ll have to address soon.
+A concern was raised regarding the issue of multiple sensors, as of right now we have no way of knowing who is sending data to the hub as well as data becoming malformed and merged due to AT mode. With one sensor this won’t be an issue:
+
+IMAGE 7.73
+
+However with multiple sensors, data becomes inoperable:
+
+IMAGE 7.75
+
+Making this an issue to tackle in the next iteration.
 
 For more information on these particular systems and how they process data see their respective sections.
 
@@ -287,8 +295,21 @@ For API mode to be implemented we need to build two libraries capable of handlin
 * Single message storing (The hub will only ever send one message, to the clock it will be requests or a heartbeat but never at the same time. To the sensor it will be a heartbeat.)
 * Status awareness (Was a packet received?) 
 
-These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
+######Multiple Sensors Solution
 
+Initially we used AT mode for working with one sensor, however problems soon arose when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. Using API mode has let us identify each node on the network and where each stream of traffic is coming from, fixing this problem for us.
+
+Image 7.76
+
+######Fragmenting Packets
+
+As show in our previous iteration the XBee did support packet fragmentation, so in order for this to work we need to manually number each frame in a packet from each source. We also need to be able to determine which is the final frame of a packet, we’ve decided to use an ‘!’ character, which would never naturally appear in any of our normal packets.
+
+IMAGE 7.8
+
+######Overall Benefits
+
+These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
 
 * For implementations of our node code (C++), see here.
 * For implementations of our Hub code (Python), see here.
