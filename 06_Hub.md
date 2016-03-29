@@ -94,7 +94,7 @@ The program will be written in Python 3 as its easily available on the Pi and of
 
 ###Language of Choice: Python <span class="todo">is this description of code or why python was chosen?</span>
 
-<b>Why Python<b>
+<b>Why Python</b>
 
 We chose Python because it was easily available on the Pi, had plenty of documentation supporting it and is a very easy language to read from another developers standing. In terms of interfacing it with serial and the network there are plenty of libraries that exist to make this as simple and efficient as possible, we have decided to use PySerial and Requests to handle these requirements. 
 
