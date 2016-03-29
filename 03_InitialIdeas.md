@@ -33,7 +33,7 @@ Below are the minutes taken for every meeting that we, personally had between us
 Weekly Minutes (September 27th - 25th March 2016)
 
 <b> 27/9/2015 </b>
-*Project begins.
+* Project begins.
 *Meeting with supervisor, arranging a meeting with clients.
 *Research into general hardware understanding.
 *Research into general electronics understanding.
