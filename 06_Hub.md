@@ -94,11 +94,11 @@ The program will be written in Python 3 as its easily available on the Pi and of
 
 ###Language of Choice: Python <span class="todo">is this description of code or why python was chosen?</span>
 
-Why Python
+<b>Why Python<b>
 
 We chose Python because it was easily available on the Pi, had plenty of documentation supporting it and is a very easy language to read from another developers standing. In terms of interfacing it with serial and the network there are plenty of libraries that exist to make this as simple and efficient as possible, we have decided to use PySerial and Requests to handle these requirements. 
 
-Python Libraries
+<b>Python Libraries</b>
 
 PySerial and Requests simplified any complications we may have had from writing our own initial libraries as well as having organised documentation to support them. They abstracted a lot of complicated hardware tasks (such as interrupt handling on GPIO pins) and communicating over the network. Other libraries we plan on using are those standard to Python, time for handling timing operations, random for random calculations, threading to handle multiple tasks to name a few.
 
@@ -108,9 +108,11 @@ The Hubs most important role will be that of the coordinator on the network, it 
 
 <p class="todo">insert picture system diagram pi with zigbee</p>
 
-###AT Mode 
+####AT Mode Iteration TWO
 Image Here
 (a single sensor to Hub to the server. Hub reads in all data it receives which is only from one source, no errors.)
+
+RE-WRITE, PRESENT TENSE + EXPLAIN CODE AND HOW IT WORKED, WHAT DID IT OFFER?
 
 Initially we used AT mode for working with one sensor, however problems would soon arise when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. The solution to this was to expand into API mode, which allowed us to identify individual sensors on the network and solve this particular problem
 
@@ -118,7 +120,7 @@ Image HERE
 (Multiple sensors to Hub to server, Hub reads in data without knowing sources, data is merged together and becomes inoperable.)
 
 
-###API Mode
+####API Mode Iteration THREE
 
 With AT mode packets were formed for us and the payload was the only part we submitted in forming it. This lead us into problems as we would not be able to access information in the packet header that could be crucial to determining who sent the packet and other details. 
 
@@ -133,7 +135,11 @@ However the XBee did not accommodate packet fragmentation itself, so in order fo
 Image Here
 (Showing simple-flow approach to packet fragmentation. Message is split into frames, each frame is acknowledged when received and the process repeats until all frames are received successfully.)
 
-###Node Discovery 
+#####Testing API Mode
+
+testing stuff here
+
+#####Node Discovery 
 
 Being able to determine what sensors already exist on a network would offer us much more functionality. We would be able to ping nodes on the network and offer more functionality in the written API to message individual nodes. 
 
