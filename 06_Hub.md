@@ -34,7 +34,7 @@ Unlike the sensor, power consumption was not an issue as the client told us that
 The hub was required to be a middleman between sensors and the web server, forwarding traffic onto the website over ethernet and handling any heavy processing. Initially we planned on using an FRDM-K64F board due to familiarity and easy access to them within the University. 
 
 ### Hub Hardware
-####Iteration ONE
+####Iteration 1 - Researching Hub Solutions
 #####FRDM K64F
 
 Image Here
@@ -107,7 +107,7 @@ PySerial and Requests simplified any complications we may have had from writing 
 
 The Hubs most important role will be that of the coordinator on the network, it is the centre point. Due to how XBees address each other, it is very easy to send data straight to coordinator using its predefined 64bit address (0x0000000000000000).  The Hub could address any node on the network and with this could determine which nodes were which and if they were still within range.
 
-####Iteration 2, AT Mode
+####Iteration 2 - Pi with AT Mode
 
 #####Setting up the Pi
 
@@ -176,7 +176,7 @@ In case the connection between the hub and webserver fails, we need to ensure da
 
 The hub needs to be able to tell which node is transmitting which data to it, how does it know whether the data it's received is that of a clock making a request or a sensor sending data? The clock sends data in a format of “R:!”. This is unique, it never appears in any of the sensor data and so when the hub receives any data it will scan for this particular set of characters. If received, it will know that this is a request and not sensor data. Otherwise it will assume all incoming data is from the sensor and forward it to the webserver. 
 
-####Iteration 3, API Mode 
+####Iteration 3 - Pi with API Mode 
 
 Now that we’ve changed from AT mode to API mode, not much needs to change but at the same time the properties of the Hub have greatly expanded. The API has been designed so that more functionality could be provided without requiring an excess amount of modification to existing code. 
 
