@@ -29,13 +29,13 @@ Upon a series of failed attempts, once a successful attempt is made the Hub will
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
 
-### Initial Premise
+###Initial Premise
 
 Unlike the sensor, power consumption was not an issue as the client told us that we could connect to a power outlet. It didn't need to be outside the clients premisses either. This meant we could use any feasible board for this role. We needed a board that could offer the most useful functionality towards our project.
 
 The hub was required to be a middleman between sensors and the web server, forwarding traffic onto the website over ethernet and handling any heavy processing. Initially we planned on using an FRDM-K64F board due to familiarity and easy access to them within the University. 
 
-### Hub Hardware
+###Hub Hardware
 ####Iteration 1 - Researching Hub Solutions
 #####FRDM K64F
 
@@ -93,7 +93,6 @@ We decided to use a Raspberry Pi (Model B+ 512MB) over other solutions. While th
 We decided to use a Raspberry Pi (Model B+ 512MB). The Pi offered a full operating system, better secure networking and remote access for updating on the network. This means that if a bug is found in our code while the hub is deployed in our clients house we could remotely update in on said hub. In the same way we would also be able to access any logged debug information from the program.
 
 #####Moving forward with the Pi
-
 The Model B+ will be supplied by the university. The operating system of choice was Raspbian Jessie Lite because it is the officially supported OS of the Pi therefore, recommended by the developers of the Pi. The Pi will have to be connected to the XBee over serial, however in order to use these ports they have to be masked by systemd to force them to be free on startup. 
 
 Then we need to write a program capable of handling incoming AT packets from serial, interpret them and respond accordingly. <span class="todo"><- link to code for this</span> 
@@ -111,13 +110,14 @@ We have chosen Python because it was easily available on the Pi, had plenty of d
 PySerial and Requests simplified any complications we may have had from writing our own initial libraries as well as having organised documentation to support them. They abstracted a lot of complicated hardware tasks (such as interrupt handling on GPIO pins) and communicating over the network. Other libraries we plan on using are those standard to Python, time for handling timing operations, random for random calculations, threading to handle multiple tasks to name a few.
 
 ###Coordinator on Network
-
 The Hubs most important role will be that of the coordinator on the network, it is the centre point. Due to how XBees address each other, it is very easy to send data straight to coordinator using its predefined 64bit address (0x0000000000000000).  The Hub could address any node on the network and with this could determine which nodes were which and if they were still within range.
+
+###Result of Iteration
+We've successfully found the hardware to use for our Hub, the language to program in and how we plan to interface with our network. The next step is to implement AT mode, a simple system for handling messages on a network. Using the Raspberry Pi as our Hub will offer us an operating system with the added benefits that brings such as security or remote access. The Pi can easily interface with the external components we need and allow us to remotely access our low powered network if need be using SSH from outside the clients home.
 
 ####Iteration 2 - Pi with AT Mode
 
 #####Setting up the Pi
-
 Now that we’ve settled on an operating system, hardware and programming language we can progress to implementing a working network with the Pi. By default the Pi uses the serial ports for terminal access, for us this is of no use and we need those ports for the XBee to communicate on. In order to open the ports we had to go through Systemd which is the main configuration tool for handling debian related Linux distros. Systemd is quite new to Raspbian and because of this most tutorials offering assistance are outdated as they refer to older versions of Raspbian where the use inittab was involved. 
 
 In order to change anything we need access to the Pi. We’ve been remotely accessing the Pi using SSH and a program called Putty, this gives us full access to the Pi without having to actually plug anything into it. Researching Systemd has shown us that you can mask services which effectively disables them entirely from starting. First we needed to find the service we were looking for.
@@ -162,26 +162,28 @@ pip install requests
 Now our Pi is ready to act as a coordinator. The next stage is programming it and making sure it knows how to act accordingly to data. We need to consider the possibility of no access to the internet too, what means do we have to ensure data backups. 
 
 #####What does the Hub need to do?
-
 The Hub is the middleman between the webserver and the nodes on the network, it has a responsibility to ensure data from those nodes reaches their destination. We need to be able guarantee data will be logged if it cannot reach its location, or if a request can’t be completed such in the case of the clock. The Hub should wait and listen for any incoming data and once a full set of data has been received act upon it, if it’s a request from the clock - request values from the server and respond back. If it’s data from one of the sensors then that needs to be sent to the webserver. It needs to be able to distinguish between a sensor and a clock otherwise it’ll send data to the wrong nodes or request values from the webserver for the wrong reasons. 
 
 ![](Images/Hub/IMAGE7.1.PNG)
 
 ######Basic Structure
-
 The Pi will run a thread that continuously waits on serial input, once received it will take as much as it can in before analysing what it’s received. Upon analysing it will decide whether the data is a request from the clock or sensor data, if sensor data it will attempt to transmit it to the webserver, if a request it will request the last 24 hours of average sound values from the web server. If a clock request is made and the web server does respond then the hub expects a format of 24 integer values in an array, when these values are obtained it forwards them to the clock. 
 
 ######Data backup
-
 In case the connection between the hub and webserver fails, we need to ensure data backups. In the case that the network fails the Pi will write all of its currently available sensor data to a local file, it’ll re attempt to transmit data the next time it receives another set of sensor data. If that fails, then the cycle continues - save data and try again next time. The hub does try a total of 5 times before giving up and saving to a file, just in case there was a particular error that occurred.
 
 ######Distinguishing traffic
-
 The hub needs to be able to tell which node is transmitting which data to it, how does it know whether the data it's received is that of a clock making a request or a sensor sending data? The clock sends data in a format of “R:!”. This is unique, it never appears in any of the sensor data and so when the hub receives any data it will scan for this particular set of characters. If received, it will know that this is a request and not sensor data. Otherwise it will assume all incoming data is from the sensor and forward it to the webserver. 
 
-####Iteration 3 - Pi with API Mode 
+###Result of Iteration
+Although we now have a functioning Hub that can transmit and receive between a clock and sensor, it can't handle data coming in from multiple sensors. It also can't fragment large payloads which is quite a concern but we have managed to bypass this by using the internal timers of the XBee hardware to our advantage. However that doesn't make that a good solution and a long term fix will be a priority in the next iteration.
 
-Now that we’ve changed from AT mode to API mode, not much needs to change but at the same time the properties of the Hub have greatly expanded. The API has been designed so that more functionality could be provided without requiring an excess amount of modification to existing code. 
+Overall the system can function, but if any major strain occurs then the system will suffer. The Hub can handle if the network goes down and will backup data when needed. It can request values for the clock and transmit sensor data but only from one sensor on the network, anymore and data will become malformed.
+
+Our next iteration will focus on fixing packet fragmentation, handling multiple sensors and hopefully error recovery.
+
+####Iteration 3 - Pi with API Mode 
+Now that we’ve changed from AT mode to API mode (see [Networking Iteration 4](#network_i4)), not much needs to change but at the same time the properties of the Hub have greatly expanded. The API has been designed so that more functionality could be provided without requiring an excess amount of modification to existing code. 
 
 The basic idea being, we only need to change one line:
 
@@ -242,7 +244,6 @@ response = xbee.sendMessage("sensor1", "Hello World")
 ~~~
 
 ######Packet Transmission Status
-
 The Hub stores a single transmit status packet at a time, due to the structure of the library it will only ever need one as it will always check against its transmissions before attempting to transmit again. 
 
 Previously we’ve been unable to determine whether a packet was received or not without physically checking the receiving node. With the new library we’re able to get a response back from our ‘sendMessage’ function, here is a list of the possible response codes:
@@ -266,7 +267,6 @@ The output of this code if under the circumstances the XBee failed to transmit w
 With this new feature we can report back to the webserver if a sensor or clock is out of range, or if for any other reason we can’t contact them. Similar features are offered for the sensor as well, meaning that they can also determine whether they are out of range or if the Hubs XBee has failed. 
 
 ######Packet Fragmentation 
-
 Previously we’ve been unable to transmit large payloads without potentially malforming data, with the new library we can successfully reconstruct packets based on their frame IDs and source addresses. 
 
 When the Hub needs to transmit a message above the MTU for RF data it will begin fragmentation of that message. It calculates how many frames are required for this packet and breaks it down into separate frames for transmission. It prefixes each frame with its ID and upon the final frame suffixes it with the unique termination character ‘!’, which will not appear in normal transmission.  
@@ -276,7 +276,6 @@ The Hub will transmit a frame and wait for an acknowledgement from a status pack
 ![](Images/Hub/IMAGE 11.png)
 
 ######Packet Assembly
-
 The Hub stores a list of messages it has received and arranges them based on current frame ID as well as source, it can determine whether a message has terminated upon final frame and return the source of the transmission. When a frame is received the Hub will check all stored messages, if it finds a packet with the same source address that hasn’t terminated and shares the same current frame ID it will append the RF data to the packet contents. 
 
 Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
