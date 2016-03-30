@@ -101,7 +101,7 @@ Then we need to write a program capable of handling incoming AT packets from ser
 
 The program will be written in Python 3 as its easily available on the Pi and offers all the functionality required to create a robust networking program. We will have to modify /etc/rc.local to contain “sudo python hub.py” so that the script will start every time the Operating System starts. If the network was down, or errors occurred on transmit then the Pi will save data locally, and retry on its next attempt.
 
-###Language of Choice: Python <span class="todo">is this description of code or why python was chosen?</span>
+###Language of Choice: Python
 
 *Why Python*
 
