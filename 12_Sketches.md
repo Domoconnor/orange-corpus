@@ -39,24 +39,44 @@ These initial sketches were drawn in pencil, and explored an open ended approach
 <br>
 
 ![sketch 6](Images/Sketch%20Images/Jack_1.png)
+	
+	Sketch 6 - Simple daily bar chart view
 
 ![sketch 7](Images/Sketch%20Images/Jack_2.png)
 
+	Sketch 7 - Clock display. This is a more novel approach to data visualisation, and uses a clock to plot sound averages as segments. 
+
 ![sketch 8](Images/Sketch%20Images/Jack_3.png)
+
+	Sketch 8 - Monthly sound average view. 
 
 ![sketch 9](Images/Sketch%20Images/Jack_4.png)
 
+	Sketch 9 - Side by side view of critical noise periods against normal periods.
+
 ![sketch 10](Images/Sketch%20Images/Jack_5.png)
+
+	Sketch 10 - Interchangeable bar chart and line graph view. Offers two different views of data, which can be altered according to user preference.
 
 ![sketch 11](Images/Sketch%20Images/Jack_6.png)
 
+	Sketch 11 - Line graph plot of average noise, current noise, and previous month's average.
+
 ![sketch 12](Images/Sketch%20Images/Jack_7.png)
+
+	Sketch 12 - Histogram view of normal sound levels vs current sound levels.
 
 ![sketch 13](Images/Sketch%20Images/Jack_8.png)
 
+	Sketch 13 - Heatmap view - another novel form of visualisation, this is a map of Orange street which is coloured according to noise "hotspots". Used to provide granularity between quieter and noisier areas, and pinpoint disturbances.
+
 ![sketch 14](Images/Sketch%20Images/Jack_9.png)
 
+	Sketch 14 - Line graph and colour coded display - intended to establish sound "thresholds", which clearly indicate to the user when the noise level has crossed a certain boundary. 
+
 ![sketch 15](Images/Sketch%20Images/Jack_10.png)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
 
 <br>
 
