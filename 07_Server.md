@@ -1,7 +1,6 @@
 ## Server
 [Back to contents.](#contents)
 
-[toc]
 
 ###Description
 

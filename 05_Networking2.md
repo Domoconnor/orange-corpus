@@ -1,11 +1,8 @@
-<style>
-	.todo{ color:red }
-</style>
 
-[toc]
 
 <a name="networking"></a>
-##Networking [cont.](#contents)
+##Networking 
+[Back to contents](#contents)
 ###Description
 
 Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we need. The coordinator is capable of addressing each node on the network as well as the nodes being able to address the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
