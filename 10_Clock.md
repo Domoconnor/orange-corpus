@@ -159,10 +159,8 @@ Initially, we found the parameters for 10 different colours which would be used 
 
 ![Colour Spectrum 1](Images/Clock%20Images/Colour_spec_comparison.png)
 
-<img src = "Images/Clock%20Images/Colour_spec_comparison.png" align = "right">
 
-	Simplified colour spectrum. Going in a clockwise 
-	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
+	Simplified colour spectrum. Going in a clockwise direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
@@ -173,8 +171,6 @@ There is an issue with using purely colour based visualisation. When catering fo
 A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
 
 ![Colour intensity 1](Images/Clock%20Images/Intensity_spec_comparison.png)
-
-<img src = "Images/Clock%20Images/Intensity_spec_comparison.png" align = "right">
 		
 	NeoPixel Ring displaying the intensity spectrum. 
 
