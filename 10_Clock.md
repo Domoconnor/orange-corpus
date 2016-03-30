@@ -297,6 +297,10 @@ There are currently further plans to test the clock over an extended time period
 
 The code for this iteration can be found here: [Clock_Cycle_V2]
 
+The interaction between the clock and the hub has been recorded in a video, and can be seen <a href = "https://www.youtube.com/watch?v=sQJQwxEeyLs&ab_channel=BillyMitchell">here.</a>
+		
+		The video above explains how the signposting for the user works, and generally gives an overview of how the clock communicates with the hub to plot its data.
+
 
 ![Clock network diagram](Images/Clock%20Images/Clock_network_diagram.png)
 
