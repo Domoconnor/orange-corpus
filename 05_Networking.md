@@ -168,8 +168,8 @@ We’ve started using FRDM-K64Fs to talk to one another as they provide an appli
 
 The MBEDs is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an MBED to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components.
 
-* Code for MBED receiver
-* Code for MBED transmitter
+* <a href="/MBEDXbeeTest/receiver.cpp">Code for MBED receiver</a>
+* <a href="/MBEDXbeeTest/transmitter.cpp">Code for MBED transmitter</a>
 
 #####Testing Range
 
