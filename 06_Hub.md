@@ -5,11 +5,11 @@
 
 ![](Images/Hub/IMAGE1.PNG)
 
-The Hub is the coordinator of the network. Its the middleman to all incoming and outgoing traffic from the sensor or clock to the webserver. It can maintain backups of data if required and will backup if the network fails at any point, it utilises the libraries provided by the Networking solutions (see [Networking.](#networking)). Using these libraries the hub can maintain a robust network and offer these services:
+The Hub is the coordinator of the network. Its the middleman to all incoming and outgoing traffic from the sensor or clock to the webserver. It will backup data if the network fails at any point, to determine network failure it utilises the libraries provided by the Networking solutions (see [Networking.](#networking)). Using these libraries the hub can maintain a robust network and offer these services:
 * Node Discovery, can determine when nodes disappear or appear and assign them 'nicknames' that can be associated to that node. (e.g "sensor on the balcony")
 * Fragmentation and Assembly of large payloads, large payloads can be fragmented and reassembled when transmitted across the network.
 * Heartbeats, keeping up to date with each node and knowing their current status. Fits into node discovery.
-* Transmission reports, for each packet sent a status packet is returned. With this we can identify whether a transmission was successfully or not.
+* Transmission reports, for each packet sent a status packet is returned. With this the hub can identify whether a transmission was successfully or not.
 * If the network fails the hub will backup any data is has locally and any data it is currently trying to transmit until the network connection has been re-established.
 * Will forward all sensor data to the webserver for further processing, if possible otherwise saves locally.
 * Forwards requests from the clock for most recent 24 hours of sound averages and will transmit back the response. If an error occurs will transmit an appropriate error code.
@@ -20,20 +20,19 @@ The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XB
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
 **<a name="hub_xbee"></a>Communication / XBee**
-The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
+The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests to the Hub also.
 
 **<a name="hub_processing"></a>Processing Role**
 It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
-The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error code instead. 
+The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails while transmitting sensor data it will save this on the SD card in the Pi, if it cannot request data for the clock it will return an error code instead. 
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
 **<a name="hub_case"></a>Case**
-The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
+The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi. The case needed to house the Pi for general concerns of deprecation over time, we didn't want the client to accidently knock a Pi off the shelf without some protection.
 
 
 ###Initial Premise
-
 Unlike the sensor, power consumption was not an issue as the client told us that we could connect to a power outlet. It didn't need to be outside the clients premisses either. This meant we could use any feasible board for this role. We needed a board that could offer the most useful functionality towards our project.
 
 The hub was required to be a middleman between sensors and the web server, forwarding traffic onto the website over ethernet and handling any heavy processing. Initially we planned on using an FRDM-K64F board due to familiarity and easy access to them within the University. 
@@ -98,7 +97,7 @@ We decided to use a Raspberry Pi (Model B+ 512MB). The Pi offered a full operati
 #####Moving forward with the Pi
 The Model B+ will be supplied by the university. The operating system of choice was Raspbian Jessie Lite because it is the officially supported OS of the Pi therefore, recommended by the developers of the Pi. The Pi will have to be connected to the XBee over serial, however in order to use these ports they have to be masked by systemd to force them to be free on startup. 
 
-Then we need to write a program capable of handling incoming AT packets from serial, interpret them and respond accordingly. <span class="todo"><- link to code for this</span> 
+Then we need to write a program capable of handling incoming AT packets from serial, interpret them and respond accordingly.
 
 The program will be written in Python 3 as its easily available on the Pi and offers all the functionality required to create a robust networking program. We will have to modify /etc/rc.local to contain “sudo python hub.py” so that the script will start every time the Operating System starts. If the network was down, or errors occurred on transmit then the Pi will save data locally, and retry on its next attempt.
 
@@ -149,7 +148,7 @@ Now that serial is free we’ve got to connect the XBee to the Pi, looking at th
 
 ![](Images/Hub/IMAGE7v2.png)
 
-The final step is to make sure we have the libraries we need for python, using pip a tool that installs these libraries we can run a command to install them. Pip had to be installed however, which could be done using.
+The final step is to make sure we have the libraries we need for python, using a program called pip we can install these libraries. First of all pip had to be installed, which could be done using.
 
 ~~~
 python -m pip install -U pip
@@ -162,7 +161,7 @@ pip install pyserial
 pip install requests
 ~~~
 
-Now our Pi is ready to act as a coordinator. The next stage is programming it and making sure it knows how to act accordingly to data. We need to consider the possibility of no access to the internet too, what means do we have to ensure data backups. 
+Now our Pi is ready to act as a coordinator. The next stage is programming it and making sure it knows how to act in response to our data. We need to consider the possibility of no access to the internet too, we have to ensure that data isn't lost at any point. 
 
 #####What does the Hub need to do?
 The Hub is the middleman between the webserver and the nodes on the network, it has a responsibility to ensure data from those nodes reaches their destination. We need to be able guarantee data will be logged if it cannot reach its location, or if a request can’t be completed such in the case of the clock. The Hub should wait and listen for any incoming data and once a full set of data has been received act upon it, if it’s a request from the clock - request values from the server and respond back. If it’s data from one of the sensors then that needs to be sent to the webserver. It needs to be able to distinguish between a sensor and a clock otherwise it’ll send data to the wrong nodes or request values from the webserver for the wrong reasons. 
