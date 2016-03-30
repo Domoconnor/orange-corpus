@@ -100,21 +100,39 @@ The focus here, was placed upon what forms of visualisation the client would fin
 
 ![combined sketch 1](Images/Sketch%20Images/Matt_comb_1.jpeg)
 
+	Combined sketch 1 - Histogram crossed with noise threshold.
+
 ![combined sketch 2](Images/Sketch%20Images/Matt_comb_2.jpeg)
+
+	Combined sketch 2 - Graph and clock view - incorporates a clock view to display user, and shows the relative sound level at each time interval.
 
 ![combined sketch 3](Images/Sketch%20Images/Matt_comb_3.jpeg)
 
+	Combined sketch 3 - Sensor and decibel level view - combines the ideas of having a sensor centric visualisation which pinpoints activity, and a decibel scaling system.
+
 ![combined sketch 4](Images/Sketch%20Images/Jack_comb_1.png)
+
+	Combined sketch 4 - Heatmap and graph visualisation - this sketch integrates the novel approach of the street heatmap with a line graph to reinforce the data.
 
 ![combined sketch 5](Images/Sketch%20Images/Jack_comb_2.png)
 
+	Combined sketch 5 - Threshold graph comparison - designed to give the user to ability to compare several different dates in terms of sound thresholds that were crossed. 
+
 ![combined sketch 6](Images/Sketch%20Images/Jack_comb_3.png)
+
+	Combined sketch 6 - Touch screen / tablet heatmap view. Adds the extra detail of a colour based averaging system to the heatmap, and implements it for a touchscreen device. 
 
 ![combined sketch 7](Images/Sketch%20Images/Dan_1.png)
 
+	Combined sketch 7 - Graphical sensor comparison. This visualisation provides a time scale on the X axis, and the ability to add series from different sensors. 
+
 ![combined sketch 8](Images/Sketch%20Images/Dan_2.png)
 
+	Combined sketch 8 - Sensor map view - incorporates a variable time system with a sensor map, where the user can view sensor activity according to their desired time parameters. 
+
 ![combined sketch 9](Images/Sketch%20Images/Dan_3.png)
+
+	Combined sketch 9 - Coloured time chart - a colourful approach to visualisation, this sketch creates a coloured sound scaling system, and plots its as a grid. Useful for daily comparisons, and averaging sound activity over time in easily interpreted formats. 
 
 
 
