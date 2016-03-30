@@ -57,23 +57,32 @@ To have a feasible hardware solution which complements our other means of data v
 ![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
 	Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
+	
+<br>
 
 ![Sketch 2](Images/Clock%20Images/IMAGE_2.jpg)
 
 	Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
 
+<br>
+
 ![Sketch 3](Images/Clock%20Images/IMAGE_3.jpg)
 
 	Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
 
+<br>
+
 ![Sketch 4](Images/Clock%20Images/IMAGE_4.jpg)
 
 	Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
+	
+<br>
 
 ![Sketch 5](Images/Clock%20Images/IMAGE_5.jpg)
 
 	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
+<br>
 
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
