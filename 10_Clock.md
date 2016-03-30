@@ -43,19 +43,16 @@ We could also implement something physical in hardware, which could be read simi
 In both cases, the red and orange lights could serve as flags to the user, as they indicate a high concentration of noise activity picked up by the sensor. Meanwhile, the lighter colours provide coverage for quieter hours. This offered the user a complete coverage of each 24-hour period, allowing the possibility to view previous hours and draw comparisons between them. 
 Overall, we felt that there was an advantage to having a physical clock, as it is a physical artefact and therefore has greater potential to engage with the user. Furthermore, it could provide effective reinforcement to the data displayed on the web server. 
 
-####What we need 
-The premise behind the clock is to provide a visual stimulus to the user in a simplified data format for quick reference. It also needs to be interconnected with other devices on the network to accurately display data. Since the device is going to be running a series of lights, it is likely that power usage will be high; which is a consideration for how it will be powered in the user’s home. We also need to decide what sort of hardware we are looking at using to implement this idea, and what limitations and/or advantages each particular technology would give us. The main requirements of the clock are therefore: 
-
-<ul>
-<li>To provide an ambient visualisation of data which is engaging with the user. </li> 
-<li>Be easily implemented with the rest of the system. </li> 
-<li>Display data in a format that is easily grasped by the user. </li>
-<li>To have a feasible hardware solution which complements our other means of data visualisation.</li>
-</ul>
-
 #####Lo-fi prototyping and sketches
 In order to visualise a few different clock concepts, we created some sketches of the clock being represented in different ways. This was a way of gauging how the interface for the clock should look, as well as exploring some aspects such as colour, granularity, and the general visual layout for the user. 
 Some of the design sketches we produced later in this iteration explored the placement of a clock as a “widget” on a tablet or webpage. Since our client could rely on mobile or tablet, we also concepted how our designs could be scaled and combined depending on where they are displayed. 
+
+####What we need 
+The premise behind the clock is to provide a visual stimulus to the user in a simplified data format for quick reference. It also needs to be interconnected with other devices on the network to accurately display data. Since the device is going to be running a series of lights, it is likely that power usage will be high; which is a consideration for how it will be powered in the user’s home. We also need to decide what sort of hardware we are looking at using to implement this idea, and what limitations and/or advantages each particular technology would give us. The main requirements of the clock are therefore: 
+To provide an ambient visualisation of data which is engaging with the user 
+Be easily implemented with the rest of the system 
+Display data in a format that is easily grasped by the user
+To have a feasible hardware solution which complements our other means of data visualisation
 
 ![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
@@ -86,8 +83,6 @@ Some of the design sketches we produced later in this iteration explored the pla
 	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
 <br>
-
-#####Overview
 
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
@@ -195,6 +190,16 @@ Similarly to the colour spectrum, the intensity increases as greater noise inten
 We felt having the option to display data in these varying formats could be useful to the user, and opens up possibilities for new ways our visualisation could be implemented. There are potentially ways that these two formats could be used in conjunction.
 
 The code for this iteration can be found here: [Clock_Cycle_RedIntensity]
+
+#####Other Considerations
+
+#####External 60-Minute Clock
+A potential problem that we ran into when considering the design of the 24-hour display was the fact that for real-time data to be recorded, the client would have to wait for the next hour to tick over before it is reflected on the clock face. A proposed way of combatting this would be to have the larger, 60 LED NeoPixel running around the outside of the 24-Hour clock, reading in minute-by-minute data and updating just as often. The advantage here is that there are two dimensions of data for the client to access off the bat, and there is nothing stopping them from taking this data and using it to put forward a case straight away. Other features that might be useful in reinforcing this kind of display would be a real time clock interfacing with both pixel rings to control timings of readings, maybe even with an LCD display as a visual reminder so the client knows exactly upon quick reference which light applies to which minute. 
+
+#####Controlling Brightness 
+
+Fortunately as part of the NeoPixel Library, the ability to directly manipulate the brightness level of the entire strip is very straightforward. Since the levels range from barely visible to dazzlingly bright, it makes sense to control this to a user preference. It was decided that at nighttime, most users wouldn’t favour a bright, glaring light in their house. To control this, we looked at lowering the brightness gradually throughout the day, it being at its lowest (but still very visible) at night, and brighter in the day since it has to contest with other bright lights and sunlight. The clock could interface with a real time clock on the arduino to perform these checks every few hours. 
+
 
 ####Problems
 
@@ -394,9 +399,7 @@ We solved this issue this iteration by incorporating a strict data format that t
 As a result, the clock is now synchronised with the rest of the system, and can effectively notify users with up to date information, which is displayed accordingly. 
 
 ####Outcome of iteration
-At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. 
-
-In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
+At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
 
 
 
