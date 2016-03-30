@@ -125,8 +125,6 @@ Initially, we constructed a program using the “Processing” IDE to work as a 
 
 ![Neopixel Ring](Images/Clock%20Images/IMAGE_7.jpg)
 
-<img src = "Images/Clock%20Images/IMAGE_7.jpg" width = "400" height = "400" align: middle> 
-
 	Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
