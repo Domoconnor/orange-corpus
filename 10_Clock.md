@@ -48,7 +48,7 @@ The premise behind the clock is to provide a visual stimulus to the user in a si
 To provide an ambient visualisation of data which is engaging with the user 
 Be easily implemented with the rest of the system 
 Display data in a format that is easily grasped by the user
-To have a feasible hardware solution which complements our other means of data visualisation
+To have a feasible hardware solution which complements our other means of data visualisation.
 
 #####Lo-fi prototyping and sketches
 In order to visualise a few different clock concepts, we created some sketches of the clock being represented in different ways. This was a way of gauging how the interface for the clock should look, as well as exploring some aspects such as colour, granularity, and the general visual layout for the user. 
