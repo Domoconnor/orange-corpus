@@ -15,7 +15,7 @@ void loop() {
   uint8_t res = xbee.sendMessage("HB#:test");
   Serial.print("Response: '");
   Serial.print(res);
-  Serial.print("'");
+  Serial.println("'");
   if(!res){
       digitalWrite(inRange, HIGH); 
       digitalWrite(notInRange, LOW);  
