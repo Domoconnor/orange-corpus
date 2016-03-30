@@ -157,7 +157,7 @@ We determined our RGB parameters by using a HTML colour picker, which allowed us
 
 Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. 
 
-![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.jpg)
+![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.png)
 ![Colour Spectrum 2](Images/Clock%20Images/IMAGE_12.jpg)
 
 	Simplified colour spectrum. Going in a clockwise 
