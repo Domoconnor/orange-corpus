@@ -287,6 +287,11 @@ There are currently further plans to test the clock over an extended time period
 
 The code for this iteration can be found here: [Clock_Cycle_V2]
 
+
+![Clock network diagram](Images/Clock%20Images/Clock_network_diagram.png)
+
+		By the end of this iteration, the communication between the clock and the hub resembled this diagram.
+
 ####Previous Problems
 
 <ul>
