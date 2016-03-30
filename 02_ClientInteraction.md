@@ -29,7 +29,7 @@ Our intended outcome for this meeting was to have an incite into our clients per
 
 <p class="todo">INCLUDE RECORDING</p>
 
-#####Meeting TWO
+####Meeting TWO
 
 We spoke to another client that was meant to be present at the original meeting but was unable to make it. They are a landlord of Orange Street tenants living next to a popular club called ‘The Ballroom’. In this meeting we followed the same layout as set in the first meeting, making one person take the lead and the others taking notes, we also followed the same structure of questions.
 

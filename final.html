@@ -474,6 +474,12 @@ div.prism-show-language > div.prism-show-language-label {
 </style>
 </head>
 <body>
+<style>
+ul{
+margin:0;
+}
+</style>
+
 <div style="position:fixed; top:0; left:0; margin:10px;">
 <a href="#contents">Back to Contents</a>
 </div>
@@ -499,11 +505,9 @@ div.prism-show-language > div.prism-show-language-label {
 <ul>
 <li>
 <a href="#toc_4">Meeting ONE</a>
-<ul>
+</li>
 <li>
 <a href="#toc_5">Meeting TWO</a>
-</li>
-</ul>
 </li>
 <li>
 <a href="#toc_6">Other Communication</a>
@@ -1184,7 +1188,7 @@ The client talked a lot about wanting the people in the street to know how noisy
 
 <p class="todo">INCLUDE RECORDING</p>
 
-<h5 id="toc_5">Meeting TWO</h5>
+<h4 id="toc_5">Meeting TWO</h4>
 
 <p>We spoke to another client that was meant to be present at the original meeting but was unable to make it. They are a landlord of Orange Street tenants living next to a popular club called ‘The Ballroom’. In this meeting we followed the same layout as set in the first meeting, making one person take the lead and the others taking notes, we also followed the same structure of questions.</p>
 
@@ -3351,7 +3355,7 @@ We determined our RGB parameters by using a HTML colour picker, which allowed us
 
 <p>Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. </p>
 
-<p><img src="Images/Clock%20Images/IMAGE_11.png" alt="Colour Spectrum 1"> <img src="Images/Clock%20Images/IMAGE_12.jpg" alt="Colour Spectrum 2"></p>
+<p><img src="Images/Clock%20Images/Colour_spec_comparison.png" alt="Colour Spectrum 1"></p>
 
 <div><pre><code class="language-none">Simplified colour spectrum. Going in a clockwise 
 direction, the colour converges more towards red,   hinting at greater noise activity. The right image  is displaying data for arbitrary values to test the     granularity between colours.</code></pre></div>
@@ -3364,7 +3368,7 @@ direction, the colour converges more towards red,   hinting at greater noise act
 
 <p>A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. </p>
 
-<p><img src="Images/Clock%20Images/IMAGE_13.png" alt="Colour intensity 1"> <img src="Images/Clock%20Images/IMAGE_14.jpg" alt="Colour intensity 2"></p>
+<p><img src="Images/Clock%20Images/Intensity_spec_comparison.png" alt="Colour intensity 1"></p>
 
 <div><pre><code class="language-none">NeoPixel Ring displaying the intensity spectrum. </code></pre></div>
 
