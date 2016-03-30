@@ -38,6 +38,8 @@ These initial sketches were drawn in pencil, and explored an open ended approach
 
 <br>
 
+From these sketches onwards, more of an emphasis to colour visualisation is made, drawing inspiration from colour systems to convey data. 
+
 ![sketch 6](Images/Sketch%20Images/Jack_1.png)
 	
 	Sketch 6 - Simple daily bar chart view
@@ -96,25 +98,24 @@ The focus here, was placed upon what forms of visualisation the client would fin
 
 **Here are our outcomes of the Combined Sketches Method:**
 
-![combined sketch 1](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 1](Images/Sketch%20Images/Matt_comb_1.jpeg)
 
-![combined sketch 2](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 2](Images/Sketch%20Images/Matt_comb_2.jpeg)
 
-![combined sketch 3](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 3](Images/Sketch%20Images/Matt_comb_3.jpeg)
 
-![combined sketch 4](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 4](Images/Sketch%20Images/Jack_comb_1.png)
 
-![combined sketch 5](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 5](Images/Sketch%20Images/Jack_comb_2.png)
 
-![combined sketch 6](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 6](Images/Sketch%20Images/Jack_comb_3.png)
 
-![combined sketch 7](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 7](Images/Sketch%20Images/Dan_1.png)
 
-![combined sketch 8](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 8](Images/Sketch%20Images/Dan_2.png)
 
-![combined sketch 9](http://macdown.uranusjr.com/static/base/img/logo-160.png)
+![combined sketch 9](Images/Sketch%20Images/Dan_3.png)
 
-![combined sketch 10](http://macdown.uranusjr.com/static/base/img/logo-160.png)
 
 
 
