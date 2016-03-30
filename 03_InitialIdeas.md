@@ -24,9 +24,6 @@ Translating this to a solution we can work with:
 * We had to ensure some form of data backup also.
 * Some of the requested locations for these sensors were completely unreachable by permanent power supplies, which led us to the investigation of long term battery solutions.
 * We needed a case that could survive harsh weather and conditions, one that would be of a suitable Ingress Protection Rating.
-* 
-
-
 
 #### Minutes
 
@@ -70,7 +67,6 @@ Weekly Minutes (September 27th - 25th March 2016)
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
-* Matthew Aldridge
 
 ###### Main points
 * Working on sensor amplifier, have to calculate accurate values for use.
@@ -104,7 +100,6 @@ Weekly Minutes (September 27th - 25th March 2016)
 
 #####25/10/2015
 ###### Members attendance
-* Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
@@ -140,7 +135,6 @@ Weekly Minutes (September 27th - 25th March 2016)
 #####9/11/2015
 ###### Members attendance
 * Daniel Andrews
-* Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
@@ -177,7 +171,6 @@ Weekly Minutes (September 27th - 25th March 2016)
 ###### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
-* Jack McBride
 * Matthew Aldridge
 
 ###### Main points
