@@ -87,6 +87,8 @@ Some of the design sketches we produced later in this iteration explored the pla
 
 <br>
 
+#####Overview
+
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
 
