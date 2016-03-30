@@ -401,9 +401,9 @@ XbeeAPI::XbeeAPI(HardwareSerial *pserial, const char* name) : name(name)
 
 ######Polling
 
-The ATMega architecture struggles with some forms of interrupt handling and due to this storing packets when they're received becomes difficult. When a packet is received the XBee will store it internally and wait to send over serial, it can only send when the board is ready for it to send. The sensors are often asleep and won't be listening on serial for incoming data, except for when they wake up. When they wake up to sample sound, they can call a method called 'poll' in the library. This method reads in everything it can from serial and then forms messages for the program to use.
+The ATMega architecture struggles with some forms of interrupt handling, due to this storing packets when data is received becomes difficult. When a packet is received the XBee will store it internally and wait to send over serial, it can only send when the board is ready to receive. The sensors are often asleep and won't be listening on serial for incoming data, except for when they wake up. When they wake up to sample sound, they can call a method called 'poll' in the library. This method reads in everything it can from serial and then forms messages for the program to use. This method is designed to bypass the problem of interrupt handling and work within the parameters of a device that may need to be sleeping for a long period of time.
 
-An example of the function poll:
+An example of polling:
 
 ~~~c++
 // awakening from sleep...
@@ -414,7 +414,7 @@ if(messageAvailable){
 }
 ~~~
 
-The parameter passed to the poll function relates to how many times the program wants to poll, each poll waits 250 milliseconds before reading everything it can in from serial. The example above would poll 3 times and would take around 750 milliseconds to execute. 
+The parameter passed to the poll function relates to how many times the program wants to poll, each call waits 250 milliseconds before reading everything it can in from serial. The example above would poll 3 times and would take 750 milliseconds to execute, not including time for atomic operations. 
 
 The poll function:
 
