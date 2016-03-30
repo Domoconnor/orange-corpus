@@ -304,9 +304,16 @@ As show in our previous iteration the XBee didn't support packet fragmentation, 
 ![7.8](Images/Networking/IMAGE7.8.PNG)
 
 ######Arduino String vs Char Array
-When working with the Arduino IDE its been very tempting to use the 'String' class. A class that offers useful functionality similar to that of Java. With it we can work out the length of a string, split it, concat it and do general operations on it. However, this functionality comes as the cost of efficiency. In C, strings don't exist in the format of other languages rather they exist as char arrays and are handled very differently. Arduinos IDE dumbs down the char array into a string. The lack of efficiency comes at the cost of memory, with such a small amount of RAM, the nodes could potentially crash if we are not careful.
+When working with the Arduino IDE its been very tempting to use the 'String' class. A class that offers useful functionality similar to that of Java. With it we can work out the length of a string, split it, concat it and do general operations on it. However, this functionality comes as the cost of efficiency. In C, strings don't exist in the format of other languages rather they exist as char arrays and are handled very differently. Arduinos IDE dumbs down the char array into a string. The lack of efficiency comes at the cost of memory, with such a small amount of RAM, the nodes could potentially crash if we are not careful. 
 
 For us, we want total efficieny above all else. Although it might be easier to implement a string over a char array, we have decided with the later. 
+
+
+
+~~~c++
+  char char_array_hello[20] = "Hello world!"; // Using char array to store sentence
+  String string_hello = "Hello world!"; // Using String to store sentence
+~~~
 
 #####XBee Sleep Settings
 Amongst many of the settings available on the XBee, sleep is a must have for our sensors. There are many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
