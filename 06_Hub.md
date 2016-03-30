@@ -91,13 +91,15 @@ Then we need to write a program capable of handling incoming AT packets from ser
 
 The program will be written in Python 3 as its easily available on the Pi and offers all the functionality required to create a robust networking program. We will have to modify /etc/rc.local to contain “sudo python hub.py” so that the script will start every time the Operating System starts. If the network was down, or errors occurred on transmit then the Pi will save data locally, and retry on its next attempt.
 
+
+
 ###Language of Choice: Python <span class="todo">is this description of code or why python was chosen?</span>
 
-<b>Why Python</b>
+*Why Python*
 
-We chose Python because it was easily available on the Pi, had plenty of documentation supporting it and is a very easy language to read from another developers standing. In terms of interfacing it with serial and the network there are plenty of libraries that exist to make this as simple and efficient as possible, we have decided to use PySerial and Requests to handle these requirements. 
+We have chosen Python because it was easily available on the Pi, had plenty of documentation supporting it and is a very easy language to read from another developer's standing. In terms of interfacing it with serial and the network there are plenty of libraries that exist to make this as simple and efficient as possible, we have decided to use PySerial and Requests to handle these requirements. 
 
-<b>Python Libraries</b>
+*Python Libraries*
 
 PySerial and Requests simplified any complications we may have had from writing our own initial libraries as well as having organised documentation to support them. They abstracted a lot of complicated hardware tasks (such as interrupt handling on GPIO pins) and communicating over the network. Other libraries we plan on using are those standard to Python, time for handling timing operations, random for random calculations, threading to handle multiple tasks to name a few.
 
@@ -105,46 +107,140 @@ PySerial and Requests simplified any complications we may have had from writing 
 
 The Hubs most important role will be that of the coordinator on the network, it is the centre point. Due to how XBees address each other, it is very easy to send data straight to coordinator using its predefined 64bit address (0x0000000000000000).  The Hub could address any node on the network and with this could determine which nodes were which and if they were still within range.
 
-<p class="todo">insert picture system diagram pi with zigbee</p>
+####Iteration 2, AT Mode
 
-####AT Mode Iteration TWO
-Image Here
-(a single sensor to Hub to the server. Hub reads in all data it receives which is only from one source, no errors.)
+#####Setting up the Pi
 
-RE-WRITE, PRESENT TENSE + EXPLAIN CODE AND HOW IT WORKED, WHAT DID IT OFFER?
-
-Initially we used AT mode for working with one sensor, however problems would soon arise when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. The solution to this was to expand into API mode, which allowed us to identify individual sensors on the network and solve this particular problem
-
-Image HERE
-(Multiple sensors to Hub to server, Hub reads in data without knowing sources, data is merged together and becomes inoperable.)
+Now that we’ve settled on an operating system, hardware and programming language we can progress to implementing a working network with the Pi. By default the Pi uses the serial ports for terminal access, for us this is of no use and we need those ports for the XBee to communicate on. In order to open the ports we had to go through Systemd which is the main configuration tool for handling debian related Linux distros. Systemd is quite new to Raspbian and because of this most tutorials offering assistance are outdated as they refer to older versions of Raspbian where the use inittab was involved. 
 
 
-####API Mode Iteration THREE
 
-With AT mode packets were formed for us and the payload was the only part we submitted in forming it. This lead us into problems as we would not be able to access information in the packet header that could be crucial to determining who sent the packet and other details. 
 
-With API mode we were able to form the packets entirely ourselves, however this meant we required an API to handle this for us, which is what we set out to create. The API we created was able to determine different destinations, sources, error checking and packet fragmentation We had to work with the packet format the XBee expected which was found in its data sheet. This also gave us the ability to work with different types of packets such as status packets which gave us the insight of knowing whether a packet was received or not. 
 
-The written API could handle multiple packets at once and organise them according to their sources. We could also handle packet assembly and fragmentation, so large payloads would no longer be an issue.
+In order to change anything we need access to the Pi. We’ve been remotely accessing the Pi using SSH and a program called Putty, this gives us full access to the Pi without having to actually plug anything into it. Researching Systemd has shown us that you can mask services which effectively disables them entirely from starting. First we needed to find the service we were looking for.
 
-(Multiple sensors to Hub to server, Hub reads in data using API provided and is able to distinguish incoming packets and sources.)
- 
-However the XBee did not accommodate packet fragmentation itself, so in order for this to work we had to manually number each packet from each source when being fragmented and sent across the network. We also needed to be able to determine which was the final frame, this was done using an ‘!’ character, which would never naturally appear in any of our normal packets. 
+~~~python
+systemctl list-units
+~~~
 
-Image Here
-(Showing simple-flow approach to packet fragmentation. Message is split into frames, each frame is acknowledged when received and the process repeats until all frames are received successfully.)
+This returned us a long list, so from this we needed to find which service was the serial port. As it transpires the Pi will always use the same serial port as it only has one - ttyAMA0. We knew what the serial port is, so we now needed to mask it.
 
-#####Testing API Mode
+First we decided to play safe and stop the service.
 
-testing stuff here
+~~~python
+systemctl stop sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
+~~~
 
-#####Node Discovery 
+Then, we masked it - to stop it from starting again on a reboot.
 
-Being able to determine what sensors already exist on a network would offer us much more functionality. We would be able to ping nodes on the network and offer more functionality in the written API to message individual nodes. 
+~~~python
+systemctl mask sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
+~~~
 
-On startup the program running on the hub would find every current node on the network and save them. It will also load from memory any nodes it has previously found. This way, it could determine if a node was missing (Maybe a sensor was moved) and could report this back to the client. The hub would periodically send heartbeats across the network to see any changes on the nodes. If a change was detected (such as a node disappearing) it would report this back to the server, this way we could display on the website that a sensor was out of range or had run out for battery. 
+IMAGE 7
 
-With node discovery it simplified sending messages from the coordinator to sensors, instead of requiring individuals addresses. You could pass names of nodes into the “sendMessage” function and it will conclude the address based on this.
+Now that serial is free we’ve got to connect the XBee to the Pi, looking at the pinout sheet for the Pi we can see which pins to interface with when compared back to our XBee. 
+
+IMAGE 7v2
+
+
+
+
+
+
+
+
+
+
+The final step is to make sure we have the libraries we need for python, using pip a tool that installs these libraries we can run a command to install them. Pip had to be installed however, which could be done using.
+
+~~~python
+python -m pip install -U pip
+~~~
+
+With Pip installed, we needed to then install the libraries required for our Pi.
+
+~~~python
+pip install pyserial
+pip install requests
+~~~
+
+Now our Pi is ready to act as a coordinator. The next stage is programming it and making sure it knows how to act accordingly to data. We need to consider the possibility of no access to the internet too, what means do we have to ensure data backups. 
+
+#####What does the Hub need to do?
+
+The Hub is the middleman between the webserver and the nodes on the network, it has a responsibility to ensure data from those nodes reaches their destination. We need to be able guarantee data will be logged if it cannot reach its location, or if a request can’t be completed such in the case of the clock. The Hub should wait and listen for any incoming data and once a full set of data has been received act upon it, if it’s a request from the clock - request values from the server and respond back. If it’s data from one of the sensors then that needs to be sent to the webserver. It needs to be able to distinguish between a sensor and a clock otherwise it’ll send data to the wrong nodes or request values from the webserver for the wrong reasons. 
+
+IMAGE 7.1
+
+######Basic Structure
+
+The Pi will run a thread that continuously waits on serial input, once received it will take as much as it can in before analysing what it’s received. Upon analysing it will decide whether the data is a request from the clock or sensor data, if sensor data it will attempt to transmit it to the webserver, if a request it will request the last 24 hours of average sound values from the web server. If a clock request is made and the web server does respond then the hub expects a format of 24 integer values in an array, when these values are obtained it forwards them to the clock. 
+
+######Data backup
+
+In case the connection between the hub and webserver fails, we need to ensure data backups. In the case that the network fails the Pi will write all of its currently available sensor data to a local file, it’ll re attempt to transmit data the next time it receives another set of sensor data. If that fails, then the cycle continues - save data and try again next time. The hub does try a total of 5 times before giving up and saving to a file, just in case there was a particular error that occurred.
+
+######Distinguishing traffic
+
+The hub needs to be able to tell which node is transmitting which data to it, how does it know whether the data it's received is that of a clock making a request or a sensor sending data? The clock sends data in a format of “R:!”. This is unique, it never appears in any of the sensor data and so when the hub receives any data it will scan for this particular set of characters. If received, it will know that this is a request and not sensor data. Otherwise it will assume all incoming data is from the sensor and forward it to the webserver. 
+
+
+####iteration 3, API Mode 
+
+Now that we’ve changed from AT mode to API mode, not much needs to change but at the same time the properties of the Hub have greatly expanded. The API has been designed so that more functionality could be provided without requiring an excess amount of modification to existing code. 
+
+The basic idea being, we only need to change one line:
+
+~~~python
+serial.write(“Hello world!”);
+# becomes …
+response = xbee.sendMessage("sensor1", "Hello world!")
+~~~
+
+Now although we’ve added an extra parameter, that is purely beneficial. The extra parameter allows us to address individual nodes on the network, if we want to address every node we specify ‘broadcast’ as the node on the network.
+
+~~~python
+# Will message every node on the network with “Hello world!”
+response = xbee.sendMessage(“broadcast”, “Hello world!”)
+~~~
+
+The nicknames for nodes helps in multiple ways, not only does it allow us to forward this data to be used in identifying different sensors, clocks etc but we can use it to show the client a name that is more legible than a series of hexadecimal values. 
+
+#####Hub Python Library
+
+For information regarding the process behind designing and researching the API required for the Hub, please see Networking, Iteration 4.
+
+The Hub is utilising a library written to handle the API mode of the XBee, the library has many purposes that help make the network as robust as possible. Using these features we’ve been able to make our coordinator incredibly robust as handling large payloads, transmission errors, node discovery and error recovery.
+
+Below is a flowchart diagram demonstrating the new processing behind the Hub.
+
+IMAGE 10
+
+######Node Discovery and Heartbeats
+
+Being able to determine what sensors already exist on a network offers us much more functionality. We’re are able to ping nodes on the network and determine their network status.
+
+On startup the program running on the hub will  load from memory any nodes it has previously found, after this it’ll try to find any new nodes on the network and save them. This way, it can determine if a node was missing (Maybe a sensor was moved) and could report this back to the client. The hub will periodically send heartbeats across the network to see any changes on the nodes. If a change is detected (such as a node disappearing) it will report this back to the server, this way we can display this information on the website that a sensor was out of range or had run out for battery. 
+
+The Hub utilises the ability to periodically send heartbeats to nodes on the network, this ensures that nodes are up to date - it also falls under node discovery as it will use heartbeats to add new nodes to the network. Once the Hub detects a node its unfamiliar with, it will request its ‘nickname’ for assigning it in its map. The format being:
+
+~~~python
+# Send node a HB request asking for it's nickname
+response = self.sendMessage(node, "HB#:")
+#  Wait for node to respond
+time.sleep(.25) 
+ # Failed to contact the node
+if not response == 0:
+	return
+#  Add the node to the map along with its 64bit address
+# …
+self.destinationNodes[name] = newNode
+~~~
+
+If the Hub fails to contact a new node, it will reattempt the next time the node retransmits to it. 
+
+With node discovery it simplifies sending messages from the coordinator to the sensors, instead of requiring individuals addresses, you can pass names of nodes into the “sendMessage” function and it will conclude the address based on this from a map structure storing a key to a value. The key being the nickname pointing to the 64bit address, this could be furthered if we implemented the 16bit addresses, which would avoid an address lookup.
 
 ~~~python
 # Send message with API, sensor1 lets the API know which 64bit
@@ -152,7 +248,44 @@ With node discovery it simplified sending messages from the coordinator to senso
 response = xbee.sendMessage("sensor1", "Hello World")
 ~~~
 
-Sending ‘sensor1’ - “Hello world!”, the program will fetch the associated 64bit address of sensor1.
+######Packet Transmission Status
+
+The Hub stores a single transmit status packet at a time, due to the structure of the library it will only ever need one as it will always check against its transmissions before attempting to transmit again. 
+
+Previously we’ve been unable to determine whether a packet was received or not without physically checking the receiving node. With the new library we’re able to get a response back from our ‘sendMessage’ function, here is a list of the possible response codes:
+
+    0 = successfully transmitted all frames
+    1 = payload too big, more than 255 frames required
+    2 = Invalid node, does not exist on network
+    3 = Failed to transmit data to device, could not reach node
+
+So the Hub can now act accordingly, 
+
+~~~python
+sensor = “sensor1”
+response = xbee.sendMessage(sensor, "Hello World")
+if not response == 0:
+	print “Failed to reach”,sensor,”!”
+~~~
+
+The output of this code if under the circumstances the XBee failed to transmit would be “Failed to reach sensor1!”. 
+
+With this new feature we can report back to the webserver if a sensor or clock is out of range, or if for any other reason we can’t contact them. Similar features are offered for the sensor as well, meaning that they can also determine whether they are out of range or if the Hubs XBee has failed. 
+
+######Packet Fragmentation 
+
+Previously we’ve been unable to transmit large payloads without potentially malforming data, with the new library we can successfully reconstruct packets based on their frame IDs and source addresses. 
+
+When the Hub needs to transmit a message above the MTU for RF data it will begin fragmentation of that message. It calculates how many frames are required for this packet and breaks it down into separate frames for transmission. It prefixes each frame with its ID and upon the final frame suffixes it with the unique termination character ‘!’, which will not appear in normal transmission.  
+
+The Hub will transmit a frame and wait for an acknowledgement from a status packet before transmitting the next packet, this guarantees that frames cannot arrive out of sync. If it fails to transmit multiple times on the same frame it will return an error code.
+
+######Packet Assembly
+
+The Hub stores a list of messages it has received and arranges them based on current frame ID as well as source, it can determine whether a message has terminated upon final frame and return the source of the transmission. When a frame is received the Hub will check all stored messages, if it finds a packet with the same source address that hasn’t terminated and shares the same current frame ID it will append the RF data to the packet contents. 
+
+Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
+
 
 
 
