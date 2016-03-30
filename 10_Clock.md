@@ -381,12 +381,15 @@ The final case design was constructed from white plastic; featuring a clear plas
 For more information, see casing. 
 
 ####Previous Problems
-Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
-
+<ul>
+<li>Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
+</ul>
 We solved this issue this iteration by incorporating a strict data format that the clock received values in. This was an integer array of 24 values, containing sound averages for each hour of the day. This format was utilised by the hub; meaning that when sending data, the clock received it in a format it “understood”. 
 
+As a result, the clock is now synchronised with the rest of the system, and can effectively notify users with up to date information, which is displayed accordingly. 
+
 ####Outcome of iteration
-At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. 
+At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
 
 
 
