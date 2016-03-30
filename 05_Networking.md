@@ -189,7 +189,7 @@ Our next role is to implement the Hub, Clock and the sensor(s) on the network. F
 
 The sensor is planning to send around 700 bytes of data an hour to the hub, the hub then processes that data. If the clock sends a request to the hub then the hub processed that and responds with data back to the clock. Using AT mode it is simply a matter of writing down to serial the bytes you wish to send across the network, all the nodes are configured to talk to one another. The clock and sensor both have their destination addresses set 0x0 pointing to the coordinator while the coordinator has its address set to 0x000000000000FFFF. This allows it to broadcast, the sensor won’t respond as it will not be needed and will be utilising sleep mode on the XBee whereas the clock will respond as the broadcast will directed at the clock.
 
-Code used for Hub with AT Mode can be found here.
+Code used for Hub with AT Mode can be found <a href="/XbeeAPI/Hub/HubAT.py">here</a>.
 
 #####Problems
 
@@ -314,9 +314,8 @@ As show in our previous iteration the XBee did support packet fragmentation, so 
 
 These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
 
-* For implementations of our node code (C++), see here.
-* For implementations of our Hub code (Python), see here.
-* For implementations of our Hub code utilising the API, see here. 
+* For implementations of our node code (C++), see <a href="/XbeeAPI/Nodes">here</a>.
+* For implementations of our Hub code (Python), <a href="/XbeeAPI/Hub">see here</a>.
 
 #####XBee Sleep Settings
 
@@ -326,11 +325,15 @@ The sensor currently uses a set of pins on the XBee to command it to enter sleep
 
 ####Iteration 5, Sensor out of range
 
+IMAGE OF DUMMY SENSOR
+
 Building off the last iteration, we can now offer a huge more information to the client and to the network. This includes node discovery, a very powerful feature for our network which determines whether nodes are now out of range or have disappeared. Using this information we could alert the client that the sensor has run out of battery and thus died or been moved too far away from the Hub.  
 
 We decided to construct a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
 
 Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we can determine whether a sensor was within range or not and then use this information to alert the client. We’ve decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information can be displayed on the website for easier access rather than flashing LEDs.
+
+* For implementations of the dummy sensor code (C++), see <a href="/XbeeAPI/Nodes/DummySensor/XbeeAPI.cpp">here</a>.
 
 ![](images/hub/IMAGE10.png)
 
