@@ -103,8 +103,7 @@ Returns all data averages over hourly periods
 
 | Status | Response|
 |--------|---------|
-|200		|
-`{0:{start:183975627; end:183975687; avg: 12.4;}1:...}`|
+|200		|`{0:{start:183975627; end:183975687; avg: 12.4;}1:...}`|
 |400| `{"error":{"text": Database Error}}`
 
 
@@ -132,7 +131,7 @@ Returns all data recorded between 2 given timestamps averaged over an hourly per
 
 ###Previous Work
 
-####Iteration One
+####Iteration 1 - Initial Work
 ***At this point we had thought visualisation and back end server were the same thing. This was later changed but for documentation purposes we have considered the inital iteratartions of this as part of the server***
 
 As there are multiple users wishing to see data coming from multiple sources there needs to be some kind of central service that collects the information and displays it in an easy way for the users to see. 
@@ -207,10 +206,10 @@ After looking at the different frameworks that were available to us we decided t
 Version control was necessary for this projects as it provided a log of what had been done which we could revert back to if anything went wrong. It also allowed us all to view the code so it could be looked over to check what was being written and committed was sane.We decided to use git for version control as it is an industry standard and we all had some experience of using it. We are hosting the remote repository on github as it provides an easy to use interface and also allows transfer of repository ownership should someone else wish to take the project on in future. 
 
 ##### Outcome of Iteration
-We produced a system that would take data it recieved from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings.
+We produced a system that would take data it recieved from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings. This was written using the slim framework
 
 
-#### Iteration 2
+#### Iteration 2 - Splitting Front and Back End
 
 ##### Issues with previous iteration
 
@@ -222,8 +221,15 @@ Another issue we became aware of after the implementation of the first iteration
 #####Outcome of iteration
 We worked to split the front end code from the API and the front end so that they could work independantaly without dupilcation of code. We realised some kind of security was also needed so we added key based authentication to provide a basic level of security. 
 
+#### Iteration 3 - Switching Frameworks
 
-#### Iteration 3
+##### Issues with previous iteration
+After we split the front and backend we realised wer were going to be using slim to server the backend and Laravel to serve the frontend. This would mean using someone who was picking this up would have to learn multiple frameworks.
+
+##### Result of iteration
+We decided to change the backend the also use laravel to make the system easier to pick up. Most of our code was easily portable as they use the same language and roughly the same MVC layout. 
+
+#### Iteration 4
 #####Issues with previous iteration
 While working on the visualisation we discovered that filtering on the client side was not an option as it took too long to load. This meant that we had to do averageing and filerting on the server side. This was due to loading large amounts of raw data. For example to visualise 1 month worth of dummy data it was having to load ~600,000 (60\*24\*7*4) readings which took a considerable amount of time. It then had to group this data and calculate averages based on this which, again, increased page load time. The total load time of a page loading this amount of data was ~6 seconds
 
