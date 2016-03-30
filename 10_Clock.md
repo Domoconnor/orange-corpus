@@ -88,9 +88,7 @@ The last iteration saw us investigating some requirements regarding the clock’
 
 #####Adafruit NeoPixel Ring
 
-![clock models](Images/Clock%20Images/clock_models.png)
-
-<img src = "Images/Clock%20Images/clock_models.png" width = "800" height = "250" align: "middle">
+<img src = "Images/Clock%20Images/clock_models.png" width = "780" height = "250" align: "middle">
 
 	Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
 
