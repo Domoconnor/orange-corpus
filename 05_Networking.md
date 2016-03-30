@@ -16,9 +16,9 @@ The sensors were programmed in C++ and the Hub was programmed in Python, so we h
 
 <p class="todo">Might need to change to fit format ^
 
-IMAGE 1
+![](images/hub/IMAGE1.png)
 
-IMAGE 2
+![](images/hub/IMAGE2.png)
 
 ###Previous Work
 
@@ -136,13 +136,13 @@ XBees have microcontrollers onboard that store and control the instructions that
 
 In order to configure these settings we required software and hardware to interface into the XBee, software created by Digit International called XCTU. We had to make our own programmer however as we hadn't received our own programmer as of yet. With this we have started altering the settings on the firmware to adapt the XBees to our desired network structure.
 
-IMAGE 5
+![](images/hub/IMAGE5.png)
 
 When programming the XBees over serial, there are many different options for installing new firmware settings. We've been working with ZNet 2.5 AT for both coordinators and end routers on the network as this is the recommended starting firmware as provides all functionality we currently need. Although we could end changing at a later date depending on what functionality we require.
 
 XBees share one trait across all networks, that is the requirement for them to be able to communicate; using a PANID. The PANID is a 64 bit integer that is unique on a network and separates other networks in close proximity from each other, unless you unluckily both choose the same PANID - however with the options available that is a very slim chance.
 
-IMAGE 6
+![](images/hub/IMAGE6.png)
 
 Using AT Command mode we've had to specifically set values on the XBee. These have ranged from 64bit destination address to encryption being enabled. This information is used in creating packets, we can't change this information without reprogramming the XBees which could cause a problem. However we know which nodes need to address each other in the long run, so none of these details need changing for the time being. 
 
@@ -155,16 +155,16 @@ We ideally need one hub per house which could communicate and route data between
 We’ve been using AT mode so far with XBees. AT Mode is designed to be very straightforward to use, the device connects to the XBee module on serial and sends any data in a form of bytes to be used in a packet and transmitted on the network. We’ve been using XCTU to talk between XBee modules, making sure we understand the concepts of how they are designed to communicate and parameters for addressing each other. 
 	
 
-IMAGE 7.1
+![](images/hub/IMAGE7.1.png)
 
 Setting the XBees up involves us requiring two major pieces of information, the PANID and Address. The coordinators destination points to 0x000000000000FFFF while any end points or routers need to point their destinations to the coordinator's address. That can be achieved in two ways, one way is using 0x0000000000000000 or actually specifying its address.
 
-IMAGE 7.2
+![](images/hub/IMAGE7.2.png)
 #####AT Mode and Hardware
 
 We’ve started using FRDM-K64Fs to talk to one another as they provide an application shield and libraries alongside which are full compatibility with a hardware ‘installation’ of the XBee (installation being the XBee has dedicated pins, rather than soldering it to the board). The K64Fs had simple programs designed purely to send data to one another.
 
-INSERT PICTURE OF MBEDS
+![](images/hub/IMAGE0.png)
 
 The MBEDs is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an MBED to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components.
 
@@ -177,7 +177,7 @@ We know roughly the distance of an XBee from its datasheet, however our clients 
 
 We used ‘The Shed’ as the coordinators base station while moving through different parts of the School of Computing while the coordinator was making note of whether it was receiving any data or not. We’ve mapped our findings and calculated distances to determine whether we are going to struggle with walled structures or not.
 
-IMAGE 4
+![](images/hub/IMAGE4.png)
 
 As shown above the XBees are capable of travelling around 30m and only suffer complete packet loss when passing multiple walls, which is most likely unavoidable in our project. We will definitely need some form low powered communications network so boosting the power will be a trade off we most likely can’t afford. 
 
@@ -185,7 +185,7 @@ As shown above the XBees are capable of travelling around 30m and only suffer co
 
 Our next role is to implement the Hub, Clock and the sensor(s) on the network. For this to work all nodes need to be able to communicate with one another.
 
-IMAGE 7.3
+![](images/hub/IMAGE7.3.png)
 
 The sensor is planning to send around 700 bytes of data an hour to the hub, the hub then processes that data. If the clock sends a request to the hub then the hub processed that and responds with data back to the clock. Using AT mode it is simply a matter of writing down to serial the bytes you wish to send across the network, all the nodes are configured to talk to one another. The clock and sensor both have their destination addresses set 0x0 pointing to the coordinator while the coordinator has its address set to 0x000000000000FFFF. This allows it to broadcast, the sensor won’t respond as it will not be needed and will be utilising sleep mode on the XBee whereas the clock will respond as the broadcast will directed at the clock.
 
@@ -201,11 +201,11 @@ The other solution to this problem could be to transmit more frequently, every m
 
 A concern was raised regarding the issue of multiple sensors, as of right now we have no way of knowing who is sending data to the hub as well as data becoming malformed and merged due to AT mode. With one sensor this won’t be an issue:
 
-IMAGE 7.73
+![](images/hub/IMAGE7.73.png)
 
 However with multiple sensors, data becomes inoperable:
 
-IMAGE 7.75
+![](images/hub/IMAGE7.75.png)
 
 Making this an issue to tackle in the next iteration.
 
@@ -225,7 +225,7 @@ On our previous iteration we discovered a few problems with using AT mode and th
 
 API mode is the more advanced for AT in a lot of ways. The XBee will function the same and you can transmit data to the XBee in the same manner, that’s serial down to the XBee RX pin. However, just sending a stream of bytes won’t make the XBee transmit data. With API mode you have to make the packets as opposed to having them made for you. This has required a lot of research into formats and to do so accurately with good use of examples, we used “Building Wireless Sensor Networks” by Robert Faludi. Faludi provides excellent examples and technical details on the use of API mode.
 
-IMAGE 7.4
+![](images/hub/IMAGE7.4.png)
 
 API mode has many different packets you can create, from investigating the formats of these packets we can see specifically how to form and send data. We would only need 3 different packets format for our system to be fully utilised, those of:
 
@@ -243,15 +243,15 @@ These hexadecimal values while alien looking are relatively straightforward to i
 
 The transmit packet must follow this format when being created:
 
-IMAGE 7.5
+![](images/hub/IMAGE7.5.png)
 
 The receive packet will follow this format, so we know the offset of each byte:
 
-IMAGE 7.6
+![](images/hub/IMAGE7.6.png)
 
 The status packet will follow this format, again we know the offset of each byte:
 
-IMAGE 7.7
+![](images/hub/IMAGE7.7.png)
 
 These formats are important because when we wish to send or receive data to the XBee it will need to be in this format. Instead of:
 
@@ -302,13 +302,13 @@ For API mode to be implemented we need to build two libraries capable of handlin
 
 Initially we used AT mode for working with one sensor, however problems soon arose when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. Using API mode has let us identify each node on the network and where each stream of traffic is coming from, fixing this problem for us.
 
-Image 7.76
+![](images/hub/IMAGE7.76.png)
 
 ######Fragmenting Packets
 
 As show in our previous iteration the XBee did support packet fragmentation, so in order for this to work we need to manually number each frame in a packet from each source. We also need to be able to determine which is the final frame of a packet, we’ve decided to use an ‘!’ character, which would never naturally appear in any of our normal packets.
 
-IMAGE 7.8
+![](images/hub/IMAGE7.8.png)
 
 ######Overall Benefits
 
@@ -331,5 +331,6 @@ Building off the last iteration, we can now offer a huge more information to the
 We decided to construct a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
 
 Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we can determine whether a sensor was within range or not and then use this information to alert the client. We’ve decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information can be displayed on the website for easier access rather than flashing LEDs.
-IMAGE 10
+
+![](images/hub/IMAGE10.png)
 
