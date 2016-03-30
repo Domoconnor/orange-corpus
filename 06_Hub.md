@@ -212,7 +212,7 @@ The Hub is utilising a library written to handle the API mode of the XBee, the l
 
 Below is a flowchart diagram demonstrating the new processing behind the Hub.
 
-![10](Images/Hub/IMAGE9.png)
+![10](Images/Hub/IMAGE9.1.png)
 
 ######Node Discovery and Heartbeats
 
