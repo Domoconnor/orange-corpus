@@ -143,15 +143,6 @@ Now that serial is free we’ve got to connect the XBee to the Pi, looking at th
 
 IMAGE 7v2
 
-
-
-
-
-
-
-
-
-
 The final step is to make sure we have the libraries we need for python, using pip a tool that installs these libraries we can run a command to install them. Pip had to be installed however, which could be done using.
 
 ~~~python
@@ -185,8 +176,7 @@ In case the connection between the hub and webserver fails, we need to ensure da
 
 The hub needs to be able to tell which node is transmitting which data to it, how does it know whether the data it's received is that of a clock making a request or a sensor sending data? The clock sends data in a format of “R:!”. This is unique, it never appears in any of the sensor data and so when the hub receives any data it will scan for this particular set of characters. If received, it will know that this is a request and not sensor data. Otherwise it will assume all incoming data is from the sensor and forward it to the webserver. 
 
-
-####iteration 3, API Mode 
+####Iteration 3, API Mode 
 
 Now that we’ve changed from AT mode to API mode, not much needs to change but at the same time the properties of the Hub have greatly expanded. The API has been designed so that more functionality could be provided without requiring an excess amount of modification to existing code. 
 
@@ -279,6 +269,8 @@ Previously we’ve been unable to transmit large payloads without potentially ma
 When the Hub needs to transmit a message above the MTU for RF data it will begin fragmentation of that message. It calculates how many frames are required for this packet and breaks it down into separate frames for transmission. It prefixes each frame with its ID and upon the final frame suffixes it with the unique termination character ‘!’, which will not appear in normal transmission.  
 
 The Hub will transmit a frame and wait for an acknowledgement from a status packet before transmitting the next packet, this guarantees that frames cannot arrive out of sync. If it fails to transmit multiple times on the same frame it will return an error code.
+
+IMAGE 10
 
 ######Packet Assembly
 
