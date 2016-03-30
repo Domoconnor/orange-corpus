@@ -1,8 +1,9 @@
+<style>
+	.todo{ color:red }
+</style>
+[toc]
 
-
-##Manufacture / Casing 
-
-[Back to Contents](#contents)
+##Manufacture / Casing [cont.](#contents)
 
 ###Initial Research
 
