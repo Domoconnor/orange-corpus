@@ -1,6 +1,8 @@
 <a name="hub"></a>
 ##Hub
+
 [Back to contents.](#contents)
+
 ![](Images/Hub/IMAGE1.PNG)
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
