@@ -14,8 +14,6 @@ Due to the configuration behind each XBee module we were able to have full contr
 
 The sensors were programmed in C++ and the Hub was programmed in Python, so we have written two Libraries to be able to communicate in the format the XBee modules expected. Using these libraries we can have greater control over the API mode letting us know when nodes disappear on the network, or that a packet failed to transmit to name a few.
 
-<p class="todo">Might need to change to fit format ^
-
 ![13](Images/Networking/IMAGE14.PNG) 
 ![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG) 
 
@@ -125,7 +123,7 @@ We found that the S2 in particular was more than adequate for our desires, havin
 
 The XBee can also be programmed manually to work on its own meaning in theory we could eliminate the Microcontroller entirely, however this solution leads to problems involving working out the current time and large packet payloads. We may come back to it at a later point, but for now we decided to use it purely for as means for A-B for our data. 
 
-#####Conclusion, Configuring the XBee
+#####Results of Iteration
 
 We've decided to choose the XBee S2 as our solution. Due to its customisability and low powered nature its perfect for having our own control on a network. If we utilised WiFi for example then we would have to concern ourselves with high power usage and lacking full control of the network. The XBee offers a multitude of different possibilites and fits closest to our goals of a low powered networking solution. 
 
@@ -152,7 +150,6 @@ We ideally need one hub per house which could communicate and route data between
 #####Setting up AT Mode
 
 We’ve been using AT mode so far with XBees. AT Mode is designed to be very straightforward to use, the device connects to the XBee module on serial and sends any data in a form of bytes to be used in a packet and transmitted on the network. We’ve been using XCTU to talk between XBee modules, making sure we understand the concepts of how they are designed to communicate and parameters for addressing each other. 
-	
 
 ![7](Images/Networking/IMAGE7.1.PNG)
 
@@ -165,11 +162,6 @@ We’ve started using FRDM-K64Fs to talk to one another as they provide an appli
 
 ![0](Images/Networking/IMAGE0..PNG)
 
-The MBEDs is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an MBED to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components.
-
-* <a href="/MBEDXbeeTest/receiver.cpp">Code for MBED receiver</a>
-* <a href="/MBEDXbeeTest/transmitter.cpp">Code for MBED transmitter</a>
-
 #####Testing Range
 
 We know roughly the distance of an XBee from its datasheet, however our clients home and in particular Canterbury has very old structures. These structures have very thick walls, we need to know whether our XBees can transmit through these obstacles or whether we need to boost the signal. We modified the previous code used to test between FRDM K64Fs to calculate latency between packets and then walked around parts of campus determining if we had enough packet loss for concern.
@@ -178,7 +170,14 @@ We used ‘The Shed’ as the coordinators base station while moving through dif
 
 ![4](Images/Networking/IMAGE4.PNG)
 
-As shown above the XBees are capable of travelling around 30m and only suffer complete packet loss when passing multiple walls, which is most likely unavoidable in our project. We will definitely need some form low powered communications network so boosting the power will be a trade off we most likely can’t afford. 
+As shown above the XBees are capable of travelling around 30m and only suffer complete packet loss when passing multiple walls, which is most likely unavoidable in our project. We will definitely need some form low powered communications network so boosting the power will be a trade off we most likely can’t afford.
+
+######Results of Iteration
+ 
+The FRDM-K64F is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an FRDM-K64F to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components. 
+
+* <a href="/MBEDXbeeTest/receiver.cpp">Code for FRDM-K64F receiver</a>
+* <a href="/MBEDXbeeTest/transmitter.cpp">Code for FRDM-K64F transmitter</a>
 
 ####Iteration 3, AT Mode with Hub, Sensor and Clock
 
@@ -187,8 +186,6 @@ Our next role is to implement the Hub, Clock and the sensor(s) on the network. F
 ![7.3](Images/Networking/IMAGE7.3.PNG)
 
 The sensor is planning to send around 700 bytes of data an hour to the hub, the hub then processes that data. If the clock sends a request to the hub then the hub processed that and responds with data back to the clock. Using AT mode it is simply a matter of writing down to serial the bytes you wish to send across the network, all the nodes are configured to talk to one another. The clock and sensor both have their destination addresses set 0x0 pointing to the coordinator while the coordinator has its address set to 0x000000000000FFFF. This allows it to broadcast, the sensor won’t respond as it will not be needed and will be utilising sleep mode on the XBee whereas the clock will respond as the broadcast will directed at the clock.
-
-Code used for Hub with AT Mode can be found <a href="/XbeeAPI/Hub/HubAT.py">here</a>.
 
 #####Problems
 
@@ -210,14 +207,18 @@ Making this an issue to tackle in the next iteration.
 
 For more information on these particular systems and how they process data see their respective sections.
 
+######Results of Iteration
+AT mode worked well for our initial task however we need to solve the problem of large payloads and multiple sensors as these will become more apparent later in our project. With this iteration passed we have successfully created the prototype project as a whole, the network allows for all components to successfully communicate with one another.
+
 For information regarding the datasheet for the XBee S2, see this document.
 https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf
 * Page 12 refers to data input buffers of size 202 bytes
 * Page 11 refers to ‘Packetization Timeout’ from serial to RF
 
+Code used for Hub with AT Mode can be found <a href="/XbeeAPI/Hub/HubAT.py">here</a>.
 
 ####Iteration 4, API Mode 
-
+#####Issues with previous Iteration
 On our previous iteration we discovered a few problems with using AT mode and the XBee modules themselves. We can’t fragment packets without having some form of intervention ourselves and we can’t determine who is sending data which will cause issues for multiple sensors. A simple fix to this is to prefix all incoming data with an identifying name and delimiter, for example clock:”message”. However this is most likely overhead as further research has shown that by using API mode we won’t need to do this as source addresses are passed with packets. We did manage to confirm that fragmentation is not possible on XBee S2 networks, see www.digi.com/wiki/developer/index.php/Determine_MTU for details. 
 
 #####API Mode
@@ -275,11 +276,9 @@ if response == x:
 If we had this, then we could use this within our existing components to implement a form of error awareness and resolution.
 
 #####API Mode System Benefits
-
 API mode offers a lot more in utility at the cost of more effort on implementation. The benefit of using it, is that you can access all data in a packet header. This would allow us to see all sorts of ranging information from source address to checksums and would solve our problem of needing to identify nodes on the network. It also comes with a lot of added benefits, using API mode we could determine whether a node is out of range, what nodes are on the network and whether packets have been successfully delivered or not. 
 
 For API mode to be implemented we need to build two libraries capable of handling the underlying functions of the XBee. One library would need to utilise Python and the other C++, the Python library would be used by the Hub while any other nodes would use the C++ library. The Hub had its own requirements and so the library would need to reflect that.
-
 
 ######Hub API requirements
 * Node discovery (Locate any new nodes)
@@ -298,35 +297,38 @@ For API mode to be implemented we need to build two libraries capable of handlin
 * Status awareness (Was a packet received?) 
 
 ######Multiple Sensors Solution
-
 Initially we used AT mode for working with one sensor, however problems soon arose when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. Using API mode has let us identify each node on the network and where each stream of traffic is coming from, fixing this problem for us.
 
 ![7.76](Images/Networking/IMAGE7.76.PNG)
 
 ######Fragmenting Packets
-
-As show in our previous iteration the XBee did support packet fragmentation, so in order for this to work we need to manually number each frame in a packet from each source. We also need to be able to determine which is the final frame of a packet, we’ve decided to use an ‘!’ character, which would never naturally appear in any of our normal packets.
+As show in our previous iteration the XBee didn't support packet fragmentation, so in order for this to work we need to manually number each frame in a packet from each source. We also need to be able to determine which is the final frame of a packet, we’ve decided to use an ‘!’ character, which would never naturally appear in any of our normal packets.
 
 ![7.8](Images/Networking/IMAGE7.8.PNG)
 
-######Overall Benefits
+######Arduino String vs Char Array
+When working with the Arduino IDE its been very tempting to use the 'String' class. A class that offers useful functionality similar to that of Java. With it we can work out the length of a string, split it, concat it and do general operations on it. However, this functionality comes as the cost of efficiency. In C, strings don't exist in the format of other languages rather they exist as char arrays and are handled very differently. Arduinos IDE dumbs down the char array into a string. The lack of efficiency comes at the cost of memory, with such a small amount of RAM, the nodes could potentially crash if we are not careful.
 
+For us, we want total efficieny above all else. Although it might be easier to implement a string over a char array, we have decided with the later. 
+
+#####XBee Sleep Settings
+Amongst many of the settings available on the XBee, sleep is a must have for our sensors. There are many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
+
+The sensor currently uses a set of pins on the XBee to command it to enter sleep mode, or awake from sleep mode - thus limiting its power consumption.
+
+######Results of Iteration
 These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
 
 * For implementations of our node code (C++), see <a href="/XbeeAPI/Nodes">here</a>.
 * For implementations of our Hub code (Python), see <a href="/XbeeAPI/Hub">here</a>.
 
-#####XBee Sleep Settings
+####Iteration 5, Implementing API Mode
 
-Amongst many of the settings available on the XBee, sleep is a must have for our sensors. There are many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
+#####Sensor out of range
 
-The sensor currently uses a set of pins on the XBee to command it to enter sleep mode, or awake from sleep mode - thus limiting its power consumption.
+![10](Images/Networking/IMAGE10.PNG)
 
-####Iteration 5, Sensor out of range
-
-IMAGE OF DUMMY SENSOR
-
-Building off the last iteration, we can now offer a huge more information to the client and to the network. This includes node discovery, a very powerful feature for our network which determines whether nodes are now out of range or have disappeared. Using this information we could alert the client that the sensor has run out of battery and thus died or been moved too far away from the Hub.  
+Building off the last iteration, we can now offer more information to the client and to the network. This includes node discovery, a very powerful feature for our network which determines whether nodes are now out of range or have disappeared. Using this information we could alert the client that the sensor has run out of battery and thus died or been moved too far away from the Hub.  
 
 We decided to construct a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
 
@@ -334,5 +336,17 @@ Although simple in principle, this was not possible with the use of AT mode (Wit
 
 * For implementations of the dummy sensor code (C++), see <a href="/XbeeAPI/Nodes/DummySensor/XbeeAPI.cpp">here</a>.
 
-![10](Images/Networking/IMAGE10.PNG)
+#####Library for coordinator (Hub)
 
+The hubs library is much more extensive than of the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
+
+For more information regarding the Hub and API mode, see [cont.](#hub).
+
+#####Library for nodes (Clock and Sensors)
+
+The library created for the nodes on the network was simpler than that of the coordinator. The nodes only need to talk to the coordinator on the network as opposed to each other. The coordinators address is constant, set at 0x00, which means no complicated addressing or node discovery.
+
+However packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
+
+#####Results of Iteration
+With our final iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
