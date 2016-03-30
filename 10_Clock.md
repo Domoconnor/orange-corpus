@@ -57,22 +57,18 @@ To have a feasible hardware solution which complements our other means of data v
 ![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
 	Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
-	
 
 ![Sketch 2](Images/Clock%20Images/IMAGE_2.jpg)
 
 	Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
-	
 
 ![Sketch 3](Images/Clock%20Images/IMAGE_3.jpg)
 
 	Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
-	
 
 ![Sketch 4](Images/Clock%20Images/IMAGE_4.jpg)
 
 	Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
-	
 
 ![Sketch 5](Images/Clock%20Images/IMAGE_5.jpg)
 
@@ -161,7 +157,7 @@ We determined our RGB parameters by using a HTML colour picker, which allowed us
 
 Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. 
 
-![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.png) ![Colour Spectrum 2](Images/Clock%20Images/IMAGE_12.jpg)
+![Colour Spectrum 1](Images/Clock%20Images/Colour_spec_comparison.png)
 
 	Simplified colour spectrum. Going in a clockwise 
 	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
@@ -174,7 +170,7 @@ There is an issue with using purely colour based visualisation. When catering fo
 
 A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
 
-![Colour intensity 1](Images/Clock%20Images/IMAGE_13.png) ![Colour intensity 2](Images/Clock%20Images/IMAGE_14.jpg)
+![Colour intensity 1](Images/Clock%20Images/Intensity_spec_comparison.png)
 		
 	NeoPixel Ring displaying the intensity spectrum. 
 
