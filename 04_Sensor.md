@@ -48,7 +48,7 @@ A final version of the code can be found [here](sensor/micTest)
 
 ### Previous Work
 
-####  Iteration 1
+####Iteration 1 - Researching Hardware
 Based on our [client interaction](#client_interaction) we decided that we had to make a device that measured the volume of the sound in Orange Street, collecting the data and sending it back to a server so that it is stored and can be accessed by the client to use.
 
 Building on the initial ideas we had and also looking back to the client interaction section we decided on the following requirements for the sensor:
@@ -248,11 +248,12 @@ The most ideal MBED board we found was the FRDM-K64F which is regarded as the fl
 
 Even with all its functionality switched off the device consumes more amps than one of the arduino boards. However we decided that this board would be ideal if used for our hub, as during that period power will not be a concern. 
 
-*Conclusion*
+####Iteration 2 - Making our own amplifier
+#####Issues with previous iteration
+No issues to report, this is the first design iteration.
 
-####Iteration 2, Making our own amplifier
-
-Using our amplifier we’ve been able to start sampling sound. We’ve been experimenting with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using the FRDM-K64F: 
+#####Result of iteration
+Using our amplifier we’ve been able to start sampling sound. We’ve been experimenting with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using the FRDM-K64F:
 
 ~~~c++
 Serial serial(USBTX, USBRX); // Serial connection
@@ -270,8 +271,6 @@ int main(void)
 
 }
 ~~~
-
-
 
 The FRDM-K64F has given us superb accuracy when sampling the microphone, values ranging from 0-65555. This is due to the 16bit analog to digital converter on the board. 
 
@@ -333,14 +332,16 @@ As of right now the values (0-500) on the Y axis are not too useful for us, we c
 
 To view our testing results in more detail, please see here. 
 
-####Iteration 2, Using a pre-built amplifier
+####Iteration 3 - Using a pre-built amplifier
+#####Issues with previous iteration
+The size of the amplifier we built was ideally too large for a small sensor, we could condense it by soldering and moving components closer together but it would be easier and more efficient to buy pre-built amplifiers. 
 
+#####Result of iteration
 We’ve purchased a pre-built amplifier to simplify our circuit, ideally we don’t want wires going everywhere and using a prebuilt amplifier makes our task easier due to less complexity and time required to build one. 
 
 IMAGE 12
 
 The next step is to wire the pre-built microphone amplifier to one of the boards, we’ve decided to use the FRDM K64F for the time being as its sample range from 0-65555 makes it appealing to work with.
-
  
 IMAGE 13
 
