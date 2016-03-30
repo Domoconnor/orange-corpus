@@ -134,7 +134,10 @@ The focus here, was placed upon what forms of visualisation the client would fin
 
 	Combined sketch 9 - Coloured time chart - a colourful approach to visualisation, this sketch creates a coloured sound scaling system, and plots its as a grid. Useful for daily comparisons, and averaging sound activity over time in easily interpreted formats. 
 
+####Outcome of Iteration
+During our second iteration of sketching, we have developed upon our existing bank of data visualisation ideas, and been more conscious in our approach of realistic data formats. This iteration has featured a much more colour oriented approach; drawing more upon ambient visual aids to create signposting for the user. The fidelity of the designs has resultantly increased, and ideas have become more amalgamated together, and specific to the client's needs. 
 
+A recurring theme for visualisation during this iteration has been time, and how our system can use it to generate comparable data. It is concluded that time plays a large role in our system; especially since one of the major requirements is to have comparable data between dates. 
 
 
 
