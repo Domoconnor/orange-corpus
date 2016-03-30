@@ -8,11 +8,13 @@
 ##Networking [cont.](#contents)
 ###Description
 
-Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we need. The coordinator is capable of addressing each node on the network as well as the nodes being able to address the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
+Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we require. The coordinator is capable of addressing each node on the network, with the nodes only ever addressing the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol and communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
 
-Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and firmware. We are using API mode when handling XBee modules on our network, as this firmware allows us to have much more control over the network.
+Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and addressing. We are using API mode when handling XBee modules on our network, as this firmware allows us to have create and format packets to the style we require. The network lets us determine useful information from traffic such as delivery status, fragmentation and assembly of packets. 
 
-The sensors were programmed in C++ and the Hub was programmed in Python, so we have written two Libraries to be able to communicate in the format the XBee modules expected. Using these libraries we can have greater control over the API mode letting us know when nodes disappear on the network, or that a packet failed to transmit to name a few.
+The sensors were programmed in C++ and the Hub was programmed in Python. We have written two Libraries to be able to communicate in the format the XBee modules expected while working with these languages. Using these libraries offer us the full potential of API mode and allow control over a mini network of low powered wireless devices.
+
+The libraries were designed so that one line of code would be required to send a message across the network while abstracting all heavy processing on traffic. The benefit of this was that the library could change and not require a whole body of code to change for the other sections of the project.  
 
 ![13](Images/Networking/IMAGE14.PNG) 
 ![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG) 
