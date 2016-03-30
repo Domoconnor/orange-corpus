@@ -8,17 +8,17 @@ The sensor samples sound every minute. The microphone in the sensor starts colle
 
 The final sensor is comprised of multiple parts, [Microphone](#mic), [ADC](#adc), [Board](#sensor_board), [Clock](#sensor_clock), [Battery](#battery), [XBee](#sensor_xbee), [Case](#sensor_case):
 
-*<a name="mic"></a>Microphone*
+**<a name="mic"></a>Microphone**
 
 The microphone is an electret microphone with a built in MAX4466 amplifier. This amplifier has adjustable gain which is used to boost the raw signal which is passed from the microphone. In the final version of this sensor we decided that this amp was not enough and that we needed to add another amplifier to the circuit to improve our recordings
 
-*<a name="adc"></a>ADC*
+**<a name="adc"></a>ADC**
 
 The circuit contains an external ADC in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to firther amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
 
 We found that we were getting a lot of noise coming from the mic which we discovered was caused by the voltage from the board. To counter this voltage coming out of the board with the data coming back from the microphone on the ADC. This allowed us to get the difference and remove any electrical noise from the mic.
 
-*<a name="sensor_board"></a>Board*
+**<a name="sensor_board"></a>Board**
 
 The final board we chose was the Rocket Scream Mini Ultra 8 MHz Plus. The reasons this was chosen are below:
 
@@ -33,18 +33,18 @@ The final board we chose was the Rocket Scream Mini Ultra 8 MHz Plus. The reason
  
  The board is in a near constant sleep state and only wakes up on a pin interrupt to take readings and send the data back to the sensor. This ensures a battery life of around one and a half months. The interrupt is triggered from the clock.
  
-*<a name="sensor_clock"></a>Clock*
+**<a name="sensor_clock"></a>Clock**
 
 The sensor needs a clock to be able to accurately record the time readings are taken. The clock on the sensor also has a further purpose of waking the sensor up at certain times. For this we used a DS3231 which kept time incredibly accurately and also provided an 'alarm' function which could pull a pin high or low based on a set of programmable rules. We set this rule for every minute which means it pulled the pin low every minute. We then had the board sleep listen for an interrupt on that point. 
 
-*<a name="battery"></a>Battery*
+**<a name="battery"></a>Battery**
 
 We used a 1500mah lithium polymer battery for the sensor as it provided a good balance betwwen power and size. In previous iterations we used a 2000mah which provided a longer battery life however we couldn't source another one in time for the final deployment.
 
-*<a name="sensor_case"></a>Case*
+**<a name="sensor_case"></a>Case**
 The Case was designed in a way that was intended to aim our microphone at the noisy street and protect the electronics from the elements. It was 3D printed at a high fidelity (high infill of plastic) with a thickness of 3mm as not to allow water in through the printed plastic. It was then sanded and sprayed with a high fill primer to fill any pores left int the plastic left from the printing process. As the case had to be closed around the electronics of the sensor a seam was built in that was filled with a neoprene strip as to stop any water from getting through said seam.
 
-A final version of the code can be found [here](sensor/micTest)
+A final version of the code can be found [here](sensor/micTest).
 
 ### Previous Work
 
