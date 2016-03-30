@@ -1,7 +1,7 @@
 ##Clock
 ###Description
 
-![Final Clock](Images/Clock%20Images/clock_final.jpg)
+![Final Clock](Images/Clock%20Images/clock_final.jpg=100x20)
 
 The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels. It is designed to complement the more technical premise of the web server. 
 
