@@ -353,4 +353,4 @@ The library created for the nodes on the network was simpler than that of the co
 However packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
 
 #####Results of Iteration
-With our final iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
+With our recent iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
