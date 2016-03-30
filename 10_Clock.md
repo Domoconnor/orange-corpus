@@ -389,7 +389,9 @@ We solved this issue this iteration by incorporating a strict data format that t
 As a result, the clock is now synchronised with the rest of the system, and can effectively notify users with up to date information, which is displayed accordingly. 
 
 ####Outcome of iteration
-At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
+At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. 
+
+In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
 
 
 
