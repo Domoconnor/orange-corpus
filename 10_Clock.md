@@ -63,17 +63,27 @@ IMAGE 4 - Design sketch for clock display options. In this sketch, we looked at 
 
 IMAGE 5 - Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
+
+This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
+
+
 ####Outcome of iteration
 We have produced several different design proposals for the clock, and have began to consider how a physical device could be produced. We have evaluated what benefits the clock can bring to the project, in that it reinforces the more accurate data and makes for an engaging notifier for the user. There is also potential for this to create data continuity - in the sense that data from a physical device can be cross referenced with that on the web server. Overall, this iteration has set up the requirements for the clock, and given us a few interesting paths to take when developing it. 
-Iteration 2: Hardware and setup phase
+
+####Iteration 2: Hardware and setup phase
+
 After having collected our ideas from lo-fi prototyping, we are now exploring how our clock system can be physically implemented with hardware. 
 The last iteration saw us investigating some requirements regarding the clock’s transition into hardware. This iteration involves our research into hardware, and comparisons between methods of implementing the system. 
-Adafruit NeoPixel Ring
+
+#####Adafruit NeoPixel Ring
+
 IMAGE 5 - Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
 
 We were directed towards the tech solutions offered by Adafruit (https://www.adafruit.com) which distributes the NeoPixel product; an assortment of addressable miniature LEDs arranged in rings, strips and boards (https://www.adafruit.com/category/168). We feel that this is a good platform for developing our system in hardware.
 The Adafruit NeoPixel device is a chainable collection of LEDs which can be interfaced with the NeoPixel Arduino library for support. Example code provided with the library demonstrated several of the device’s capabilities; notably the ability to manipulate timings of individual lights to come on. Conveniently, this was exactly what we were looking for as it provided a loose way of interfacing more complex tasks if we needed to. 
+
 The setup of this device requires the use of a breadboard to interface the NeoPixel ring with an Arduino Uno microcontroller, and the use of a PC to upload code from the Arduino libraries to the Uno. After setup, our first concern was to establish the range of colours we could use to recreate our “ambience” colour spectrum.
+
 We then displayed a spectrum of our proposed colours running from white (least ambient) through green, yellow, and orange to red (most ambient) recreating this colour wheel using the addressable LEDs. 
 IMAGE 6 - Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
 
