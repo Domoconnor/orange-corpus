@@ -91,6 +91,12 @@ Here is a table that we formulated over common wireless solutions:
 	</tr>
 </table>
 
+See [Wifi vs Bluetooth power consumption](http://science.opposingviews.com/bluetooth-vs-wifi-power-consumption-17630.html), [Bluetooth power consumption](http://www.digikey.com/en/articles/techzone/2011/dec/bluetooth-goes-ultra-low-power), [XBee power consumption](https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf).
+
+http://science.opposingviews.com/bluetooth-vs-wifi-power-consumption-17630.html (Wifi vs bluetooth power consumptions
+http://www.digikey.com/en/articles/techzone/2011/dec/bluetooth-goes-ultra-low-power
+https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf
+
 <br>
 *WiFi*
 
