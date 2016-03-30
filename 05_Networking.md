@@ -315,7 +315,7 @@ As show in our previous iteration the XBee did support packet fragmentation, so 
 These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
 
 * For implementations of our node code (C++), see <a href="/XbeeAPI/Nodes">here</a>.
-* For implementations of our Hub code (Python), <a href="/XbeeAPI/Hub">see here</a>.
+* For implementations of our Hub code (Python), see <a href="/XbeeAPI/Hub">here</a>.
 
 #####XBee Sleep Settings
 
