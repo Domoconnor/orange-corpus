@@ -206,7 +206,7 @@ The nicknames for nodes helps in multiple ways, not only does it allow us to for
 
 #####Hub Python Library
 
-For information regarding the process behind designing and researching the API required for the Hub, please see [Networking, Iteration 4.](#network_i4).
+For information regarding the process behind designing and researching the API required for the Hub, please see [Networking, Iteration 4.](#networking_i4).
 
 The Hub is utilising a library written to handle the API mode of the XBee, the library has many purposes that help make the network as robust as possible. Using these features we’ve been able to make our coordinator incredibly robust as handling large payloads, transmission errors, node discovery and error recovery.
 
