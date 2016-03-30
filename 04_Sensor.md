@@ -44,6 +44,8 @@ We used a 1500mah lithium polymer battery for the sensor as it provided a good b
 *<a name="sensor_case"></a>Case*
 The Case was designed in a way that was intended to aim our microphone at the noisy street and protect the electronics from the elements. It was 3D printed at a high fidelity (high infill of plastic) with a thickness of 3mm as not to allow water in through the printed plastic. It was then sanded and sprayed with a high fill primer to fill any pores left int the plastic left from the printing process. As the case had to be closed around the electronics of the sensor a seam was built in that was filled with a neoprene strip as to stop any water from getting through said seam.
 
+A final version of the code can be found [here](sensor/micTest)
+
 ### Previous Work
 
 ####  Iteration 1
@@ -57,9 +59,7 @@ Building on the initial ideas we had and also looking back to the client interac
 - Transmit that data back to a hub
 
 
-We looked into how sound works and 
-We built a a basic circuit containing a 
-
+We looked into how sound works and discovered that we would need to capture a sound wave and subtract the minimum from the maximum to get an overall amplitude of the wave. We could then use this data to calculate other things such as decibels but initialy recording the sound wave was crucial. We planned to use a microphone and microcontroller board to select some points on a sound wave and perform the calculation.
 
 *The Microphone Amplifying Circuit*
 
@@ -284,6 +284,8 @@ We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our exp
 
 Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate.
 
+A version of this code can be found [here](sensor/InitialNoiseLevel/)
+
 ####Christmas Deployment
 Over the christmas period we deployed a version of our sensor that wrote data to an SD card. This was designed to go into one of the resident's houses and record data for a short period of time. We used an arduino uno with a shield that contained an SD card reader. 
 
@@ -308,6 +310,8 @@ $$ 10000mAh22mA= 454.54 hours  $$
 $$ 454.54/24= 18.9 days $$
 
 This was a more reasonable amount of time and would give us a good amount of data that we could use in the future. The battery pack we were using could also be easily charged using  a micro usb cable (the same kind that is used to charge phones) which meant we could ask the client to charge it if it did run out of power.
+
+A version of this code can be found [here](sensor/SDCardPrototype/)
 
 
 ####Iteration 2 
@@ -404,6 +408,8 @@ There were several issues we noticed after the iteration. One of these was that 
 
 #####Results of iteration
 We changed the clock to a DS3231 which allowed us to fire interrupts at predetermined intervals, such as every minute. We could then use that wake the processor from it's sleep and it could then take the readings. We made some modifications to the DS3231 by removing the power and transmit LEDs to reduce power consumption. The clock ensured that readings were taken at the same point every minute. We also reprogrammed the Xbee to use pin hibernate mode. This meant that when we pulled a pin low on the board, the Xbee would also enter sleep mode. This sleep mode reduced it's power usage down to around 500μA which was acceptable. The Xbee was then only powered on when we wanted to send data, which was a tiny fraction of the time. Changing to interrupt based processor sleep seems to have solved the problem of the board not waking from sleep.
+
+All code mentioned in this section can be found [here](sensor/)
 
 
 ### Bibliography
