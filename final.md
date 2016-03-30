@@ -211,13 +211,13 @@ We looked into how sound works and discovered that we would need to capture a so
 
 After talking to the client the important part of the diagram would remain constant throughout the process, which was the amplifying circuit. For a microphone to be able to produce a voltage signal able to be processed for data it must be amplified, we know for certain we are measuring noise levels in this project and so this is a crucial step.
 
-![1](Images/sensordan/IMAGE1.PNG)
+![1](Images/sensor/IMAGE1.PNG)
 
 The basic place to start is a non-inverting amplifying circuit, used with any op-amp it effectively calculates the gain based on two resistor values going into an inverting and non-inverting input. (Gain= 1+ (R2/R1)
 
 The OP-AMP IC we’ve been using is the MCP 6002, the datasheet can be found here. (http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf)
 
-![2](images/sensordan/IMAGE2.png)
+![2](images/sensor/IMAGE2.png)
 
 It’s an IC with two OP-AMPS and isn’t designed for anything too complicated, for the time being it’s perfect to get a basic amplifying circuit built.
 
@@ -227,7 +227,7 @@ Most microphones that feed into a amplifying circuit are biased by a resistor va
 
 So far, we’re looking at a circuit like this.
 
-![3](images/sensordan/IMAGE3.png)
+![3](images/sensor/IMAGE3.png)
 Other solutions that can be found on the web include using a different IC (As opposed to the MCP 6002) and modifying the circuit above. 
 
 List of other IC’s and amplifiers we looked into.
@@ -341,11 +341,11 @@ This narrowed down our choices to the following Arduino devices.
 	<li>Arduino Uno</li>
 </ul>
 
-![4](images/sensordan/IMAGE4.png)
+![4](images/sensor/IMAGE4.png)
 
 *Arduino Nano*
 
-![5](images/sensordan/IMAGE5.png)
+![5](images/sensor/IMAGE5.png)
 
 (https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf)
 
@@ -366,7 +366,7 @@ It can run the ATMega 168 or 328, we would ideally use the 328 as it offers much
 
 *Arduino Pro mini*
 
-![6](images/sensordan/IMAGE6.png)
+![6](images/sensor/IMAGE6.png)
 
 (http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf)
 
@@ -376,7 +376,7 @@ Essentially the Pro Mini is identical to the Arduino Nano except for the added a
 
 *Arduino Uno*
 
-![8](images/sensordan/IMAGE8.png)
+![8](images/sensor/IMAGE8.png)
 
 The Uno sticks out in this comparison due to its size difference against the previous 3, which begs the question - why then? Simply put, the Arduino Uno is a very friendly board to use, and for prototyping would be ideal as we would not need to worry about many problems that we could face when going straight in with one of the other solutions. It also shares a lot of common ground with the other 3, except for its size.
 
@@ -386,7 +386,7 @@ The biggest benefit for us, was that the Uno would offer easy adaptability and h
 
 *MBED FRDM-K64F*
 
-![9](images/sensordan/IMAGE9.png)
+![9](images/sensor/IMAGE9.png)
 
 Another popular developer of IOT boards, using ARM based architecture instead of AVRs. The argument between these two processor architecture is often put down to ARM is powerful, and AVR is not so much. There are variants on the processors but otherwise they tend to stick to those groups. MBEDs have an online compiler and IDE, which works in a similar fashion to Arduinos but is effectively always online which comes with its own problems such as requiring internet access. 
 
@@ -420,7 +420,7 @@ int main(void)
 
 The FRDM-K64F has given us superb accuracy when sampling the microphone, values ranging from 0-65555. This is due to the 16bit analog to digital converter on the board. 
 
-![11](images/sensordan/IMAGE11.png)
+![11](images/sensor/IMAGE11.png)
 
 We also sampled using an Arduino Uno:
 
@@ -485,7 +485,7 @@ The size of the amplifier we built was ideally too large for a small sensor, we 
 #####Result of iteration
 We’ve purchased a pre-built amplifier to simplify our circuit, ideally we don’t want wires going everywhere and using a prebuilt amplifier makes our task easier due to less complexity and time required to build one. 
 
-![12](images/sensordan/IMAGE12.png)
+![12](images/sensor/IMAGE12.png)
 
 The next step is to wire the pre-built microphone amplifier to one of the boards, we’ve decided to use the FRDM K64F for the time being as its sample range from 0-65555 makes it appealing to work with.
  
@@ -522,6 +522,10 @@ $$ 454.54/24= 18.9 days $$
 This was a more reasonable amount of time and would give us a good amount of data that we could use in the future. The battery pack we were using could also be easily charged using  a micro usb cable (the same kind that is used to charge phones) which meant we could ask the client to charge it if it did run out of power.
 
 A version of this code can be found [here](sensor/SDCardPrototype/)
+
+We collected a significant amount of data from this and a graph of the levels we recorded is included below. You can also find the raw data [here](sensor/cdata.csv)
+
+![](Images/sensor/graph.png)
 
 
 ####Iteration 4 
@@ -964,7 +968,7 @@ Although simple in principle, this was not possible with the use of AT mode (Wit
 
 The hubs library is much more extensive than of the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
 
-For more information regarding the Hub and API mode, see [cont.](#hub).
+For more information regarding the Hub and API mode, see [**Hub**](#hub).
 
 #####Library for nodes (Clock and Sensors)
 
@@ -986,7 +990,6 @@ The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
 *<a name="hub_board"></a>Board*
-<a name="network_i4"></a>
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
@@ -1117,7 +1120,7 @@ Then, we masked it - to stop it from starting again on a reboot.
 systemctl mask sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
 ~~~
 
-IMAGE OF PUTTY WITH PI AND MASKS
+![](Images/Hub/IMAGE12.PNG)
 
 Now that serial is free we’ve got to connect the XBee to the Pi, looking at the pinout sheet for the Pi we can see which pins to interface with when compared back to our XBee. 
 
@@ -1257,9 +1260,8 @@ The Hub stores a list of messages it has received and arranges them based on cur
 
 Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
 
-
 ##### Results of iteration
-
+The Hub now using its new API Mode library can offer huge benefits to the network and the system as a whole. As the coordinator it controls effectively all data coming in and out. It offers node discovery, error correction and recovery, heartbeats and feedback on any disappearing nodes. With this addition the hub can now report back useful information to the webserver for analysis such as a node disappearing from the network due to battery failure or being out of range. 
 
 
 
@@ -1875,16 +1877,19 @@ We could also implement something physical in hardware, which could be read simi
 In both cases, the red and orange lights could serve as flags to the user, as they indicate a high concentration of noise activity picked up by the sensor. Meanwhile, the lighter colours provide coverage for quieter hours. This offered the user a complete coverage of each 24-hour period, allowing the possibility to view previous hours and draw comparisons between them. 
 Overall, we felt that there was an advantage to having a physical clock, as it is a physical artefact and therefore has greater potential to engage with the user. Furthermore, it could provide effective reinforcement to the data displayed on the web server. 
 
+####What we need 
+The premise behind the clock is to provide a visual stimulus to the user in a simplified data format for quick reference. It also needs to be interconnected with other devices on the network to accurately display data. Since the device is going to be running a series of lights, it is likely that power usage will be high; which is a consideration for how it will be powered in the user’s home. We also need to decide what sort of hardware we are looking at using to implement this idea, and what limitations and/or advantages each particular technology would give us. The main requirements of the clock are therefore: 
+
+<ul>
+<li>To provide an ambient visualisation of data which is engaging with the user. </li> 
+<li>Be easily implemented with the rest of the system. </li> 
+<li>Display data in a format that is easily grasped by the user. </li>
+<li>To have a feasible hardware solution which complements our other means of data visualisation.</li>
+</ul>
+
 #####Lo-fi prototyping and sketches
 In order to visualise a few different clock concepts, we created some sketches of the clock being represented in different ways. This was a way of gauging how the interface for the clock should look, as well as exploring some aspects such as colour, granularity, and the general visual layout for the user. 
 Some of the design sketches we produced later in this iteration explored the placement of a clock as a “widget” on a tablet or webpage. Since our client could rely on mobile or tablet, we also concepted how our designs could be scaled and combined depending on where they are displayed. 
-
-####What we need 
-The premise behind the clock is to provide a visual stimulus to the user in a simplified data format for quick reference. It also needs to be interconnected with other devices on the network to accurately display data. Since the device is going to be running a series of lights, it is likely that power usage will be high; which is a consideration for how it will be powered in the user’s home. We also need to decide what sort of hardware we are looking at using to implement this idea, and what limitations and/or advantages each particular technology would give us. The main requirements of the clock are therefore: 
-To provide an ambient visualisation of data which is engaging with the user 
-Be easily implemented with the rest of the system 
-Display data in a format that is easily grasped by the user
-To have a feasible hardware solution which complements our other means of data visualisation
 
 ![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
@@ -1915,6 +1920,8 @@ To have a feasible hardware solution which complements our other means of data v
 	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
 <br>
+
+#####Overview
 
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
@@ -2213,12 +2220,17 @@ The final case design was constructed from white plastic; featuring a clear plas
 For more information, see casing. 
 
 ####Previous Problems
-Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
-
+<ul>
+<li>Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
+</ul>
 We solved this issue this iteration by incorporating a strict data format that the clock received values in. This was an integer array of 24 values, containing sound averages for each hour of the day. This format was utilised by the hub; meaning that when sending data, the clock received it in a format it “understood”. 
+
+As a result, the clock is now synchronised with the rest of the system, and can effectively notify users with up to date information, which is displayed accordingly. 
 
 ####Outcome of iteration
 At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. 
+
+In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
 
 
 
