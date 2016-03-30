@@ -125,6 +125,8 @@ Initially, we constructed a program using the “Processing” IDE to work as a 
 
 ![Neopixel Ring](Images/Clock%20Images/IMAGE_7.jpg)
 
+<img src = "Images/Clock%20Images/IMAGE_7.jpg" width = "400" height = "400" align: middle> 
+
 	Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
@@ -238,6 +240,7 @@ Once the modified case statement was developed, we tested the clock in isolation
 ![case 1](Images/Clock%20Images/IMAGE_21.jpg)
 
 	Display for error case 1. The clock outputs a white display of lights and holds it there for a few seconds. 
+	
 
 ![case 2](Images/Clock%20Images/IMAGE_22.jpg)
 
@@ -246,7 +249,11 @@ Once the modified case statement was developed, we tested the clock in isolation
 ![case 3](Images/Clock%20Images/IMAGE_23.jpg)
 	
 	Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
-
+	
+![success 1](Images/Clock%20Images/accept_case.jpg)
+	
+	Display for success case - if the hub can successfully be reached by the clock, the green lights appear. After this, the coloured data appears.
+	
 The above cases show the clock displaying errors whilst working with dummy values, so our next stage is to make it work with the hub. This is fairly straightforward - we just have to send dummy data packets from the hub over to the clock over the Zigbee network to test it.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b] 
