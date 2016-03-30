@@ -136,7 +136,9 @@ A method we could use is an intensity spectrum. Choosing one particular colour, 
 
 IMAGE 13 & 14- 
 
-#####Colour intensity spectrum. Similarly to the colour spectrum, the intensity increases as greater noise intensity values are read in. We have opted for red here, but it can be implemented in any colour.
+#####Colour intensity spectrum. 
+
+Similarly to the colour spectrum, the intensity increases as greater noise intensity values are read in. We have opted for red here, but it can be implemented in any colour.
 
 We felt having the option to display data in these varying formats could be useful to the user, and opens up possibilities for new ways our visualisation could be implemented. There are potentially ways that these two formats could be used in conjunction.
 
