@@ -5,27 +5,30 @@
 
 ![](Images/Hub/IMAGE1.PNG)
 
-The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
+The Hub is the coordinator of the network. Its the middleman to all incoming and outgoing traffic from the sensor or clock to the webserver. It can maintain backups of data if required and will backup if the network fails at any point, it utilises the libraries provided by the Networking solutions (see [Networking.](#networking)). Using these libraries the hub can maintain a robust network and offer these services:
+* Node Discovery, can determine when nodes disappear or appear and assign them 'nicknames' that can be associated to that node. (e.g "sensor on the balcony")
+* Fragmentation and Assembly of large payloads, large payloads can be fragmented and reassembled when transmitted across the network.
+* Heartbeats, keeping up to date with each node and knowing their current status. Fits into node discovery.
+* Transmission reports, for each packet sent a status packet is returned. With this we can identify whether a transmission was successfully or not.
+* If the network fails the hub will backup any data is has locally and any data it is currently trying to transmit until the network connection has been re-established.
+* Will forward all sensor data to the webserver for further processing, if possible otherwise saves locally.
+* Forwards requests from the clock for most recent 24 hours of sound averages and will transmit back the response. If an error occurs will transmit an appropriate error code.
 
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
-*<a name="hub_board"></a>Board*
-
+**<a name="hub_board"></a>Board**
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
-*<a name="hub_xbee"></a>Communication / XBee*
-
+**<a name="hub_xbee"></a>Communication / XBee**
 The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
 
-*<a name="hub_processing"></a>Processing Role*
-
+**<a name="hub_processing"></a>Processing Role**
 It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
-The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
+The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error code instead. 
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-*<a name="hub_case"></a>Case*
-
+**<a name="hub_case"></a>Case**
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
 
