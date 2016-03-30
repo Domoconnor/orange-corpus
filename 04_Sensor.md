@@ -107,8 +107,7 @@ List of other IC’s and amplifiers we looked into.
 
 Although some may seem more suitable than others, as of right now we’ve focused on having a working circuit. In the long term, once we are happy with this solution we will most likely have a pre-built circuit instead of designing the non-inverting amplifier ourselves and choosing which OP-AMP to use. 
 
-
-*Processing the Data*
+**Processing the Data**
 
 The next step was to process the data, there were many ways to handle this from Microcontrollers to all-in-one IOT boards. We researched the following methods of taking data from a microphone to then process.
 
@@ -175,7 +174,7 @@ The next step was to process the data, there were many ways to handle this from 
 
 For the purpose of a prototype we decided to work with a IOT Microcontroller, we need to investigate common IOT Microcontroller modules, ones that are ideal for our implementation of this IOT device. 
 
-*Arduino Microcontroller Boards*
+**Arduino Microcontroller Boards**
 
 Arguably one of the most popular development boards commercially available, has a full function IDE written in C++. Multiple different boards designed for different purposes, all having sharing the basic functionality (such as analog inputs) while offering unique differences. They allow for shields to be placed into them which add even further adaptability, allowing for 3rd party hardware to be interfaced easily into the device. This functionality can be as simple as an SD card reader, a WiFi chip or even an external clock. 
 
@@ -197,7 +196,7 @@ This narrowed down our choices to the following Arduino devices.
 
 ![4](Images/sensor/IMAGE4.PNG)
 
-*Arduino Nano*
+**Arduino Nano**
 
 ![5](Images/sensor/IMAGE5.PNG)
 
@@ -218,7 +217,7 @@ It requires a minimum of 5v operating power, anything below and functionality is
 
 It can run the ATMega 168 or 328, we would ideally use the 328 as it offers much more space (EEPROM, SRAM and Flash memory) and is a later iteration over the 168. The dimensions of the device are 0.73” x 1.70”.
 
-*Arduino Pro mini*
+**Arduino Pro Mini**
 
 ![6](Images/sensor/IMAGE6.PNG)
 
@@ -228,7 +227,7 @@ Essentially the Pro Mini is identical to the Arduino Nano except for the added a
 
 “There are two version of the Pro Mini. One runs at 3.3V and 8 MHz, the other at 5V and 16 MHz... The ATmega328 has 32 kB of flash memory for storing code (of which 0.5kB is used for the bootloader). It has 2 kB of SRAM and 1kBs of EEPROM.“ (Arduino.cc, n.d.)
 
-*Arduino Uno*
+**Arduino Uno**
 
 ![8](Images/sensor/IMAGE8.PNG)
 
@@ -238,7 +237,7 @@ It runs the ATmega328P, which has slight differences to the ATmega328 (Slight po
 
 The biggest benefit for us, was that the Uno would offer easy adaptability and help quickly work with a prototype while we decide which microcontrollers to use, their frequency, and work on breadboards instead of soldering straight away. 
 
-*MBED FRDM-K64F*
+**MBED FRDM-K64F**
 
 ![9](Images/sensor/IMAGE9.PNG)
 
