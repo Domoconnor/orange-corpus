@@ -10,7 +10,6 @@ The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
 *<a name="hub_board"></a>Board*
-<a name="network_i4"></a>
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
@@ -141,7 +140,7 @@ Then, we masked it - to stop it from starting again on a reboot.
 systemctl mask sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
 ~~~
 
-IMAGE OF PUTTY WITH PI AND MASKS
+![](Images/Hub/IMAGE12.PNG)
 
 Now that serial is free we’ve got to connect the XBee to the Pi, looking at the pinout sheet for the Pi we can see which pins to interface with when compared back to our XBee. 
 
@@ -281,9 +280,8 @@ The Hub stores a list of messages it has received and arranges them based on cur
 
 Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
 
-
 ##### Results of iteration
-
+The Hub now using its new API Mode library can offer huge benefits to the network and the system as a whole. As the coordinator it controls effectively all data coming in and out. It offers node discovery, error correction and recovery, heartbeats and feedback on any disappearing nodes. With this addition the hub can now report back useful information to the webserver for analysis such as a node disappearing from the network due to battery failure or being out of range. 
 
 
 
