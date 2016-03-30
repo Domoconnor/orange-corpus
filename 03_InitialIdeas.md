@@ -166,7 +166,7 @@ Weekly Minutes (September 27th - 25th March 2016)
 * Successfully found a way to convert raw values from the sensor into decibels.
 * Looked into configuring XBee modules.
 * Sensor implemented clock for timestamping.
-* 
+
 #####23/11/2015
 ###### Members attendance
 * Daniel Andrews
