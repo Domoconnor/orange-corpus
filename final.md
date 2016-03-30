@@ -2,9 +2,11 @@
 ul{
 margin:0;
 }
-
-
+img{
+margin:auto;
+}
 </style>
+
 <div style="position:fixed; top:0; left:0; margin:10px;">
 <a href="#contents">Back to Contents</a>
 </div>
@@ -34,25 +36,20 @@ Along the lines of the other two themes before, the user wanted the system to be
 **People should be aware of their own noise levels:**  
 The client talked a lot about wanting the people in the street to know how noisy they are being. Points being brought up suggesting signs that had the decibel reading on them so that people can visualise the noise like a road sign that turns on when you are going too fast. Although, as we wouldn't be able to enforce the sound level it could possibly encouraging even challenging people in the street to be loud to try and make the sign go off.
 
-<p class="todo">DO WE WANT TO INCLUDE A LIST OF GOALS TO ACHIEVE?</p>
-
 ####Meeting ONE
 
 We had to speak with the clients before we started to formulate a solution. We had to know what they wanted, so that we could make a solution that best filled their needs. To prepare for this we researched proper interviewing techniques by reading: *“Interviewing users: How to Uncover Compelling Insights (Steve Portigal, 2013)”*.  
 
 The main lesson we took from the Portigal book was that we needed to let the client talk. We did not want to steer their answers in any direction. We organised roles amongst ourselves, with a leader asking questions and the rest taking notes. If the note takers had any questions we made sure they were asked at the end of the question so that the client did not lose track.
 
-Our intended outcome for this meeting was to have an incite into our clients perception of the problem they are having, whereby we can devise a method in which to solve said problem. We had an idea of the client's problem before we went into the meeting, based on what we were told in the project brief. Therefore, in preparation we made a list of questions that we felt we needed answered to gain a better understanding.<span class="todo"> REFERENCE ORIGINAL QUESTION SHEET</span>. We then trimmed down our question list intending to allow our client to talk as freely as possible. <span class="todo">REFERENCE SECOND QUESTION SHEET</span> 
+Our intended outcome for this meeting was to have an incite into our clients perception of the problem they are having, whereby we can devise a method in which to solve said problem. We had an idea of the client's problem before we went into the meeting, based on what we were told in the project brief. Therefore, in preparation we made a list of questions that we felt we needed answered to gain a better understanding. We then trimmed down our question list intending to allow our client to talk as freely as possible. 
 
-<p class="todo">INCLUDE RECORDING</p>
-
+All recordings, notes and questions from the meeting can be found [here](meeting_one/)
 ####Meeting TWO
 
 We spoke to another client that was meant to be present at the original meeting but was unable to make it. They are a landlord of Orange Street tenants living next to a popular club called ‘The Ballroom’. In this meeting we followed the same layout as set in the first meeting, making one person take the lead and the others taking notes, we also followed the same structure of questions.
 
-<p class="todo">INCLUDE SEB RECORDING AND QUOTES</p>
-
-<p class="todo">DO WE INCLUDE PHOTO OF THE RESIDENTS HOUSES ON GOOGLE MAPS?</p>
+All recordings, notes and questions from the meeting can be found [here](meeting_two/)
 
 <img src="images/OrangeStreet_dist.jpg">
 
@@ -123,16 +120,22 @@ When making a review request evidence needs to be provided to support the case t
 * sound recordings
 * a record of complaints made to the responsible authorities about the premise
 
-##Initial Ideas
+<style>
+	.todo{ color:red }
+</style>
 
-At this point we had spoken to enough individuals to have a good place to start working on a potential prototype. We needed to plan how we would efficiently tackle the problem ahead of us. We first had to make a list of requirements based on our aims <span class="todo">link to aims</span>
+#Orange Street
 
-* We needed multiple sensors 
-* We needed the sensors to be self-sustainable for a long period of time.
-* We needed the sensors to be out of the way but effective (Out of mind, not reminders to the clients), so no wires running everywhere.
-* We needed a way to visualise all the data from these sensors into a form that was easily understandable
-* We needed control over the network, and ideally a way to configure it.
-* We needed cases that could ensure the endurance of the devices in different conditions.
+###Initial Ideas
+
+At this point we had spoken to enough individuals to have a good place to start working on a potential prototype. We needed to plan how we would efficiently tackle the problem ahead of us. We first had to make a list of requirements based on our aims. We needed:<span class="todo">link to aims</span>
+
+* Multiple sensors 
+* The sensors to be self-sustainable for a long period of time.
+* The sensors to be out of the way but effective (Out of mind, not reminders to the clients), so no wires running everywhere.
+* A way to visualise all the data from these sensors into a form that was easily understandable
+* Control over the network, and ideally a way to configure it.
+* Cases that could ensure the endurance of the devices in different conditions.
 
 Translating this to a solution we can work with:
 
@@ -143,150 +146,424 @@ Translating this to a solution we can work with:
 * We had to ensure some form of data backup also.
 * Some of the requested locations for these sensors were completely unreachable by permanent power supplies, which led us to the investigation of long term battery solutions.
 * We needed a case that could survive harsh weather and conditions, one that would be of a suitable Ingress Protection Rating.
-* 
 
-### Minutes
+#### Minutes
 
 Below are the minutes taken for every meeting that we, personally had between us as a group. They are a rough summary of what decisions we chose to take and how we followed up on them in the weeks after.
 
 Weekly Minutes (September 27th - 25th March 2016)
 
-<b> 27/9/2015 </b>
+#####27/9/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Project begins.
 * Meeting with supervisor, arranging a meeting with clients.
 * Research into general hardware understanding.
 * Research into general electronics understanding.
 
-<b>3/10/2015</b>
+###### Work Achieved previous week
+* Orange Street itself documented, photographs taken of popular outlets along the street and general overview.
+
+#####3/10/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Research into sensor amplifier, this is required for our sensor to accurately measure noise.
 * Reading Portigal Book, this is required to interview our clients in the best format possible.
 
-<b>10/10/2015</b>
+###### Work Achieved previous week
+* Circuit diagrams for amplifier and research completed.
+* Research into hardware boards completed.
+
+#####10/10/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+
+###### Main points
 * Working on sensor amplifier, have to calculate accurate values for use.
 * Concluding on client meetings, taking notes from the important moments in the meeting.
 * Sensors are required as expected, multiple of them will be used to gather data on sound.
 * Starting to learn 3D print, will need case designs for components in the project. 
 * Start researching potential solutions in system architecture to the problem.
 
-<b>18/10/2015</b>
+###### Work Achieved previous week
+* Client interviews completed, recorded and documented. 
+
+#####18/10/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * A Basic sensor has been created using the amplifier circuit, can now use this act as a sensor temporarily.
 * Program needs to be written to sample sound from the current sensor.
 * Researching sound waves and understanding of sampling, need a better technical understanding of sampling sound waves and sound in general.
 * Researching into potential networking solutions, we need a way of transferring this data from the sensor to the website.
 * Researching into hardware boards, Arduinos, MBEDs, any particular board that could be used to handle the sensors requirements.
 
-<b>25/10/2015</b>
+###### Work Achieved previous week
+* Microphone amplifier built, testing begins this week.
+* System architecture researched, deciding to use - sensor to hub to webserver.
+* 3D print attempts, not successful for the board - but very close.
+* Contacted council and received advice for legal standing on our project.
+
+#####25/10/2015
+###### Members attendance
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Using the written program for sampling data from the sensor, taking this sampled data and working out how to gather the values we need in order to demonstrate a sound level.
 * Using the FRDM K64F as a guide - 3D printing a case for this board.
 * Decision to use the XBee as our networking module, offers great customisation and low power cost.
 
-<b>2/11/2015</b>
+###### Work Achieved previous week
+* Created program to sample sound waves, tested on Arduino and FRDM-K64F boards.
+* First successful 3D printed case designed
+
+#####2/11/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Started using Github to handle different elements of the project code base.
 * Started getting XBees S2 talking to each other, sending dummy data between two modules.
 * Began discussing how often we wish to sample data, how many samples to take and the accuracy of our data. 
 * Researching into very low boards to act in place of the sensor.
 
-<b>9/11/2015</b>
-* Discussed the potential of using the MBED as a Hub as we are familiar with it.
+###### Work Achieved previous week
+* Displaying sound a period of time, research needed on decibels.
+* Plenty of test data stored from the initial testing of sensor.
+* Research completed on networking solutions.
+* Website API implemented, sensor iteration 4 started by Dominic.
+
+#####9/11/2015
+###### Members attendance
+* Daniel Andrews
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
+* Discussed the potential of using the FRDM-K64F as a Hub as we are familiar with it.
 * Looking into XBees and their configurability, discussing whether encryption or the alike is necessary.
 * Researching into converting sound values into decibel levels.
 
-<b>16/11/2015</b>
+###### Work Achieved previous week
+* Using XBees to communicate over serial on FRDM-K64F with MBED application shields with AT mode.
+* Concluded to sample data once a minute for 3 seconds, 60 times an hour.
+* Multiple case designs printed.
+
+#####16/11/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Still working with XBees, looking into setting up multiple on a network with a mesh topology as opposed to point to point.
 * Discussed the battery concerns, clients ideally want a rechargeable set of batteries. Looking into battery solutions.
 * Sketching visualisation ideas.  
 * Decided on using the Rocket scream board for the sensor, but going to use Arduino Uno for the time being.
 
-<b>23/11/2015</b>
+###### Work Achieved previous week
+* Decided to use the FRDM-K64F as the Hub
+* Successfully found a way to convert raw values from the sensor into decibels.
+* Looked into configuring XBee modules.
+* Sensor implemented clock for timestamping.
+
+#####23/11/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Matthew Aldridge
+
+###### Main points
 * Attempting to get an Arduino board communicating to an XBee, wiring the module up ourselves as it’s likely we’ll use an Arduino board.
 * After showing 5 sketches produced from each other, we concepted some form of clock that displays noise levels.
-* Researching into different solutions for a Hub, potentially FRDM K64F. 
+* Researching into different solutions for a Hub instead of FRDM-K64F. 
+* Prototype of sensor is going to be placed in client's house over Christmas break.
+* Prototype will use local SD card instead of network due to power restrictions with the board being used.
 
-<b>30/11/2015</b>
+###### Work Achieved previous week
+* Researched batteries, worked out calculations required for the sensor in its current state to function over Christmas.
+* Concepted the idea of a ‘clock’ from 5 sketches idea.
+* Rocket Scream ordered, waiting for arrival.
+
+#####30/11/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Mapping locations for sensors, where are we likely place them - what sort of problems does this raise?
 * Concepting case designs for the Arduino Uno.
 * Researching components for a clock like device.
+* Working towards placing a sensor in client's house before Christmas.
 
-<b>7/12/2015</b>
+###### Work Achieved previous week
+* Arduino board communicating with XBee and an FRDM-K64F over serial using AT mode.
+* Sensor SD card implemented, data will be stored locally for the project due
+
+#####7/12/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Going to use AT mode for XBee for Hub and sensor, simpler to set up and then focus on API mode of XBee. 
 Research into XBee settings, API mode.
 * Clock components decided, visualising components and how to use them. Going to use 24 LEDS on the clock for 24 hours.
 
-<b>14/12/2015</b>
+###### Work Achieved previous week
+* Case for sensor printed.
+
+#####14/12/2015
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Clock testing and programming, deciding what colours to use, frequency of them.
 * Case design tested, researching into weatherproofing the case.
 * Raspberry Pi decided for the Hub.
-* Prototype of sensor is going to be placed in client's house over Christmas break.
-* Prototype will use local SD card instead of network due to power restrictions with the board being used.
+* Going to use a large battery to power sensor for 8 days roughly.
 * Decided to sample once a minute and average to use as a representation of that minute.
 
-<b>21/12/2015</b>
+###### Work Achieved previous week
+* Components arrived for clock, connected together and testing 
+* Testing on sensor.
+
+#####21/12/2015
+###### Members attendance
+* Daniel Andrews
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Final meeting before Christmas break, sensor has been placed in Client's house on Orange Street. 
 * Rocket scream board arrived, testing with rechargeable batteries is next step
 * AT Networking finalised.
 
-<b>20/1/2016</b>
+###### Work Achieved previous week
+* Sensor installed in client’s house
+* End of term 1.
+
+#####20/1/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * First meeting since end of Christmas break, sensor has been collected and data returned for evaluation.
 * From result it is hard to determine accuracy of noise, sampling needs to be more accurate
 * Increasing sampling rate to 3 times a minute.
 * Work commencing on creating the Hub, and arranging networked solutions.
 
-<b>27/1/2016</b>
+###### Work Achieved previous week
+* Over Christmas, research on Rocket Scream, XBee, Clock and Case design.
+
+#####27/1/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Matthew Aldridge
+
+###### Main points
 * Clock case design prototyping started.
 * Raspberry Pi Model B+ acquired, programming beginning in Python with Jessie Lite as the Operating System.
 * Investigating how to visualise data on the website.
 * Order requested for components to build more sensors.
 * Sampling rate is now much more accurate.
 
-<b>3/2/2016</b>
+###### Work Achieved previous week
+* Raspberry Pi initialisation, setting up and configuring to work with a XBee.
+* Rocket Scream replaced Arduino Uno as sensor board.
+* Sample rate modified to be more accurate.
+* Initial test of Clock with 24 LEDs, potentially using 60 LEDs.
+
+#####3/2/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Programming the RocketScream, research into power usage with the board (disabling/enabling features).
 * Researching sleep mode configuration on XBee modules.
 * Case design for Hub started.
 * Hub to backup data if network fails.
 
-<b>10/2/2016</b>
+###### Work Achieved previous week
+* Pi configured to work as coordinator, work commencing to program.
+* Initial version of Hub AT model finished.
+* Case research into waterproofing, protection against rain in particular.
+
+#####10/2/2016
+###### Members attendance
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Finished hub, need to test with all components under different circumstances.
 * Sensor finished, accuracy lacking - looking into solutions.
 * Case design for clock on-going.
 * Colour sensitive users for clock.
 
-<b>17/2/2016</b>
+###### Work Achieved previous week
+* Case design for clock finished along with initial sensor.
+* Initial Clock program finished, interfacing with Hub is next step.
+
+#####17/2/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Light intensity as opposed to different colours for users of colour blind nature.
 * New sensor prototype almost finished, solution to accuracy is a 16bit ADC.
 * New case design for sensor, directional microphone.
 
-<b>24/2/2016</b>
+###### Work Achieved previous week
+* Website configured to communicate with Hub on GET and POST.
+* Hub tests all successful.
+* Clock case prototyped.
+
+#####24/2/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Testing entire system in the ‘wild’, sensor outside, clock on the side and Hub routing traffic.
 * If goes to plan, place in Client's house during this week.
 * Case finished for sensor, case for clock next.
 * Current networking is AT mode.
 * Live visualization being worked on.
 
-<b>31/2/2016</b>
+###### Work Achieved previous week
+* Decision to work with API mode has been made.
+* Sensor now uses 16ADC as well to boost accuracy of raw values.
+* Clock features colour alternatives for those who suffer from colour blindness.
+
+
+#####31/2/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Designing initial poster for project fair.
 * Programming API mode for network.
 * Design for clock case finished. Need a way to diffuse light.
 
-<b>7/3/2016</b>
-* Visualisation of data on website finished.
+###### Work Achieved previous week
+* System tested in our own homes, it even snowed - perfect for testing the sensor.
+* Live visualisation completed, working on preparing the project for live use.
+
+#####7/3/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+
+###### Main points
+* Placing system in clients home.
 * Planning on testing website with users.
 * Hub API mode finished.
 
-<b>14/3/2016</b>
-* Sensor API mode finished.
+###### Work Achieved previous week
+* Poster concepted and designed.
+* Clock case finished and light diffused.
+* Hub API mode finished.
+
+
+#####14/3/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Building of a dummy sensor working with API mode to demonstrate capabilities.
 * Visualisation of data finished.
 * Clock case finished.
 * Plans for poster to test the clock and demonstrate our visualisation.
 
-<b>18/3/2016</b>
+###### Work Achieved previous week
+* Poster concepted and designed.
+* Clock case finished and light diffused.
+* Hub API mode finished.
+
+#####18/3/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Use clock to demonstrate noise levels and visualisation.
 * Laptops and tablets for visualising website.
 * Dummy sensor to demonstrate range and error correction.
 * Hand out flyers on the project.
 
-<b>25/3/2016</b>
+###### Work Achieved previous week
+* Poster concepted and designed.
+* Clock case finished and light diffused.
+* Hub API mode finished.
+
+#####25/3/2016
+###### Members attendance
+* Daniel Andrews
+* Dominic O’Connor
+* Jack McBride
+* Matthew Aldridge
+
+###### Main points
 * Formating corpus and technical report for project.
+
+###### Work Achieved previous week
+* Dummy sensor was a success.
+* Live visualisation was a success.
+* Sensor has survived for 2 weeks in the wild, including conditions.
+* Clock updating correctly.
+* Won the poster fair. 
+* We managed to get rid of all our flyers.
 
 
 
@@ -775,30 +1052,32 @@ All code mentioned in this section can be found [here](sensor/)
 ### Bibliography
 
 Arduino.cc, (n.d.). Arduino - ArduinoBoardProMini. [online] Available at: https://www.arduino.cc/en/Main/ArduinoBoardProMini [Accessed 16 Jan. 2016].
+<style>
+	.todo{ color:red }
+</style>
 
+[toc]
 
 <a name="networking"></a>
-##Networking 
-[Back to contents](#contents)
+##Networking [cont.](#contents)
 ###Description
 
-Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we need. The coordinator is capable of addressing each node on the network as well as the nodes being able to address the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
+Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we require. The coordinator is capable of addressing each node on the network, with the nodes only ever addressing the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol and communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
 
-Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and firmware. We are using API mode when handling XBee modules on our network, as this firmware allows us to have much more control over the network.
+Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and addressing. We are using API mode when handling XBee modules on our network, as this firmware allows us to have create and format packets to the style we require. The network lets us determine useful information from traffic such as delivery status, fragmentation and assembly of packets. 
 
-The sensors were programmed in C++ and the Hub was programmed in Python, so we have written two Libraries to be able to communicate in the format the XBee modules expected. Using these libraries we can have greater control over the API mode letting us know when nodes disappear on the network, or that a packet failed to transmit to name a few.
+The sensors were programmed in C++ and the Hub was programmed in Python. We have written two Libraries to be able to communicate in the format the XBee modules expected while working with these languages. Using these libraries offer us the full potential of API mode and allow control over a mini network of low powered wireless devices.
 
-<p class="todo">Might need to change to fit format ^
+The libraries were designed so that one line of code would be required to send a message across the network while abstracting all heavy processing on traffic. The benefit of this was that the library could change and not require a whole body of code to change for the other sections of the project.  
 
-IMAGE 1
-
-IMAGE 2
+![13](Images/Networking/IMAGE14.PNG) 
+![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG) 
 
 ###Previous Work
 
-####Iteration 1
+####Iteration 1, Researching Wireless Solutions
 
-#####What We Need
+#####The Solution we need
 
 Based on how we aim to solve the problem, with multiple sensors sending data back to a hub. <span class="todo">reference initial ideas page</span> Our networking solution needs to allow us to have a hub that can have multiple sensors connected wirelessly. The network needs to allow us to communicate data reliably. The data we are expecting to be sending between the sensors and the hub is only going to be ≈ 2000 bits an hour based on the fact that we are going to send a timestamp and an averaged hourly value as a 'long' and an 'int'. 
 
@@ -817,7 +1096,7 @@ Here is a table that we formulated over common wireless solutions:
 		<td>Current Consumption (max)</td>
 		<td>Power Consumption (sleep)</td>
 		<td>Voltage</td>
-		<td>Data Rate (sec)</td>
+		<td>Data Rate (s)</td>
 	</tr>
 	<tr>
 		<td>WiFi</td>
@@ -842,7 +1121,7 @@ Here is a table that we formulated over common wireless solutions:
 	<tr>
 		<td>Bluetooth Low Energy</td>
 		<td>100m</td>
-		<td>50m</td>
+		<td>< 100m</td>
 		<td>2.4GHz</td>
 		<td>15mA</td>
 		<td>Varies</td>
@@ -852,7 +1131,7 @@ Here is a table that we formulated over common wireless solutions:
 	<tr>
 		<td>XBee XSC</td>
 		<td>9500m</td>
-		<td>600m</td>
+		<td>610m</td>
 		<td>902 - 928MHz</td>
 		<td>60mA(R) 265mA(T)</td>
 		<td>45uA</td>
@@ -871,8 +1150,6 @@ Here is a table that we formulated over common wireless solutions:
 	</tr>
 </table>
 
-[xbee comparison](https://www.sparkfun.com/pages/xbee_guide)
-
 <br>
 *WiFi*
 
@@ -884,125 +1161,275 @@ However, the main reasons why we would want to use WiFi comes in two forms. Not 
 
 One of our mains goals for the sensor is to make the battery as long as possible . WiFi is one of the more power consuming options, so using WiFi with or without a hub our sensor would have to use much more power when receiving and transmitting data making the battery life less than desirable. 
 
+Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
+
 <br>
 *Bluetooth and Bluetooth Low Energy*
 
-Bluetooth is also a viable solution. Bluetooth and Bluetooth LE can be ideal for data transmission over low bandwidth, and in our case both bluetooth and BLE both have high enough bandwidth for what we are looking to do. The range on bluetooth is of the lowest (with a max of 30 meters) of the possible solutions we would have to make sure that the range was suitable in the customers house if we are going to use it. Whereas bluetooth LE is a better solution as it will run with a much lower energy consumption and has a much better range in urban areas where we will be deploying the devices.
+Bluetooth is also a viable alternative for transferring over a low bandwidth where speed is not too key an issue. Depending on how often we schedule the device to transmit data. Since the range on this is considerably lower (5-30 meters) so we would have to consider integrating this with a hub of some kind to forward our data. Fortunately some of the properties across Orange Street feature flat rooftops; upon which we could attach peripherals such as antennas if we need to.  
 
-Both possible solutions offer a star network (piconet) topology which would be a good solution to our problem. With there bing a master device (hub) and slaves (sensors) being connected. Although there is a maximum of seven slaves able to connect to a master at one time. Nevertheless, seven slaves might not be an unreasonable amount for what we are trying to do. We do not aim to have seven sensors in a customers house. Ultimately it would not be a scalable solution if you wanted more than seven sensors in one house as we would then have to have multiple hubs.
+Bluetooth smart devices have a typically very low sleep current which equates to low power consumption when it isn’t being used. This is ideal as the device will have periods of inactivity once we decide upon which kind of timeframe it should be operating over. 
 
-Also, with bluetooth we would have to carefully schedule how we send and received data as bluetooth (general) has to form a connection between master and slave to transmit data.
+Bluetooth works on a dynamic network topology called PAN, which supports up to 8 other devices and a minimum of two, although we don’t plan on having an abundance of sensors in one house (Minimum most likely 3) 
 
 <br>
 *XBee S2 and XSC*
 
-The XBee S2 is also a good solution to our problem, having a low current draw for transmitting/receiving data, especially when in sleep, a data rate (250kbps) suitable for what we want to send, range suitable for what we need and the possibility for a mesh network topology. Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network.
+We found that the S2 in particular was more than adequate for our desires, having one of the lower current draws for transmitting/receiving data, especially that of in sleep with a good data rate (250kbps) and working on a mesh network topology.  Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network than other alternatives.
 
-The XBee can also be programmed manually to work on its own meaning in theory we could eliminate the Microcontroller entirely, however this solution leads to problems involving working out the current time and large packet payloads. 
+The XBee can also be programmed manually to work on its own meaning in theory we could eliminate the Microcontroller entirely, however this solution leads to problems involving working out the current time and large packet payloads. We may come back to it at a later point, but for now we decided to use it purely for as means for A-B for our data. 
 
-XBee XSC seems to be unideal for what we are trying to do. The range is unnecessarily high because we are looking at sending distances of 40m max. The power draw is also an issue because of the range it can send also, because of the range the data rate is much lower. All of these things considered it is not a good solution compared to the S2.
+#####Results of Iteration
 
-#####Conclusion
+We've decided to choose the XBee S2 as our solution. Due to its customisability and low powered nature its perfect for having our own control on a network. If we utilised WiFi for example then we would have to concern ourselves with high power usage and lacking full control of the network. The XBee offers a multitude of different possibilites and fits closest to our goals of a low powered networking solution. 
 
-Comparing all of these technologies there are two standouts being Bluetooth LE and XBee S2 because of their low power consumption and ideal transmission range. On one hand BLE is better than XBee because of its higher data rate and slightly larger range. Although, we decided to go with the XBee because of the possibility of creating a mesh network based on the scalability of the product. Although we are going to use the AT mode one the XBee which will give us a basic star network to begin with.
-
-#####Initial Network
+####Iteration 2, XBee AT Mode
 
 XBees have microcontrollers onboard that store and control the instructions that let them know where data is being sent, sleep functionality, node hopping, retry attempts and much more. For our network we needed to configure each XBee to work within our desired parameters.
 
-In order to configure these settings we required software and hardware to interface into the XBee. XCTU,software created by Digit International and a makeshift serial programmer. With this we could then start altering the settings on the firmware and adapt the XBee's to our desired network structure.
+In order to configure these settings we required software and hardware to interface into the XBee, software created by Digit International called XCTU. We had to make our own programmer however as we hadn't received our own programmer as of yet. With this we have started altering the settings on the firmware to adapt the XBees to our desired network structure.
 
-IMAGE 5
+![5](Images/Networking/IMAGE5.PNG)
 
-When programming the XBees over serial, there are many different options for installing new firmware settings. Initially we worked with ZNet 2.5 AT for both coordinators and end routers on the network.
+When programming the XBees over serial, there are many different options for installing new firmware settings. We've been working with ZNet 2.5 AT for both coordinators and end routers on the network as this is the recommended starting firmware as provides all functionality we currently need. Although we could end changing at a later date depending on what functionality we require.
 
-XBees share one trait across all networks that is a requirement for them to be all to communicate, this is their PANID. The PANID is a 64 bit integer that is ideally unique on a network and separates other networks in close proximity from each other.
+XBees share one trait across all networks, that is the requirement for them to be able to communicate; using a PANID. The PANID is a 64 bit integer that is unique on a network and separates other networks in close proximity from each other, unless you unluckily both choose the same PANID - however with the options available that is a very slim chance.
 
-IMAGE 6
+![6](Images/Networking/IMAGE6.PNG)
 
-Using AT Command mode we had to specifically set values on the XBee. These ranged from 64bit destination address to encryption being enabled. This information was used in creating packets.
+Using AT Command mode we've had to specifically set values on the XBee. These have ranged from 64bit destination address to encryption being enabled. This information is used in creating packets, we can't change this information without reprogramming the XBees which could cause a problem. However we know which nodes need to address each other in the long run, so none of these details need changing for the time being. 
 
-After we set the two XBee devices to be on the same personal network (sharing PANID), aligning their firmware (ZNet 2.5 AT), and finally setting them as coordinator and router - they were able to communicate. In AT mode we could send bytes down serial to the XBee and the firmware of that XBee would create a packet based on what we’ve set as predefined instructions.
+After we set the two XBee devices to be on the same personal network (sharing PANID), aligning their firmware (ZNet 2.5 AT), and finally setting them as coordinator and router - they were able to communicate. In AT mode we could send bytes down serial to the XBee and the firmware of that XBee would create a packet based on what we’ve set as predefined instructions. The XBee constructed these packets based on their programmed firmware, which we had configured. 
 
-<p class ="todo">DAN code for sending on arduino/ frdm. just initial sending in at stuff
+We ideally need one hub per house which could communicate and route data between nodes. The hubs are going to be powered by mains as opposed to sensors which are powered by batteries and in varying locations. The sensors communicate using XBees to the Hub on a mesh topology, in theory allowing us to have as many sensors as we may need.
 
-Testing the range of the XBee revealed some problems that were unseen before such as the range being weaker than expected when facing an urban environment. The shed being the receiver's location is simply a building in an open courtyard surrounded by other buildings. The moment we entered another building the XBee's communication would experience huge packet loss and eventually fail entirely. This lead to a new problem, how could we guarantee data's arrival. If the nodes on the network were out of range how could we display this to our client in a meaningful manner?
+#####Setting up AT Mode
 
-Testing the XBee's we found that the range was about what we expected. We tested the range by tanking a sensor, that was a node on the network, from the shed, that housed the coordinator, 
+We’ve been using AT mode so far with XBees. AT Mode is designed to be very straightforward to use, the device connects to the XBee module on serial and sends any data in a form of bytes to be used in a packet and transmitted on the network. We’ve been using XCTU to talk between XBee modules, making sure we understand the concepts of how they are designed to communicate and parameters for addressing each other. 
 
-IMAGE 4
+![7](Images/Networking/IMAGE7.1.PNG)
 
-Although we didn’t need XBee’s to be able to communicate huge distances (beyond 25m) it did raise concerns - causing us to later research API mode and ways of ensuring packet robustness.
+Setting the XBees up involves us requiring two major pieces of information, the PANID and Address. The coordinators destination points to 0x000000000000FFFF while any end points or routers need to point their destinations to the coordinator's address. That can be achieved in two ways, one way is using 0x0000000000000000 or actually specifying its address.
 
-####API vs AT
+![7.2](Images/Networking/IMAGE7.2.PNG)
+#####AT Mode and Hardware
 
-We used API mode over AT mode in the end as this offered more configurability for our network, however it was more overhead in terms of setting up. We would need to account for packet formats, error checking and versatility. With AT mode a lot of this is covered for you, however nearly all of it is hidden away and meant that we couldn’t use it.
+We’ve started using FRDM-K64Fs to talk to one another as they provide an application shield and libraries alongside which are full compatibility with a hardware ‘installation’ of the XBee (installation being the XBee has dedicated pins, rather than soldering it to the board). The K64Fs had simple programs designed purely to send data to one another.
 
-For API mode to work in our favour, we had to create two APIs one for the sensors and the Hub. These APIs had to be able to interpret the packet format expected from the XBees (see for formatting: Hub)
+![0](Images/Networking/IMAGE0..PNG)
 
-IMAGE 8
+#####Testing Range
 
-The written APIs for API mode
+We know roughly the distance of an XBee from its datasheet, however our clients home and in particular Canterbury has very old structures. These structures have very thick walls, we need to know whether our XBees can transmit through these obstacles or whether we need to boost the signal. We modified the previous code used to test between FRDM K64Fs to calculate latency between packets and then walked around parts of campus determining if we had enough packet loss for concern.
 
-The premise of the APIs was to create libraries that would not force the other components to be completely recoded, instead replacing one line would effectively have the same result. With AT mode, sending data was a simple matter of writing that data out to serial and we needed to keep that format. In actuality, with API mode it was not that straightforward. We needed to recreate the packet structure every time a packet was to be sent.
+We used ‘The Shed’ as the coordinators base station while moving through different parts of the School of Computing while the coordinator was making note of whether it was receiving any data or not. We’ve mapped our findings and calculated distances to determine whether we are going to struggle with walled structures or not.
 
-We needed a way to change one line into a whole new function but without changing more than just that line.
+![4](Images/Networking/IMAGE4.PNG)
 
-IMAGE 9
+As shown above the XBees are capable of travelling around 30m and only suffer complete packet loss when passing multiple walls, which is most likely unavoidable in our project. We will definitely need some form low powered communications network so boosting the power will be a trade off we most likely can’t afford.
 
-Both APIs were different and not just in language. The end point/router API was written in C++ and was only ever designed to talk to the coordinator, so when sending a message using this API - it will address the coordinator. Whereas the Python API for the Hub had to allow for the addressing of any node on the network, and had to be able to store multiple incoming packets from different sources. The end point/routers only needed to store one message at a time, and those messages were always from the coordinator who would never send more than one at a time. Due to this requirement, our written APIs did not have to accommodate for every possibility, only the ones that expect and want. 
+######Results of Iteration
+ 
+The FRDM-K64F is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an FRDM-K64F to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components. 
 
-XBees couldn’t support large packet fragmentation, which meant large payloads would simply drop. Since we were transmitting a lot of data in one go, this lead to problems arising as we had to implement our own fragmentation of packets.
+* <a href="/MBEDXbeeTest/receiver.cpp">Code for FRDM-K64F receiver</a>
+* <a href="/MBEDXbeeTest/transmitter.cpp">Code for FRDM-K64F transmitter</a>
 
-For more information regarding the Hub API and packet fragmentation, see Hub.
+####Iteration 3, AT Mode with Hub, Sensor and Clock
 
-Sleep Settings
+Our next role is to implement the Hub, Clock and the sensor(s) on the network. For this to work all nodes need to be able to communicate with one another.
 
-Amongst many of the settings available on the XBee, sleep was a must have. The XBee actually had the ability to act independently as a sensor with settings being provided for polling data from pins, but due to lack of functionality we sided against using this feature. 
+![7.3](Images/Networking/IMAGE7.3.PNG)
 
-There were many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
+The sensor is planning to send around 700 bytes of data an hour to the hub, the hub then processes that data. If the clock sends a request to the hub then the hub processed that and responds with data back to the clock. Using AT mode it is simply a matter of writing down to serial the bytes you wish to send across the network, all the nodes are configured to talk to one another. The clock and sensor both have their destination addresses set 0x0 pointing to the coordinator while the coordinator has its address set to 0x000000000000FFFF. This allows it to broadcast, the sensor won’t respond as it will not be needed and will be utilising sleep mode on the XBee whereas the clock will respond as the broadcast will directed at the clock.
 
-The sensor used a set of pins on the XBee to command it to enter sleep mode, or awake from sleep mode - thus limiting its power consumption.
+#####Problems
 
-Sensor out of range
+In theory the solution was fine, however a problem we did not account for was payload size. For unknown reasons the coordinator would lose segments of incoming data and then just carry on until it received the next transmission. This meant that data was becoming malformed and mixed up which meant it was completely useless to us. Upon further investigation, we found that the internal buffers of the XBees are that of 202 bytes. The XBee datasheet offers flow-control through the use of pins CTS and RTS but in fact it's very likely the XBee doesn’t support fragmentation of packets as we haven’t found anything to prove it does. Using the CTS and RTS pins could prove interesting, but it would only solve the problem of knowing when the XBees internal buffers are almost full or empty.
 
-We constructed a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
+So we’re likely to be able to send around 150 bytes in a single packet (RF data and packet header), we circumvented this for the time being by purposely delaying and breaking up the data the sensor had. This took advantage of the internal hardware on the XBee which has timers dedicated to calculating when to stop listening on serial, form a packet and send it. By breaking the message down we effectively caused the XBee to send multiple packets across the network in one go.
 
-Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we could determine whether a sensor was within range or not and then use this information to alert the client. We later decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information could be displayed on the website. 
+The other solution to this problem could be to transmit more frequently, every minute over an hour but battery usage would be the main concern. 
 
-IMAGE 10
+A concern was raised regarding the issue of multiple sensors, as of right now we have no way of knowing who is sending data to the hub as well as data becoming malformed and merged due to AT mode. With one sensor this won’t be an issue:
 
-###Conclusion
+![7.73](Images/Networking/IMAGE7.73.PNG)
 
-After testing the XBees on multiple platforms, their range and customizability make them perfect for a small mesh network of sensors to hubs. For our IOT based project they seem more than suitable to fit the role for low-powered sensors reporting back. 
-<a name="hub"></a>Hub
-##Hub 
+However with multiple sensors, data becomes inoperable:
 
-[Back to contents.](#contents)
+![7.75](Images/Networking/IMAGE7.75.PNG)
 
-Image Here
-(The finished Hub, requiring only ethernet and power it is capable of coordinating the entire network.)
+Making this an issue to tackle in the next iteration.
+
+For more information on these particular systems and how they process data see their respective sections.
+
+######Results of Iteration
+AT mode worked well for our initial task however we need to solve the problem of large payloads and multiple sensors as these will become more apparent later in our project. With this iteration passed we have successfully created the prototype project as a whole, the network allows for all components to successfully communicate with one another.
+
+For information regarding the datasheet for the XBee S2, see this document.
+https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf
+* Page 12 refers to data input buffers of size 202 bytes
+* Page 11 refers to ‘Packetization Timeout’ from serial to RF
+
+Code used for Hub with AT Mode can be found <a href="/XbeeAPI/Hub/HubAT.py">here</a>.
+
+####Iteration 4, API Mode 
+#####Issues with previous Iteration
+On our previous iteration we discovered a few problems with using AT mode and the XBee modules themselves. We can’t fragment packets without having some form of intervention ourselves and we can’t determine who is sending data which will cause issues for multiple sensors. A simple fix to this is to prefix all incoming data with an identifying name and delimiter, for example clock:”message”. However this is most likely overhead as further research has shown that by using API mode we won’t need to do this as source addresses are passed with packets. We did manage to confirm that fragmentation is not possible on XBee S2 networks, see www.digi.com/wiki/developer/index.php/Determine_MTU for details. 
+
+#####API Mode
+
+API mode is the more advanced for AT in a lot of ways. The XBee will function the same and you can transmit data to the XBee in the same manner, that’s serial down to the XBee RX pin. However, just sending a stream of bytes won’t make the XBee transmit data. With API mode you have to make the packets as opposed to having them made for you. This has required a lot of research into formats and to do so accurately with good use of examples, we used “Building Wireless Sensor Networks” by Robert Faludi. Faludi provides excellent examples and technical details on the use of API mode.
+
+![7.4](Images/Networking/IMAGE7.4.PNG)
+
+API mode has many different packets you can create, from investigating the formats of these packets we can see specifically how to form and send data. We would only need 3 different packets format for our system to be fully utilised, those of:
+
+* 0x10 TRANSMIT REQUEST
+* 0x90 RECEIVE PACKET
+* 0x8B TRANSMIT REQUEST
+
+The typical format of one these packets, for example the transmit request appears as follows:
+
+Transmit (“Hello world”): “7E 00 19 10 01 00 00 00 00 00 00 00 00 FF FE 00 00 48 65 6C 6C 6F 20 57 6F 72 6C 64 D5”
+Receive (“Hello world”): “7E 00 19 10 01 00 00 00 00 00 00 00 00 FF FE 00 00 48 65 6C 6C 6F 20 57 6F 72 6C 64 D5”
+Status (“Hello world”): 7E 00 07 8B 01 00 00 00 00 00 73
+
+These hexadecimal values while alien looking are relatively straightforward to identify as again they are following a format. The packets we will form will be a transmit packet while the packets we receive will be a status and receive packet. 
+
+The transmit packet must follow this format when being created:
+
+![7.5](Images/Networking/IMAGE7.5.png)
+
+The receive packet will follow this format, so we know the offset of each byte:
+
+![7.6](Images/Networking/IMAGE7.6.png)
+
+The status packet will follow this format, again we know the offset of each byte:
+
+![7.7](Images/Networking/IMAGE7.7.PNG)
+
+These formats are important because when we wish to send or receive data to the XBee it will need to be in this format. Instead of:
+
+~~~python
+self.serial.write(“Hello world!”) # AT method
+~~~
+
+We would use:
+
+~~~python
+self.serial.write(bytearray.fromhex('7E 00 17 10 01 00 13 A2 00 40 C1 FD 49 FF FE 00 00 48 65 79 20 57 6F 72 6C 64 A7')) # API method
+~~~
+
+However for true implementation we would want this to return some indicator of whether the message was transmitted successfully or not. For example:
+
+~~~python
+response = transmit(bytearray.fromhex('7E 00 17 10 01 00 13 A2 00 40 C1 FD 49 FF FE 00 00 48 65 79 20 57 6F 72 6C 64 A7')) # API method
+if response == x:
+       # do something ...
+~~~
+
+If we had this, then we could use this within our existing components to implement a form of error awareness and resolution.
+
+#####API Mode System Benefits
+API mode offers a lot more in utility at the cost of more effort on implementation. The benefit of using it, is that you can access all data in a packet header. This would allow us to see all sorts of ranging information from source address to checksums and would solve our problem of needing to identify nodes on the network. It also comes with a lot of added benefits, using API mode we could determine whether a node is out of range, what nodes are on the network and whether packets have been successfully delivered or not. 
+
+For API mode to be implemented we need to build two libraries capable of handling the underlying functions of the XBee. One library would need to utilise Python and the other C++, the Python library would be used by the Hub while any other nodes would use the C++ library. The Hub had its own requirements and so the library would need to reflect that.
+
+######Hub API requirements
+* Node discovery (Locate any new nodes)
+* Heartbeat requests (Determine whether a node is still active)
+* Individual node addressing (Address any node on the network as opposed to broadcasting each time)
+* Fragmentation (Break large payloads down)
+* Assembly (Reassemble large payloads)
+* Message storing (If multiple sensors are sending their payloads at the same time, the hub needs to be able identify and reassemble separate messages at the same time)
+* Status awareness (Was a packet received?)
+
+######Sensor and clock API requirements
+* Fragmentation (Break large payloads down)
+* Assembly (Reassemble large payloads)
+* Respond to heartbeat requests (Respond to hubs request to see if they are ‘alive’)
+* Single message storing (The hub will only ever send one message, to the clock it will be requests or a heartbeat but never at the same time. To the sensor it will be a heartbeat.)
+* Status awareness (Was a packet received?) 
+
+######Multiple Sensors Solution
+Initially we used AT mode for working with one sensor, however problems soon arose when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. Using API mode has let us identify each node on the network and where each stream of traffic is coming from, fixing this problem for us.
+
+![7.76](Images/Networking/IMAGE7.76.PNG)
+
+######Fragmenting Packets
+As show in our previous iteration the XBee didn't support packet fragmentation, so in order for this to work we need to manually number each frame in a packet from each source. We also need to be able to determine which is the final frame of a packet, we’ve decided to use an ‘!’ character, which would never naturally appear in any of our normal packets.
+
+![7.8](Images/Networking/IMAGE7.8.PNG)
+
+######Arduino String vs Char Array
+When working with the Arduino IDE its been very tempting to use the 'String' class. A class that offers useful functionality similar to that of Java. With it we can work out the length of a string, split it, concat it and do general operations on it. However, this functionality comes as the cost of efficiency. In C, strings don't exist in the format of other languages rather they exist as char arrays and are handled very differently. Arduinos IDE dumbs down the char array into a string. The lack of efficiency comes at the cost of memory, with such a small amount of RAM, the nodes could potentially crash if we are not careful.
+
+For us, we want total efficieny above all else. Although it might be easier to implement a string over a char array, we have decided with the later. 
+
+#####XBee Sleep Settings
+Amongst many of the settings available on the XBee, sleep is a must have for our sensors. There are many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
+
+The sensor currently uses a set of pins on the XBee to command it to enter sleep mode, or awake from sleep mode - thus limiting its power consumption.
+
+######Results of Iteration
+These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
+
+* For implementations of our node code (C++), see <a href="/XbeeAPI/Nodes">here</a>.
+* For implementations of our Hub code (Python), see <a href="/XbeeAPI/Hub">here</a>.
+
+####Iteration 5, Implementing API Mode
+
+#####Sensor out of range
+
+![10](Images/Networking/IMAGE10.PNG)
+
+Building off the last iteration, we can now offer more information to the client and to the network. This includes node discovery, a very powerful feature for our network which determines whether nodes are now out of range or have disappeared. Using this information we could alert the client that the sensor has run out of battery and thus died or been moved too far away from the Hub.  
+
+We decided to construct a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
+
+Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we can determine whether a sensor was within range or not and then use this information to alert the client. We’ve decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information can be displayed on the website for easier access rather than flashing LEDs.
+
+* For implementations of the dummy sensor code (C++), see <a href="/XbeeAPI/Nodes/DummySensor/XbeeAPI.cpp">here</a>.
+
+#####Library for coordinator (Hub)
+
+The hubs library is much more extensive than of the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
+
+For more information regarding the Hub and API mode, see [cont.](#hub).
+
+#####Library for nodes (Clock and Sensors)
+
+The library created for the nodes on the network was simpler than that of the coordinator. The nodes only need to talk to the coordinator on the network as opposed to each other. The coordinators address is constant, set at 0x00, which means no complicated addressing or node discovery.
+
+However packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
+
+#####Results of Iteration
+With our final iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
+## <a name="hub"></a>Hub [cont.](#contents)
+
+![](Images/Hub/IMAGE1.PNG)
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
-*<a name="hub_board"></a>Board*
+#####<a name="hub_board"></a>Board
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
-*<a name="hub_xbee"></a>Communication / XBee*
+#####<a name="hub_xbee"></a>Communication / XBee
 
 The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
 
-*<a name="hub_processing"></a>Processing Role*
+#####<a name="hub_processing"></a>Processing Role
 
 It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
 The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-*<a name="hub_case"></a>Case*
+#####<a name="hub_case"></a>Case
 
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
@@ -1014,11 +1441,10 @@ Unlike the sensor, power consumption was not an issue as the client told us that
 The hub was required to be a middleman between sensors and the web server, forwarding traffic onto the website over ethernet and handling any heavy processing. Initially we planned on using an FRDM-K64F board due to familiarity and easy access to them within the University. 
 
 ### Hub Hardware
-####Iteration ONE
+####Iteration 1 - Researching Hub Solutions
 #####FRDM K64F
 
-Image Here
-(FRDM K64F Board)
+![](Images/Hub/IMAGE5.PNG)
 
 The FRDM-K64F board has a lot of unneeded functionality. It has an unnecessary amount of sensors on the board itself (temperature sensor and accelerometer for example) which wouldn't add to our project benefits. Although as previously stated we are testing this board because of its availability and our familiarity with it. We are familiar with this board and we know that it has a shield that has the ability to interface with an XBee which is what we decided to use for our networking. <span class="todo">(insert link to networking decisions)</span> Using the board would not be an issue, as we have had extensive skill in handling and programming it. Including the MBED Application shield would benefit us in providing pins designed for an XBee module to interface with. It also offers an LCD display for reporting information back to the client, which could be useful for showing basic messages. However the shield does offer a lot of useless additions as well. Introducing more sensors and obstructing every pin on the FRDM makes it unlikely to be a realistic option for our Hub.
 
@@ -1028,15 +1454,19 @@ The FRDM-K64F board has a lot of unneeded functionality. It has an unnecessary a
 
 ####Arduino Uno
 
+![](Images/Hub/IMAGE3.PNG)
+
 Considering the Arduino Uno for the hub as a likely candidate for the fact that the board itself does not have any sensors that would be considered unnecessary like on the FRDM K64F. It is programmable in C much like the K64F so will essentially use the same code. The main reason for choosing this board would be to trim the unessential things from our current solution. The Uno is also a well known board that is vastly documented. 
 
 Unlike the K64F the Uno lacks an ethernet port built in. To remedy this we would have to add an Arduino shield capable of offering ethernet such as the Arduino Ethernet shield. The shield while similar to the MBED Application shield provides the ability to transmit more than just data along ethernet, it could provide power too, although this means adding the PoE (Power over Ethernet) component. This added functionality means the possibility for less wires, this means easier instillation for the client as only one connection would be required. There are libraries that exist to help use the shield and it’s functionality and the board offers a lot of useful debug information regarding current status with sending data, making it easier to work with.
 
 With the problem of ethernet solved this only leaves connection to XBee out. In order to fix this we would have to either, include another [shield](http://uk.rs-online.com/web/p/products/6961670/?grossPrice=Y&cm_mmc=UK-PLA-_-google-_-PLA_UK_EN_Semiconductors-_-Semiconductor_Development_Kits&mkwid=s8484M9Xf_dc|pcrid|88057061283|pkw||pmt||prd|6961670&gclid=Cj0KEQjwid63BRCswIGqyOubtrUBEiQAvTol0WdagHobLZ9zO5iXOsR0-jdPUrM43OJ-dTZv86HIMcgaAkHy8P8HAQ) that had a breakout for the XBee or physically wiring up an XBee. Wiring up an XBee would require soldering the required pins on the XBee to wires that we could plug into the headers of the ethernet shield. If we choose to have the ethernet shield with the PoE module the XBee shield would probably not fit and therefore we would have to solder the XBee to the board. In circumstance of soldering the XBee it would also lead to being unable to then modify the firmware settingson the module without desoldering first leading to more spendature of time. Otherwise we could use the shield on its own, meaning we could reconfigure the XBee at any time.
 
+![](Images/Hub/IMAGE2.PNG)
+
 ####Arduino Yun
 
-INSERT IMAGE OF YUN AND SYSTEM DIAGRAM (IMAGE 0)
+![](Images/Hub/IMAGE0.PNG)
 
 The Arduino Yun is a very unique Arduino board, as it offers two processors. The AR9331 handles a Linux distribution while the ATMega32U4 handles the board. This means we can run an Operating System with all the benefits that brings on this board. The board comes with an ethernet port and WiFi as well, making it immediately more ideal than the previous two boards mentioned. The board also comes with an SD card port for supplying the Operating System, so in theory a large SD card would allow data logging and more storage in general. The board itself can run Arduino sketches which can interface with shell scripts running on the Linux distro, although the two processors are kept separate; bridging is possible due to a library provided.
 
@@ -1044,9 +1474,13 @@ However the Yun lacks a great deal of hardware support in terms of volatile memo
 
 ####Micro Server
 
+![](Images/Hub/IMAGE4.PNG)
+
 It is plausible to use a Micro Server in place of the Hub. The server could have a serial programmer connected to a XBee and use programs to read and access the data coming in. Using a Micro server would give huge benefits in terms of processing power, data storage and security. We could have our own choice of operating system and hardware. Data could come in and be backed up internally, then processed to be sent off. However price and size could cause issues, as these servers do not often come cheap and are a lot larger than other potential solutions. They can also become quite loud and considering noise is what we are trying to help our client with it is probably not an ideal solution furthermore it would draw a lot more power than a development board meaning it could have a visible cost impact on the client.
 
 ####Raspberry Pi
+
+![](Images/Hub/IMAGE6.PNG)
 
 The Raspberry Pi is a well known mini computer in its own right and full of IoT uses too. Following on from the Microserver idea, the premise of having an operating system was very appealing. Especially the idea of being able to remotely access the Hub, in which both the Microserver, Yun and Pi could provide this. The Pi while being smaller and considerably cheaper than its Microserver counterpart did lack internal hardware to boot, but for the purpose we had planned it was more than adequate. It would’t be noisy either. 
 
@@ -1063,15 +1497,13 @@ We decided to use a Raspberry Pi (Model B+ 512MB) over other solutions. While th
 #####Raspberry Pi (Model B+)
 We decided to use a Raspberry Pi (Model B+ 512MB). The Pi offered a full operating system, better secure networking and remote access for updating on the network. This means that if a bug is found in our code while the hub is deployed in our clients house we could remotely update in on said hub. In the same way we would also be able to access any logged debug information from the program.
 
-#####How to move forward with the pi
+#####Moving forward with the Pi
 
 The Model B+ will be supplied by the university. The operating system of choice was Raspbian Jessie Lite because it is the officially supported OS of the Pi therefore, recommended by the developers of the Pi. The Pi will have to be connected to the XBee over serial, however in order to use these ports they have to be masked by systemd to force them to be free on startup. 
 
 Then we need to write a program capable of handling incoming AT packets from serial, interpret them and respond accordingly. <span class="todo"><- link to code for this</span> 
 
 The program will be written in Python 3 as its easily available on the Pi and offers all the functionality required to create a robust networking program. We will have to modify /etc/rc.local to contain “sudo python hub.py” so that the script will start every time the Operating System starts. If the network was down, or errors occurred on transmit then the Pi will save data locally, and retry on its next attempt.
-
-
 
 ###Language of Choice: Python <span class="todo">is this description of code or why python was chosen?</span>
 
@@ -1087,19 +1519,15 @@ PySerial and Requests simplified any complications we may have had from writing 
 
 The Hubs most important role will be that of the coordinator on the network, it is the centre point. Due to how XBees address each other, it is very easy to send data straight to coordinator using its predefined 64bit address (0x0000000000000000).  The Hub could address any node on the network and with this could determine which nodes were which and if they were still within range.
 
-####Iteration 2, AT Mode
+####Iteration 2 - Pi with AT Mode
 
 #####Setting up the Pi
 
 Now that we’ve settled on an operating system, hardware and programming language we can progress to implementing a working network with the Pi. By default the Pi uses the serial ports for terminal access, for us this is of no use and we need those ports for the XBee to communicate on. In order to open the ports we had to go through Systemd which is the main configuration tool for handling debian related Linux distros. Systemd is quite new to Raspbian and because of this most tutorials offering assistance are outdated as they refer to older versions of Raspbian where the use inittab was involved. 
 
-
-
-
-
 In order to change anything we need access to the Pi. We’ve been remotely accessing the Pi using SSH and a program called Putty, this gives us full access to the Pi without having to actually plug anything into it. Researching Systemd has shown us that you can mask services which effectively disables them entirely from starting. First we needed to find the service we were looking for.
 
-~~~python
+~~~
 systemctl list-units
 ~~~
 
@@ -1107,31 +1535,31 @@ This returned us a long list, so from this we needed to find which service was t
 
 First we decided to play safe and stop the service.
 
-~~~python
+~~~
 systemctl stop sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
 ~~~
 
 Then, we masked it - to stop it from starting again on a reboot.
 
-~~~python
+~~~
 systemctl mask sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
 ~~~
 
-IMAGE 7
+IMAGE OF PUTTY WITH PI AND MASKS
 
 Now that serial is free we’ve got to connect the XBee to the Pi, looking at the pinout sheet for the Pi we can see which pins to interface with when compared back to our XBee. 
 
-IMAGE 7v2
+![](Images/Hub/IMAGE7v2.png)
 
 The final step is to make sure we have the libraries we need for python, using pip a tool that installs these libraries we can run a command to install them. Pip had to be installed however, which could be done using.
 
-~~~python
+~~~
 python -m pip install -U pip
 ~~~
 
 With Pip installed, we needed to then install the libraries required for our Pi.
 
-~~~python
+~~~
 pip install pyserial
 pip install requests
 ~~~
@@ -1142,7 +1570,7 @@ Now our Pi is ready to act as a coordinator. The next stage is programming it an
 
 The Hub is the middleman between the webserver and the nodes on the network, it has a responsibility to ensure data from those nodes reaches their destination. We need to be able guarantee data will be logged if it cannot reach its location, or if a request can’t be completed such in the case of the clock. The Hub should wait and listen for any incoming data and once a full set of data has been received act upon it, if it’s a request from the clock - request values from the server and respond back. If it’s data from one of the sensors then that needs to be sent to the webserver. It needs to be able to distinguish between a sensor and a clock otherwise it’ll send data to the wrong nodes or request values from the webserver for the wrong reasons. 
 
-IMAGE 7.1
+![](Images/Hub/IMAGE7.1.PNG)
 
 ######Basic Structure
 
@@ -1156,7 +1584,7 @@ In case the connection between the hub and webserver fails, we need to ensure da
 
 The hub needs to be able to tell which node is transmitting which data to it, how does it know whether the data it's received is that of a clock making a request or a sensor sending data? The clock sends data in a format of “R:!”. This is unique, it never appears in any of the sensor data and so when the hub receives any data it will scan for this particular set of characters. If received, it will know that this is a request and not sensor data. Otherwise it will assume all incoming data is from the sensor and forward it to the webserver. 
 
-####Iteration 3, API Mode 
+####Iteration 3 - Pi with API Mode 
 
 Now that we’ve changed from AT mode to API mode, not much needs to change but at the same time the properties of the Hub have greatly expanded. The API has been designed so that more functionality could be provided without requiring an excess amount of modification to existing code. 
 
@@ -1185,7 +1613,7 @@ The Hub is utilising a library written to handle the API mode of the XBee, the l
 
 Below is a flowchart diagram demonstrating the new processing behind the Hub.
 
-IMAGE 10
+![10](Images/Hub/IMAGE9.png)
 
 ######Node Discovery and Heartbeats
 
@@ -1250,13 +1678,16 @@ When the Hub needs to transmit a message above the MTU for RF data it will begin
 
 The Hub will transmit a frame and wait for an acknowledgement from a status packet before transmitting the next packet, this guarantees that frames cannot arrive out of sync. If it fails to transmit multiple times on the same frame it will return an error code.
 
-IMAGE 11
+![](Images/Hub/IMAGE 11.png)
 
 ######Packet Assembly
 
 The Hub stores a list of messages it has received and arranges them based on current frame ID as well as source, it can determine whether a message has terminated upon final frame and return the source of the transmission. When a frame is received the Hub will check all stored messages, if it finds a packet with the same source address that hasn’t terminated and shares the same current frame ID it will append the RF data to the packet contents. 
 
 Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
+
+
+##### Results of iteration
 
 
 
@@ -1745,11 +2176,12 @@ Up until this point all of the graphs had been standalone, pulling the data from
 There were some issues with aligning the graph labels however this will be left until a future iteration.
 
 #####Result of this iteration
-We created a website that was built in laravel and using bootstrap to improve the interface. We created a user accounts system that would allow access control in the future. The code for the website can be found [here](visualisation/web)
+We created a website that was built in laravel and using bootstrap to improve the interface. We created a user accounts system that would allow access control in the future. The code for the website can be found [here](visualisation/web)<style>
+	.todo{ color:red }
+</style>
+[toc]
 
-##Manufacture / Casing 
-
-[Back to Contents](#contents)
+##Manufacture / Casing [cont.](#contents)
 
 ###Initial Research
 
@@ -1979,8 +2411,8 @@ Initially, we found the parameters for 10 different colours which would be used 
 
 ![Colour Spectrum 1](Images/Clock%20Images/Colour_spec_comparison.png)
 
-	Simplified colour spectrum. Going in a clockwise 
-	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
+
+	Simplified colour spectrum. Going in a clockwise direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
