@@ -1,9 +1,9 @@
 ##Clock
 ###Description
 
-IMAGE 32 & 33
+![Final Clock](Images/Clock%20Images/clock_final.jpg)
 
-The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels; complementing the more technical premise of the web server. 
+The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels. It is designed to complement the more technical premise of the web server. 
 
 It uses a series of 24 LEDs arranged in a ring, which, every hour are lit to a colour corresponding to the average sound levels for that hour. This is a lightweight way of giving the user a quick glance at the sound levels, and allows for comparisons and references to be made across a 24 hour period. 
 
@@ -53,21 +53,31 @@ Be easily implemented with the rest of the system
 Display data in a format that is easily grasped by the user
 To have a feasible hardware solution which complements our other means of data visualisation
 
-IMAGE 1 - Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
+![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
-IMAGE 2 -  Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
+	Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
 
-IMAGE 3 -  Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
+![Sketch 2](Images/Clock%20Images/IMAGE_2.jpg)
 
-IMAGE 4 - Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
+	Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
 
-IMAGE 5 - Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
+![Sketch 3](Images/Clock%20Images/IMAGE_3.jpg)
+
+	Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
+
+![Sketch 4](Images/Clock%20Images/IMAGE_4.jpg)
+
+	Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
+
+![Sketch 5](Images/Clock%20Images/IMAGE_5.jpg)
+
+	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
 
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
 
-####Outcome of iteration
+####Outcome of Iteration
 We have produced several different design proposals for the clock, and have began to consider how a physical device could be produced. We have evaluated what benefits the clock can bring to the project, in that it reinforces the more accurate data and makes for an engaging notifier for the user. There is also potential for this to create data continuity - in the sense that data from a physical device can be cross referenced with that on the web server. Overall, this iteration has set up the requirements for the clock, and given us a few interesting paths to take when developing it. 
 
 ####Iteration 2: Hardware and setup phase
@@ -77,7 +87,7 @@ The last iteration saw us investigating some requirements regarding the clock’
 
 #####Adafruit NeoPixel Ring
 
-IMAGE 5 - Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
+IMAGE 6 - Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
 
 We were directed towards the tech solutions offered by Adafruit (https://www.adafruit.com) which distributes the NeoPixel product; an assortment of addressable miniature LEDs arranged in rings, strips and boards (https://www.adafruit.com/category/168). We feel that this is a good platform for developing our system in hardware.
 The Adafruit NeoPixel device is a chainable collection of LEDs which can be interfaced with the NeoPixel Arduino library for support. Example code provided with the library demonstrated several of the device’s capabilities; notably the ability to manipulate timings of individual lights to come on. Conveniently, this was exactly what we were looking for as it provided a loose way of interfacing more complex tasks if we needed to. 
@@ -85,7 +95,8 @@ The Adafruit NeoPixel device is a chainable collection of LEDs which can be inte
 The setup of this device requires the use of a breadboard to interface the NeoPixel ring with an Arduino Uno microcontroller, and the use of a PC to upload code from the Arduino libraries to the Uno. After setup, our first concern was to establish the range of colours we could use to recreate our “ambience” colour spectrum.
 
 We then displayed a spectrum of our proposed colours running from white (least ambient) through green, yellow, and orange to red (most ambient) recreating this colour wheel using the addressable LEDs. 
-IMAGE 6 - Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
+
+IMAGE 6 - Models of NeoPixel Rings distributed by Adafruit. 
 
 ####Display Model
 During our concepting of the clock display, we came up with several different possibilities of data accuracy that we could 
@@ -111,7 +122,9 @@ We knew the device would somehow have to read in data from our system. Writing a
 Reading clock data from a file
 Initially, we constructed a program using the “Processing” IDE to work as a simple file reader which transmitted data via serial. Interfacing this with the microcontroller, a set of arbitrary values ranging from 0-9 were read into a switch statement on the arduino; 0 representing low ambience with a white light, and red expressing high ambience upwards towards 9.
 
-IMAGE 7 - Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
+![Neopixel Ring](Images/Clock%20Images/IMAGE_7.jpg)
+
+	Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
@@ -122,24 +135,32 @@ A separate program we developed involved reading in dummy values from a pre-prog
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
-IMAGE 8 - Arduino code for “setHourColour()”. If the value exceeded -1 (which was always true unless an error case occurred - see below) then it gets divided by 10 to match the case statement. 
+![setHourColour Code check](Images/Clock%20Images/IMAGE_8.png)
 
-IMAGE 9 - Arduino code for displaying “dummy” data lights. The loop() method simply iterates through the array of dummy values called “clockValues[]”, takes each individual value and converts it to a colour based upon which case it falls into. 
+	Arduino code for “setHourColour()”. If the value exceeded -1 (which was always true unless an error case occurred - see below) then it gets divided by 10 to match the case statement. 
+
+![Dummy code](Images/Clock%20Images/IMAGE_9.png)
+
+	Arduino code for displaying “dummy” data lights. The loop() method simply iterates through the array of dummy values called “clockValues[]”, takes each individual value and converts it to a colour based upon which case it falls into. 
 
 This simple setup will be the basis of a more complicated program, which will involve reading data in over serial, averaging values across an hour’s worth of data and turning on a light. This method of doing things was relatively straightforward to implement once we knew what form the data being transferred to the clock was in.    
-Representing data using colour
 
 For our data to be accurately represented, we had to somehow establish the colour spectrum which we developed in the initial design phase of the clock. Having looked into the NeoPixel library, the main method for handling the colour of individual LEDs was the “setPixelColor()” method, which took 4 parameters. Firstly, the position of the pixel you are addressing, and then RGB values for the colour. 
 We determined our RGB parameters by using a HTML colour picker, which allowed us to pick and particular colour and read off the values. Using this, we established each of different parameters corresponding to the colours in our spectrum.  
 
-IMAGE 10 - We chose the colours using a HTML colour picker. Since the NeoPixel Ring method, “setPixelColor” requires RGB values for arguments, we determined which colour values to use based off of this website. (http://www.w3schools.com/colors/colors_picker.asp) 
+![Colour picker](Images/Clock%20Images/IMAGE_10.png)
+
+	We chose the colours using a HTML colour picker. Since the NeoPixel Ring method, “setPixelColor” requires RGB values for arguments, we determined which colour values to use based off of this website. (http://www.w3schools.com/colors/colors_picker.asp) 
 
 ####Simplifying the colour spectrum
 
 Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. 
 
-IMAGE 11 & 12 - Simplified colour spectrum. Going in a clockwise direction, the colour converges more towards red, hinting at greater noise activity. The right image is displaying data for arbitrary values to test the granularity between colours.
+![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.jpg)
+![Colour Spectrum 2](Images/Clock%20Images/IMAGE_12.jpg)
 
+	Simplified colour spectrum. Going in a clockwise 
+	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
@@ -149,7 +170,10 @@ There is an issue with using purely colour based visualisation. When catering fo
 
 A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
 
-IMAGE 13 & 14- 
+![Colour intensity 1](Images/Clock%20Images/IMAGE_13.png)
+![Colour intensity 2](Images/Clock%20Images/IMAGE_14.jpg)
+		
+	NeoPixel Ring displaying the intensity spectrum. 
 
 #####Colour intensity spectrum. 
 
@@ -186,27 +210,41 @@ This sender-receiver code will then be implemented into the clock’s real inter
 
 The code for this iteration can be found here: [Receiver_Code]
 
-IMAGE 16 - Communication between the clock,  hub and web server. Once data from the web server has been sent to the clock, the clockValues[] array is populated with the values. 
+![Systems communication](Images/Clock%20Images/IMAGE_16.jpg)
 
-IMAGE 17 - Arduino code for the prototype clock-hub communication. This involved us establishing serial connections to the XBee device, and reading in values that were received from the sending XBee interfaced with the hub. The hub was simply configured to send the same pre-programmed array values over the network.
+	Communication between the clock,  hub and web server. Once data from the web server has been sent to the clock, the clockValues[] array is populated with the values. 
+
+![Clock hub communication](Images/Clock%20Images/IMAGE_17.png) - 
+	
+	Arduino code for the prototype clock-hub communication. This involved us establishing serial connections to the XBee device, and reading in values that were received from the sending XBee interfaced with the hub. The hub was simply configured to send the same pre-programmed array values over the network.
 
 ####Signposting with the clock
 The clock, being a very visual component in the system, should implement some form of user signposting. Before the data display phase begins, we discussed adding a few intermediary stages to show the clock transitioning between states - if for some reason it has trouble reaching the data. 
 IMAGE 18 - Clock display. This shows the clock reading in a value every minute from the hub, and plotting it as a light. The architecture pictured shows the NeoPixel ring, Adafruit Flora, and Lilypad interfaced together. 
 
-IMAGE 19 - Signposting flowchart. This chart shows that for every reading the clock takes on the hour, it runs the initialisation phase, and moves through the different signposts according to the state. 
+![signposting flowchart](Images/Clock%20Images/IMAGE_19.png)
+
+	Signposting flowchart. This chart shows that for every reading the clock takes on the hour, it runs the initialisation phase, and moves through the different signposts according to the state. 
 
 We then planned what sort of signposting we might implement. This chart shows that for every reading the clock takes on the hour, it runs the initialisation phase. This phase consists of white lights circling round. After this, if data reading is successful, the first light is plotted. For subsequent readings, the appropriate states are reflected in the clock’s display. Before we implemented signposting, if there were errors in transmission of data, or communication to the hub, the clock would freeze its current display -  instead of reflect the nature of the problem. 
 
-IMAGE 20 - Arduino code for “error cases”. Here we introduced the specific cases which might occur. The comments clearly describe which case applies to which scenario. 
+![Arduino error cases](Images/Clock%20Images/IMAGE_20.png)
+
+	Arduino code for “error cases”. Here we introduced the specific cases which might occur. The comments clearly describe which case applies to which scenario. 
 
 Once the modified case statement was developed, we tested the clock in isolation with specific error values, and observed the light output. This was to ensure that the signposting was effective, and clearly conveyed different messages. 
 
-IMAGE 21 - Display for error case 1. The clock outputs a white display of lights and holds it there for a few seconds. 
+![case 1](Images/Clock%20Images/IMAGE_21.jpg)
 
-IMAGE 22 - Display for error case 2 - if the hub cannot be reached. The clock outputs a red “colour wheel” of light to indicate that there is an error. 
+	Display for error case 1. The clock outputs a white display of lights and holds it there for a few seconds. 
 
-IMAGE 23 - Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
+![case 2](Images/Clock%20Images/IMAGE_22.jpg)
+
+	Display for error case 2 - if the hub cannot be reached. The clock outputs a red “colour wheel” of light to indicate that there is an error. 
+
+![case 3](Images/Clock%20Images/IMAGE_23.jpg)
+	
+	Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
 
 The above cases show the clock displaying errors whilst working with dummy values, so our next stage is to make it work with the hub. This is fairly straightforward - we just have to send dummy data packets from the hub over to the clock over the Zigbee network to test it.
 
@@ -224,7 +262,9 @@ Since the data format for the clock has already been decided upon, the integrati
 
 The first integration step was to adjust delay times: 
 
-IMAGE 24 - Arduino code for delays. The variables represent different lengths of time that we could delay the clock for between reading values, as determined by the number of miliseconds. 
+![delay code](Images/Clock%20Images/IMAGE_24.png)
+
+	Arduino code for delays. The variables represent different lengths of time that we could delay the clock for between reading values, as determined by the number of miliseconds. 
 
 The clock is designed to display average readings on an hourly basis. For the sake of testing its functionality over a shorter timescale, we are running the clock in shorter iterations; e.g. minute by minute displays (for a total of 24 minutes) and second by second delays (24 seconds). This reduced time whilst testing, and saved having to wait 24 hours just to see the output of a day’s data. 
 
@@ -247,7 +287,9 @@ We resolved the issue of the starting point by making a very simple adjustment t
 To add a degree of error displays, we added a new light system for the clock to provide signposting. These operated similarly to other devices which use warning lights, and intended to direct user attention based on colour. 
 
 
-IMAGE 25 - LED index changes
+![case 1](Images/Clock%20Images/IMAGE_25.png)
+
+	LED index changes
 
 
 ####Current Problems
@@ -280,22 +322,32 @@ With these points, we set about producing some design mockups using google sketc
 #####Iteration 1
 
 
-IMAGE 26 & 27 - Sketchup designs of first prototypes. The general shape of the case is established here. The isometric view on the left shows the layers where the NeoPixel Ring could sit.
+![Design 1 a](Images/Clock%20Images/IMAGE_26.jpg)
+![Design 1 b](Images/Clock%20Images/IMAGE_27.jpg)
+
+	Sketchup designs of first prototypes. The general shape of the case is established here. The isometric view on the left shows the layers where the NeoPixel Ring could sit.
 
 In this iteration we designed the general shape of the case, and considered a transparent perspex “face” to promote the visibility of the lights. It was designed so the NeoPixel Ring would fit securely around the inner ring, with a space in the middle for the Flora to sit. The purpose of the base here is twofold. Whilst it doesn’t yet stand up, the base holds the components for the XBee module, and features a detachable back.  
 
 #####Iteration 2
 
-IMAGE 28 & 29 - Iteration 2. Here we began to establish how the case could use a stand to support the clock, and make the viewing angle easier. 
+![Design 2 a](Images/Clock%20Images/IMAGE_28.jpg)
+![Design 2 b](Images/Clock%20Images/IMAGE_29.jpg)
+
+	Iteration 2. Here we began to establish how the case could use a stand to support the clock, and make the viewing angle easier. 
 
 This iteration features our first implementation of a stand. This is important to the evolution of the clock, as it greatly increases visibility of the lights, and therefore aids the user’s engagement with it. The stand here is fairly small, so in future design iterations we will have to consider making more robust changes.
 
 #####Iteration 3
 
-IMAGE 30 & 31 - Iteration 3. This design uses a pull out stand which would potentially provide greater stability than the stand in the previous iteration. This would also be a useful feature for wall mounting the clock. 
+![Design 3 a](Images/Clock%20Images/IMAGE_30.jpg)
+![Design 3 b](Images/Clock%20Images/IMAGE_31.jpg)
+
+	Iteration 3. This design uses a pull out stand which would potentially provide greater stability than the stand in the previous iteration. This would also be a useful feature for wall mounting the clock. 
 
 This iteration implements a more sturdy stand to keep the clock upright. We were considering having a flip out stand, which can be put away based on user preference. Besides that, much of the general design is the same. 
-Final iteration
+
+#####Final iteration
 
 We finalised our case design to have a more sturdy base and used the 3D printer to construct it. The final case consisted of three major 3D printed parts which slotted together. For more information, see casing. 
 
