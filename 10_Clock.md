@@ -3,7 +3,6 @@
 
 ![Final Clock](Images/Clock%20Images/clock_final.jpg)
 
-	The final iteration of the clock
 
 The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels. It is designed to complement the more technical premise of the web server. 
 
@@ -158,8 +157,7 @@ We determined our RGB parameters by using a HTML colour picker, which allowed us
 
 Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. 
 
-![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.png)
-![Colour Spectrum 2](Images/Clock%20Images/IMAGE_12.jpg)
+![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.png) ![Colour Spectrum 2](Images/Clock%20Images/IMAGE_12.jpg)
 
 	Simplified colour spectrum. Going in a clockwise 
 	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
@@ -172,8 +170,7 @@ There is an issue with using purely colour based visualisation. When catering fo
 
 A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
 
-![Colour intensity 1](Images/Clock%20Images/IMAGE_13.png)
-![Colour intensity 2](Images/Clock%20Images/IMAGE_14.jpg)
+![Colour intensity 1](Images/Clock%20Images/IMAGE_13.png) ![Colour intensity 2](Images/Clock%20Images/IMAGE_14.jpg)
 		
 	NeoPixel Ring displaying the intensity spectrum. 
 
@@ -326,8 +323,7 @@ With these points, we set about producing some design mockups using google sketc
 #####Iteration 1
 
 
-![Design 1 a](Images/Clock%20Images/IMAGE_26.jpg)
-![Design 1 b](Images/Clock%20Images/IMAGE_27.jpg)
+![Design 1 a](Images/Clock%20Images/IMAGE_26.jpg) ![Design 1 b](Images/Clock%20Images/IMAGE_27.jpg)
 
 	Sketchup designs of first prototypes. The general shape of the case is established here. The isometric view on the left shows the layers where the NeoPixel Ring could sit.
 
@@ -335,8 +331,7 @@ In this iteration we designed the general shape of the case, and considered a tr
 
 #####Iteration 2
 
-![Design 2 a](Images/Clock%20Images/IMAGE_28.jpg)
-![Design 2 b](Images/Clock%20Images/IMAGE_29.jpg)
+![Design 2 a](Images/Clock%20Images/IMAGE_28.jpg) ![Design 2 b](Images/Clock%20Images/IMAGE_29.jpg)
 
 	Iteration 2. Here we began to establish how the case could use a stand to support the clock, and make the viewing angle easier. 
 
@@ -344,8 +339,7 @@ This iteration features our first implementation of a stand. This is important t
 
 #####Iteration 3
 
-![Design 3 a](Images/Clock%20Images/IMAGE_30.jpg)
-![Design 3 b](Images/Clock%20Images/IMAGE_31.jpg)
+![Design 3 a](Images/Clock%20Images/IMAGE_30.jpg) ![Design 3 b](Images/Clock%20Images/IMAGE_31.jpg)
 
 	Iteration 3. This design uses a pull out stand which would potentially provide greater stability than the stand in the previous iteration. This would also be a useful feature for wall mounting the clock. 
 
