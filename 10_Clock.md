@@ -88,8 +88,9 @@ The last iteration saw us investigating some requirements regarding the clock’
 
 #####Adafruit NeoPixel Ring
 
-![models](Images/Clock%20Images/IMAGE_6.png)
-Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
+![clock models](Images/Clock%20Images/clock_models.png)
+
+	Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
 
 We were directed towards the tech solutions offered by Adafruit (https://www.adafruit.com) which distributes the NeoPixel product; an assortment of addressable miniature LEDs arranged in rings, strips and boards (https://www.adafruit.com/category/168). We feel that this is a good platform for developing our system in hardware.
 The Adafruit NeoPixel device is a chainable collection of LEDs which can be interfaced with the NeoPixel Arduino library for support. Example code provided with the library demonstrated several of the device’s capabilities; notably the ability to manipulate timings of individual lights to come on. Conveniently, this was exactly what we were looking for as it provided a loose way of interfacing more complex tasks if we needed to. 
