@@ -1,8 +1,8 @@
 ##Clock
 ###Description
 
-
 ![Final Clock](Images/Clock%20Images/clock_final.jpg)
+
 
 The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels. It is designed to complement the more technical premise of the web server. 
 
@@ -201,7 +201,9 @@ After we had successfully set the NeoPixel ring up to display some dummy values,
 
 The networking involved hooking up the XBee device to the Adafruit Flora microcontroller using the RX and TX ports, allowing the two devices to communicate over serial. The XBee was attached to an Lilypad board at this point, allowing for easy interfacing with the microcontroller. This was simply to keep the XBee in place. 
 
-IMAGE 15 - Hardware setup for clock. Above is the clock interfaced with the Adafruit Flora microcontroller, which, in turn is interfaced with the lilypad board.  
+![Systems communication](Images/Clock%20Images/IMAGE_15.jpg)
+
+	Hardware setup for clock. Above is the clock interfaced with the Adafruit Flora microcontroller, which, in turn is interfaced with the lilypad board.  
 
 ####Networking with the clock
 
