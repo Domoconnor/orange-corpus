@@ -206,7 +206,7 @@ The nicknames for nodes helps in multiple ways, not only does it allow us to for
 
 #####Hub Python Library
 
-For information regarding the process behind designing and researching the API required for the Hub, please see Networking, Iteration 4.
+For information regarding the process behind designing and researching the API required for the Hub, please see [Networking, Iteration 4.](#network_i4).
 
 The Hub is utilising a library written to handle the API mode of the XBee, the library has many purposes that help make the network as robust as possible. Using these features we’ve been able to make our coordinator incredibly robust as handling large payloads, transmission errors, node discovery and error recovery.
 
@@ -255,7 +255,7 @@ Previously we’ve been unable to determine whether a packet was received or not
     2 = Invalid node, does not exist on network
     3 = Failed to transmit data to device, could not reach node
 
-So the Hub can now act accordingly, 
+So the Hub can now act accordingly.
 
 ~~~python
 sensor = “sensor1”
@@ -282,7 +282,7 @@ The Hub stores a list of messages it has received and arranges them based on cur
 
 Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
 
-##### Results of iteration
+##### Results of Iteration
 The Hub now using its new API Mode library can offer huge benefits to the network and the system as a whole. As the coordinator it controls effectively all data coming in and out. It offers node discovery, error correction and recovery, heartbeats and feedback on any disappearing nodes. With this addition the hub can now report back useful information to the webserver for analysis such as a node disappearing from the network due to battery failure or being out of range. 
 
 
