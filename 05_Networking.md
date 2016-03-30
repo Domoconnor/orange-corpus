@@ -164,7 +164,7 @@ Setting the XBees up involves us requiring two major pieces of information, the 
 
 We’ve started using FRDM-K64Fs to talk to one another as they provide an application shield and libraries alongside which are full compatibility with a hardware ‘installation’ of the XBee (installation being the XBee has dedicated pins, rather than soldering it to the board). The K64Fs had simple programs designed purely to send data to one another.
 
-![0](Images/Networking/IMAGE0.PNG)
+![0](Images/Networking/IMAGE0..PNG)
 
 The MBEDs is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an MBED to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components.
 
