@@ -1,23 +1,8 @@
-<style>
-	.todo{ color:red }
-</style>
+<a name="client-interaction"></a>
+##Client Interaction 
+[Back to contents.](#contents)
 
-#Orange Street
-
-## <a name="contents"></a>Contents
-* [Client Interaction](#client-interaction)
-* [Sensor](#sensor)
-* [Hub](#hub)
-* [Server](#server)
-* [Visualisation](#visualisation)
-	- Clock
-	- Website
-
-<p class="todo">REFERENCE MINUTES THROUGHOUT</p>
-
-### <a name="client-interaction"></a>Client Interaction - [cont.](#contents)
-
-####Aims
+###Aims
 Our client interaction brought to light these main issues to consider in our project. 
 
 **They do not want to think about the noise:**   
@@ -34,7 +19,7 @@ The client talked a lot about wanting the people in the street to know how noisy
 
 <p class="todo">DO WE WANT TO INCLUDE A LIST OF GOALS TO ACHIEVE?</p>
 
-#####Meeting ONE
+####Meeting ONE
 
 We had to speak with the clients before we started to formulate a solution. We had to know what they wanted, so that we could make a solution that best filled their needs. To prepare for this we researched proper interviewing techniques by reading: *“Interviewing users: How to Uncover Compelling Insights (Steve Portigal, 2013)”*.  
 
@@ -54,7 +39,7 @@ We spoke to another client that was meant to be present at the original meeting 
 
 <img src="images/OrangeStreet_dist.jpg">
 
-#####Vendor Communication
+####Other Communication
 
 We also tried to speak to other people, pubs and bars in the area to try and gain a greater understanding of the issues that were present in the street and what people were doing to try and solve them.  
 
