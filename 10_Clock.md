@@ -45,10 +45,13 @@ Overall, we felt that there was an advantage to having a physical clock, as it i
 
 ####What we need 
 The premise behind the clock is to provide a visual stimulus to the user in a simplified data format for quick reference. It also needs to be interconnected with other devices on the network to accurately display data. Since the device is going to be running a series of lights, it is likely that power usage will be high; which is a consideration for how it will be powered in the user’s home. We also need to decide what sort of hardware we are looking at using to implement this idea, and what limitations and/or advantages each particular technology would give us. The main requirements of the clock are therefore: 
-To provide an ambient visualisation of data which is engaging with the user 
-Be easily implemented with the rest of the system 
-Display data in a format that is easily grasped by the user
-To have a feasible hardware solution which complements our other means of data visualisation.
+
+<ul>
+<li>To provide an ambient visualisation of data which is engaging with the user. </li> 
+<li>Be easily implemented with the rest of the system. </li> 
+<li>Display data in a format that is easily grasped by the user. </li>
+<li>To have a feasible hardware solution which complements our other means of data visualisation.</li>
+</ul>
 
 #####Lo-fi prototyping and sketches
 In order to visualise a few different clock concepts, we created some sketches of the clock being represented in different ways. This was a way of gauging how the interface for the clock should look, as well as exploring some aspects such as colour, granularity, and the general visual layout for the user. 
