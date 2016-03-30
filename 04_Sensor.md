@@ -248,10 +248,58 @@ The most ideal MBED board we found was the FRDM-K64F which is regarded as the fl
 
 Even with all its functionality switched off the device consumes more amps than one of the arduino boards. However we decided that this board would be ideal if used for our hub, as during that period power will not be a concern. 
 
-
 *Conclusion*
 
-We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using Java we have written a program that talks on serial to the boards which prints out values as fast as it can from the AMP. With these values our program samples 50 times in a second, long enough to gauge a sound wave. Using the minimum and maximum samples we calculate the range and pass all these values along to a file to be saved.
+####Iteration 2, Making our own amplifier
+
+Using our amplifier we’ve been able to start sampling sound. We’ve been experimenting with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using the FRDM-K64F: 
+
+~~~c++
+Serial serial(USBTX, USBRX); // Serial connection
+ 
+// Initialize a pins to perform analog input
+AnalogIn   ain(A0);
+ 
+int main(void)
+{
+    while (1) {
+        // print to serial analog input
+        printf("normalized: %d \r\n", ain.read_u16()); 
+        
+    } 
+
+}
+~~~
+
+
+
+The FRDM-K64F has given us superb accuracy when sampling the microphone, values ranging from 0-65555. This is due to the 16bit analog to digital converter on the board. 
+
+IMAGE 11
+
+We also sampled using an Arduino Uno:
+
+~~~c++
+int analogPin = 3;     // Microphone amp connected pin 3
+int val = 0;           // variable to store the value read
+
+void setup()
+{
+  Serial.begin(9600);          //  setup serial
+}
+
+void loop()
+{
+  val = analogRead(analogPin);    // read the input pin
+  Serial.println(val);             // print to serial the value
+}
+~~~ 
+
+We need a way to take these values and use them to sample the sound wave. The values are being sent over serial, so having a program listening on serial and processing data will let us be able to visualise sound over time. 
+
+ Using Java we have written a program that talks on serial to the boards. Our program samples 50 times in a second, long enough to gauge a sound wave. Using the minimum and maximum samples we calculate the range and pass all these values along to a file to be saved.
+ 
+This is the section of our code which samples at 50 times a second:
 
 ```java 
 	// Read values from sensor
@@ -278,11 +326,25 @@ We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our exp
         // Save to file 
         // ...
 ```
- 
- <p align="center">Code snippet from Java Serial Receiver </p>  
- 
 
-Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate.
+Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate to gain a better understanding. 
+
+As of right now the values (0-500) on the Y axis are not too useful for us, we can determine whether noise has risen but we ideally want to work with decibel levels. 
+
+To view our testing results in more detail, please see here. 
+
+####Iteration 2, Using a pre-built amplifier
+
+We’ve purchased a pre-built amplifier to simplify our circuit, ideally we don’t want wires going everywhere and using a prebuilt amplifier makes our task easier due to less complexity and time required to build one. 
+
+IMAGE 12
+
+The next step is to wire the pre-built microphone amplifier to one of the boards, we’ve decided to use the FRDM K64F for the time being as its sample range from 0-65555 makes it appealing to work with.
+
+ 
+IMAGE 13
+
+This was a very simple change and nothing too complicated occurred, but it does benefit us in the long run. The size of the new amplifier works in our favour as its size makes it very easy to adopt into a system where as previously we had a cluster of wires and components. It doesn’t risk being disconnected when compared to our previous amplifier which was held together through loose wires. 
 
 A version of this code can be found [here](sensor/InitialNoiseLevel/)
 
@@ -314,7 +376,7 @@ This was a more reasonable amount of time and would give us a good amount of dat
 A version of this code can be found [here](sensor/SDCardPrototype/)
 
 
-####Iteration 2 
+####Iteration 4 
 #####Issues with previous iteration
 There were several issues that arose with the code and hardware we created during the christmas testing We discovered that the mic signal was not being amplified enough which led to a lot of readings being the same even though the noise levels were vastly different. The previous iteration also recorded data directly to an SD card for us to look at later. This is an issue as we needed some way of transmitting data back to the board.
 
@@ -323,14 +385,14 @@ We struggled with amplifying the sound as there we were also amplifiying a lot o
 
 We added an Xbee to the board so that we could transmit data back to the hub which worked without any issues.
 
-####Iteration 3
+####Iteration 5
 #####Issues with previous iteration
 We noticed some issues with the previous iteration cutting off data after sending large amounts. This is an issue that needs fixing. We are also currently getting the time for timestamping the data from the internal clock. This is proving to be an issue as the time is not accurate. Over longer periods the time on the board will drift further and further away from the actual time. Also, if the sensor runs out of battery the time will be lost.
 
 #####Result of iteration
 The loss of data when transmitting was due to the Xbee buffers being overloaded as we sent the data too quickly. To solve this we added small delays in between sending the data. This fixed the issue and the data appears to be being sent without any issues. We also added a clock to the circuit. This has a backup battery so it can still keep time in the event of the sensor losing power. This clock is also accurate and can keep to +/-1 second over a year. 
 
-####Iteration 4
+####Iteration 6
 The aim of this iteration was to fix the issue in iteration 2 where we discovered that mic readings were not being amplified enough to pick up changes in the noise level.
 
 #####Issues with previous iteration
@@ -339,7 +401,7 @@ No issues
 #####Result of iteration
 We added a 16-bit adc which gives us a higher resolution and also allows us to remove electical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the mic output into pin 2. Comparing these 2 pins gave us a wave that was much less noisy, as the power voltages were effectively cancelling each other out. This also means that we could produce a wave which had an maximum amplitude of that was the same as our resolution whereas previously there was a noise baseline which, when amplified, also increased leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
 
-#####Iteration 5
+#####Iteration 7
 For this iteration we wanted to add a rechargable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
 
 #####Issues with previous iteration
@@ -348,7 +410,7 @@ None
 #####Result of iteration
 We changed our board from an arduino to a more low power version. This board is called the 'Rocket Scream Mini Ultra 8 MHz Plus' and draws a much lower current than the arduino due to it's more power efficient on board regulator. This board also comes with a battery connector which allows us to plug a lithium polymer battery into it and provides pins which a source of up to 20V can be plugged in. We began testing charging it using a standard usb charger and it seems to work, albeit slowly as the charging circuit can charge the batter using a max current of 500mA compared to the 2A you'd be able to charge a similar sized phone battery at. We also tried a different version of the board which used even less power, the 'Rocket Scream Mini Ultra', however we decided against using this due to lack of features such as as voltage regulator, which we would need to use our battery efficiently, and recharging circuits.
 
-####Iteration 6
+####Iteration 8
 In this iteration we wanted to make sensor run at a lower power so it could last on batteries for much longer.
 
 #####Issues with previous iteration
@@ -402,7 +464,7 @@ void loop()
     // read the data...
 }  
 ```
-####Iteration 7
+####Iteration 9
 ##### Issues with the previous iteration
 There were several issues we noticed after the iteration. One of these was that the watchdog timer wasn't accurate enough and readings times were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The Xbee was also still drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
 
