@@ -76,10 +76,10 @@ IMAGE 6 - Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Ard
 During our concepting of the clock display, we came up with several different possibilities of data accuracy that we could 
 use. The main two directions for this were inspired by the 24 and 60 LED NeoPixel models respectively. 
 
-####24-Hour Display
+#####24-Hour Display
 The go-to approach that we looked into involved the 24-hour display clock, which averaged data over hourly periods, potentially transitioning to sleep mode between readings to save power. Adafruit’s solution to this offered an LED ring of 2.6” diameter; which is a relatively small display and could be mounted onto a small case or hub and unhooked for inspection. Early low fidelity prototypes of casing for this were modelled using cardboard, with emphasis being placed on the majority of the face being easily visible.  
 
-####Hour-By-Hour Display
+#####Hour-By-Hour Display
 There are also considerations to use other models of NeoPixel Ring. Of note is the NeoPixel Ring 60 x WS2812 model which offered 60 addressable LEDs; with which we can update more frequently to give an hour-by-hour display. A light would come on every minute after the averaged sample data was sent to the device until all 60 were lit; at which point it would rollover 
 for the next hour. 
 
@@ -100,7 +100,7 @@ IMAGE 7 - Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Ard
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
-####Reading clock data from a pre-programmed array
+#####Reading clock data from a pre-programmed array
 
 Since the clock will be working with real values, we investigated the ways that we could test it without interaction of the real system. This would involve using dummy values, and setting 
 A separate program we developed involved reading in dummy values from a pre-programmed array. The program would iterate through a size 24 integer array (consisting of integers from 0-100), and transfer data to a corresponding colour scale in the “setHourColour()” method. To fall within the case statements 0-10, each value was divided by 10 so that it would match a corresponding statement. The index positions of the array, which ranged from 0-23, matched each “hour” that the clock was displaying data for. This way, the clock display was to start from midnight, and iterate round to 11pm providing data coverage for all hours in between. 
@@ -128,13 +128,15 @@ IMAGE 11 & 12 - Simplified colour spectrum. Going in a clockwise direction, the 
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
-####Colour-blindness spectrum 
+#####Colour-blindness spectrum 
 
 There is an issue with using purely colour based visualisation. When catering for users who might have trouble distinguishing between colours, there is particular difficulty with telling the difference between green and red. Since our spectrum uses this two values as lower and upper bounds, it would be particularly problematic if the user couldn’t tell them apart. 
 
 A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
 
-IMAGE 13 & 14- Colour intensity spectrum. Similarly to the colour spectrum, the intensity increases as greater noise intensity values are read in. We have opted for red here, but it can be implemented in any colour.
+IMAGE 13 & 14- 
+
+#####Colour intensity spectrum. Similarly to the colour spectrum, the intensity increases as greater noise intensity values are read in. We have opted for red here, but it can be implemented in any colour.
 
 We felt having the option to display data in these varying formats could be useful to the user, and opens up possibilities for new ways our visualisation could be implemented. There are potentially ways that these two formats could be used in conjunction.
 
@@ -190,6 +192,7 @@ IMAGE 22 - Display for error case 2 - if the hub cannot be reached. The clock ou
 IMAGE 23 - Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
 
 The above cases show the clock displaying errors whilst working with dummy values, so our next stage is to make it work with the hub. This is fairly straightforward - we just have to send dummy data packets from the hub over to the clock over the Zigbee network to test it.
+
 The code for this iteration can be found here: [Clock_Cycle_V1b] 
 
 At this point, much of the clock’s functionality is working as intended. So far, we have tested the clock in isolation, and simulated its interactions with the hub device. We have also established a communication platform from our sender-receiver code, which we will adapt to integrate the clock into the system. 
@@ -257,14 +260,6 @@ When it came to designing the case to house the clock, we have several things to
 </ul>
 With these points, we set about producing some design mockups using google sketchup. Since we weren’t looking at modelling straight away, it was good to use this program to conceptualise some of properties of its general appearance.
 
-
-
-
-
-
-
-
-
 #####Iteration 1
 
 
@@ -277,7 +272,8 @@ In this iteration we designed the general shape of the case, and considered a tr
 IMAGE 28 & 29 - Iteration 2. Here we began to establish how the case could use a stand to support the clock, and make the viewing angle easier. 
 
 This iteration features our first implementation of a stand. This is important to the evolution of the clock, as it greatly increases visibility of the lights, and therefore aids the user’s engagement with it. The stand here is fairly small, so in future design iterations we will have to consider making more robust changes.
-Iteration 3
+
+#####Iteration 3
 
 IMAGE 30 & 31 - Iteration 3. This design uses a pull out stand which would potentially provide greater stability than the stand in the previous iteration. This would also be a useful feature for wall mounting the clock. 
 
