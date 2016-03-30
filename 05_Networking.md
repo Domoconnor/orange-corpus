@@ -11,6 +11,24 @@ The sensors were programmed in C++ and the Hub was programmed in Python. We have
 
 The libraries were designed so that one line of code would be required to send a message across the network while abstracting all heavy processing on traffic. The benefit of this was that the library could change and not require a whole body of code to change for the other sections of the project.  
 
+Hub API:
+
+~~~python
+# Send message with API, sensor1 lets the API know which 64bit
+# address we're looking for, returns successful or not
+response = xbee.sendMessage("sensor1", "Hello world!")
+~~~
+
+Sensors API:
+
+~~~c++
+void helloWorld(){
+	// Send message with API, will transmit to the coordinator
+	// Returns 0 if successfull
+	int response = xbee.sendMessage("Hello world!"); 
+}
+~~~
+
 ![13](Images/Networking/IMAGE14.PNG) 
 ![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG) 
 
