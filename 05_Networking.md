@@ -337,7 +337,7 @@ Although simple in principle, this was not possible with the use of AT mode (Wit
 
 The hubs library is much more extensive than of the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
 
-For more information regarding the Hub and API mode, see [cont.](#hub).
+For more information regarding the Hub and API mode, see [**Hub**](#hub).
 
 #####Library for nodes (Clock and Sensors)
 
