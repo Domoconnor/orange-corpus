@@ -88,7 +88,9 @@ The last iteration saw us investigating some requirements regarding the clock’
 
 #####Adafruit NeoPixel Ring
 
-IMAGE 6 - Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
+![clock models](Images/Clock%20Images/clock_models.png)
+
+	Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
 
 We were directed towards the tech solutions offered by Adafruit (https://www.adafruit.com) which distributes the NeoPixel product; an assortment of addressable miniature LEDs arranged in rings, strips and boards (https://www.adafruit.com/category/168). We feel that this is a good platform for developing our system in hardware.
 The Adafruit NeoPixel device is a chainable collection of LEDs which can be interfaced with the NeoPixel Arduino library for support. Example code provided with the library demonstrated several of the device’s capabilities; notably the ability to manipulate timings of individual lights to come on. Conveniently, this was exactly what we were looking for as it provided a loose way of interfacing more complex tasks if we needed to. 
@@ -96,8 +98,6 @@ The Adafruit NeoPixel device is a chainable collection of LEDs which can be inte
 The setup of this device requires the use of a breadboard to interface the NeoPixel ring with an Arduino Uno microcontroller, and the use of a PC to upload code from the Arduino libraries to the Uno. After setup, our first concern was to establish the range of colours we could use to recreate our “ambience” colour spectrum.
 
 We then displayed a spectrum of our proposed colours running from white (least ambient) through green, yellow, and orange to red (most ambient) recreating this colour wheel using the addressable LEDs. 
-
-IMAGE 6 - Models of NeoPixel Rings distributed by Adafruit. 
 
 ####Display Model
 During our concepting of the clock display, we came up with several different possibilities of data accuracy that we could 
@@ -157,11 +157,10 @@ We determined our RGB parameters by using a HTML colour picker, which allowed us
 
 Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. 
 
-![Colour Spectrum 1](Images/Clock%20Images/IMAGE_11.jpg)
-![Colour Spectrum 2](Images/Clock%20Images/IMAGE_12.jpg)
+![Colour Spectrum 1](Images/Clock%20Images/Colour_spec_comparison.png)
 
-	Simplified colour spectrum. Going in a clockwise 
-	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
+
+	Simplified colour spectrum. Going in a clockwise direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b]
 
@@ -171,8 +170,7 @@ There is an issue with using purely colour based visualisation. When catering fo
 
 A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
 
-![Colour intensity 1](Images/Clock%20Images/IMAGE_13.png)
-![Colour intensity 2](Images/Clock%20Images/IMAGE_14.jpg)
+![Colour intensity 1](Images/Clock%20Images/Intensity_spec_comparison.png)
 		
 	NeoPixel Ring displaying the intensity spectrum. 
 
@@ -325,8 +323,7 @@ With these points, we set about producing some design mockups using google sketc
 #####Iteration 1
 
 
-![Design 1 a](Images/Clock%20Images/IMAGE_26.jpg)
-![Design 1 b](Images/Clock%20Images/IMAGE_27.jpg)
+![Design 1 a](Images/Clock%20Images/IMAGE_26.jpg) ![Design 1 b](Images/Clock%20Images/IMAGE_27.jpg)
 
 	Sketchup designs of first prototypes. The general shape of the case is established here. The isometric view on the left shows the layers where the NeoPixel Ring could sit.
 
@@ -334,8 +331,7 @@ In this iteration we designed the general shape of the case, and considered a tr
 
 #####Iteration 2
 
-![Design 2 a](Images/Clock%20Images/IMAGE_28.jpg)
-![Design 2 b](Images/Clock%20Images/IMAGE_29.jpg)
+![Design 2 a](Images/Clock%20Images/IMAGE_28.jpg) ![Design 2 b](Images/Clock%20Images/IMAGE_29.jpg)
 
 	Iteration 2. Here we began to establish how the case could use a stand to support the clock, and make the viewing angle easier. 
 
@@ -343,8 +339,7 @@ This iteration features our first implementation of a stand. This is important t
 
 #####Iteration 3
 
-![Design 3 a](Images/Clock%20Images/IMAGE_30.jpg)
-![Design 3 b](Images/Clock%20Images/IMAGE_31.jpg)
+![Design 3 a](Images/Clock%20Images/IMAGE_30.jpg) ![Design 3 b](Images/Clock%20Images/IMAGE_31.jpg)
 
 	Iteration 3. This design uses a pull out stand which would potentially provide greater stability than the stand in the previous iteration. This would also be a useful feature for wall mounting the clock. 
 

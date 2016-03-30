@@ -1,29 +1,25 @@
-#Orange Street
+<style>
+ul{
+margin:0;
+}
 
+
+</style>
+<div style="position:fixed; top:0; left:0; margin:10px;">
+<a href="#contents">Back to Contents</a>
+</div>
+#Orange Street
+<a name="contents"></a>
 ##Contents
 
--	[Server](#server)
-	- [Overview](#server_overview)
-	- [API Spec](#server_spec)<style>
-	.todo{ color:red }
-</style>
+[toc]
 
-#Orange Street
 
-## <a name="contents"></a>Contents
-* [Client Interaction](#client-interaction)
-* [Sensor](#sensor)
-* [Hub](#hub)
-* [Server](#server)
-* [Visualisation](#visualisation)
-	- Clock
-	- Website
+<a name="client-interaction"></a>
+##Client Interaction 
+[Back to contents.](#contents)
 
-<p class="todo">REFERENCE MINUTES THROUGHOUT</p>
-
-### <a name="client-interaction"></a>Client Interaction - [cont.](#contents)
-
-####Aims
+###Aims
 Our client interaction brought to light these main issues to consider in our project. 
 
 **They do not want to think about the noise:**   
@@ -40,7 +36,7 @@ The client talked a lot about wanting the people in the street to know how noisy
 
 <p class="todo">DO WE WANT TO INCLUDE A LIST OF GOALS TO ACHIEVE?</p>
 
-#####Meeting ONE
+####Meeting ONE
 
 We had to speak with the clients before we started to formulate a solution. We had to know what they wanted, so that we could make a solution that best filled their needs. To prepare for this we researched proper interviewing techniques by reading: *“Interviewing users: How to Uncover Compelling Insights (Steve Portigal, 2013)”*.  
 
@@ -50,7 +46,7 @@ Our intended outcome for this meeting was to have an incite into our clients per
 
 <p class="todo">INCLUDE RECORDING</p>
 
-#####Meeting TWO
+####Meeting TWO
 
 We spoke to another client that was meant to be present at the original meeting but was unable to make it. They are a landlord of Orange Street tenants living next to a popular club called ‘The Ballroom’. In this meeting we followed the same layout as set in the first meeting, making one person take the lead and the others taking notes, we also followed the same structure of questions.
 
@@ -60,7 +56,7 @@ We spoke to another client that was meant to be present at the original meeting 
 
 <img src="images/OrangeStreet_dist.jpg">
 
-#####Vendor Communication
+####Other Communication
 
 We also tried to speak to other people, pubs and bars in the area to try and gain a greater understanding of the issues that were present in the street and what people were doing to try and solve them.  
 
@@ -127,13 +123,7 @@ When making a review request evidence needs to be provided to support the case t
 * sound recordings
 * a record of complaints made to the responsible authorities about the premise
 
-<style>
-	.todo{ color:red }
-</style>
-
-#Orange Street
-
-###Initial Ideas
+##Initial Ideas
 
 At this point we had spoken to enough individuals to have a good place to start working on a potential prototype. We needed to plan how we would efficiently tackle the problem ahead of us. We first had to make a list of requirements based on our aims <span class="todo">link to aims</span>
 
@@ -155,7 +145,7 @@ Translating this to a solution we can work with:
 * We needed a case that could survive harsh weather and conditions, one that would be of a suitable Ingress Protection Rating.
 * 
 
-#### Minutes
+### Minutes
 
 Below are the minutes taken for every meeting that we, personally had between us as a group. They are a rough summary of what decisions we chose to take and how we followed up on them in the weeks after.
 
@@ -354,7 +344,7 @@ A final version of the code can be found [here](sensor/micTest)
 
 ### Previous Work
 
-####  Iteration 1
+####Iteration 1 - Researching Hardware
 Based on our [client interaction](#client_interaction) we decided that we had to make a device that measured the volume of the sound in Orange Street, collecting the data and sending it back to a server so that it is stored and can be accessed by the client to use.
 
 Building on the initial ideas we had and also looking back to the client interaction section we decided on the following requirements for the sensor:
@@ -371,13 +361,13 @@ We looked into how sound works and discovered that we would need to capture a so
 
 After talking to the client the important part of the diagram would remain constant throughout the process, which was the amplifying circuit. For a microphone to be able to produce a voltage signal able to be processed for data it must be amplified, we know for certain we are measuring noise levels in this project and so this is a crucial step.
 
-**image 1**
+![1](Images/sensordan/IMAGE1.PNG)
 
 The basic place to start is a non-inverting amplifying circuit, used with any op-amp it effectively calculates the gain based on two resistor values going into an inverting and non-inverting input. (Gain= 1+ (R2/R1)
 
 The OP-AMP IC we’ve been using is the MCP 6002, the datasheet can be found here. (http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf)
 
-**Image 2**
+![2](images/sensordan/IMAGE2.png)
 
 It’s an IC with two OP-AMPS and isn’t designed for anything too complicated, for the time being it’s perfect to get a basic amplifying circuit built.
 
@@ -387,7 +377,7 @@ Most microphones that feed into a amplifying circuit are biased by a resistor va
 
 So far, we’re looking at a circuit like this.
 
-**image 3**
+![3](images/sensordan/IMAGE3.png)
 Other solutions that can be found on the web include using a different IC (As opposed to the MCP 6002) and modifying the circuit above. 
 
 List of other IC’s and amplifiers we looked into.
@@ -501,11 +491,11 @@ This narrowed down our choices to the following Arduino devices.
 	<li>Arduino Uno</li>
 </ul>
 
-**Image 4**
+![4](images/sensordan/IMAGE4.png)
 
 *Arduino Nano*
 
-**Image 5**
+![5](images/sensordan/IMAGE5.png)
 
 (https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf)
 
@@ -526,7 +516,7 @@ It can run the ATMega 168 or 328, we would ideally use the 328 as it offers much
 
 *Arduino Pro mini*
 
-**Image 6**
+![6](images/sensordan/IMAGE6.png)
 
 (http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf)
 
@@ -536,7 +526,7 @@ Essentially the Pro Mini is identical to the Arduino Nano except for the added a
 
 *Arduino Uno*
 
-**IMAGE 8**
+![8](images/sensordan/IMAGE8.png)
 
 The Uno sticks out in this comparison due to its size difference against the previous 3, which begs the question - why then? Simply put, the Arduino Uno is a very friendly board to use, and for prototyping would be ideal as we would not need to worry about many problems that we could face when going straight in with one of the other solutions. It also shares a lot of common ground with the other 3, except for its size.
 
@@ -546,7 +536,7 @@ The biggest benefit for us, was that the Uno would offer easy adaptability and h
 
 *MBED FRDM-K64F*
 
-**IMAGE 9**
+![9](images/sensordan/IMAGE9.png)
 
 Another popular developer of IOT boards, using ARM based architecture instead of AVRs. The argument between these two processor architecture is often put down to ARM is powerful, and AVR is not so much. There are variants on the processors but otherwise they tend to stick to those groups. MBEDs have an online compiler and IDE, which works in a similar fashion to Arduinos but is effectively always online which comes with its own problems such as requiring internet access. 
 
@@ -554,10 +544,57 @@ The most ideal MBED board we found was the FRDM-K64F which is regarded as the fl
 
 Even with all its functionality switched off the device consumes more amps than one of the arduino boards. However we decided that this board would be ideal if used for our hub, as during that period power will not be a concern. 
 
+####Iteration 2 - Making our own amplifier
+#####Issues with previous iteration
+No issues to report, this is the first design iteration.
 
-*Conclusion*
+#####Result of iteration
+Using our amplifier we’ve been able to start sampling sound. We’ve been experimenting with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using the FRDM-K64F:
 
-We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our experiments with these boards consisted of testing the circuit we had made for measuring sound levels. Using Java we have written a program that talks on serial to the boards which prints out values as fast as it can from the AMP. With these values our program samples 50 times in a second, long enough to gauge a sound wave. Using the minimum and maximum samples we calculate the range and pass all these values along to a file to be saved.
+~~~c++
+Serial serial(USBTX, USBRX); // Serial connection
+ 
+// Initialize a pins to perform analog input
+AnalogIn   ain(A0);
+ 
+int main(void)
+{
+    while (1) {
+        // print to serial analog input
+        printf("normalized: %d \r\n", ain.read_u16()); 
+        
+    } 
+
+}
+~~~
+
+The FRDM-K64F has given us superb accuracy when sampling the microphone, values ranging from 0-65555. This is due to the 16bit analog to digital converter on the board. 
+
+![11](images/sensordan/IMAGE11.png)
+
+We also sampled using an Arduino Uno:
+
+~~~c++
+int analogPin = 3;     // Microphone amp connected pin 3
+int val = 0;           // variable to store the value read
+
+void setup()
+{
+  Serial.begin(9600);          //  setup serial
+}
+
+void loop()
+{
+  val = analogRead(analogPin);    // read the input pin
+  Serial.println(val);             // print to serial the value
+}
+~~~ 
+
+We need a way to take these values and use them to sample the sound wave. The values are being sent over serial, so having a program listening on serial and processing data will let us be able to visualise sound over time. 
+
+ Using Java we have written a program that talks on serial to the boards. Our program samples 50 times in a second, long enough to gauge a sound wave. Using the minimum and maximum samples we calculate the range and pass all these values along to a file to be saved.
+ 
+This is the section of our code which samples at 50 times a second:
 
 ```java 
 	// Read values from sensor
@@ -584,13 +621,30 @@ We did experiment with the FRDM K64F and Arduino Uno in measuring sound. Our exp
         // Save to file 
         // ...
 ```
- 
- <p align="center">Code snippet from Java Serial Receiver </p>  
- 
 
-Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate.
+Logging this data shows the structure and accuracy behind our sensor. Using this data we can increase the sensitivity of our sensor or increase the sample rate to gain a better understanding. 
 
-A version of this code can be found [here](sensor/InitialNoiseLevel/)
+As of right now the values (0-500) on the Y axis are not too useful for us, we can determine whether noise has risen but we ideally want to work with decibel levels. 
+
+To view our testing results in more detail, please see here. 
+
+####Iteration 3 - Using a pre-built amplifier
+#####Issues with previous iteration
+The size of the amplifier we built was ideally too large for a small sensor, we could condense it by soldering and moving components closer together but it would be easier and more efficient to buy pre-built amplifiers. 
+
+#####Result of iteration
+We’ve purchased a pre-built amplifier to simplify our circuit, ideally we don’t want wires going everywhere and using a prebuilt amplifier makes our task easier due to less complexity and time required to build one. 
+
+![12](images/sensordan/IMAGE12.png)
+
+The next step is to wire the pre-built microphone amplifier to one of the boards, we’ve decided to use the FRDM K64F for the time being as its sample range from 0-65555 makes it appealing to work with.
+ 
+![13](images/sensor/IMAGE13.png)
+
+This was a very simple change and nothing too complicated occurred, but it does benefit us in the long run. The size of the new amplifier works in our favour as its size makes it very easy to adopt into a system where as previously we had a cluster of wires and components. It doesn’t risk being disconnected when compared to our previous amplifier which was held together through loose wires. 
+
+* For a version of this code see <a href="/sensor/initialNoiseLevel/sketch_dec02a/sketch_dec02a.ino">here</a>.
+* For the Java sampling program see <a href="/SensorJavaSamplingCode/">here</a>. 
 
 ####Christmas Deployment
 Over the christmas period we deployed a version of our sensor that wrote data to an SD card. This was designed to go into one of the resident's houses and record data for a short period of time. We used an arduino uno with a shield that contained an SD card reader. 
@@ -620,7 +674,7 @@ This was a more reasonable amount of time and would give us a good amount of dat
 A version of this code can be found [here](sensor/SDCardPrototype/)
 
 
-####Iteration 2 
+####Iteration 4 
 #####Issues with previous iteration
 There were several issues that arose with the code and hardware we created during the christmas testing We discovered that the mic signal was not being amplified enough which led to a lot of readings being the same even though the noise levels were vastly different. The previous iteration also recorded data directly to an SD card for us to look at later. This is an issue as we needed some way of transmitting data back to the board.
 
@@ -629,14 +683,14 @@ We struggled with amplifying the sound as there we were also amplifiying a lot o
 
 We added an Xbee to the board so that we could transmit data back to the hub which worked without any issues.
 
-####Iteration 3
+####Iteration 5
 #####Issues with previous iteration
 We noticed some issues with the previous iteration cutting off data after sending large amounts. This is an issue that needs fixing. We are also currently getting the time for timestamping the data from the internal clock. This is proving to be an issue as the time is not accurate. Over longer periods the time on the board will drift further and further away from the actual time. Also, if the sensor runs out of battery the time will be lost.
 
 #####Result of iteration
 The loss of data when transmitting was due to the Xbee buffers being overloaded as we sent the data too quickly. To solve this we added small delays in between sending the data. This fixed the issue and the data appears to be being sent without any issues. We also added a clock to the circuit. This has a backup battery so it can still keep time in the event of the sensor losing power. This clock is also accurate and can keep to +/-1 second over a year. 
 
-####Iteration 4
+####Iteration 6
 The aim of this iteration was to fix the issue in iteration 2 where we discovered that mic readings were not being amplified enough to pick up changes in the noise level.
 
 #####Issues with previous iteration
@@ -645,7 +699,7 @@ No issues
 #####Result of iteration
 We added a 16-bit adc which gives us a higher resolution and also allows us to remove electical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the mic output into pin 2. Comparing these 2 pins gave us a wave that was much less noisy, as the power voltages were effectively cancelling each other out. This also means that we could produce a wave which had an maximum amplitude of that was the same as our resolution whereas previously there was a noise baseline which, when amplified, also increased leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
 
-#####Iteration 5
+#####Iteration 7
 For this iteration we wanted to add a rechargable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
 
 #####Issues with previous iteration
@@ -654,7 +708,7 @@ None
 #####Result of iteration
 We changed our board from an arduino to a more low power version. This board is called the 'Rocket Scream Mini Ultra 8 MHz Plus' and draws a much lower current than the arduino due to it's more power efficient on board regulator. This board also comes with a battery connector which allows us to plug a lithium polymer battery into it and provides pins which a source of up to 20V can be plugged in. We began testing charging it using a standard usb charger and it seems to work, albeit slowly as the charging circuit can charge the batter using a max current of 500mA compared to the 2A you'd be able to charge a similar sized phone battery at. We also tried a different version of the board which used even less power, the 'Rocket Scream Mini Ultra', however we decided against using this due to lack of features such as as voltage regulator, which we would need to use our battery efficiently, and recharging circuits.
 
-####Iteration 6
+####Iteration 8
 In this iteration we wanted to make sensor run at a lower power so it could last on batteries for much longer.
 
 #####Issues with previous iteration
@@ -708,7 +762,7 @@ void loop()
     // read the data...
 }  
 ```
-####Iteration 7
+####Iteration 9
 ##### Issues with the previous iteration
 There were several issues we noticed after the iteration. One of these was that the watchdog timer wasn't accurate enough and readings times were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The Xbee was also still drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
 
@@ -721,14 +775,11 @@ All code mentioned in this section can be found [here](sensor/)
 ### Bibliography
 
 Arduino.cc, (n.d.). Arduino - ArduinoBoardProMini. [online] Available at: https://www.arduino.cc/en/Main/ArduinoBoardProMini [Accessed 16 Jan. 2016].
-<style>
-	.todo{ color:red }
-</style>
 
-[toc]
 
 <a name="networking"></a>
-##Networking [cont.](#contents)
+##Networking 
+[Back to contents](#contents)
 ###Description
 
 Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we need. The coordinator is capable of addressing each node on the network as well as the nodes being able to address the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
@@ -745,9 +796,9 @@ IMAGE 2
 
 ###Previous Work
 
-####Iteration 1, Researching Wireless Solutions
+####Iteration 1
 
-#####The Solution we need
+#####What We Need
 
 Based on how we aim to solve the problem, with multiple sensors sending data back to a hub. <span class="todo">reference initial ideas page</span> Our networking solution needs to allow us to have a hub that can have multiple sensors connected wirelessly. The network needs to allow us to communicate data reliably. The data we are expecting to be sending between the sensors and the hub is only going to be ≈ 2000 bits an hour based on the fact that we are going to send a timestamp and an averaged hourly value as a 'long' and an 'int'. 
 
@@ -766,7 +817,7 @@ Here is a table that we formulated over common wireless solutions:
 		<td>Current Consumption (max)</td>
 		<td>Power Consumption (sleep)</td>
 		<td>Voltage</td>
-		<td>Data Rate (s)</td>
+		<td>Data Rate (sec)</td>
 	</tr>
 	<tr>
 		<td>WiFi</td>
@@ -791,7 +842,7 @@ Here is a table that we formulated over common wireless solutions:
 	<tr>
 		<td>Bluetooth Low Energy</td>
 		<td>100m</td>
-		<td>< 100m</td>
+		<td>50m</td>
 		<td>2.4GHz</td>
 		<td>15mA</td>
 		<td>Varies</td>
@@ -801,7 +852,7 @@ Here is a table that we formulated over common wireless solutions:
 	<tr>
 		<td>XBee XSC</td>
 		<td>9500m</td>
-		<td>610m</td>
+		<td>600m</td>
 		<td>902 - 928MHz</td>
 		<td>60mA(R) 265mA(T)</td>
 		<td>45uA</td>
@@ -820,6 +871,8 @@ Here is a table that we formulated over common wireless solutions:
 	</tr>
 </table>
 
+[xbee comparison](https://www.sparkfun.com/pages/xbee_guide)
+
 <br>
 *WiFi*
 
@@ -831,232 +884,101 @@ However, the main reasons why we would want to use WiFi comes in two forms. Not 
 
 One of our mains goals for the sensor is to make the battery as long as possible . WiFi is one of the more power consuming options, so using WiFi with or without a hub our sensor would have to use much more power when receiving and transmitting data making the battery life less than desirable. 
 
-Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
-
 <br>
 *Bluetooth and Bluetooth Low Energy*
 
-Bluetooth is also a viable alternative for transferring over a low bandwidth where speed is not too key an issue. Depending on how often we schedule the device to transmit data. Since the range on this is considerably lower (5-30 meters) so we would have to consider integrating this with a hub of some kind to forward our data. Fortunately some of the properties across Orange Street feature flat rooftops; upon which we could attach peripherals such as antennas if we need to.  
+Bluetooth is also a viable solution. Bluetooth and Bluetooth LE can be ideal for data transmission over low bandwidth, and in our case both bluetooth and BLE both have high enough bandwidth for what we are looking to do. The range on bluetooth is of the lowest (with a max of 30 meters) of the possible solutions we would have to make sure that the range was suitable in the customers house if we are going to use it. Whereas bluetooth LE is a better solution as it will run with a much lower energy consumption and has a much better range in urban areas where we will be deploying the devices.
 
-Bluetooth smart devices have a typically very low sleep current which equates to low power consumption when it isn’t being used. This is ideal as the device will have periods of inactivity once we decide upon which kind of timeframe it should be operating over. 
+Both possible solutions offer a star network (piconet) topology which would be a good solution to our problem. With there bing a master device (hub) and slaves (sensors) being connected. Although there is a maximum of seven slaves able to connect to a master at one time. Nevertheless, seven slaves might not be an unreasonable amount for what we are trying to do. We do not aim to have seven sensors in a customers house. Ultimately it would not be a scalable solution if you wanted more than seven sensors in one house as we would then have to have multiple hubs.
 
-Bluetooth works on a dynamic network topology called PAN, which supports up to 8 other devices and a minimum of two, although we don’t plan on having an abundance of sensors in one house (Minimum most likely 3) 
+Also, with bluetooth we would have to carefully schedule how we send and received data as bluetooth (general) has to form a connection between master and slave to transmit data.
 
 <br>
 *XBee S2 and XSC*
 
-We found that the S2 in particular was more than adequate for our desires, having one of the lower current draws for transmitting/receiving data, especially that of in sleep with a good data rate (250kbps) and working on a mesh network topology.  Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network than other alternatives.
+The XBee S2 is also a good solution to our problem, having a low current draw for transmitting/receiving data, especially when in sleep, a data rate (250kbps) suitable for what we want to send, range suitable for what we need and the possibility for a mesh network topology. Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network.
 
-The XBee can also be programmed manually to work on its own meaning in theory we could eliminate the Microcontroller entirely, however this solution leads to problems involving working out the current time and large packet payloads. We may come back to it at a later point, but for now we decided to use it purely for as means for A-B for our data. 
+The XBee can also be programmed manually to work on its own meaning in theory we could eliminate the Microcontroller entirely, however this solution leads to problems involving working out the current time and large packet payloads. 
 
-#####Conclusion, Configuring the XBee
+XBee XSC seems to be unideal for what we are trying to do. The range is unnecessarily high because we are looking at sending distances of 40m max. The power draw is also an issue because of the range it can send also, because of the range the data rate is much lower. All of these things considered it is not a good solution compared to the S2.
 
-We've decided to choose the XBee S2 as our solution. Due to its customisability and low powered nature its perfect for having our own control on a network. If we utilised WiFi for example then we would have to concern ourselves with high power usage and lacking full control of the network. The XBee offers a multitude of different possibilites and fits closest to our goals of a low powered networking solution. 
+#####Conclusion
 
-####Iteration 2, XBee AT Mode
+Comparing all of these technologies there are two standouts being Bluetooth LE and XBee S2 because of their low power consumption and ideal transmission range. On one hand BLE is better than XBee because of its higher data rate and slightly larger range. Although, we decided to go with the XBee because of the possibility of creating a mesh network based on the scalability of the product. Although we are going to use the AT mode one the XBee which will give us a basic star network to begin with.
+
+#####Initial Network
 
 XBees have microcontrollers onboard that store and control the instructions that let them know where data is being sent, sleep functionality, node hopping, retry attempts and much more. For our network we needed to configure each XBee to work within our desired parameters.
 
-In order to configure these settings we required software and hardware to interface into the XBee, software created by Digit International called XCTU. We had to make our own programmer however as we hadn't received our own programmer as of yet. With this we have started altering the settings on the firmware to adapt the XBees to our desired network structure.
+In order to configure these settings we required software and hardware to interface into the XBee. XCTU,software created by Digit International and a makeshift serial programmer. With this we could then start altering the settings on the firmware and adapt the XBee's to our desired network structure.
 
 IMAGE 5
 
-When programming the XBees over serial, there are many different options for installing new firmware settings. We've been working with ZNet 2.5 AT for both coordinators and end routers on the network as this is the recommended starting firmware as provides all functionality we currently need. Although we could end changing at a later date depending on what functionality we require.
+When programming the XBees over serial, there are many different options for installing new firmware settings. Initially we worked with ZNet 2.5 AT for both coordinators and end routers on the network.
 
-XBees share one trait across all networks, that is the requirement for them to be able to communicate; using a PANID. The PANID is a 64 bit integer that is unique on a network and separates other networks in close proximity from each other, unless you unluckily both choose the same PANID - however with the options available that is a very slim chance.
+XBees share one trait across all networks that is a requirement for them to be all to communicate, this is their PANID. The PANID is a 64 bit integer that is ideally unique on a network and separates other networks in close proximity from each other.
 
 IMAGE 6
 
-Using AT Command mode we've had to specifically set values on the XBee. These have ranged from 64bit destination address to encryption being enabled. This information is used in creating packets, we can't change this information without reprogramming the XBees which could cause a problem. However we know which nodes need to address each other in the long run, so none of these details need changing for the time being. 
+Using AT Command mode we had to specifically set values on the XBee. These ranged from 64bit destination address to encryption being enabled. This information was used in creating packets.
 
-After we set the two XBee devices to be on the same personal network (sharing PANID), aligning their firmware (ZNet 2.5 AT), and finally setting them as coordinator and router - they were able to communicate. In AT mode we could send bytes down serial to the XBee and the firmware of that XBee would create a packet based on what we’ve set as predefined instructions. The XBee constructed these packets based on their programmed firmware, which we had configured. 
+After we set the two XBee devices to be on the same personal network (sharing PANID), aligning their firmware (ZNet 2.5 AT), and finally setting them as coordinator and router - they were able to communicate. In AT mode we could send bytes down serial to the XBee and the firmware of that XBee would create a packet based on what we’ve set as predefined instructions.
 
-We ideally need one hub per house which could communicate and route data between nodes. The hubs are going to be powered by mains as opposed to sensors which are powered by batteries and in varying locations. The sensors communicate using XBees to the Hub on a mesh topology, in theory allowing us to have as many sensors as we may need.
+<p class ="todo">DAN code for sending on arduino/ frdm. just initial sending in at stuff
 
-#####Setting up AT Mode
+Testing the range of the XBee revealed some problems that were unseen before such as the range being weaker than expected when facing an urban environment. The shed being the receiver's location is simply a building in an open courtyard surrounded by other buildings. The moment we entered another building the XBee's communication would experience huge packet loss and eventually fail entirely. This lead to a new problem, how could we guarantee data's arrival. If the nodes on the network were out of range how could we display this to our client in a meaningful manner?
 
-We’ve been using AT mode so far with XBees. AT Mode is designed to be very straightforward to use, the device connects to the XBee module on serial and sends any data in a form of bytes to be used in a packet and transmitted on the network. We’ve been using XCTU to talk between XBee modules, making sure we understand the concepts of how they are designed to communicate and parameters for addressing each other. 
-	
-
-IMAGE 7.1
-
-Setting the XBees up involves us requiring two major pieces of information, the PANID and Address. The coordinators destination points to 0x000000000000FFFF while any end points or routers need to point their destinations to the coordinator's address. That can be achieved in two ways, one way is using 0x0000000000000000 or actually specifying its address.
-
-IMAGE 7.2
-#####AT Mode and Hardware
-
-We’ve started using FRDM-K64Fs to talk to one another as they provide an application shield and libraries alongside which are full compatibility with a hardware ‘installation’ of the XBee (installation being the XBee has dedicated pins, rather than soldering it to the board). The K64Fs had simple programs designed purely to send data to one another.
-
-INSERT PICTURE OF MBEDS
-
-The MBEDs is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an MBED to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components.
-
-* Code for MBED receiver
-* Code for MBED transmitter
-
-#####Testing Range
-
-We know roughly the distance of an XBee from its datasheet, however our clients home and in particular Canterbury has very old structures. These structures have very thick walls, we need to know whether our XBees can transmit through these obstacles or whether we need to boost the signal. We modified the previous code used to test between FRDM K64Fs to calculate latency between packets and then walked around parts of campus determining if we had enough packet loss for concern.
-
-We used ‘The Shed’ as the coordinators base station while moving through different parts of the School of Computing while the coordinator was making note of whether it was receiving any data or not. We’ve mapped our findings and calculated distances to determine whether we are going to struggle with walled structures or not.
+Testing the XBee's we found that the range was about what we expected. We tested the range by tanking a sensor, that was a node on the network, from the shed, that housed the coordinator, 
 
 IMAGE 4
 
-As shown above the XBees are capable of travelling around 30m and only suffer complete packet loss when passing multiple walls, which is most likely unavoidable in our project. We will definitely need some form low powered communications network so boosting the power will be a trade off we most likely can’t afford. 
+Although we didn’t need XBee’s to be able to communicate huge distances (beyond 25m) it did raise concerns - causing us to later research API mode and ways of ensuring packet robustness.
 
-####Iteration 3, AT Mode with Hub, Sensor and Clock
+####API vs AT
 
-Our next role is to implement the Hub, Clock and the sensor(s) on the network. For this to work all nodes need to be able to communicate with one another.
+We used API mode over AT mode in the end as this offered more configurability for our network, however it was more overhead in terms of setting up. We would need to account for packet formats, error checking and versatility. With AT mode a lot of this is covered for you, however nearly all of it is hidden away and meant that we couldn’t use it.
 
-IMAGE 7.3
+For API mode to work in our favour, we had to create two APIs one for the sensors and the Hub. These APIs had to be able to interpret the packet format expected from the XBees (see for formatting: Hub)
 
-The sensor is planning to send around 700 bytes of data an hour to the hub, the hub then processes that data. If the clock sends a request to the hub then the hub processed that and responds with data back to the clock. Using AT mode it is simply a matter of writing down to serial the bytes you wish to send across the network, all the nodes are configured to talk to one another. The clock and sensor both have their destination addresses set 0x0 pointing to the coordinator while the coordinator has its address set to 0x000000000000FFFF. This allows it to broadcast, the sensor won’t respond as it will not be needed and will be utilising sleep mode on the XBee whereas the clock will respond as the broadcast will directed at the clock.
+IMAGE 8
 
-Code used for Hub with AT Mode can be found here.
+The written APIs for API mode
 
-#####Problems
+The premise of the APIs was to create libraries that would not force the other components to be completely recoded, instead replacing one line would effectively have the same result. With AT mode, sending data was a simple matter of writing that data out to serial and we needed to keep that format. In actuality, with API mode it was not that straightforward. We needed to recreate the packet structure every time a packet was to be sent.
 
-In theory the solution was fine, however a problem we did not account for was payload size. For unknown reasons the coordinator would lose segments of incoming data and then just carry on until it received the next transmission. This meant that data was becoming malformed and mixed up which meant it was completely useless to us. Upon further investigation, we found that the internal buffers of the XBees are that of 202 bytes. The XBee datasheet offers flow-control through the use of pins CTS and RTS but in fact it's very likely the XBee doesn’t support fragmentation of packets as we haven’t found anything to prove it does. Using the CTS and RTS pins could prove interesting, but it would only solve the problem of knowing when the XBees internal buffers are almost full or empty.
+We needed a way to change one line into a whole new function but without changing more than just that line.
 
-So we’re likely to be able to send around 150 bytes in a single packet (RF data and packet header), we circumvented this for the time being by purposely delaying and breaking up the data the sensor had. This took advantage of the internal hardware on the XBee which has timers dedicated to calculating when to stop listening on serial, form a packet and send it. By breaking the message down we effectively caused the XBee to send multiple packets across the network in one go.
+IMAGE 9
 
-The other solution to this problem could be to transmit more frequently, every minute over an hour but battery usage would be the main concern. 
+Both APIs were different and not just in language. The end point/router API was written in C++ and was only ever designed to talk to the coordinator, so when sending a message using this API - it will address the coordinator. Whereas the Python API for the Hub had to allow for the addressing of any node on the network, and had to be able to store multiple incoming packets from different sources. The end point/routers only needed to store one message at a time, and those messages were always from the coordinator who would never send more than one at a time. Due to this requirement, our written APIs did not have to accommodate for every possibility, only the ones that expect and want. 
 
-A concern was raised regarding the issue of multiple sensors, as of right now we have no way of knowing who is sending data to the hub as well as data becoming malformed and merged due to AT mode. With one sensor this won’t be an issue:
+XBees couldn’t support large packet fragmentation, which meant large payloads would simply drop. Since we were transmitting a lot of data in one go, this lead to problems arising as we had to implement our own fragmentation of packets.
 
-IMAGE 7.73
+For more information regarding the Hub API and packet fragmentation, see Hub.
 
-However with multiple sensors, data becomes inoperable:
+Sleep Settings
 
-IMAGE 7.75
+Amongst many of the settings available on the XBee, sleep was a must have. The XBee actually had the ability to act independently as a sensor with settings being provided for polling data from pins, but due to lack of functionality we sided against using this feature. 
 
-Making this an issue to tackle in the next iteration.
+There were many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
 
-For more information on these particular systems and how they process data see their respective sections.
+The sensor used a set of pins on the XBee to command it to enter sleep mode, or awake from sleep mode - thus limiting its power consumption.
 
-For information regarding the datasheet for the XBee S2, see this document.
-https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf
-* Page 12 refers to data input buffers of size 202 bytes
-* Page 11 refers to ‘Packetization Timeout’ from serial to RF
+Sensor out of range
 
+We constructed a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
 
-####Iteration 4, API Mode 
+Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we could determine whether a sensor was within range or not and then use this information to alert the client. We later decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information could be displayed on the website. 
 
-On our previous iteration we discovered a few problems with using AT mode and the XBee modules themselves. We can’t fragment packets without having some form of intervention ourselves and we can’t determine who is sending data which will cause issues for multiple sensors. A simple fix to this is to prefix all incoming data with an identifying name and delimiter, for example clock:”message”. However this is most likely overhead as further research has shown that by using API mode we won’t need to do this as source addresses are passed with packets. We did manage to confirm that fragmentation is not possible on XBee S2 networks, see www.digi.com/wiki/developer/index.php/Determine_MTU for details. 
-
-#####API Mode
-
-API mode is the more advanced for AT in a lot of ways. The XBee will function the same and you can transmit data to the XBee in the same manner, that’s serial down to the XBee RX pin. However, just sending a stream of bytes won’t make the XBee transmit data. With API mode you have to make the packets as opposed to having them made for you. This has required a lot of research into formats and to do so accurately with good use of examples, we used “Building Wireless Sensor Networks” by Robert Faludi. Faludi provides excellent examples and technical details on the use of API mode.
-
-IMAGE 7.4
-
-API mode has many different packets you can create, from investigating the formats of these packets we can see specifically how to form and send data. We would only need 3 different packets format for our system to be fully utilised, those of:
-
-* 0x10 TRANSMIT REQUEST
-* 0x90 RECEIVE PACKET
-* 0x8B TRANSMIT REQUEST
-
-The typical format of one these packets, for example the transmit request appears as follows:
-
-Transmit (“Hello world”): “7E 00 19 10 01 00 00 00 00 00 00 00 00 FF FE 00 00 48 65 6C 6C 6F 20 57 6F 72 6C 64 D5”
-Receive (“Hello world”): “7E 00 19 10 01 00 00 00 00 00 00 00 00 FF FE 00 00 48 65 6C 6C 6F 20 57 6F 72 6C 64 D5”
-Status (“Hello world”): 7E 00 07 8B 01 00 00 00 00 00 73
-
-These hexadecimal values while alien looking are relatively straightforward to identify as again they are following a format. The packets we will form will be a transmit packet while the packets we receive will be a status and receive packet. 
-
-The transmit packet must follow this format when being created:
-
-IMAGE 7.5
-
-The receive packet will follow this format, so we know the offset of each byte:
-
-IMAGE 7.6
-
-The status packet will follow this format, again we know the offset of each byte:
-
-IMAGE 7.7
-
-These formats are important because when we wish to send or receive data to the XBee it will need to be in this format. Instead of:
-
-~~~python
-self.serial.write(“Hello world!”) # AT method
-~~~
-
-We would use:
-
-~~~python
-self.serial.write(bytearray.fromhex('7E 00 17 10 01 00 13 A2 00 40 C1 FD 49 FF FE 00 00 48 65 79 20 57 6F 72 6C 64 A7')) # API method
-~~~
-
-However for true implementation we would want this to return some indicator of whether the message was transmitted successfully or not. For example:
-
-~~~python
-response = transmit(bytearray.fromhex('7E 00 17 10 01 00 13 A2 00 40 C1 FD 49 FF FE 00 00 48 65 79 20 57 6F 72 6C 64 A7')) # API method
-if response == x:
-       # do something ...
-~~~
-
-If we had this, then we could use this within our existing components to implement a form of error awareness and resolution.
-
-#####API Mode System Benefits
-
-API mode offers a lot more in utility at the cost of more effort on implementation. The benefit of using it, is that you can access all data in a packet header. This would allow us to see all sorts of ranging information from source address to checksums and would solve our problem of needing to identify nodes on the network. It also comes with a lot of added benefits, using API mode we could determine whether a node is out of range, what nodes are on the network and whether packets have been successfully delivered or not. 
-
-For API mode to be implemented we need to build two libraries capable of handling the underlying functions of the XBee. One library would need to utilise Python and the other C++, the Python library would be used by the Hub while any other nodes would use the C++ library. The Hub had its own requirements and so the library would need to reflect that.
-
-
-######Hub API requirements
-* Node discovery (Locate any new nodes)
-* Heartbeat requests (Determine whether a node is still active)
-* Individual node addressing (Address any node on the network as opposed to broadcasting each time)
-* Fragmentation (Break large payloads down)
-* Assembly (Reassemble large payloads)
-* Message storing (If multiple sensors are sending their payloads at the same time, the hub needs to be able identify and reassemble separate messages at the same time)
-* Status awareness (Was a packet received?)
-
-######Sensor and clock API requirements
-* Fragmentation (Break large payloads down)
-* Assembly (Reassemble large payloads)
-* Respond to heartbeat requests (Respond to hubs request to see if they are ‘alive’)
-* Single message storing (The hub will only ever send one message, to the clock it will be requests or a heartbeat but never at the same time. To the sensor it will be a heartbeat.)
-* Status awareness (Was a packet received?) 
-
-######Multiple Sensors Solution
-
-Initially we used AT mode for working with one sensor, however problems soon arose when we planned to add multiple sensors to our network. The problem was that it would become impossible to identify who was sending data causing different sensor readings to become mixed up across transmissions. Using one sensor was fine because only one source of traffic with sensor readings was expected, the clock wouldn’t interfere as this was a different format of data. Using API mode has let us identify each node on the network and where each stream of traffic is coming from, fixing this problem for us.
-
-Image 7.76
-
-######Fragmenting Packets
-
-As show in our previous iteration the XBee did support packet fragmentation, so in order for this to work we need to manually number each frame in a packet from each source. We also need to be able to determine which is the final frame of a packet, we’ve decided to use an ‘!’ character, which would never naturally appear in any of our normal packets.
-
-IMAGE 7.8
-
-######Overall Benefits
-
-These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
-
-* For implementations of our node code (C++), see here.
-* For implementations of our Hub code (Python), see here.
-* For implementations of our Hub code utilising the API, see here. 
-
-#####XBee Sleep Settings
-
-Amongst many of the settings available on the XBee, sleep is a must have for our sensors. There are many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
-
-The sensor currently uses a set of pins on the XBee to command it to enter sleep mode, or awake from sleep mode - thus limiting its power consumption.
-
-####Iteration 5, Sensor out of range
-
-Building off the last iteration, we can now offer a huge more information to the client and to the network. This includes node discovery, a very powerful feature for our network which determines whether nodes are now out of range or have disappeared. Using this information we could alert the client that the sensor has run out of battery and thus died or been moved too far away from the Hub.  
-
-We decided to construct a dummy sensor in order to demonstrate range testing and how to show the client this information in a meaningful manner. The dummy was created using an Arduino Uno, a set of LEDs (Green and Red) as well as a XBee breakout board. It was transmitting random floating values from one of its analog pins in the same format expected of the actual sensor. The sensor was initially given a set of LEDs; green and red. These LEDs would turn on or off depending on the circumstance, if the sensor was within range of the coordinator (The hub) the green LED would light up, else if the sensor was out of range the red LED would light up. 
-
-Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we can determine whether a sensor was within range or not and then use this information to alert the client. We’ve decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information can be displayed on the website for easier access rather than flashing LEDs.
 IMAGE 10
 
-## <a name="hub"></a>Hub [cont.](#contents)
+###Conclusion
+
+After testing the XBees on multiple platforms, their range and customizability make them perfect for a small mesh network of sensors to hubs. For our IOT based project they seem more than suitable to fit the role for low-powered sensors reporting back. 
+<a name="hub"></a>Hub
+##Hub 
+
+[Back to contents.](#contents)
 
 Image Here
 (The finished Hub, requiring only ethernet and power it is capable of coordinating the entire network.)
@@ -1065,22 +987,22 @@ The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers
 
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
-#####<a name="hub_board"></a>Board
+*<a name="hub_board"></a>Board*
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
-#####<a name="hub_xbee"></a>Communication / XBee
+*<a name="hub_xbee"></a>Communication / XBee*
 
 The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
 
-#####<a name="hub_processing"></a>Processing Role
+*<a name="hub_processing"></a>Processing Role*
 
 It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
 The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-#####<a name="hub_case"></a>Case
+*<a name="hub_case"></a>Case*
 
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
@@ -1345,7 +1267,6 @@ Due to the structure of the library it is impossible to send frames out of sync,
 ## Server
 [Back to contents.](#contents)
 
-[toc]
 
 ###Description
 
@@ -1581,25 +1502,681 @@ We moved a majority of the data processing over to the server rather than the cl
 
 
 <a name="visualisation"></a>
-### Visualisation 
+## Visualisation 
 
 [Back to contents](#contents)
 
-#### Description
+### Description
 
 The web visualisation aspect of the system allows users to both get a quick overview of that data that has been recorded but also dive into the data for a much more detailed view of it. This was an important part of the system as it had to make noise levels clear while also providing the raw data that would be used to back that up.
 
-The finised web visualisation used D3.js to create a number of different ways of displaying the data. The main three it uses are the clock, compare, and graph.
+We created a user account system with the aim of allowing users to recieve next notifications for each of the devices. This system lets users register, sign ing, update their information and view the data. Another reason we did this wasm initially, the residents were concerned that the bars may look at this data in some way and use it to try and benefit them. The account system allows only certain people to view the data while also allowing the residents to let people sign up such as council members. The accounts system used Laravel, which was what was also being used for the API.
 
-#####The clock interface
-The clock is intened to bridge the gap between the phyical parts of the system and the digital parts. It provides a consistent representation of data between the two in an effort to make the user more comfortable. A comparison between the physical clock and the digital clock can be seen below <style>
-	.todo{ color:red }
-</style>
+Another part of the web visualisation was a sensor status section. From here the residents could check on things such as battery status and last reading so they could be happy it was working.
 
-#Orange Street
+![](images/visualisation/status.png)
+The finised web visualisation used D3.js to create a number of different ways of displaying the data. The main three it uses are the clock, graph, and compare.
 
-## <a name="casing"></a>Casing [cont.](#contents)
+####Clock interface
+The clock is intened to bridge the gap between the phyical parts of the system and the digital parts. It provides a consistent representation of data between the two in an effort to make the user more comfortable. An image of the phyical and digital clocks can be seen below:
+
+
+![](images/visualisation/clock.jpeg)
+![](images/visualisation/clocks.png)
+
+The clock view is meant as an overview for the entire system, at a glance you can see what has been chosen. The clock allows you to then click through to a more detialed graph.
+
+####Graph
+The graph shows a more detailed view of the day allowing you to see what numerical levels the noise reached. It also includes a list of the raw data which consists of timestamps, the raw reading, and decibels. 
+
+![](images/visualisation/graph.png)
+![](images/visualisation/data.png)
+
+The graph combined with the raw data output shows the noise level in an easy to understand way while displying important information. 
+
+####Compare
+The compare section of the website was created as a way of viewing multiple days worth of data on one page. We previously tried this with graphs but found that it was messy and didn't get the point across. To solve this we created a view that which, like the clock, displayed the data using colours based on the sound level. It displayed hours across the x axis and days on the y axis.
+
+![](images/visualisation/compare.png)
+
+As you can see in the image above, on saturday and wednesday evening it was louder than other evenings as they have a yellow colour rather than green.
+
+###Previous Work
+#### Iteration 1 - Initial Work
+We wnanted something that we could use to show the data we had gathered from the sensors in an easy way. We began by sing the 5-sketches-or-else method. This started with us each sketching 5 ways we could display this data individually. After we had done that we came together to present our ideas to eachother and discussed what we liked about each one. We then worked together to merge the best elements from all of our designs into new designs. After this we continued to improve these designs until we got to a point we were happy with. You can view all of our initial sketches and improvements [here](sketches/)
+
+The main things that came out of this process were the clock, line graphs and a calendar style view. 
+
+After this we decided to start to consider implementing them. We found that some members of the group had experience graphing data and made the most of that experience.We decided that we would generate the graphs and charts using JavaScript rather than generating them on the server as it would move load from the server to the client and also make it much easier to create as we were familiar with JavaScript. We also decided to use a library as it would allow us to quickly get something out there as we wouldn't have to create it form scratch. Based on the sketches and ideas we made and came up with we came up with the simple library comparison chart seen below.
+
+<table>
+	<tr>
+		<th>Name</th>
+		<th>Difficulty</th>
+		<th>Line Graphs?</th>
+		<th>Calendar Style?</th>
+		<th>Clock/circular Style?</th>
+		<th>Well documented?</th>
+	</tr>
+	<tr>
+		<td>Chart.js</td>
+		<td>Easy</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>No</td>
+	</tr>
+	<tr>
+		<td>Highcharts</td>
+		<td>Medium</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>Yes</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>D3.js</td>
+		<td>Medium</td>
+		<td>Yes</td>
+		<td>Yes</td>
+		<td>Yes</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>Flot</td>
+		<td>Easy</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>No</td>
+		<td>Yes</td>
+	</tr>
+	<tr>
+		<td>jscharts</td>
+		<td>Easy</td>
+		<td>Yes</td>
+		<td>No</td>
+		<td>No</td>
+		<td>No</td>
+	</tr>
+</table>
+
+After looking at this we decided to go with D3. It would give us the flexibility to add more complex charts such as one in the style of a calendar as well as being relatively easy to use, well known and well documented.
+
+
+##### Result of iteration
+We created a simple page that would display a graph of a single day along with all of it's points. This is very simplistic and is just to ensure that we can get our data in the correct format.
+
+####Iteration 2 - Displaying Data over multiple days
+During this iteration we wanted to display multiple days worth of data on the same graph.
+
+#####Issues with previous iteration
+Processing the data is taking large amounts of time on every page refresh
+
+#####Result of iteration
+We now have a graph which can display multiple days worth of data. To select these days there is a calendar which you can click on, clicking on the same date again will then deselct it. The graph updates without needing to refresh the page. It is also much quicker than before as we moved the processing of the data from the frontend to the API.  More on this can be found in the [Server section](#server)
+
+
+####Iteration 3 - Clock visualisation
+We wanted to make a bridge between the clock and the website so we decided to create a digital version of the clock that could be displayed on the website. 
+
+#####Issues with previous iteration
+The previous iteration worked fine techinically, however there were some issues with the way the data was displayed. Any more than 3 lines was complicated and meant it's difficult to see what data you are looking. We will improve on this in a future iteration.
+
+#####Result of iteration
+We created a visualisation that looks similar to the clock as you can see below:
+
+![](images/visualisation/clock1.png)
+
+This was created from the test data we recieved over christmas.
+
+The clock is built on top of D3 using an extension called Circos.js. Below is the code that is used to create these circles
+
+```javascript
+//Get the data from the API
+d3.json('http://orange.app/api/get/hourly')
+		.get(function(error, json){
+
+			//Loop over each set of data recieved and convert it into a clock
+			charts[0].forEach(function(x){
+				data = json;
+				parent = d3.select("#"+x.id)[0][0].parentNode;
+				width = parent.offsetWidth - 50;
+				height = parent.offsetHeight ;
+				var circos = new circosJS({
+					container: "#"+ x.id,
+					width: width,
+					height: height,
+				});
+
+
+				layout_data = []
+				
+				//Create the layout data used by Circos.js by creating array of 
+				//divs with ids 0 - 23 which represent hours
+				for (i = 0; i < 23; i++)
+				{
+					if(i < 10)
+					{
+						layout_data.push({"len":1, "id":'0'+i+'hour'});
+					}
+					else
+					{
+						layout_data.push({"len":1, "id":i+'hour'});
+					}
+
+				}
+
+				var clock_data =[]
+
+				//Turn the data recieved from the api into the correct format and 
+				//add it to an array containing all the data from our clock
+				json.forEach( function(d){
+					if(ymd(new Date(d.start)) == ymd(new Date(x.id.substring(1)))) {
+						var date = new Date(d.start)
+						var hour = date;
+						hour.setHours(hour.getHours() + 1);
+						clock_data.push([h(date) + "hour", 0, 1, (d.avg+15)])
+						console.log(+d.avg+10);
+					}
+				})
+
+				//Construct the circos object
+				circos
+					.layout(
+						{
+							cornerRadius: 3,
+							innerRadius: width/4+25,
+							outerRadius: width/4+30,
+							ticks: {display: false},
+							labels: {
+								position: 'center',
+								display: true,
+								size: 14,
+								color: '#000',
+								radialOffset: 15,
+							}
+						},
+						layout_data
+					)
+					//Show what colours you want the sections to be
+					//based on colorBrewer
+					.heatmap('temperatures', {
+
+						innerRadius: width/4,
+						outerRadius: width/4+25,
+						min: '23',
+						max: '0',
+						colorPalette: 'RdYlGn',
+					}, clock_data)
+					.render();
+			})
+		})
+```
+####Iteration 4 - Fixing the line graph
+The multiple line graph that we created in iteration 2 was confusing hard to understand. We planned to fix this in this iteration.
+
+#####Issues with previous iteration
+None
+
+#####Resut of this iteration
+We changed the way data was graphed so you could no longer select multiple dates. This made the graph much easier to read but we would need another way to compare data. We began to look at ways of comparing however there are no obvious ways and our sketches don't really help with that.
+
+####Iteration 5 - Fixing data comparison
+As mentioned in the previous iteration, we removed the feature from our line graph that would allow us to compare multiple days. This comparison is an important part of the website as without it the results can be hard to understand. 
+
+#####Issues with previous iteration
+None
+
+##### Result of this iteration
+After looking at several sources we decided that we liked how GitHub show
+how often someone commits. You can see an image of one of those graphs below:
+
+![](images/visualisation/github.png)
+
+As we are working with data where time is important we cannot simply show the day so we changed it to include hours on the x axis and days on the y axis. You can see the graph we created below:
+
+![](images/visualisation/compare2.png)
+
+####Iteration 6 - Turning graphs into a website
+
+Up until this point all of the graphs had been standalone, pulling the data from the API but all separate. We needed to create a website where all of these could be viewable and make sense together.
+
+#####Issues with previous iteration
+There were some issues with aligning the graph labels however this will be left until a future iteration.
+
+#####Result of this iteration
+We created a website that was built in laravel and using bootstrap to improve the interface. We created a user accounts system that would allow access control in the future. The code for the website can be found [here](visualisation/web)
+
+##Manufacture / Casing 
+
+[Back to Contents](#contents)
+
+###Initial Research
+
+The project required us to have hardware in the real world meaning that it has to be able to survive in the environment that it is deployed in. We couldn't simply deploy the electronics because they would get damaged. Therefor we have to house all of our pieces of hardware in some form of casing.
+
+There are a few ways to make cases, they include making a custom 3D model of the object and sending it to companies to either be 3D printed, a process where plastic is melted and printed in layers to form the intended 3 dimensional object. Alternatively, injection moulding, a process where a mould is made of the object intended to be created then melted plastic fills the negative space in the mould leaving the object when it has hardened. 
+
+Injection moulding creates a rigid plastic shell when hardened as the piece comes from liquid plastic that hardens into one piece whereas 3D printed pieces can be more brittle as the plastic dries on when each layer is added meaning it can leave pores on the final product.
+
+There are companies that offer custom 3D printing and injection moulding such as [Shapeways](http://www.shapeways.com/) (3D printing) and [Protolabs](http://www.protolabs.co.uk/) (3D printing and injection moulding). The main issues with these places is the cost and time it would take to get an object back. We would have to design the object we want created, each piece is individually quoted, it would be created and we would have to wait for it to arrive. In the case of injection moulding Protolabs have a minimum of 25 parts from one mould, meaning it would be more expensive than 3D printing. If there was a mistake in a 3D model we would have wasted time and money and still have to print another one.
+
+Although, The Shed has specific software for 3D modelling and a 3D printer that we can use for prototyping and final printing of our cases. It is possible to quickly print a prototype and test a design multiple times and print a final when we are happy with it. 
+
+####Conclusion
+
+We decided to use the Sheds facilities to create our cases. It will be much more cost efficient as we do not have to pay for each individual print and the turn around of each piece is much quick as we do not have to wait for it to be posted.
 
 ###Hub Case
 
-The Hub case is 3D printed. It was designed to hold the Raspberry Pi in place through the use of screws and nuts. It is also designed to have room for the XBee component needed. 
+####Description
+
+The Hub case is 3D printed. It was designed to hold the Raspberry Pi in place through the use of screws and nuts. It is also designed in a manner that made it easy to open incase there were any problems while the hub was deployed. The case comes in two parts, the lid and the base.
+
+The case is meant to be easily modifiable. So that if there are any changes that need to be made it is easy enough to change the 3D model and print off a new one that fits the purpose better.
+
+*Base*
+
+The base is made to be 2mm thick on the longer sides for strength and rigidity. It was made to be slightly bigger than the Raspberry Pi model B+ (5mm in every direction but the one with the ethernet connection). It has holes in the bottom big enough for 2.5mm fixings to fit through both the case and the board using nuts to hold it in place so that the board is secure inside.
+
+There are two grooves on the longer sides of the base, inside the base, that allow the lid to click into place.
+
+PICTURE OF THE BASE 
+
+*Lid* 
+
+The lid is designed to be reversible for ease of use. The longer sides of the lid has sections that sit inside the base. These sections are as long as the inside of the base so that it does not slide around when fitted. These extruded sections have further extruded lines that click into the grooves on the base. To remove the lid squeeze the sides and pull off. It was designed in this way for ease of access.
+
+PICTURE OF THE LID
+
+####Previous Work
+
+#####Iteration 1 - Initial Hub Base.
+
+The FRDM K64F board had no technical specifications that could be found meaning we did not have the measurements for it. Therefore it had to be measured by eye using rulers and electronic calipers. 
+
+INSERT INITIAL SKETCH
+
+As this is the fist time we would be 3D printing anything we had no reference for how strong the result would be. We decided to measure the thickness of the calipers box as that seemed to be quite a strong (2.5mm).
+
+We decided to model the bottom half of the case first. This was done because it was the smaller of the two pieces of the case, we could reprint a new one quickly if there was anything wrong with this one. We wanted the board to be secure in the case so the we designed it in a way that the base, lid and board had holes that lined up so 3mm fixings could be screwed through all three and secured together.
+
+INSERT PICTURE OF PRINTED CASE
+
+######Outcomes of iteration
+
+We 3D printed our first object, learnt how to use the software properly.
+
+#####Iteration 2 - 
+
+###Sensor Case
+####Description
+####Previous Work
+#####Iteration 1
+
+###Clock Case
+####Description
+####Previous Work
+#####Iteration 1
+##Clock
+###Description
+
+![Final Clock](Images/Clock%20Images/clock_final.jpg)
+
+
+The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels. It is designed to complement the more technical premise of the web server. 
+
+It uses a series of 24 LEDs arranged in a ring, which, every hour are lit to a colour corresponding to the average sound levels for that hour. This is a lightweight way of giving the user a quick glance at the sound levels, and allows for comparisons and references to be made across a 24 hour period. 
+
+The light display is handled by an Adafruit NeoPixel Ring 24 x WS2812, which is interfaced through an Adafruit Flora used as the microcontroller. The interaction of the clock with the rest of the system involves an XBee device configured as a router. Resultantly the clock can receive values from the hub, and stay up to date in terms of the data it is presenting.  
+Every hour, the clock communicates with the hub to receive the average sound level across that hour. The clock turns on a light for that hour, depending upon the corresponding sound level. Over time, this builds a picture of the day’s sound activity, mirroring the data visualisation on the web server as a physical model. 
+
+Components: Adafruit NeoPixel Ring 24 x WS2812, Adafruit Flora, Communication/XBee (Lilypad XBee), Case. 
+
+####Adafruit NeoPixel Ring 24 x WS2812
+
+The central hardware component of the clock is the Adafruit NeoPixel Ring. One of several NeoPixel models provided by Adafruit, the 24 x WS2812 is a collection of 24 addressable LEDs arranged in a ring. The LEDs were directly addressed by the Arduino code written for the Adafruit Flora, allowing direct control over the display, and timings that each LEDs came on. 
+
+####Adafruit Flora
+
+Lightweight and circular in design, the Adafruit Flora was an effective choice for maintaining the streamlined structure of the clock’s components. Since it is typically used in wearable tech, the Flora is a microcontroller which is smaller than the NeoPixel Ring. This meant the overall size of the clock could be kept compact, allowing more focus to be on the visual display of the NeoPixel Ring. Moreover, it offered the functionality we needed of similar microcontrollers such as the Arduino Uno, but stripped away the unnecessary features. Since the clock device could be powered by mains, the power consumption was not too much of an issue. 
+
+####Communication/XBee (Lilypad XBee)
+
+As with the other devices in the network, the clock communicated using the Zigbee protocol; using an XBee RF module attached to its microcontroller. It was configured as a router on the network, allowing it to receive the data transmission it required from the hub. Through the iterations, the XBee was interfaced using either a straight connection in the RX/TX ports, or through a Lilypad XBee board. 
+
+####Case
+
+The clock’s hardware components are housed in a 3D printed case. As well as maintaining its security, this feature allows the clock to be seen more clearly; using a base to keep it upright. As a result, the clock can be viewed like most normal clocks, and from a multitude of angles in a room. The transparent covering holds the components in place, and optimises the appearance of the lights for viewing by using a frosting film. This was used to prevent glare from the LEDs, and to clearly distinguish one light from another. Since the clock is unique in appearance, it was necessary to develop a case which served its requirements and matched its specific dimensions. Towards the later iterations, the case underwent several changes, and was finalised with the above appearance.    
+
+###Previous Work
+
+####Iteration 1: Design and concepting phase
+Since we have decided upon a web based method of visualising data, we want to explore several other means for outputting data to our clients. To engage more with the user, we want to explore methods of ambient data visualisation. 
+
+From our bank of data visualisation ideas, the “clock” design incorporates the use of a coloured light system and a clock face display. The clock would receive the average noise level on the hour, and mark it on its face as a coloured segment. Over a 12 hour period, this would produce an overall chart of ambience. To get coverage over 24 hours, we would have two separate clocks displaying data for AM and PM. 
+
+One option for this would be to involve the clock display in the website visualisation; offering the client a more ambient counterpart to graphs and charts. Since a few of our data visualisation for the five sketches phase featured a crossover of similar clock ideas, it is worth us looking further into how we could combine our sketches.  Since the clock design is simple, it could work quite effectively alongside more technical data formats. 
+
+We could also implement something physical in hardware, which could be read similarly to a clock which tells the time. We discussed a few scenarios in which this would prove useful. Firstly, if a client returned home after being away from the house all day, a quick check of the clock could provide a straightforward spread of activity during their absence; drawing their attention to colours of greater intensity. 
+
+In both cases, the red and orange lights could serve as flags to the user, as they indicate a high concentration of noise activity picked up by the sensor. Meanwhile, the lighter colours provide coverage for quieter hours. This offered the user a complete coverage of each 24-hour period, allowing the possibility to view previous hours and draw comparisons between them. 
+Overall, we felt that there was an advantage to having a physical clock, as it is a physical artefact and therefore has greater potential to engage with the user. Furthermore, it could provide effective reinforcement to the data displayed on the web server. 
+
+#####Lo-fi prototyping and sketches
+In order to visualise a few different clock concepts, we created some sketches of the clock being represented in different ways. This was a way of gauging how the interface for the clock should look, as well as exploring some aspects such as colour, granularity, and the general visual layout for the user. 
+Some of the design sketches we produced later in this iteration explored the placement of a clock as a “widget” on a tablet or webpage. Since our client could rely on mobile or tablet, we also concepted how our designs could be scaled and combined depending on where they are displayed. 
+
+####What we need 
+The premise behind the clock is to provide a visual stimulus to the user in a simplified data format for quick reference. It also needs to be interconnected with other devices on the network to accurately display data. Since the device is going to be running a series of lights, it is likely that power usage will be high; which is a consideration for how it will be powered in the user’s home. We also need to decide what sort of hardware we are looking at using to implement this idea, and what limitations and/or advantages each particular technology would give us. The main requirements of the clock are therefore: 
+To provide an ambient visualisation of data which is engaging with the user 
+Be easily implemented with the rest of the system 
+Display data in a format that is easily grasped by the user
+To have a feasible hardware solution which complements our other means of data visualisation
+
+![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
+
+	Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
+
+![Sketch 2](Images/Clock%20Images/IMAGE_2.jpg)
+
+	Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
+
+![Sketch 3](Images/Clock%20Images/IMAGE_3.jpg)
+
+	Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
+
+![Sketch 4](Images/Clock%20Images/IMAGE_4.jpg)
+
+	Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
+
+![Sketch 5](Images/Clock%20Images/IMAGE_5.jpg)
+
+	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
+
+
+This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
+
+
+####Outcome of Iteration
+We have produced several different design proposals for the clock, and have began to consider how a physical device could be produced. We have evaluated what benefits the clock can bring to the project, in that it reinforces the more accurate data and makes for an engaging notifier for the user. There is also potential for this to create data continuity - in the sense that data from a physical device can be cross referenced with that on the web server. Overall, this iteration has set up the requirements for the clock, and given us a few interesting paths to take when developing it. 
+
+####Iteration 2: Hardware and setup phase
+
+After having collected our ideas from lo-fi prototyping, we are now exploring how our clock system can be physically implemented with hardware. 
+The last iteration saw us investigating some requirements regarding the clock’s transition into hardware. This iteration involves our research into hardware, and comparisons between methods of implementing the system. 
+
+#####Adafruit NeoPixel Ring
+
+![clock models](Images/Clock%20Images/clock_models.png)
+
+	Hardware models for the Adafruit NeoPixel Ring. Above, from left to right are the 24, 16 and 12 LED models. During the project we considered using various sizes, ultimately deciding upon the 24 x WS2812 (left). 
+
+We were directed towards the tech solutions offered by Adafruit (https://www.adafruit.com) which distributes the NeoPixel product; an assortment of addressable miniature LEDs arranged in rings, strips and boards (https://www.adafruit.com/category/168). We feel that this is a good platform for developing our system in hardware.
+The Adafruit NeoPixel device is a chainable collection of LEDs which can be interfaced with the NeoPixel Arduino library for support. Example code provided with the library demonstrated several of the device’s capabilities; notably the ability to manipulate timings of individual lights to come on. Conveniently, this was exactly what we were looking for as it provided a loose way of interfacing more complex tasks if we needed to. 
+
+The setup of this device requires the use of a breadboard to interface the NeoPixel ring with an Arduino Uno microcontroller, and the use of a PC to upload code from the Arduino libraries to the Uno. After setup, our first concern was to establish the range of colours we could use to recreate our “ambience” colour spectrum.
+
+We then displayed a spectrum of our proposed colours running from white (least ambient) through green, yellow, and orange to red (most ambient) recreating this colour wheel using the addressable LEDs. 
+
+####Display Model
+During our concepting of the clock display, we came up with several different possibilities of data accuracy that we could 
+use. The main two directions for this were inspired by the 24 and 60 LED NeoPixel models respectively. 
+
+#####24-Hour Display
+The go-to approach that we looked into involved the 24-hour display clock, which averaged data over hourly periods, potentially transitioning to sleep mode between readings to save power. Adafruit’s solution to this offered an LED ring of 2.6” diameter; which is a relatively small display and could be mounted onto a small case or hub and unhooked for inspection. Early low fidelity prototypes of casing for this were modelled using cardboard, with emphasis being placed on the majority of the face being easily visible.  
+
+#####Hour-By-Hour Display
+There are also considerations to use other models of NeoPixel Ring. Of note is the NeoPixel Ring 60 x WS2812 model which offered 60 addressable LEDs; with which we can update more frequently to give an hour-by-hour display. A light would come on every minute after the averaged sample data was sent to the device until all 60 were lit; at which point it would rollover 
+for the next hour. 
+
+This idea could be combined with an LCD real time digital clock to keep track of which hour the data was referring to. This kind of display could also be interfaced with the clock itself to serve as the rollover point to be synched with the pixel 
+reset at each hour. 
+
+####NeoPixel Library and Code Iterations
+After having chosen the NeoPixel 24 LED model, we have began to interface with the Arduino library to build a test program. 
+From our test program, we intend to evaluate the capabilities of the NeoPixel Ring, and determine whether it could be used for our clock system. 
+
+So far, we have found we can address individual LEDs and their brightnesses, and manipulate timings that certain lights come on. We are also looking into how we could implement our colour spectrum into the system, including the range of colours the hardware offers us. 
+
+We knew the device would somehow have to read in data from our system. Writing a couple of test programs explained below, we require a data reading component to read in decibel values and convert them to a corresponding light
+Reading clock data from a file
+Initially, we constructed a program using the “Processing” IDE to work as a simple file reader which transmitted data via serial. Interfacing this with the microcontroller, a set of arbitrary values ranging from 0-9 were read into a switch statement on the arduino; 0 representing low ambience with a white light, and red expressing high ambience upwards towards 9.
+
+![Neopixel Ring](Images/Clock%20Images/IMAGE_7.jpg)
+
+	Adafruit NeoPixel Ring 24 x WS2812. Here the ring is powered by an Arduino Uno, and displaying a range of colours. The rings comes with adjustable brightness settings, and each LED is individually addressable. 
+
+The code for this iteration can be found here: [Clock_Cycle_V1b]
+
+#####Reading clock data from a pre-programmed array
+
+Since the clock will be working with real values, we investigated the ways that we could test it without interaction of the real system. This would involve using dummy values, and setting 
+A separate program we developed involved reading in dummy values from a pre-programmed array. The program would iterate through a size 24 integer array (consisting of integers from 0-100), and transfer data to a corresponding colour scale in the “setHourColour()” method. To fall within the case statements 0-10, each value was divided by 10 so that it would match a corresponding statement. The index positions of the array, which ranged from 0-23, matched each “hour” that the clock was displaying data for. This way, the clock display was to start from midnight, and iterate round to 11pm providing data coverage for all hours in between. 
+
+The code for this iteration can be found here: [Clock_Cycle_V1b]
+
+![setHourColour Code check](Images/Clock%20Images/IMAGE_8.png)
+
+	Arduino code for “setHourColour()”. If the value exceeded -1 (which was always true unless an error case occurred - see below) then it gets divided by 10 to match the case statement. 
+
+![Dummy code](Images/Clock%20Images/IMAGE_9.png)
+
+	Arduino code for displaying “dummy” data lights. The loop() method simply iterates through the array of dummy values called “clockValues[]”, takes each individual value and converts it to a colour based upon which case it falls into. 
+
+This simple setup will be the basis of a more complicated program, which will involve reading data in over serial, averaging values across an hour’s worth of data and turning on a light. This method of doing things was relatively straightforward to implement once we knew what form the data being transferred to the clock was in.    
+
+For our data to be accurately represented, we had to somehow establish the colour spectrum which we developed in the initial design phase of the clock. Having looked into the NeoPixel library, the main method for handling the colour of individual LEDs was the “setPixelColor()” method, which took 4 parameters. Firstly, the position of the pixel you are addressing, and then RGB values for the colour. 
+We determined our RGB parameters by using a HTML colour picker, which allowed us to pick and particular colour and read off the values. Using this, we established each of different parameters corresponding to the colours in our spectrum.  
+
+![Colour picker](Images/Clock%20Images/IMAGE_10.png)
+
+	We chose the colours using a HTML colour picker. Since the NeoPixel Ring method, “setPixelColor” requires RGB values for arguments, we determined which colour values to use based off of this website. (http://www.w3schools.com/colors/colors_picker.asp) 
+
+####Simplifying the colour spectrum
+
+Initially, we found the parameters for 10 different colours which would be used in progressively more intense hues. We will potentially reduce this to 6 different colours which provided the clock with better granularity. 
+
+![Colour Spectrum 1](Images/Clock%20Images/Colour_spec_comparison.png)
+
+	Simplified colour spectrum. Going in a clockwise 
+	direction, the colour converges more towards red, 	hinting at greater noise activity. The right image 	is displaying data for arbitrary values to test the 	granularity between colours.
+
+The code for this iteration can be found here: [Clock_Cycle_V1b]
+
+#####Colour-blindness spectrum 
+
+There is an issue with using purely colour based visualisation. When catering for users who might have trouble distinguishing between colours, there is particular difficulty with telling the difference between green and red. Since our spectrum uses this two values as lower and upper bounds, it would be particularly problematic if the user couldn’t tell them apart. 
+
+A method we could use is an intensity spectrum. Choosing one particular colour, the noise intensity would instead be represented by the intensity of each colour shade. For example, with red, quieter hours would be represented with very pale shades, and louder hours by more intense shades. 
+
+![Colour intensity 1](Images/Clock%20Images/Intensity_spec_comparison.png)
+		
+	NeoPixel Ring displaying the intensity spectrum. 
+
+#####Colour intensity spectrum. 
+
+Similarly to the colour spectrum, the intensity increases as greater noise intensity values are read in. We have opted for red here, but it can be implemented in any colour.
+
+We felt having the option to display data in these varying formats could be useful to the user, and opens up possibilities for new ways our visualisation could be implemented. There are potentially ways that these two formats could be used in conjunction.
+
+The code for this iteration can be found here: [Clock_Cycle_RedIntensity]
+
+####Problems
+
+We faced some issues in this iteration based upon our hardware choices. Although only used for prototyping, the Arduino Uno board has a lot of functionality which the clock doesn’t require, when ideally we want to condense down and use something simpler. Furthermore, dimensions wise the Uno is quite bulky - which may present further issues concerning the casing of the clock. Another problem concerned the starting point of the first LED that is lit. Since the NeoPixel Ring LEDs are addressed by the arduino code using integer index position, the starting LED, which remains fixed at 0, has been a current issue to change. If we can’t change the starting position, there could be potential problems regarding the orientation of the clock. For example, would we have to always have the clock at a fixed orientation? What would happen if it had to be rotated somehow? 
+
+####Outcome of iteration
+After this iteration was completed, we had managed to set up the NeoPixel ring to display some spoofed data values. This is promising as far as the full implementation of the clock goes, as we can now use this data format for structuring communications between the clock and other devices. Furthermore, we have decided upon a direction to take the hardware choices. Currently the clock is running off of an Arduino Uno as the NeoPixel ring is supported by Arduino code, but since it won’t be battery dependent, there is room for other microcontrollers to be considered. Also, this iteration has provided some interesting issues for us to consider; which we intend to solve in future iterations. 
+
+####Iteration 3: Interlinking phase
+
+####Adafruit Flora
+To alleviate the issue of the Arduino Uno, we decided to change our board choice to the Adafruit Flora; a much more compact device. This significantly reduces the dimensions of the clock components, leading to a much more streamlined layout. This changeover will be particularly important for when we consider case design; during which a more condensed layout will be favoured. Furthermore, the Flora offers us the same functionality required of the Arduino Uno, minus the unnecessary features. 
+
+####Interfacing with XBee and Networking
+After we had successfully set the NeoPixel ring up to display some dummy values, and having decided upon a colour spectrum in our last iteration, our next task is to integrate the clock with the rest of the network.
+
+The networking involved hooking up the XBee device to the Adafruit Flora microcontroller using the RX and TX ports, allowing the two devices to communicate over serial. The XBee was attached to an Lilypad board at this point, allowing for easy interfacing with the microcontroller. This was simply to keep the XBee in place. 
+
+![Systems communication](Images/Clock%20Images/IMAGE_15.jpg)
+
+	Hardware setup for clock. Above is the clock interfaced with the Adafruit Flora microcontroller, which, in turn is interfaced with the lilypad board.  
+
+####Networking with the clock
+
+To establish the clock device communicating over a network, we are going to start by writing simple sender-receiver code. This will be uploaded to the clock and a separate microcontroller - both of which will be  interfaced with XBees, so that messages can be sent back and forth between them. This is intended to simulate how clock would communicate with the hub, and pick up on any errors in transition that we may encounter. This will utilise a simple acknowledgement based format, which we could potentially use as foundation for how the clock requests hub data on the hour.
+
+This sender-receiver code will then be implemented into the clock’s real interaction with the hub. The clock will send a request (formatted as “R:!”) which will then be accepted by the hub. The hub  then sends the data over in an integer array - which will be used to populate the clock’s “clockValues[]” array for storing data. 
+
+The code for this iteration can be found here: [Receiver_Code]
+
+![Systems communication](Images/Clock%20Images/IMAGE_16.jpg)
+
+	Communication between the clock,  hub and web server. Once data from the web server has been sent to the clock, the clockValues[] array is populated with the values. 
+
+![Clock hub communication](Images/Clock%20Images/IMAGE_17.png) - 
+	
+	Arduino code for the prototype clock-hub communication. This involved us establishing serial connections to the XBee device, and reading in values that were received from the sending XBee interfaced with the hub. The hub was simply configured to send the same pre-programmed array values over the network.
+
+####Signposting with the clock
+The clock, being a very visual component in the system, should implement some form of user signposting. Before the data display phase begins, we discussed adding a few intermediary stages to show the clock transitioning between states - if for some reason it has trouble reaching the data. 
+IMAGE 18 - Clock display. This shows the clock reading in a value every minute from the hub, and plotting it as a light. The architecture pictured shows the NeoPixel ring, Adafruit Flora, and Lilypad interfaced together. 
+
+![signposting flowchart](Images/Clock%20Images/IMAGE_19.png)
+
+	Signposting flowchart. This chart shows that for every reading the clock takes on the hour, it runs the initialisation phase, and moves through the different signposts according to the state. 
+
+We then planned what sort of signposting we might implement. This chart shows that for every reading the clock takes on the hour, it runs the initialisation phase. This phase consists of white lights circling round. After this, if data reading is successful, the first light is plotted. For subsequent readings, the appropriate states are reflected in the clock’s display. Before we implemented signposting, if there were errors in transmission of data, or communication to the hub, the clock would freeze its current display -  instead of reflect the nature of the problem. 
+
+![Arduino error cases](Images/Clock%20Images/IMAGE_20.png)
+
+	Arduino code for “error cases”. Here we introduced the specific cases which might occur. The comments clearly describe which case applies to which scenario. 
+
+Once the modified case statement was developed, we tested the clock in isolation with specific error values, and observed the light output. This was to ensure that the signposting was effective, and clearly conveyed different messages. 
+
+![case 1](Images/Clock%20Images/IMAGE_21.jpg)
+
+	Display for error case 1. The clock outputs a white display of lights and holds it there for a few seconds. 
+
+![case 2](Images/Clock%20Images/IMAGE_22.jpg)
+
+	Display for error case 2 - if the hub cannot be reached. The clock outputs a red “colour wheel” of light to indicate that there is an error. 
+
+![case 3](Images/Clock%20Images/IMAGE_23.jpg)
+	
+	Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
+
+The above cases show the clock displaying errors whilst working with dummy values, so our next stage is to make it work with the hub. This is fairly straightforward - we just have to send dummy data packets from the hub over to the clock over the Zigbee network to test it.
+
+The code for this iteration can be found here: [Clock_Cycle_V1b] 
+
+At this point, much of the clock’s functionality is working as intended. So far, we have tested the clock in isolation, and simulated its interactions with the hub device. We have also established a communication platform from our sender-receiver code, which we will adapt to integrate the clock into the system. 
+
+The code for this iteration can be found here: [Clock_Cycle_V1]
+
+####Integrating the clock with the whole system
+
+Now that we have developed the main functionality of the clock, we have to integrate it with the rest of the system. To do this, we must carefully optimise a few of the clock’s features - such as wait times in between reading values; in order to synchronise it with other system events such as the sensor reading in data, or the hub communicating with the web server. This process involves refactoring some of the arduino code for efficiency reasons, and beginning to consider how we could use protective casing when it came to deploying the clock. 
+
+Since the data format for the clock has already been decided upon, the integration of it into the system is more a matter for the other components. Here, there were discussions about how the web server could send packets tailored specifically for the clock via serial, whilst maintaining the format that the clock expects.
+
+The first integration step was to adjust delay times: 
+
+![delay code](Images/Clock%20Images/IMAGE_24.png)
+
+	Arduino code for delays. The variables represent different lengths of time that we could delay the clock for between reading values, as determined by the number of miliseconds. 
+
+The clock is designed to display average readings on an hourly basis. For the sake of testing its functionality over a shorter timescale, we are running the clock in shorter iterations; e.g. minute by minute displays (for a total of 24 minutes) and second by second delays (24 seconds). This reduced time whilst testing, and saved having to wait 24 hours just to see the output of a day’s data. 
+
+There are currently further plans to test the clock over an extended time period, once it has been fully integrated with the whole system.
+
+The code for this iteration can be found here: [Clock_Cycle_V2]
+
+####Previous Problems
+
+<ul>
+<li> Arduino Uno board has a lot of functionality which the clock doesn’t require, when ideally we want to condense down and use something simpler. </li>
+<li> Starting point of the first LED that is lit. Since the NeoPixel Ring LEDs are addressed by the arduino code using integer index position, the starting LED, which remains fixed at 0, has been a current issue to change. </li>
+<li> Lack of error displays if e.g. the clock can’t communicate with the hub, data can’t be transmitted etc.</li>
+</ul>
+
+Early in this iteration, we moved from our choice of board for prototyping; the Arduino Uno, over to a more concrete choice. The Adafruit Flora currently fits our needs for a stable, yet compact board, and has the added bonus of fitting inside the NeoPixel Ring. The Flora is compatible with our previous Arduino code, and has exactly the ports we need for interfacing with the NeoPixel Ring. This makes it a more efficient, and aesthetically suitable choice for the clock. 
+
+We resolved the issue of the starting point by making a very simple adjustment to our code. For any iterative structures looping over the LEDs, rather than starting at position 0 (the first LED), we simply offset that number by an amount depending upon where we wish to start (- e.g. + 3 if we wanted to start from the third LED going clockwise), storing that in the “startpos” variable. When it came to iterating from this new start position, we iterated over the LEDs as normal, calculating the shift in LED indexes. (see code below).
+
+To add a degree of error displays, we added a new light system for the clock to provide signposting. These operated similarly to other devices which use warning lights, and intended to direct user attention based on colour. 
+
+
+![case 1](Images/Clock%20Images/IMAGE_25.png)
+
+	LED index changes
+
+
+####Current Problems
+
+During this iteration, some of the main challenges concerned setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. The clock uses a very specific format in which it expects data, so a particular challenge has been in normalising the structure of packets to match this expectation. Fortunately, however, if there are genuine issues regarding the web server’s connection to the hub, or the hub’s communication with the clock, we have established signposting to inform the user. 
+
+####Outcome of iteration
+
+After this iteration was completed, we had managed to set up the NeoPixel ring to display some pre-calculated data values. This is promising as far as the full implementation of the clock goes, as we can now use this data format for structuring communications between the clock and other devices. Furthermore, we have decided upon a direction to take the hardware choices. Currently the clock is running off of an Arduino Uno as the NeoPixel ring is supported by Arduino code, but since it won’t be battery dependent, there is room for other microcontrollers to be considered. Also, this iteration has provided some interesting issues for us to consider; which we intend to solve in future iterations.
+
+####Iteration 4: Casing and finalisation phase
+
+In the previous the functionality of the clock was integrated with the rest of the system in the previous iteration, 
+Since the NeoPixel ring by itself is quite a fragile piece of hardware, it is necessary to build some form of casing to protect it whilst still maintaining its visibility. We came up with a few ideas for this using cardboard to easily mould shapes together; most of the principle designs consisting of a base and a clear perspex glass “face”, to protect the components. 
+
+We also looked into how the device could be mounted, since ideally our focus was on its attention drawing aspect which would be less effective if it had to be picked up or consciously interacted with. This could be achieved with a clip or some form of hook for a wall mount possibility, or perhaps a subtle stand so as to not rely too much on modifying a client’s home to accommodate for it. 
+
+####Designing the case
+
+When it came to designing the case to house the clock, we have several things to bear in mind: 
+<ul>
+<li> It has to be robust enough to protect the hardware</li>
+<li> Easy to mount and/or stand up</li>
+<li> Of reasonable size</li> 
+<li> Good visibility of the clock display</li>
+<li> Feasible to manufacture/3D print</li>
+</ul>
+With these points, we set about producing some design mockups using google sketchup. Since we weren’t looking at modelling straight away, it was good to use this program to conceptualise some of properties of its general appearance.
+
+#####Iteration 1
+
+
+![Design 1 a](Images/Clock%20Images/IMAGE_26.jpg) ![Design 1 b](Images/Clock%20Images/IMAGE_27.jpg)
+
+	Sketchup designs of first prototypes. The general shape of the case is established here. The isometric view on the left shows the layers where the NeoPixel Ring could sit.
+
+In this iteration we designed the general shape of the case, and considered a transparent perspex “face” to promote the visibility of the lights. It was designed so the NeoPixel Ring would fit securely around the inner ring, with a space in the middle for the Flora to sit. The purpose of the base here is twofold. Whilst it doesn’t yet stand up, the base holds the components for the XBee module, and features a detachable back.  
+
+#####Iteration 2
+
+![Design 2 a](Images/Clock%20Images/IMAGE_28.jpg) ![Design 2 b](Images/Clock%20Images/IMAGE_29.jpg)
+
+	Iteration 2. Here we began to establish how the case could use a stand to support the clock, and make the viewing angle easier. 
+
+This iteration features our first implementation of a stand. This is important to the evolution of the clock, as it greatly increases visibility of the lights, and therefore aids the user’s engagement with it. The stand here is fairly small, so in future design iterations we will have to consider making more robust changes.
+
+#####Iteration 3
+
+![Design 3 a](Images/Clock%20Images/IMAGE_30.jpg) ![Design 3 b](Images/Clock%20Images/IMAGE_31.jpg)
+
+	Iteration 3. This design uses a pull out stand which would potentially provide greater stability than the stand in the previous iteration. This would also be a useful feature for wall mounting the clock. 
+
+This iteration implements a more sturdy stand to keep the clock upright. We were considering having a flip out stand, which can be put away based on user preference. Besides that, much of the general design is the same. 
+
+#####Final iteration
+
+We finalised our case design to have a more sturdy base and used the 3D printer to construct it. The final case consisted of three major 3D printed parts which slotted together. For more information, see casing. 
+
+####Previous Problems
+Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
+
+We solved this issue this iteration by incorporating a strict data format that the clock received values in. This was an integer array of 24 values, containing sound averages for each hour of the day. This format was utilised by the hub; meaning that when sending data, the clock received it in a format it “understood”. 
+
+####Outcome of iteration
+At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. 
+
+
+
+
