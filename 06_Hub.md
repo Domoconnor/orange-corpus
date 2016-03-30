@@ -24,7 +24,7 @@ The Hub takes into account that it may not be able to reach the web server for v
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-#####<a name="hub_case"></a>Case
+*<a name="hub_case"></a>Case*
 
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
