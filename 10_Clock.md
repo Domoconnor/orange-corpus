@@ -32,12 +32,17 @@ The clock’s hardware components are housed in a 3D printed case. As well as ma
 
 ####Iteration 1: Design and concepting phase
 Since we have decided upon a web based method of visualising data, we want to explore several other means for outputting data to our clients. To engage more with the user, we want to explore methods of ambient data visualisation. 
+
 From our bank of data visualisation ideas, the “clock” design incorporates the use of a coloured light system and a clock face display. The clock would receive the average noise level on the hour, and mark it on its face as a coloured segment. Over a 12 hour period, this would produce an overall chart of ambience. To get coverage over 24 hours, we would have two separate clocks displaying data for AM and PM. 
+
 One option for this would be to involve the clock display in the website visualisation; offering the client a more ambient counterpart to graphs and charts. Since a few of our data visualisation for the five sketches phase featured a crossover of similar clock ideas, it is worth us looking further into how we could combine our sketches.  Since the clock design is simple, it could work quite effectively alongside more technical data formats. 
+
 We could also implement something physical in hardware, which could be read similarly to a clock which tells the time. We discussed a few scenarios in which this would prove useful. Firstly, if a client returned home after being away from the house all day, a quick check of the clock could provide a straightforward spread of activity during their absence; drawing their attention to colours of greater intensity. 
+
 In both cases, the red and orange lights could serve as flags to the user, as they indicate a high concentration of noise activity picked up by the sensor. Meanwhile, the lighter colours provide coverage for quieter hours. This offered the user a complete coverage of each 24-hour period, allowing the possibility to view previous hours and draw comparisons between them. 
 Overall, we felt that there was an advantage to having a physical clock, as it is a physical artefact and therefore has greater potential to engage with the user. Furthermore, it could provide effective reinforcement to the data displayed on the web server. 
-Lo-fi prototyping and sketches
+
+#####Lo-fi prototyping and sketches
 In order to visualise a few different clock concepts, we created some sketches of the clock being represented in different ways. This was a way of gauging how the interface for the clock should look, as well as exploring some aspects such as colour, granularity, and the general visual layout for the user. 
 Some of the design sketches we produced later in this iteration explored the placement of a clock as a “widget” on a tablet or webpage. Since our client could rely on mobile or tablet, we also concepted how our designs could be scaled and combined depending on where they are displayed. 
 
