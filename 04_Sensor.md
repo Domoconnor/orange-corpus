@@ -377,6 +377,10 @@ This was a more reasonable amount of time and would give us a good amount of dat
 
 A version of this code can be found [here](sensor/SDCardPrototype/)
 
+We collected a significant amount of data from this and a graph of the levels we recorded is included below. You can also find the raw data [here](sensor/cdata.csv)
+
+![](Images/sensor/graph.png)
+
 
 ####Iteration 4 
 #####Issues with previous iteration
