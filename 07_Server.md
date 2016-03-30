@@ -240,3 +240,6 @@ We changed the format of data being sent to and from the sensor from JSON to CSV
 
 We moved a majority of the data processing over to the server rather than the client. This was mainly done by using SQL queries to group and average the data. As this is what the database engine is designed for it was able to considerably speed up this process.
 
+Server code can be found [here](visualisation/web/)
+
+More information on the framework used and where the main files are located can be found at the [laravel website](https://laravel.com/docs/master)

@@ -1,8 +1,10 @@
 var heatmap = d3.selectAll('.heatmap');
 
+//If there is a heatmap div on the page, select it.
 if(heatmap[0].length > 0 )
 {
 	console.log("run")
+	//standard date formats
 	var hourFormat = d3.time.format('%H'),
 		dayFormat = d3.time.format('%j'),
 		timeFormat = d3.time.format('%Y-%m-%dT%X'),
@@ -20,6 +22,8 @@ if(heatmap[0].length > 0 )
 		colorCalibration = ['#a6d96a','#d9ef8b','#ffffbf','#fee08b','#fdae61','#f03b20'],
 		dailyValueExtent = {};
 
+
+		//Setup axis
 	var axisWidth = 0 ,
 		axisHeight = itemSize*24,
 		xAxisScale = d3.time.scale(),
@@ -55,6 +59,7 @@ if(heatmap[0].length > 0 )
 		var file = 'http://orange.app/api/get/hourly/0/1450943537'
 	}
 	var file
+	//read in data
 	d3.json(file)
 		.get(function(err,data){
 
@@ -63,6 +68,8 @@ if(heatmap[0].length > 0 )
 				d.value = +d.avg;
 				return d;
 			})
+
+			//Set bounds for graph
 			data.forEach(function(valueObj){
 				valueObj['date'] = new Date(valueObj['reading_time']);
 				var day = valueObj['day'] = monthDayFormat(valueObj['date']);
@@ -79,7 +86,7 @@ if(heatmap[0].length > 0 )
 
 			axisWidth = itemSize*(dayFormat(dateExtent[1])-dayFormat(dateExtent[0])+1);
 
-			//render axises
+			//render axes
 			xAxis.scale(xAxisScale.range([0,axisWidth]).domain([dateExtent[0],dateExtent[1]-5]));
 			svg.append('g')
 				.attr('transform','translate('+margin.left+','+margin.top+')')
@@ -120,6 +127,7 @@ if(heatmap[0].length > 0 )
 			renderColor();
 		});
 
+		//Fill the boxes in with colour based on range data
 	function renderColor(){
 
 		rect
@@ -142,6 +150,7 @@ if(heatmap[0].length > 0 )
 	}
 
 
+	//Setup calibration
 	function initCalibration(){
 		d3.select('[role="calibration"] [role="example"]').select('svg')
 			.selectAll('rect').data(colorCalibration).enter()

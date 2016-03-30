@@ -6,9 +6,11 @@ function hexCode(d) { return d.charCodeAt(0).toString(16); }
 
 if(charts[0].length > 2)
 {
+	//Loop over all charts on page
 	d3.json('http://orange.app/api/get/hourly')
 		.get(function(error, json){
 
+			//Create new circos object
 			charts[0].forEach(function(x){
 				data = json;
 				parent = d3.select("#"+x.id)[0][0].parentNode;
@@ -23,6 +25,8 @@ if(charts[0].length > 2)
 
 				layout_data = []
 
+
+				//Create an array of divs with 24 hours
 				for (i = 0; i < 23; i++)
 				{
 					if(i < 10)
@@ -37,7 +41,7 @@ if(charts[0].length > 2)
 				}
 
 				var clock_data =[]
-
+				//Format the data from the api and add to array
 				json.forEach( function(d){
 					if(ymd(new Date(d.start)) == ymd(new Date(x.id.substring(1)))) {
 						var date = new Date(d.start)
@@ -48,6 +52,7 @@ if(charts[0].length > 2)
 					}
 				})
 
+				//Start circos and set options
 				circos
 					.layout(
 						{
@@ -77,16 +82,22 @@ if(charts[0].length > 2)
 			})
 		})
 } else if(graphs[0].length > 0) {
+	//Create the graph
+	
+	//Create a colour scale
 	var color = d3.scale.category20();
 	var final = new Array();
 
+	//Set the standard time formats
 	var ymd = d3.time.format.utc("%Y-%m-%d");
 	var h = d3.time.format.utc("%H")
 
+	//Position it
 	var margin = {top: 20, right: 20, bottom: 30, left: 50},
 		width = 960 - margin.left - margin.right,
 		height = 500 - margin.top - margin.bottom;
 
+		//set up axes
 	var x = d3.time.scale()
 		.range([0, width]);
 
@@ -122,6 +133,7 @@ if(charts[0].length > 2)
 		.call(d3.legend)
 
 	graph_time = d3.select(".graph").attr('id').substring(1);
+	
 	//Load in the CSV and run the data through the type() to format the date
 	d3.json("/api/get/hourly/"+graph_time+"/"+(+graph_time+86400))
 	.get(function(error, data){

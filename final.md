@@ -120,13 +120,7 @@ When making a review request evidence needs to be provided to support the case t
 * sound recordings
 * a record of complaints made to the responsible authorities about the premise
 
-<style>
-	.todo{ color:red }
-</style>
-
-#Orange Street
-
-###Initial Ideas
+##Initial Ideas
 
 At this point we had spoken to enough individuals to have a good place to start working on a potential prototype. We needed to plan how we would efficiently tackle the problem ahead of us. We first had to make a list of requirements based on our aims. We needed:<span class="todo">link to aims</span>
 
@@ -147,417 +141,417 @@ Translating this to a solution we can work with:
 * Some of the requested locations for these sensors were completely unreachable by permanent power supplies, which led us to the investigation of long term battery solutions.
 * We needed a case that could survive harsh weather and conditions, one that would be of a suitable Ingress Protection Rating.
 
-#### Minutes
+### Minutes
 
 Below are the minutes taken for every meeting that we, personally had between us as a group. They are a rough summary of what decisions we chose to take and how we followed up on them in the weeks after.
 
 Weekly Minutes (September 27th - 25th March 2016)
 
-#####27/9/2015
-###### Members attendance
+####27/9/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Project begins.
 * Meeting with supervisor, arranging a meeting with clients.
 * Research into general hardware understanding.
 * Research into general electronics understanding.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Orange Street itself documented, photographs taken of popular outlets along the street and general overview.
 
-#####3/10/2015
-###### Members attendance
+####3/10/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Research into sensor amplifier, this is required for our sensor to accurately measure noise.
 * Reading Portigal Book, this is required to interview our clients in the best format possible.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Circuit diagrams for amplifier and research completed.
 * Research into hardware boards completed.
 
-#####10/10/2015
-###### Members attendance
+####10/10/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 
-###### Main points
+##### Main points
 * Working on sensor amplifier, have to calculate accurate values for use.
 * Concluding on client meetings, taking notes from the important moments in the meeting.
 * Sensors are required as expected, multiple of them will be used to gather data on sound.
 * Starting to learn 3D print, will need case designs for components in the project. 
 * Start researching potential solutions in system architecture to the problem.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Client interviews completed, recorded and documented. 
 
-#####18/10/2015
-###### Members attendance
+####18/10/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * A Basic sensor has been created using the amplifier circuit, can now use this act as a sensor temporarily.
 * Program needs to be written to sample sound from the current sensor.
 * Researching sound waves and understanding of sampling, need a better technical understanding of sampling sound waves and sound in general.
 * Researching into potential networking solutions, we need a way of transferring this data from the sensor to the website.
 * Researching into hardware boards, Arduinos, MBEDs, any particular board that could be used to handle the sensors requirements.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Microphone amplifier built, testing begins this week.
 * System architecture researched, deciding to use - sensor to hub to webserver.
 * 3D print attempts, not successful for the board - but very close.
 * Contacted council and received advice for legal standing on our project.
 
-#####25/10/2015
-###### Members attendance
+####25/10/2015
+##### Members attendance
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Using the written program for sampling data from the sensor, taking this sampled data and working out how to gather the values we need in order to demonstrate a sound level.
 * Using the FRDM K64F as a guide - 3D printing a case for this board.
 * Decision to use the XBee as our networking module, offers great customisation and low power cost.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Created program to sample sound waves, tested on Arduino and FRDM-K64F boards.
 * First successful 3D printed case designed
 
-#####2/11/2015
-###### Members attendance
+####2/11/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Started using Github to handle different elements of the project code base.
 * Started getting XBees S2 talking to each other, sending dummy data between two modules.
 * Began discussing how often we wish to sample data, how many samples to take and the accuracy of our data. 
 * Researching into very low boards to act in place of the sensor.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Displaying sound a period of time, research needed on decibels.
 * Plenty of test data stored from the initial testing of sensor.
 * Research completed on networking solutions.
 * Website API implemented, sensor iteration 4 started by Dominic.
 
-#####9/11/2015
-###### Members attendance
+####9/11/2015
+##### Members attendance
 * Daniel Andrews
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Discussed the potential of using the FRDM-K64F as a Hub as we are familiar with it.
 * Looking into XBees and their configurability, discussing whether encryption or the alike is necessary.
 * Researching into converting sound values into decibel levels.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Using XBees to communicate over serial on FRDM-K64F with MBED application shields with AT mode.
 * Concluded to sample data once a minute for 3 seconds, 60 times an hour.
 * Multiple case designs printed.
 
-#####16/11/2015
-###### Members attendance
+####16/11/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Still working with XBees, looking into setting up multiple on a network with a mesh topology as opposed to point to point.
 * Discussed the battery concerns, clients ideally want a rechargeable set of batteries. Looking into battery solutions.
 * Sketching visualisation ideas.  
 * Decided on using the Rocket scream board for the sensor, but going to use Arduino Uno for the time being.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Decided to use the FRDM-K64F as the Hub
 * Successfully found a way to convert raw values from the sensor into decibels.
 * Looked into configuring XBee modules.
 * Sensor implemented clock for timestamping.
 
-#####23/11/2015
-###### Members attendance
+####23/11/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Attempting to get an Arduino board communicating to an XBee, wiring the module up ourselves as it’s likely we’ll use an Arduino board.
 * After showing 5 sketches produced from each other, we concepted some form of clock that displays noise levels.
 * Researching into different solutions for a Hub instead of FRDM-K64F. 
 * Prototype of sensor is going to be placed in client's house over Christmas break.
 * Prototype will use local SD card instead of network due to power restrictions with the board being used.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Researched batteries, worked out calculations required for the sensor in its current state to function over Christmas.
 * Concepted the idea of a ‘clock’ from 5 sketches idea.
 * Rocket Scream ordered, waiting for arrival.
 
-#####30/11/2015
-###### Members attendance
+####30/11/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Mapping locations for sensors, where are we likely place them - what sort of problems does this raise?
 * Concepting case designs for the Arduino Uno.
 * Researching components for a clock like device.
 * Working towards placing a sensor in client's house before Christmas.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Arduino board communicating with XBee and an FRDM-K64F over serial using AT mode.
 * Sensor SD card implemented, data will be stored locally for the project due
 
-#####7/12/2015
-###### Members attendance
+####7/12/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Going to use AT mode for XBee for Hub and sensor, simpler to set up and then focus on API mode of XBee. 
 Research into XBee settings, API mode.
 * Clock components decided, visualising components and how to use them. Going to use 24 LEDS on the clock for 24 hours.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Case for sensor printed.
 
-#####14/12/2015
-###### Members attendance
+####14/12/2015
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Clock testing and programming, deciding what colours to use, frequency of them.
 * Case design tested, researching into weatherproofing the case.
 * Raspberry Pi decided for the Hub.
 * Going to use a large battery to power sensor for 8 days roughly.
 * Decided to sample once a minute and average to use as a representation of that minute.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Components arrived for clock, connected together and testing 
 * Testing on sensor.
 
-#####21/12/2015
-###### Members attendance
+####21/12/2015
+##### Members attendance
 * Daniel Andrews
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Final meeting before Christmas break, sensor has been placed in Client's house on Orange Street. 
 * Rocket scream board arrived, testing with rechargeable batteries is next step
 * AT Networking finalised.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Sensor installed in client’s house
 * End of term 1.
 
-#####20/1/2016
-###### Members attendance
+####20/1/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * First meeting since end of Christmas break, sensor has been collected and data returned for evaluation.
 * From result it is hard to determine accuracy of noise, sampling needs to be more accurate
 * Increasing sampling rate to 3 times a minute.
 * Work commencing on creating the Hub, and arranging networked solutions.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Over Christmas, research on Rocket Scream, XBee, Clock and Case design.
 
-#####27/1/2016
-###### Members attendance
+####27/1/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Clock case design prototyping started.
 * Raspberry Pi Model B+ acquired, programming beginning in Python with Jessie Lite as the Operating System.
 * Investigating how to visualise data on the website.
 * Order requested for components to build more sensors.
 * Sampling rate is now much more accurate.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Raspberry Pi initialisation, setting up and configuring to work with a XBee.
 * Rocket Scream replaced Arduino Uno as sensor board.
 * Sample rate modified to be more accurate.
 * Initial test of Clock with 24 LEDs, potentially using 60 LEDs.
 
-#####3/2/2016
-###### Members attendance
+####3/2/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Programming the RocketScream, research into power usage with the board (disabling/enabling features).
 * Researching sleep mode configuration on XBee modules.
 * Case design for Hub started.
 * Hub to backup data if network fails.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Pi configured to work as coordinator, work commencing to program.
 * Initial version of Hub AT model finished.
 * Case research into waterproofing, protection against rain in particular.
 
-#####10/2/2016
-###### Members attendance
+####10/2/2016
+##### Members attendance
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Finished hub, need to test with all components under different circumstances.
 * Sensor finished, accuracy lacking - looking into solutions.
 * Case design for clock on-going.
 * Colour sensitive users for clock.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Case design for clock finished along with initial sensor.
 * Initial Clock program finished, interfacing with Hub is next step.
 
-#####17/2/2016
-###### Members attendance
+####17/2/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Light intensity as opposed to different colours for users of colour blind nature.
 * New sensor prototype almost finished, solution to accuracy is a 16bit ADC.
 * New case design for sensor, directional microphone.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Website configured to communicate with Hub on GET and POST.
 * Hub tests all successful.
 * Clock case prototyped.
 
-#####24/2/2016
-###### Members attendance
+####24/2/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Testing entire system in the ‘wild’, sensor outside, clock on the side and Hub routing traffic.
 * If goes to plan, place in Client's house during this week.
 * Case finished for sensor, case for clock next.
 * Current networking is AT mode.
 * Live visualization being worked on.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Decision to work with API mode has been made.
 * Sensor now uses 16ADC as well to boost accuracy of raw values.
 * Clock features colour alternatives for those who suffer from colour blindness.
 
 
-#####31/2/2016
-###### Members attendance
+####31/2/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Designing initial poster for project fair.
 * Programming API mode for network.
 * Design for clock case finished. Need a way to diffuse light.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * System tested in our own homes, it even snowed - perfect for testing the sensor.
 * Live visualisation completed, working on preparing the project for live use.
 
-#####7/3/2016
-###### Members attendance
+####7/3/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 
-###### Main points
+##### Main points
 * Placing system in clients home.
 * Planning on testing website with users.
 * Hub API mode finished.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Poster concepted and designed.
 * Clock case finished and light diffused.
 * Hub API mode finished.
 
 
-#####14/3/2016
-###### Members attendance
+####14/3/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Building of a dummy sensor working with API mode to demonstrate capabilities.
 * Visualisation of data finished.
 * Clock case finished.
 * Plans for poster to test the clock and demonstrate our visualisation.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Poster concepted and designed.
 * Clock case finished and light diffused.
 * Hub API mode finished.
 
-#####18/3/2016
-###### Members attendance
+####18/3/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Use clock to demonstrate noise levels and visualisation.
 * Laptops and tablets for visualising website.
 * Dummy sensor to demonstrate range and error correction.
 * Hand out flyers on the project.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Poster concepted and designed.
 * Clock case finished and light diffused.
 * Hub API mode finished.
 
-#####25/3/2016
-###### Members attendance
+####25/3/2016
+##### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
-###### Main points
+##### Main points
 * Formating corpus and technical report for project.
 
-###### Work Achieved previous week
+##### Work Achieved previous week
 * Dummy sensor was a success.
 * Live visualisation was a success.
 * Sensor has survived for 2 weeks in the wild, including conditions.
@@ -1052,14 +1046,9 @@ All code mentioned in this section can be found [here](sensor/)
 ### Bibliography
 
 Arduino.cc, (n.d.). Arduino - ArduinoBoardProMini. [online] Available at: https://www.arduino.cc/en/Main/ArduinoBoardProMini [Accessed 16 Jan. 2016].
-<style>
-	.todo{ color:red }
-</style>
-
-[toc]
-
 <a name="networking"></a>
-##Networking [cont.](#contents)
+##Networking 
+[Back to contents](#contents)
 ###Description
 
 Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we require. The coordinator is capable of addressing each node on the network, with the nodes only ever addressing the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol and communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
@@ -1406,7 +1395,10 @@ However packet fragmentation and assembly are supported along with responding to
 
 #####Results of Iteration
 With our final iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
-## <a name="hub"></a>Hub [cont.](#contents)
+<a name="hub"></a>
+##Hub
+
+[Back to contents.](#contents)
 
 ![](Images/Hub/IMAGE1.PNG)
 
@@ -1414,22 +1406,22 @@ The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers
 
 The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
 
-#####<a name="hub_board"></a>Board
+*<a name="hub_board"></a>Board*
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
-#####<a name="hub_xbee"></a>Communication / XBee
+*<a name="hub_xbee"></a>Communication / XBee*
 
 The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
 
-#####<a name="hub_processing"></a>Processing Role
+*<a name="hub_processing"></a>Processing Role*
 
 It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
 The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-#####<a name="hub_case"></a>Case
+*<a name="hub_case"></a>Case*
 
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
@@ -1800,8 +1792,7 @@ Returns all data averages over hourly periods
 
 | Status | Response|
 |--------|---------|
-|200		|
-`{0:{start:183975627; end:183975687; avg: 12.4;}1:...}`|
+|200		|`{0:{start:183975627; end:183975687; avg: 12.4;}1:...}`|
 |400| `{"error":{"text": Database Error}}`
 
 
@@ -1829,7 +1820,7 @@ Returns all data recorded between 2 given timestamps averaged over an hourly per
 
 ###Previous Work
 
-####Iteration One
+####Iteration 1 - Initial Work
 ***At this point we had thought visualisation and back end server were the same thing. This was later changed but for documentation purposes we have considered the inital iteratartions of this as part of the server***
 
 As there are multiple users wishing to see data coming from multiple sources there needs to be some kind of central service that collects the information and displays it in an easy way for the users to see. 
@@ -1904,10 +1895,10 @@ After looking at the different frameworks that were available to us we decided t
 Version control was necessary for this projects as it provided a log of what had been done which we could revert back to if anything went wrong. It also allowed us all to view the code so it could be looked over to check what was being written and committed was sane.We decided to use git for version control as it is an industry standard and we all had some experience of using it. We are hosting the remote repository on github as it provides an easy to use interface and also allows transfer of repository ownership should someone else wish to take the project on in future. 
 
 ##### Outcome of Iteration
-We produced a system that would take data it recieved from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings.
+We produced a system that would take data it recieved from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings. This was written using the slim framework
 
 
-#### Iteration 2
+#### Iteration 2 - Splitting Front and Back End
 
 ##### Issues with previous iteration
 
@@ -1919,8 +1910,15 @@ Another issue we became aware of after the implementation of the first iteration
 #####Outcome of iteration
 We worked to split the front end code from the API and the front end so that they could work independantaly without dupilcation of code. We realised some kind of security was also needed so we added key based authentication to provide a basic level of security. 
 
+#### Iteration 3 - Switching Frameworks
 
-#### Iteration 3
+##### Issues with previous iteration
+After we split the front and backend we realised wer were going to be using slim to server the backend and Laravel to serve the frontend. This would mean using someone who was picking this up would have to learn multiple frameworks.
+
+##### Result of iteration
+We decided to change the backend the also use laravel to make the system easier to pick up. Most of our code was easily portable as they use the same language and roughly the same MVC layout. 
+
+#### Iteration 4
 #####Issues with previous iteration
 While working on the visualisation we discovered that filtering on the client side was not an option as it took too long to load. This meant that we had to do averageing and filerting on the server side. This was due to loading large amounts of raw data. For example to visualise 1 month worth of dummy data it was having to load ~600,000 (60\*24\*7*4) readings which took a considerable amount of time. It then had to group this data and calculate averages based on this which, again, increased page load time. The total load time of a page loading this amount of data was ~6 seconds
 
@@ -2309,23 +2307,32 @@ To have a feasible hardware solution which complements our other means of data v
 ![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
 	Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
+	
+<br>
 
 ![Sketch 2](Images/Clock%20Images/IMAGE_2.jpg)
 
 	Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
 
+<br>
+
 ![Sketch 3](Images/Clock%20Images/IMAGE_3.jpg)
 
 	Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
 
+<br>
+
 ![Sketch 4](Images/Clock%20Images/IMAGE_4.jpg)
 
 	Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
+	
+<br>
 
 ![Sketch 5](Images/Clock%20Images/IMAGE_5.jpg)
 
 	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
+<br>
 
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
@@ -2490,6 +2497,7 @@ Once the modified case statement was developed, we tested the clock in isolation
 ![case 1](Images/Clock%20Images/IMAGE_21.jpg)
 
 	Display for error case 1. The clock outputs a white display of lights and holds it there for a few seconds. 
+	
 
 ![case 2](Images/Clock%20Images/IMAGE_22.jpg)
 
@@ -2498,7 +2506,11 @@ Once the modified case statement was developed, we tested the clock in isolation
 ![case 3](Images/Clock%20Images/IMAGE_23.jpg)
 	
 	Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
-
+	
+![success 1](Images/Clock%20Images/accept_case.jpg)
+	
+	Display for success case - if the hub can successfully be reached by the clock, the green lights appear. After this, the coloured data appears.
+	
 The above cases show the clock displaying errors whilst working with dummy values, so our next stage is to make it work with the hub. This is fairly straightforward - we just have to send dummy data packets from the hub over to the clock over the Zigbee network to test it.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b] 
