@@ -1,6 +1,8 @@
 <a name="hub"></a>
 ##Hub
+
 [Back to contents.](#contents)
+
 ![](Images/Hub/IMAGE1.PNG)
 
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
@@ -22,7 +24,7 @@ The Hub takes into account that it may not be able to reach the web server for v
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-#####<a name="hub_case"></a>Case
+*<a name="hub_case"></a>Case*
 
 The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
