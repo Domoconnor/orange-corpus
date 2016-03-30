@@ -95,7 +95,7 @@ Values taken from [Wifi vs Bluetooth power consumption](http://science.opposingv
 
 
 <br>
-*WiFi*
+**WiFi**
 
 WiFi is widely used and accepted as a way to wirelessly transmit data. This means our clients should be familiar with it in some sense. However WiFi is not really intended to be used in devices that need to be situated in one place for an extended amount of time. This is because WiFi can use a lot of power when sending and receiving data. Hence why smartphones can lose power quickly while connected to a WiFi network.
 
@@ -108,7 +108,7 @@ One of our mains goals for the sensor is to make the battery as long as possible
 Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
 
 <br>
-*Bluetooth and Bluetooth Low Energy*
+**Bluetooth and Bluetooth Low Energy**
 
 Bluetooth is also a viable alternative for transferring over a low bandwidth where speed is not too key an issue. Depending on how often we schedule the device to transmit data. Since the range on this is considerably lower (5-30 meters) so we would have to consider integrating this with a hub of some kind to forward our data. Fortunately some of the properties across Orange Street feature flat rooftops; upon which we could attach peripherals such as antennas if we need to.  
 
@@ -117,7 +117,7 @@ Bluetooth smart devices have a typically very low sleep current which equates to
 Bluetooth works on a dynamic network topology called PAN, which supports up to 8 other devices and a minimum of two, although we don’t plan on having an abundance of sensors in one house (Minimum most likely 3) 
 
 <br>
-*XBee S2 and XSC*
+**XBee S2 and XSC**
 
 We found that the S2 in particular was more than adequate for our desires, having one of the lower current draws for transmitting/receiving data, especially that of in sleep with a good data rate (250kbps) and working on a mesh network topology.  Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network than other alternatives.
 
