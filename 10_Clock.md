@@ -2,6 +2,7 @@
 ##Description
 
 IMAGE 32 & 33
+
 The clock is our form of ambient data visualisation, and is designed to engage and notify the user. It is the physical counterpart to our front end visualisation, and uses a simplified system of visual data to represent noise levels; complementing the more technical premise of the web server. 
 
 It uses a series of 24 LEDs arranged in a ring, which, every hour are lit to a colour corresponding to the average sound levels for that hour. This is a lightweight way of giving the user a quick glance at the sound levels, and allows for comparisons and references to be made across a 24 hour period. 
