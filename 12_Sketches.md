@@ -12,16 +12,29 @@ We set out to design easy, straight forward ways to show data that our sensors h
 
 **Here are our outcomes of the Five-Sketches-or-Else Method:** 
 
+These initial sketches were drawn in pencil, and explored an open ended approach to data visualisation. They were comprised of several unique ideas; varying from typical graph formats, to looking at specific formatting for devices and tablets. 
 
-![sketch 1](Images/Sketch%20Images/Matt_1.jpeg)
+
 
 ![sketch 2](Images/Sketch%20Images/Matt_2.jpeg)
 
+	Sketch 1 - Sensor visualisation. This design focuses on highlighting the location that was most noisy. This was based upon the position of the dot, providing coverage over the course of a day. 
+	
+![sketch 1](Images/Sketch%20Images/Matt_1.jpeg)
+	
+	Sketch 2 - Scatter graph sensor visualisation. This provides a more technical overview, plotting data of specific volume values for each sensor.
+
 ![sketch 3](Images/Sketch%20Images/Matt_3.jpeg)
+
+	Sketch 3 - Unique approach to graphing noise volume against time.
  
 ![sketch 4](Images/Sketch%20Images/Matt_4.jpeg)
 
+	Sketch 4 - 3D graph view. 
+
 ![sketch 5](Images/Sketch%20Images/Matt_5.jpeg)
+
+	Sketch 5 - Data visualisation on iOS devices.
 
 <br>
 
