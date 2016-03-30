@@ -361,7 +361,19 @@ This iteration implements a more sturdy stand to keep the clock upright. We were
 
 #####Final iteration
 
-We finalised our case design to have a more sturdy base and used the 3D printer to construct it. The final case consisted of three major 3D printed parts which slotted together. For more information, see casing. 
+We finalised our case design to have a more sturdy base and used the 3D printer to construct it. The final case consisted of three major 3D printed parts which slotted together.
+
+The final case design was constructed from white plastic; featuring a clear plastic face, a sturdy base with which it could stand upright, and a container for the Adafruit Flora and the XBee. Overall we felt this case suited the clock very well, matching its dimensions accurately and providing a nice aesthetic. The face importantly provided a clear view of the lights, and offered granularity between each individual light. 
+
+![Design final a](Images/Clock%20Images/final_1.jpg)
+ 	
+ 	Final design for the clock case. 
+ 	
+![Design final b](Images/Clock%20Images/final_2.jpg) 
+
+	Final design for the clock case, side view. 
+
+For more information, see casing. 
 
 ####Previous Problems
 Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
