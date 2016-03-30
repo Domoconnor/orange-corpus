@@ -238,7 +238,6 @@ Research into XBee settings, API mode.
 #####21/12/2015
 ###### Members attendance
 * Daniel Andrews
-* Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
 
@@ -271,7 +270,6 @@ Research into XBee settings, API mode.
 ###### Members attendance
 * Daniel Andrews
 * Dominic O’Connor
-* Jack McBride
 * Matthew Aldridge
 
 ###### Main points
@@ -307,7 +305,6 @@ Research into XBee settings, API mode.
 
 #####10/2/2016
 ###### Members attendance
-* Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
 * Matthew Aldridge
@@ -380,7 +377,6 @@ Research into XBee settings, API mode.
 * Daniel Andrews
 * Dominic O’Connor
 * Jack McBride
-* Matthew Aldridge
 
 ###### Main points
 * Placing system in clients home.
