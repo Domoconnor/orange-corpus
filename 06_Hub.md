@@ -1,4 +1,4 @@
-<a name="hub"></a>Hub
+<a name="hub"></a>
 ##Hub
 [Back to contents.](#contents)
 ![](Images/Hub/IMAGE1.PNG)
