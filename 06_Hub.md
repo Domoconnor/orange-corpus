@@ -270,7 +270,7 @@ When the Hub needs to transmit a message above the MTU for RF data it will begin
 
 The Hub will transmit a frame and wait for an acknowledgement from a status packet before transmitting the next packet, this guarantees that frames cannot arrive out of sync. If it fails to transmit multiple times on the same frame it will return an error code.
 
-IMAGE 10
+IMAGE 11
 
 ######Packet Assembly
 
