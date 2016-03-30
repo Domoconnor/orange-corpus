@@ -14,7 +14,7 @@ The Hub is the coordinator of the network. Its the middleman to all incoming and
 * Will forward all sensor data to the webserver for further processing, if possible otherwise saves locally.
 * Forwards requests from the clock for most recent 24 hours of sound averages and will transmit back the response. If an error occurs will transmit an appropriate error code.
 
-The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
+The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee) and [Case](#hub_case).
 
 **<a name="hub_board"></a>Board**
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
@@ -255,7 +255,7 @@ Previously we’ve been unable to determine whether a packet was received or not
     2 = Invalid node, does not exist on network
     3 = Failed to transmit data to device, could not reach node
 
-So the Hub can now act accordingly.
+So the Hub can now respond as needed.
 
 ~~~python
 sensor = “sensor1”
