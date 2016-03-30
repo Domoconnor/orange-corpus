@@ -65,13 +65,13 @@ We looked into how sound works and discovered that we would need to capture a so
 
 After talking to the client the important part of the diagram would remain constant throughout the process, which was the amplifying circuit. For a microphone to be able to produce a voltage signal able to be processed for data it must be amplified, we know for certain we are measuring noise levels in this project and so this is a crucial step.
 
-**image 1**
+![](images/sensor/IMAGE1.png)
 
 The basic place to start is a non-inverting amplifying circuit, used with any op-amp it effectively calculates the gain based on two resistor values going into an inverting and non-inverting input. (Gain= 1+ (R2/R1)
 
 The OP-AMP IC we’ve been using is the MCP 6002, the datasheet can be found here. (http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf)
 
-**Image 2**
+![](images/sensor/IMAGE2.png)
 
 It’s an IC with two OP-AMPS and isn’t designed for anything too complicated, for the time being it’s perfect to get a basic amplifying circuit built.
 
@@ -81,7 +81,7 @@ Most microphones that feed into a amplifying circuit are biased by a resistor va
 
 So far, we’re looking at a circuit like this.
 
-**image 3**
+![](images/sensor/IMAGE3.png)
 Other solutions that can be found on the web include using a different IC (As opposed to the MCP 6002) and modifying the circuit above. 
 
 List of other IC’s and amplifiers we looked into.
@@ -195,11 +195,11 @@ This narrowed down our choices to the following Arduino devices.
 	<li>Arduino Uno</li>
 </ul>
 
-**Image 4**
+![](images/sensor/IMAGE4.png)
 
 *Arduino Nano*
 
-**Image 5**
+![](images/sensor/IMAGE5.png)
 
 (https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf)
 
@@ -220,7 +220,7 @@ It can run the ATMega 168 or 328, we would ideally use the 328 as it offers much
 
 *Arduino Pro mini*
 
-**Image 6**
+![](images/sensor/IMAGE6.png)
 
 (http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf)
 
@@ -230,7 +230,7 @@ Essentially the Pro Mini is identical to the Arduino Nano except for the added a
 
 *Arduino Uno*
 
-**IMAGE 8**
+![](images/sensor/IMAGE8.png)
 
 The Uno sticks out in this comparison due to its size difference against the previous 3, which begs the question - why then? Simply put, the Arduino Uno is a very friendly board to use, and for prototyping would be ideal as we would not need to worry about many problems that we could face when going straight in with one of the other solutions. It also shares a lot of common ground with the other 3, except for its size.
 
@@ -240,7 +240,7 @@ The biggest benefit for us, was that the Uno would offer easy adaptability and h
 
 *MBED FRDM-K64F*
 
-**IMAGE 9**
+![](images/sensor/IMAGE9.png)
 
 Another popular developer of IOT boards, using ARM based architecture instead of AVRs. The argument between these two processor architecture is often put down to ARM is powerful, and AVR is not so much. There are variants on the processors but otherwise they tend to stick to those groups. MBEDs have an online compiler and IDE, which works in a similar fashion to Arduinos but is effectively always online which comes with its own problems such as requiring internet access. 
 
@@ -274,7 +274,7 @@ int main(void)
 
 The FRDM-K64F has given us superb accuracy when sampling the microphone, values ranging from 0-65555. This is due to the 16bit analog to digital converter on the board. 
 
-IMAGE 11
+![](images/sensor/IMAGE11.png)
 
 We also sampled using an Arduino Uno:
 
@@ -339,15 +339,16 @@ The size of the amplifier we built was ideally too large for a small sensor, we 
 #####Result of iteration
 We’ve purchased a pre-built amplifier to simplify our circuit, ideally we don’t want wires going everywhere and using a prebuilt amplifier makes our task easier due to less complexity and time required to build one. 
 
-IMAGE 12
+![](images/sensor/IMAGE12.png)
 
 The next step is to wire the pre-built microphone amplifier to one of the boards, we’ve decided to use the FRDM K64F for the time being as its sample range from 0-65555 makes it appealing to work with.
  
-IMAGE 13
+![](images/sensor/IMAGE13.png)
 
 This was a very simple change and nothing too complicated occurred, but it does benefit us in the long run. The size of the new amplifier works in our favour as its size makes it very easy to adopt into a system where as previously we had a cluster of wires and components. It doesn’t risk being disconnected when compared to our previous amplifier which was held together through loose wires. 
 
-A version of this code can be found [here](sensor/InitialNoiseLevel/)
+* For a version of this code see <a href="/sensor/initialNoiseLevel/sketch_dec02a/sketch_dec02a.ino">here</a>.
+* For the Java sampling program see <a href="/SensorJavaSamplingCode/">here</a>. 
 
 ####Christmas Deployment
 Over the christmas period we deployed a version of our sensor that wrote data to an SD card. This was designed to go into one of the resident's houses and record data for a short period of time. We used an arduino uno with a shield that contained an SD card reader. 
