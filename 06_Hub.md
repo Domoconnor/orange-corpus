@@ -119,7 +119,7 @@ Now that we’ve settled on an operating system, hardware and programming langua
 
 In order to change anything we need access to the Pi. We’ve been remotely accessing the Pi using SSH and a program called Putty, this gives us full access to the Pi without having to actually plug anything into it. Researching Systemd has shown us that you can mask services which effectively disables them entirely from starting. First we needed to find the service we were looking for.
 
-~~~python
+~~~
 systemctl list-units
 ~~~
 
@@ -127,13 +127,13 @@ This returned us a long list, so from this we needed to find which service was t
 
 First we decided to play safe and stop the service.
 
-~~~python
+~~~
 systemctl stop sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
 ~~~
 
 Then, we masked it - to stop it from starting again on a reboot.
 
-~~~python
+~~~
 systemctl mask sys-devices-platform-soc-20201000.uart-tty-ttyAMA0.device
 ~~~
 
@@ -145,13 +145,13 @@ IMAGE 7v2
 
 The final step is to make sure we have the libraries we need for python, using pip a tool that installs these libraries we can run a command to install them. Pip had to be installed however, which could be done using.
 
-~~~python
+~~~
 python -m pip install -U pip
 ~~~
 
 With Pip installed, we needed to then install the libraries required for our Pi.
 
-~~~python
+~~~
 pip install pyserial
 pip install requests
 ~~~
