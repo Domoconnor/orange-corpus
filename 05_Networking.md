@@ -30,7 +30,6 @@ void helloWorld(){
 ~~~
 
 ![13](Images/Networking/IMAGE14.PNG) 
-![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG) 
 
 ###Previous Work
 
@@ -329,8 +328,6 @@ When working with the Arduino IDE its been very tempting to use the 'String' cla
 
 For us, we want total efficieny above all else. Although it might be easier to implement a string over a char array, we have decided with the later. 
 
-
-
 ~~~c++
   char char_array_hello[20] = "Hello world!"; // Using char array to store sentence
   String string_hello = "Hello world!"; // Using String to store sentence
@@ -363,7 +360,7 @@ Although simple in principle, this was not possible with the use of AT mode (Wit
 
 #####Library for coordinator (Hub)
 
-The hubs library is much more extensive than of the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
+The hubs library is much more extensive than the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
 
 For more information regarding the Hub and API mode, see [**Hub**](#hub).
 
@@ -371,7 +368,106 @@ For more information regarding the Hub and API mode, see [**Hub**](#hub).
 
 The library created for the nodes on the network was simpler than that of the coordinator. The nodes only need to talk to the coordinator on the network as opposed to each other. The coordinators address is constant, set at 0x00, which means no complicated addressing or node discovery.
 
-However packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
+######Packet Fragmentation and Assembly
+
+Packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
+
+######Different Serial Ports
+
+The actual serial connection on the clock and sensor are different, the Flora board has two serial ports whereas the Rocket Scream only has one. This meant that the serial connection the Flora board used was different to the Rocket Scream and they send data down serial in different ways. To accomodate this the HardwareSerial class was used a reference in the API, allowing us to choose which serial port we wanted the API to use. 
+
+For the Rocket Scream, initialising the API can be done as:
+
+~~~c++
+XbeeAPI xbee(&Serial, 0, "test");
+~~~
+
+Whereas for the Flora:
+
+~~~c++
+XbeeAPI xbee(&Serial1, 0, "test");
+~~~
+
+The library handles this construction as follows:
+
+~~~c++
+XbeeAPI::XbeeAPI(HardwareSerial *pserial, const char* name) : name(name)
+{
+  serial = pserial;
+  serial->begin(9600);
+  serial->setTimeout(1000);
+}
+~~~
+
+######Polling
+
+The ATMega architecture struggles with some forms of interrupt handling and due to this storing packets when they're received becomes difficult. When a packet is received the XBee will store it internally and wait to send over serial, it can only send when the board is ready for it to send. The sensors are often asleep and won't be listening on serial for incoming data, except for when they wake up. When they wake up to sample sound, they can call a method called 'poll' in the library. This method reads in everything it can from serial and then forms messages for the program to use.
+
+An example of the function poll:
+
+~~~c++
+// awakening from sleep...
+// take a sample
+bool messageAvailable = poll(3); 
+if(messageAvailable){
+	// respond, read etc ...
+}
+~~~
+
+The parameter passed to the poll function relates to how many times the program wants to poll, each poll waits 250 milliseconds before reading everything it can in from serial. The example above would poll 3 times and would take around 750 milliseconds to execute. 
+
+The poll function:
+
+~~~c++
+bool XbeeAPI::poll(uint8_t timesToPoll)
+{
+
+    unsigned char input[INPUT_SIZE + 1]; // Total length of data expected, including + 1 for termination \0
+    unsigned char packet[INPUT_SIZE + 1]; // Total length of data expected, including + 1 for termination \0
+
+    // How many times we want to check for incoming data
+    for(int i = 0; i < timesToPoll; i++){
+    	
+      // Clear arrays with 0
+      memset(input, 0, INPUT_SIZE+1);
+      memset(packet, 0, INPUT_SIZE+1);
+      delay(250);
+      // Read in all data we can up to INPUT_SIZE and store in 'input'
+      uint8_t size = serial->readBytes(input, INPUT_SIZE);
+      input[size] = 0; // Final termination of array \0
+
+
+      unsigned char pos = 0;
+      unsigned char checkPacket = 0;   
+      for(int i = 0; i < size; i++){
+        if(input[i] == 0x7E){
+          if(!checkPacket){
+            checkPacket = 1;
+          // If the packet is valid, we want to continue checking serial data for other packets
+          }else if (validatePacket(packet)){
+            memset(packet, 0, INPUT_SIZE); // Reset packet
+            pos = 0;
+            checkPacket++;
+          // If invalid packet and not checking packet then break 
+          }else{
+            break;
+          }
+        }
+        packet[pos++] = input[i];
+      }
+
+      if(checkPacket == 1){
+        validatePacket(packet);
+      }
+
+      if(message != NULL && message->hasTerminated()){
+        return true;
+      }else{
+        return false;
+      }
+  }
+    }
+~~~
 
 #####Results of Iteration
 With our recent iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
