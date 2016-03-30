@@ -16,9 +16,7 @@ The sensors were programmed in C++ and the Hub was programmed in Python, so we h
 
 <p class="todo">Might need to change to fit format ^
 
-![1](Images/Networking/IMAGE1.PNG)
-
-![2](Images/Networking/IMAGE2.PNG)
+![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG)
 
 ###Previous Work
 
