@@ -48,7 +48,7 @@ A final version of the code can be found [here](sensor/micTest).
 
 Below is a diagram of the final circuit used.
 
-![6](Images/sensor/diagram.PNG)
+![6](Images/sensor/diagram.png)
 
 
 ### Previous Work
