@@ -14,7 +14,7 @@ The microphone is an electret microphone with a built in MAX4466 amplifier. This
 
 **<a name="adc"></a>ADC**
 
-The circuit contains an external ADC in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to firther amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
+The circuit contains an external ADC in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to further amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
 
 We found that we were getting a lot of noise coming from the mic which we discovered was caused by the voltage from the board. To counter this voltage coming out of the board with the data coming back from the microphone on the ADC. This allowed us to get the difference and remove any electrical noise from the mic.
 
@@ -39,7 +39,7 @@ The sensor needs a clock to be able to accurately record the time readings are t
 
 **<a name="battery"></a>Battery**
 
-We used a 1500mah lithium polymer battery for the sensor as it provided a good balance betwwen power and size. In previous iterations we used a 2000mah which provided a longer battery life however we couldn't source another one in time for the final deployment.
+We used a 1500mah lithium polymer battery for the sensor as it provided a good balance between power and size. In previous iterations we used a 2000mah which provided a longer battery life however we couldn't source another one in time for the final deployment.
 
 **<a name="sensor_case"></a>Case**
 The Case was designed in a way that was intended to aim our microphone at the noisy street and protect the electronics from the elements. It was 3D printed at a high fidelity (high infill of plastic) with a thickness of 3mm as not to allow water in through the printed plastic. It was then sanded and sprayed with a high fill primer to fill any pores left int the plastic left from the printing process. As the case had to be closed around the electronics of the sensor a seam was built in that was filled with a neoprene strip as to stop any water from getting through said seam.
@@ -64,7 +64,7 @@ Building on the initial ideas we had and also looking back to the client interac
 - Transmit that data back to a hub
 
 
-We looked into how sound works and discovered that we would need to capture a sound wave and subtract the minimum from the maximum to get an overall amplitude of the wave. We could then use this data to calculate other things such as decibels but initialy recording the sound wave was crucial. We planned to use a microphone and microcontroller board to select some points on a sound wave and perform the calculation.
+We looked into how sound works and discovered that we would need to capture a sound wave and subtract the minimum from the maximum to get an overall amplitude of the wave. We could then use this data to calculate other things such as decibels but initially recording the sound wave was crucial. We planned to use a microphone and microcontroller board to select some points on a sound wave and perform the calculation.
 
 **The Microphone Amplifying Circuit**
 
@@ -391,7 +391,7 @@ We collected a significant amount of data from this and a graph of the levels we
 There were several issues that arose with the code and hardware we created during the christmas testing We discovered that the mic signal was not being amplified enough which led to a lot of readings being the same even though the noise levels were vastly different. The previous iteration also recorded data directly to an SD card for us to look at later. This is an issue as we needed some way of transmitting data back to the board.
 
 #####Result of Iteration
-We struggled with amplifying the sound due to also amplifiying a lot of electrical noise. We added an XBee module to the board so that we could transmit data back to the hub which worked without any issues.
+We struggled with amplifying the sound due to also amplifying a lot of electrical noise. We added an XBee module to the board so that we could transmit data back to the hub which worked without any issues.
 
 ####Iteration 5 - External Clock and XBees
 #####Issues with previous Iteration
@@ -407,10 +407,10 @@ The aim of this iteration was to fix the issue in iteration 2 where we discovere
 No issues
 
 #####Result of Iteration
-We added a 16-bit ADC (Analog to Digital converter) which gives us a higher resolution and also allows us to remove electical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the microphone output into pin 2. Comparing these 2 pins gave us a wave that was far less noisy, as the power voltages were effectively cancelling each other out. This means that we could produce a wave which had an maximum amplitude that was the same as our resolution. Previously there was a noise baseline which when amplified increased, leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
+We added a 16-bit ADC (Analog to Digital converter) which gives us a higher resolution and also allows us to remove electrical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the microphone output into pin 2. Comparing these 2 pins gave us a wave that was far less noisy, as the power voltages were effectively cancelling each other out. This means that we could produce a wave which had an maximum amplitude that was the same as our resolution. Previously there was a noise baseline which when amplified increased, leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
 
 ####Iteration 7 - Rechargeable Batteries
-For this iteration we wanted to add a rechargable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
+For this iteration we wanted to add a rechargeable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
 
 #####Issues with previous Iteration
 No issues
@@ -422,7 +422,7 @@ We changed our board from an Arduino Uno to a low power version called the 'Rock
 In this iteration we wanted to make sensor run at a lower power so it could last on batteries for as long as possible.
 
 #####Issues with previous Iteration
-Our testing program was running on the board constantly which led to the battery not being able to fully chage as the code was making the board use a lot of power. This led us to think there was an issue with the charging circuit and look into that. The issue in the end was fixed by making sure the program didn't run and then leaving it to charge for a longer period of time.
+Our testing program was running on the board constantly which led to the battery not being able to fully charge as the code was making the board use a lot of power. This led us to think there was an issue with the charging circuit and look into that. The issue in the end was fixed by making sure the program didn't run and then leaving it to charge for a longer period of time.
 
 ##### Result of Iteration
 We used the [Rocket Scream Low-Power](https://github.com/rocketscream/Low-Power) library which allowed us to turn off all of the functions of the processor we were not using and put it into a deep sleep mode. This deep sleep dramatically reduced power usage. We are using the watchdog timer on the board to allow us to set the amount of time we sleep. However the watchdog timer can only count up to 8 seconds so to get it to sleep for 1 minute, we needed to run it 8 times. Some example code for this can be seen below:
@@ -462,7 +462,7 @@ ISR(WDT_vect)
   }
 }
 
-//Put the processort to sleep until it's woken up bt WDT
+//Put the processort to sleep until it's woken up by WDT
 void sleep()
 {
 	LowPower.powerDown(SLEEP_FOREVER,ADC_OFF, BOD_OFF);  
@@ -480,8 +480,3 @@ There were several issues we noticed after the previous iteration. One of these 
 We changed the clock to a DS3231 which allowed us to fire interrupts at predetermined intervals, such as every minute. We could then use that wake the processor from it's sleep and it could then take the readings. We made some modifications to the DS3231 by removing the power and transmit LEDs to reduce power consumption. The clock ensured that readings were taken at the same point every minute. We also reprogrammed the Xbee to use pin hibernate mode. This meant that when we pulled a pin low on the board, the Xbee would also enter sleep mode. This sleep mode reduced it's power usage down to around 500μA which was acceptable. The Xbee was then only powered on when we wanted to send data, which was a tiny fraction of the time. Changing to interrupt based processor sleep seems to have solved the problem of the board not waking from sleep.
 
 All code mentioned in this section can be found [here](sensor/)
-
-
-### Bibliography
-
-Arduino.cc, (n.d.). Arduino - ArduinoBoardProMini. [online] Available at: https://www.arduino.cc/en/Main/ArduinoBoardProMini [Accessed 16 Jan. 2016].

@@ -10,7 +10,7 @@ The server acts as an API where all data is sent to and requested from. This all
 
 There is a key which must be sent with each request to ensure that it is a device that is allowed to access that data. The request should be made over HTTPS to avoid exposing the key. The key is hardcoded into the server but can be changed by modifying the code if needed.
 
-To get a development server running first install a copy of [Laravel homested](https://laravel.com/docs/5.2/homestead). Run through the setup guide and clone the repository into the specified directory. After this you can run need to insure all dependancies are installed by running `composer install && bower install`. After this you can run `homestead up` and visit the address ypou specified in the homestead setup.
+To get a development server running first install a copy of [Laravel homested](https://laravel.com/docs/5.2/homestead). Run through the setup guide and clone the repository into the specified directory. After this you can run need to insure all dependancies are installed by running `composer install && bower install`. After this you can run `homestead up` and visit the address you specified in the homestead setup.
 
 As the server is using Laravel you can easily set up the databases without manually running SQL queries.
 
@@ -89,7 +89,7 @@ The endpoints are as follows:
 
 <a name'data+object'></a>
 ####Data object
-The data object is a csv string which contains both a timestamp and a microphone reading. It also contains the battey reading of the sensor. The csv should be formatted as shown below:
+The data object is a csv string which contains both a timestamp and a microphone reading. It also contains the battery reading of the sensor. The csv should be formatted as shown below:
 
 ```
 'id',id
@@ -177,7 +177,7 @@ The server is built using the MVC layout which allows for decoupling of elements
 
 ![](Images/visualisation/mvc.png)
 
-In the server, the views are very mimimal as it is mainlt just displaying json data. While the views aren't the same as in most applications, they still work in the same way.
+In the server, the views are very minimal as it is mainly just displaying json data. While the views aren't the same as in most applications, they still work in the same way.
 
 The server has three main models:
 
@@ -190,7 +190,7 @@ These are all called by the controllers who then pass the data straight onto the
 ###Previous Work
 
 ####Iteration 1 - Initial Work
-***At this point we had thought visualisation and back end server were the same thing. This was later changed but for documentation purposes we have considered the inital iteratartions of this as part of the server***
+***At this point we had thought visualisation and back end server were the same thing. This was later changed but for documentation purposes we have considered the initial itererations of this as part of the server***
 
 As there are multiple users wishing to see data coming from multiple sources there needs to be some kind of central service that collects the information and displays it in an easy way for the users to see. 
 
@@ -198,7 +198,7 @@ One option for this is to use the hubs themselves as servers. This means that th
 
 Another option is to have this service run on the university’s servers, this approach also has several pros and cons. One of the benefits is that all the infrastructure and software to run a server and databases are in place and we would simply have to ask for one to be set up. Another good thing about using the university’s infrastructure is that we have greater control and there are safeguards already in place for if things go wrong. One downside to this method is that currently, to access the servers, you need to be connected to the University’s network by being on campus or over VPN. This could be a big problem as the the devices will not be located on campus and ideally would not be connected to the VPN as it can become complex and is yet another thing that could go wrong. One way around this that has been suggested is to use the server that The Shed has. We have been told by Dan Knox that it would be possible to open up some of the ports on that server to allow connections from outside the University’s network.
 
-Overall the option of having a web server in the university would be the best option as it is already provided as a service and is maintained so there would be less maintence for this project. This decision is relies on being able to open up the sheds servers for outside connections. If it turns out this is not possible then we will have to revisit the hub/server idea and possibly think of some other options.
+Overall the option of having a web server in the university would be the best option as it is already provided as a service and is maintained so there would be less maintenance for this project. This decision is relies on being able to open up the sheds servers for outside connections. If it turns out this is not possible then we will have to revisit the hub/server idea and possibly think of some other options.
 
 #####What we need
 The basic idea of the web end of this project is to provide a place to store large amounts of data over a large period of time and have some sort of mechanism where the user can see those results in a meaningful way. The devices/hubs also need to be able to connect to this service so they can send results directly to it. The user also needs to be made aware of device status such as whether the battery is running low or the device has crashed and needs restarting. This means that the main requirements of the web service are as follows:
@@ -261,10 +261,10 @@ CodeIgniter is another widely used MVC framework that provides a lot of features
 After looking at the different frameworks that were available to us we decided that the best one to use was Slim due to its simple nature. It meant that we could all pick it up fast and get working quickly while still having good documentation that would be easy for anyone else to pick up.
 
 ######Version Control
-Version control was necessary for this projects as it provided a log of what had been done which we could revert back to if anything went wrong. It also allowed us all to view the code so it could be looked over to check what was being written and committed was sane.We decided to use git for version control as it is an industry standard and we all had some experience of using it. We are hosting the remote repository on github as it provides an easy to use interface and also allows transfer of repository ownership should someone else wish to take the project on in future. 
+Version control was necessary for this projects as it provided a log of what had been done which we could revert back to if anything went wrong. It also allowed us all to view the code so it could be looked over to check what was being written and committed was sane.We decided to use git for version control as it is an industry standard and we all had some experience of using it. We are hosting the remote repository on Github as it provides an easy to use interface and also allows transfer of repository ownership should someone else wish to take the project on in future. 
 
 ##### Outcome of Iteration
-We produced a system that would take data it recieved from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings. This was written using the slim framework
+We produced a system that would take data it received from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings. This was written using the slim framework
 
 
 #### Iteration 2 - Splitting Front and Back End
@@ -273,28 +273,28 @@ We produced a system that would take data it recieved from requests and store it
 
 During the previous iteration we discussed putting the application on the university servers however this hasn't been set up so we have used a temporary sever that we are hosting ourselves using digital ocean. The server is using the same technologies as previously mentioned and is running on ubuntu 14.04. 
 
-Another issue we became aware of after the implementation of the first iteration was that the data and the views were very tightly coupled together. We then decided that it would benefit the project to split the front end and back end up into two separate parts. The server would act as an API and the frontend would be used to display the data. This would allow us to add the 'clock', which we weren't aware of at the beginning, to the system without any major issues.
+Another issue we became aware of after the implementation of the first iteration was that the data and the views were very tightly coupled together. We then decided that it would benefit the project to split the front end and back end up into two separate parts. The server would act as an API and the front end would be used to display the data. This would allow us to add the 'clock', which we weren't aware of at the beginning, to the system without any major issues.
 
 
 #####Outcome of iteration
-We worked to split the front end code from the API and the front end so that they could work independantaly without dupilcation of code. We realised some kind of security was also needed so we added key based authentication to provide a basic level of security. 
+We worked to split the front end code from the API and the front end so that they could work independently without duplication of code. We realised some kind of security was also needed so we added key based authentication to provide a basic level of security. 
 
 #### Iteration 3 - Switching Frameworks
 
 ##### Issues with previous iteration
-After we split the front and backend we realised wer were going to be using slim to server the backend and Laravel to serve the frontend. This would mean using someone who was picking this up would have to learn multiple frameworks.
+After we split the front and backend we realised we were going to be using slim to server the backend and Laravel to serve the front end. This would mean using someone who was picking this up would have to learn multiple frameworks.
 
 ##### Result of iteration
 We decided to change the backend the also use laravel to make the system easier to pick up. Most of our code was easily portable as they use the same language and roughly the same MVC layout. 
 
 #### Iteration 4
 #####Issues with previous iteration
-While working on the visualisation we discovered that filtering on the client side was not an option as it took too long to load. This meant that we had to do averageing and filerting on the server side. This was due to loading large amounts of raw data. For example to visualise 1 month worth of dummy data it was having to load ~600,000 (60\*24\*7*4) readings which took a considerable amount of time. It then had to group this data and calculate averages based on this which, again, increased page load time. The total load time of a page loading this amount of data was ~6 seconds
+While working on the visualisation we discovered that filtering on the client side was not an option as it took too long to load. This meant that we had to do averaging and filtering on the server side. This was due to loading large amounts of raw data. For example to visualise 1 month worth of dummy data it was having to load ~600,000 (60\*24\*7*4) readings which took a considerable amount of time. It then had to group this data and calculate averages based on this which, again, increased page load time. The total load time of a page loading this amount of data was ~6 seconds
 
-The sensor was also struggling to create json arrays due to memory limitations. This meant that the format the server was expecting was often not the format it recieved. 
+The sensor was also struggling to create json arrays due to memory limitations. This meant that the format the server was expecting was often not the format it received. 
 
 #####Outcome of iteration
-We changed the format of data being sent to and from the sensor from JSON to CSV. This meant there was less overhead in generating the data on the sensors and also less overhead when recieving data.
+We changed the format of data being sent to and from the sensor from JSON to CSV. This meant there was less overhead in generating the data on the sensors and also less overhead when receiving data.
 
 We moved a majority of the data processing over to the server rather than the client. This was mainly done by using SQL queries to group and average the data. As this is what the database engine is designed for it was able to considerably speed up this process.
 

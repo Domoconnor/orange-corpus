@@ -13,7 +13,7 @@
            @foreach($data as $row)
                <tr>
                    <td>{{date('Y-m-d H:i:s', +$row[0]+854300)}}</td>
-                   <td>{{rand(1000, 10000)}}</td>
+                   <td>{{$row[1]}}</td>
                </tr>
                @endforeach
         </table>
