@@ -79,6 +79,28 @@ From these sketches onwards, more of an emphasis to colour visualisation is made
 ![sketch 15](Images/Sketch%20Images/Jack_10.png)
 
 	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+	
+![sketch 16](Images/Sketch%20Images/Dom_1.jpeg)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+
+![sketch 17](Images/Sketch%20Images/Dom_2.jpeg)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+
+![sketch 18](Images/Sketch%20Images/Dom_3.jpeg)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+
+![sketch 19](Images/Sketch%20Images/Dom_4.jpeg)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+
+![sketch 20](Images/Sketch%20Images/Dom_4.jpeg)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+
+
 
 <br>
 
