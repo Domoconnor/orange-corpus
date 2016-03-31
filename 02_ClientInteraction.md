@@ -17,27 +17,22 @@ Along the lines of the other two themes before, the user wanted the system to be
 **People should be aware of their own noise levels:**  
 The client talked a lot about wanting the people in the street to know how noisy they are being. Points being brought up suggesting signs that had the decibel reading on them so that people can visualise the noise like a road sign that turns on when you are going too fast. Although, as we wouldn't be able to enforce the sound level it could possibly encouraging even challenging people in the street to be loud to try and make the sign go off.
 
-<p class="todo">DO WE WANT TO INCLUDE A LIST OF GOALS TO ACHIEVE?</p>
-
 ####Meeting ONE
 
 We had to speak with the clients before we started to formulate a solution. We had to know what they wanted, so that we could make a solution that best filled their needs. To prepare for this we researched proper interviewing techniques by reading: *“Interviewing users: How to Uncover Compelling Insights (Steve Portigal, 2013)”*.  
 
 The main lesson we took from the Portigal book was that we needed to let the client talk. We did not want to steer their answers in any direction. We organised roles amongst ourselves, with a leader asking questions and the rest taking notes. If the note takers had any questions we made sure they were asked at the end of the question so that the client did not lose track.
 
-Our intended outcome for this meeting was to have an incite into our clients perception of the problem they are having, whereby we can devise a method in which to solve said problem. We had an idea of the client's problem before we went into the meeting, based on what we were told in the project brief. Therefore, in preparation we made a list of questions that we felt we needed answered to gain a better understanding.<span class="todo"> REFERENCE ORIGINAL QUESTION SHEET</span>. We then trimmed down our question list intending to allow our client to talk as freely as possible. <span class="todo">REFERENCE SECOND QUESTION SHEET</span> 
+Our intended outcome for this meeting was to have an incite into our clients perception of the problem they are having, whereby we can devise a method in which to solve said problem. We had an idea of the client's problem before we went into the meeting, based on what we were told in the project brief. Therefore, in preparation we made a list of questions that we felt we needed answered to gain a better understanding. We then trimmed down our question list intending to allow our client to talk as freely as possible. 
 
-<p class="todo">INCLUDE RECORDING</p>
-
+All recordings, notes and questions from the meeting can be found [here](meeting_one/)
 ####Meeting TWO
 
 We spoke to another client that was meant to be present at the original meeting but was unable to make it. They are a landlord of Orange Street tenants living next to a popular club called ‘The Ballroom’. In this meeting we followed the same layout as set in the first meeting, making one person take the lead and the others taking notes, we also followed the same structure of questions.
 
-<p class="todo">INCLUDE SEB RECORDING AND QUOTES</p>
+All recordings, notes and questions from the meeting can be found [here](meeting_two/)
 
-<p class="todo">DO WE INCLUDE PHOTO OF THE RESIDENTS HOUSES ON GOOGLE MAPS?</p>
-
-<img src="images/OrangeStreet_dist.jpg">
+![](Images/OrangeStreet_dist.jpg)
 
 ####Other Communication
 

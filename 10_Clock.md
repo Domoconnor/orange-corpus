@@ -57,23 +57,32 @@ To have a feasible hardware solution which complements our other means of data v
 ![Sketch 1](Images/Clock%20Images/IMAGE_1.png)
 
 	Initial design sketches of the clock. Early iterations of the design featured a dual 12 hour display to represent AM and PM time notations respectively. 
+	
+<br>
 
 ![Sketch 2](Images/Clock%20Images/IMAGE_2.jpg)
 
 	Cardboard prototyping of the clock, and sketches of data formats. The cardboard prototype uses coloured panels to represent hourly averages. Using these, we established a colour spectrum to use for the physical display. The right side image explores how averages are processed and visualised.  
 
+<br>
+
 ![Sketch 3](Images/Clock%20Images/IMAGE_3.jpg)
 
 	Exploring data continuity. The presence of the clock as a simplified data format complements the more technical aspects of the graphs and charts that we concepted. 
 
+<br>
+
 ![Sketch 4](Images/Clock%20Images/IMAGE_4.jpg)
 
 	Design sketch for clock display options. In this sketch, we looked at the block sizes for data; whether we would work in 10-30-60 minute intervals. We also considered how this format could also be translated into a webpage display.  
+	
+<br>
 
 ![Sketch 5](Images/Clock%20Images/IMAGE_5.jpg)
 
 	Design sketch for the clock on a webpage, or tablet. Since we wanted the data available on different formats, we started to consider how we could scale different designs together. 
 
+<br>
 
 This device would in a sense act as an notifier to be coupled alongside the more detail-specific web server, and is designed to be more attention drawing. This was prototyped initially in lo-fidelity using card and coloured paper to simulate time segments, allowing us to explore how frequently data would be output to the clock. Through this prototyping phase, we began to develop our colour spectrum, and specifically how attention can be drawn to noisier time periods. As well as this, we considered whether updates would be formatted as 5/30/60 minute chunks, and how this could be replicated in hardware. 
 
@@ -182,6 +191,16 @@ We felt having the option to display data in these varying formats could be usef
 
 The code for this iteration can be found here: [Clock_Cycle_RedIntensity]
 
+#####Other Considerations
+
+#####External 60-Minute Clock
+A potential problem that we ran into when considering the design of the 24-hour display was the fact that for real-time data to be recorded, the client would have to wait for the next hour to tick over before it is reflected on the clock face. A proposed way of combatting this would be to have the larger, 60 LED NeoPixel running around the outside of the 24-Hour clock, reading in minute-by-minute data and updating just as often. The advantage here is that there are two dimensions of data for the client to access off the bat, and there is nothing stopping them from taking this data and using it to put forward a case straight away. Other features that might be useful in reinforcing this kind of display would be a real time clock interfacing with both pixel rings to control timings of readings, maybe even with an LCD display as a visual reminder so the client knows exactly upon quick reference which light applies to which minute. 
+
+#####Controlling Brightness 
+
+Fortunately as part of the NeoPixel Library, the ability to directly manipulate the brightness level of the entire strip is very straightforward. Since the levels range from barely visible to dazzlingly bright, it makes sense to control this to a user preference. It was decided that at nighttime, most users wouldn’t favour a bright, glaring light in their house. To control this, we looked at lowering the brightness gradually throughout the day, it being at its lowest (but still very visible) at night, and brighter in the day since it has to contest with other bright lights and sunlight. The clock could interface with a real time clock on the arduino to perform these checks every few hours. 
+
+
 ####Problems
 
 We faced some issues in this iteration based upon our hardware choices. Although only used for prototyping, the Arduino Uno board has a lot of functionality which the clock doesn’t require, when ideally we want to condense down and use something simpler. Furthermore, dimensions wise the Uno is quite bulky - which may present further issues concerning the casing of the clock. Another problem concerned the starting point of the first LED that is lit. Since the NeoPixel Ring LEDs are addressed by the arduino code using integer index position, the starting LED, which remains fixed at 0, has been a current issue to change. If we can’t change the starting position, there could be potential problems regarding the orientation of the clock. For example, would we have to always have the clock at a fixed orientation? What would happen if it had to be rotated somehow? 
@@ -238,6 +257,7 @@ Once the modified case statement was developed, we tested the clock in isolation
 ![case 1](Images/Clock%20Images/IMAGE_21.jpg)
 
 	Display for error case 1. The clock outputs a white display of lights and holds it there for a few seconds. 
+	
 
 ![case 2](Images/Clock%20Images/IMAGE_22.jpg)
 
@@ -246,7 +266,11 @@ Once the modified case statement was developed, we tested the clock in isolation
 ![case 3](Images/Clock%20Images/IMAGE_23.jpg)
 	
 	Display for error case 3 - if the hub cannot be reach the server. The clock outputs a blue “colour wheel” of light to indicate that there is a problem.
-
+	
+![success 1](Images/Clock%20Images/accept_case.jpg)
+	
+	Display for success case - if the hub can successfully be reached by the clock, the green lights appear. After this, the coloured data appears.
+	
 The above cases show the clock displaying errors whilst working with dummy values, so our next stage is to make it work with the hub. This is fairly straightforward - we just have to send dummy data packets from the hub over to the clock over the Zigbee network to test it.
 
 The code for this iteration can be found here: [Clock_Cycle_V1b] 
@@ -272,6 +296,17 @@ The clock is designed to display average readings on an hourly basis. For the sa
 There are currently further plans to test the clock over an extended time period, once it has been fully integrated with the whole system.
 
 The code for this iteration can be found here: [Clock_Cycle_V2]
+
+####Video Explanation
+
+The interaction between the clock and the hub has been recorded in a video, and can be seen <a href = "https://www.youtube.com/watch?v=sQJQwxEeyLs&ab_channel=BillyMitchell">here.</a>
+		
+		The video above explains how the signposting for the user works, and generally gives an overview of how the clock communicates with the hub to plot its data.
+
+
+![Clock network diagram](Images/Clock%20Images/Clock_network_diagram.png)
+
+		By the end of this iteration, the communication between the clock and the hub resembled this diagram.
 
 ####Previous Problems
 
@@ -307,6 +342,9 @@ In the previous the functionality of the clock was integrated with the rest of t
 Since the NeoPixel ring by itself is quite a fragile piece of hardware, it is necessary to build some form of casing to protect it whilst still maintaining its visibility. We came up with a few ideas for this using cardboard to easily mould shapes together; most of the principle designs consisting of a base and a clear perspex glass “face”, to protect the components. 
 
 We also looked into how the device could be mounted, since ideally our focus was on its attention drawing aspect which would be less effective if it had to be picked up or consciously interacted with. This could be achieved with a clip or some form of hook for a wall mount possibility, or perhaps a subtle stand so as to not rely too much on modifying a client’s home to accommodate for it. 
+
+<div id = "designs">
+</div>
 
 ####Designing the case
 
@@ -347,16 +385,31 @@ This iteration implements a more sturdy stand to keep the clock upright. We were
 
 #####Final iteration
 
-We finalised our case design to have a more sturdy base and used the 3D printer to construct it. The final case consisted of three major 3D printed parts which slotted together. For more information, see casing. 
+We finalised our case design to have a more sturdy base and used the 3D printer to construct it. The final case consisted of three major 3D printed parts which slotted together.
+
+The final case design was constructed from white plastic; featuring a clear plastic face, a sturdy base with which it could stand upright, and a container for the Adafruit Flora and the XBee. Overall we felt this case suited the clock very well, matching its dimensions accurately and providing a nice aesthetic. The face importantly provided a clear view of the lights, and offered granularity between each individual light. 
+
+![Design final a](Images/Clock%20Images/final_1.jpg)
+ 	
+ 	Final design for the clock case. 
+ 	
+![Design final b](Images/Clock%20Images/final_2.jpg) 
+
+	Final design for the clock case, side view. 
+
+For more information, see casing. 
 
 ####Previous Problems
-Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
-
+<ul>
+<li>Setting up the clock on the network, and maintaining the format of the data it received so as to not trigger errors. 
+</ul>
 We solved this issue this iteration by incorporating a strict data format that the clock received values in. This was an integer array of 24 values, containing sound averages for each hour of the day. This format was utilised by the hub; meaning that when sending data, the clock received it in a format it “understood”. 
 
+As a result, the clock is now synchronised with the rest of the system, and can effectively notify users with up to date information, which is displayed accordingly. 
+
 ####Outcome of iteration
-At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. 
+At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
 
 
-
+**Code for the clock can be found <a href = "https://github.com/Domoconnor/orange-corpus/tree/master/Clock">here.</a>**
 

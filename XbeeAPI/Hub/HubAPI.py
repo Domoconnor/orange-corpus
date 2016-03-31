@@ -539,7 +539,26 @@ class XbeeAPI:
 		f.close()
 		print "Added",name,":",newNode
 		self._ackAndRemoveMessage(packet)
- 
+		
+ 	# Returns all messages. 
+	# Will return messages that haven't finished assembling
+	def getMessages(self):
+		return self.receivedMessages
+
+	# Returns most recent message
+	# Only if it exists and has been assembled
+	def getMostRecentMessage(self):
+		return self.receivedMessages[len(self.receivedMessages)-1] if len(self.receivedMessages) > 0 and self.receivedMessages[len(self.receivedMessages)-1].endOfFragmentation() else return None
+
+	# Returns oldest message
+	# Only if it exists and has been assembled		
+	def getOldestMessage(self):
+		return self.receivedMessages[0] if len(self.receivedMessages > 0) and self.receivedMessages[0].endOfFragmentation() else return None
+
+	# Called when a message needs to be removed
+	# Once the message has been dealt with call this method to remove it
+	def clearMessage(self, message):
+		_ackAndRemoveMessage(message)
 
 ###########################################################################################
  
