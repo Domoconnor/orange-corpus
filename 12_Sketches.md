@@ -82,11 +82,11 @@ From these sketches onwards, more of an emphasis to colour visualisation is made
 	
 ![sketch 16](Images/Sketch%20Images/Dom_1.jpeg)
 
-	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+	Sketch 16 - Chart and graph view - this is a crossover design featuring a min and max for sound readings, and a date layout in a chart. 
 
 ![sketch 17](Images/Sketch%20Images/Dom_2.jpeg)
 
-	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+	Sketch 17 - Sensor scatter graph - very similar to one of the other concepts, this design showed how there were common elements between our work even though they were completed in isolation of one another. 
 
 ![sketch 18](Images/Sketch%20Images/Dom_3.jpeg)
 
@@ -96,7 +96,7 @@ From these sketches onwards, more of an emphasis to colour visualisation is made
 
 	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
 
-![sketch 20](Images/Sketch%20Images/Dom_4.jpeg)
+![sketch 20](Images/Sketch%20Images/Dom_5.jpeg)
 
 	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
 
