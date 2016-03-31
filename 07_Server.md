@@ -6,15 +6,58 @@
 
 As there are multiple users wishing to see data coming from multiple sources we needed some sort of central service that collects the information and displays it in an easy way for the users to see. 
 
-The server acts as an API where all data is sent to and requested from. This allows us to add different visualisations very easily without the data being coupled with the interface. 
-
-Readings that are sent to the api are processed to remove anomolous values and are scaled between 0 and 100. We then store the data in the database and it can be requested by other visualisations by making calls to the API endpoints.
+The server acts as an API where all data is sent to and requested from. This allows us to add different visualisations very easily without the data being coupled with the interface. We then store the data in the database and it can be requested by other visualisations by making calls to the API endpoints.
 
 There is a key which must be sent with each request to ensure that it is a device that is allowed to access that data. The request should be made over HTTPS to avoid exposing the key. The key is hardcoded into the server but can be changed by modifying the code if needed.
 
+To get a development server running first install a copy of [Laravel homested](https://laravel.com/docs/5.2/homestead). Run through the setup guide and clone the repository into the specified directory. After this you can run need to insure all dependancies are installed by running `composer install && bower install`. After this you can run `homestead up` and visit the address ypou specified in the homestead setup.
+
+As the server is using Laravel you can easily set up the databases without manually running SQL queries.
+
+In the root directory of the app you can run the following command to create all of the database tables.
+
+`php artisan migrate`
+
+This creates tables based on a model definition, an example definition can be seen below: 
+
+```php
+class CreateUsersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('users');
+    }
+}
+
+```
+This uses the built in 'schema builder' to turn the php code into sql which is then run on the database.
+
 
 ###API Spec
-The API responds to HTTP requests which conform to [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). 
+The API responds to HTTP requests which conform to status codes set out in [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). 
 
 Key middleware is present throughout the API and it's responses are the following:
 
@@ -128,6 +171,21 @@ Returns all data recorded between 2 given timestamps averaged over an hourly per
 |--------|---------|
 |200		|`{0:{start:183975627; end:183975687; avg: 12.4;}1:... }`|
 |400| `{"error":{"text": Database Error}}`
+
+#### MVC
+The server is built using the MVC layout which allows for decoupling of elements and helps to make the structure understandable. As seen in the diagram below, data mainly flows one way.
+
+![](Images/visualisation/mvc.png)
+
+In the server, the views are very mimimal as it is mainlt just displaying json data. While the views aren't the same as in most applications, they still work in the same way.
+
+The server has three main models:
+
+- Device: This represents a physical device and stores things such as battery level and name
+- Reading: This is a data reading and links to a Device. It contains the raw data and timestamps
+- User: This stores the users details such as email, phone number and password
+
+These are all called by the controllers who then pass the data straight onto the views to display it.
 
 ###Previous Work
 
