@@ -214,6 +214,40 @@ Below is a flowchart diagram demonstrating the new processing behind the Hub.
 
 ![10](Images/Hub/IMAGE9.1.png)
 
+######Initialising the Library
+
+Initialising the library consists of a standard object creation in Python with one parameter - the serial port.
+
+~~~python
+# Create API, pass the serial port
+xbee = XbeeAPI("/dev/ttyAMA0")
+~~~
+
+######Receiving messages
+
+Using the library, you can retrieve stored packets using these methods. 
+
+~~~python
+# Get most recent message, returns 
+# None if no messages available
+message = xbee.getMostRecentMessage()
+if not message = None:
+	print message.getPayloadAsString()
+
+# Get oldest message, returns 
+# None if no messages available
+message = xbee.getOldestMessage()
+if not message = None:
+	print message.getPayloadAsString()
+
+# Get all messages, returns 
+# None if no messages available
+messages = xbee.getMessages()
+if not messages = None:
+	for packet in messages:
+		print message.getPayloadAsString()
+~~~
+
 ######Node Discovery and Heartbeats
 
 Being able to determine what sensors already exist on a network offers us much more functionality. We’re are able to ping nodes on the network and determine their network status.
