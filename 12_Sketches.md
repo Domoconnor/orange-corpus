@@ -153,29 +153,47 @@ To do this, our designs are minimalistic, and implement easily graspable layouts
 
 ![Balsamiq sketch 1](Images/Sketch%20Images/Balsamiq_1.png)
 
+	Balsamiq Sketch 1 - Main street view of Orange street. This is intended to be the main interface for the front end visualisation, where the user can add data widgets such as the "graph" and "calendar" to build the data they want to view. 
+
 
 ![Balsamiq sketch 2](Images/Sketch%20Images/Balsamiq_2.png)
 
+	Balsamiq Sketch 2 - Specific data view for sensors - the user can click or touch a sensor and access the data for that specific sensor. 
 
 ![Balsamiq sketch 3](Images/Sketch%20Images/Balsamiq_3.png)
+
+	Balsamiq Sketch 3 - Graph view - here the earlier graph sketches are represented on a website, featuring a date widget that the user can manipulate to return data from different time periods.
 
 
 ![Balsamiq sketch 4](Images/Sketch%20Images/Balsamiq_4.png)
 
+	Balsamiq Sketch 4 - Graph and calendar comparison widgets - having activated both the graph and calendar widgets. The user can compare two sets of data over different time periods, side by side. 
+
 
 ![Balsamiq sketch 5](Images/Sketch%20Images/Balsamiq_5.png)
+
+	Balsamiq Sketch 5 - Single graph and calendar widget - if the user wants to add different dates as series on a graph, this view meets their requirement. Extra data series can be added using the "Add data" button.
 
 
 ![Balsamiq sketch 6](Images/Sketch%20Images/Balsamiq_6.png)
 
+	Balsamiq Sketch 6 - Map and graph comparison widgets - If the user wants to view general sensor data and compare it to average hourly data, this view can be used. Also featured is the scaling icons, which the user can use to increase, or decrease the size of their widgets; depending upon what they want to see more. 
+
 
 ![Balsamiq sketch 7](Images/Sketch%20Images/Balsamiq_7.png)
+
+	Balsamiq Sketch 7 - 4 widget view - the complete package of data widgets, granting data continuity to the user across four separate platforms.
 
 
 ![Balsamiq sketch 8](Images/Sketch%20Images/Balsamiq_8.png)
 
+	Balsamiq Sketch 8 - Tablet/mobile view - if the user prefers using other platforms, this sketch demonstrates how the interface might scale depending upon the size it operates in. 
+
 
 ![Balsamiq sketch 9](Images/Sketch%20Images/Balsamiq_9.png)
+	
+	Balsamiq Sketch 9 - Hub interface display - later in this stage, we considered visualisation for the hub, and how a diagnostics system could work. Since it is the centrepoint of the network, this could be used to display information to the user based on which devices are in range, and specific properties of them. 
+	
 
 
 
