@@ -5,29 +5,47 @@
 
 Our network is a robust low powered mesh that has a coordinator handling as many routers and end points as we require. The coordinator is capable of addressing each node on the network, with the nodes only ever addressing the coordinator. The hardware used to handle interaction on the network is the XBee S2 module using the ZigBee protocol and communicating to our devices using serial. XBee S2 have sleep functionality and only draw 40mA upon transmitting making them ideal for a low powered solution. 
 
-Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and addressing. We are using API mode when handling XBee modules on our network, as this firmware allows us to have create and format packets to the style we require. The network lets us determine useful information from traffic such as delivery status, fragmentation and assembly of packets. 
+Due to the configuration behind each XBee module we were able to have full control over our own network as well as control features such as sleep modes and addressing. We are using API mode when handling XBee modules on our network, as this firmware allows us to  create and format packets to the style we require. The network lets us determine useful information from traffic such as delivery status, fragmentation and assembly of packets. 
 
-The sensors were programmed in C++ and the Hub was programmed in Python. We have written two Libraries to be able to communicate in the format the XBee modules expected while working with these languages. Using these libraries offer us the full potential of API mode and allow control over a mini network of low powered wireless devices.
+The sensors were programmed in C++ and the Hub was programmed in Python. We have two Libraries to be able to communicate in the format the XBee modules expected while working with these languages. Using these libraries offer us the full potential of API mode and allow control over a mini network of low powered wireless devices.
 
-The libraries were designed so that one line of code would be required to send a message across the network while abstracting all heavy processing on traffic. The benefit of this was that the library could change and not require a whole body of code to change for the other sections of the project.  
+The libraries were designed so that one line of code would be required to send a message across the network while abstracting all heavy processing on traffic. The benefit of this was that the library could change and not require a whole body of code to change for the other sections of the project. To give an example of this:  
 
-Hub API:
+Hub without API:
+
+~~~python
+# Write hello world down to serial
+serial.write("Hello world!");
+~~~
+
+Hub with API:
 
 ~~~python
 # Send message with API, sensor1 lets the API know which 64bit
-# address we're looking for, returns successful or not
+# address we're looking for, returns successful 0 if successful
 response = xbee.sendMessage("sensor1", "Hello world!")
 ~~~
 
-Sensors API:
+Sensors/Clock without API:
+
+~~~c++
+void helloWorld(){
+	// Write hello world down to serial
+	Serial.print("Hello world!");
+}
+~~~
+
+Sensors/Clock with API:
 
 ~~~c++
 void helloWorld(){
 	// Send message with API, will transmit to the coordinator
-	// Returns 0 if successfull
+	// Returns 0 if successful
 	int response = xbee.sendMessage("Hello world!"); 
 }
 ~~~
+
+As seen, the single line change adds more functionality to the nodes on the network. The libraries provide functions to retrieve messages that have been collected and return status codes from transmissions. This supports the other nodes in such a manner that they can then recover from network failures easily.
 
 ![13](Images/Networking/IMAGE14.PNG) 
 
@@ -37,11 +55,11 @@ void helloWorld(){
 
 #####The Solution we need
 
-Based on how we aim to solve the problem, with multiple sensors sending data back to a hub. <span class="todo">reference initial ideas page</span> Our networking solution needs to allow us to have a hub that can have multiple sensors connected wirelessly. The network needs to allow us to communicate data reliably. The data we are expecting to be sending between the sensors and the hub is only going to be ≈ 2000 bits an hour based on the fact that we are going to send a timestamp and an averaged hourly value as a 'long' and an 'int'. 
+Based on how we aim to solve the problem (see [Initial Ideas](#initial-ideas), with multiple sensors sending data back to a hub, our networking solution needs to allow us to have a hub that can have multiple sensors connected wirelessly. The network needs to allow us to communicate reliably. The data we are expecting to be sending between the sensors and the hub is only going to be ≈ 2000 bits an hour based on that we are going to send a timestamp and an averaged hourly value as a 'long' and an 'int'. This demand may change over different iterations and we must be prepared to change our requirements for networking if so.
 
 #####Researching Technologies
 
-Because we decided that we were working with a wireless network based on our aims<span class="todo"> link to why we chose to use wireless</span> Investigating potential solutions considerations of strength, distance, maximum payload size and power usage have to be made. The most obvious solution is WiFi.
+We needed to nvestigate potential solutions with considerations of strength, distance, maximum payload size and power usage. Our initial solution is WiFi, but we need to research whether this was an accurate choice to make.
 
 Here is a table that we formulated over common wireless solutions: 
  
@@ -114,7 +132,7 @@ Values taken from [Wifi vs Bluetooth power consumption](http://science.opposingv
 <br>
 **WiFi**
 
-WiFi is widely used and accepted as a way to wirelessly transmit data. This means our clients should be familiar with it in some sense. However WiFi is not really intended to be used in devices that need to be situated in one place for an extended amount of time. This is because WiFi can use a lot of power when sending and receiving data. Hence why smartphones can lose power quickly while connected to a WiFi network.
+WiFi is widely used and accepted as a way to wirelessly transmit data. This means our clients should be familiar with it in some sense. However WiFi is not really intended to be used in devices that need to be situated in one place for an extended amount of time with limited power. This is because WiFi can use a lot of power when sending and receiving data, hence why smartphones can lose power quickly while connected to a WiFi network.
 
 Because we shouldn't be sending anything more than ≈7 kilobytes a day, therefore the ability to send upwards of 10 megabytes might be overkill. 
 
@@ -122,7 +140,7 @@ However, the main reasons why we would want to use WiFi comes in two forms. Not 
 
 One of our mains goals for the sensor is to make the battery as long as possible . WiFi is one of the more power consuming options, so using WiFi with or without a hub our sensor would have to use much more power when receiving and transmitting data making the battery life less than desirable. 
 
-Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
+Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients. In the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors as they can't change these details once the network changes. 
 
 <br>
 **Bluetooth and Bluetooth Low Energy**
@@ -158,7 +176,7 @@ XBees share one trait across all networks, that is the requirement for them to b
 
 ![6](Images/Networking/IMAGE6.PNG)
 
-Using AT Command mode we've had to specifically set values on the XBee. These have ranged from 64bit destination address to encryption being enabled. This information is used in creating packets, we can't change this information without reprogramming the XBees which could cause a problem. However we know which nodes need to address each other in the long run, so none of these details need changing for the time being. 
+Using AT Command mode we've had to specifically set values on the XBee. These have ranged from 64bit destination address to encryption being enabled. This information is used in creating packets, we can't change this information without reprogramming the XBees which could cause a problem. However we know which nodes need to address each other, so none of these details need changing for the time being. 
 
 After we set the two XBee devices to be on the same personal network (sharing PANID), aligning their firmware (ZNet 2.5 AT), and finally setting them as coordinator and router - they were able to communicate. In AT mode we could send bytes down serial to the XBee and the firmware of that XBee would create a packet based on what we’ve set as predefined instructions. The XBee constructed these packets based on their programmed firmware, which we had configured. 
 
@@ -236,15 +254,15 @@ Code used for Hub with AT Mode can be found <a href="XbeeAPI/Hub/HubAT.py">here<
 
 ####Iteration 4, API Mode 
 #####Issues with previous Iteration
-On our previous iteration we discovered a few problems with using AT mode and the XBee modules themselves. We can’t fragment packets without having some form of intervention ourselves and we can’t determine who is sending data which will cause issues for multiple sensors. A simple fix to this is to prefix all incoming data with an identifying name and delimiter, for example clock:”message”. However this is most likely overhead as further research has shown that by using API mode we won’t need to do this as source addresses are passed with packets. We did manage to confirm that fragmentation is not possible on XBee S2 networks, see www.digi.com/wiki/developer/index.php/Determine_MTU for details. 
+On our previous iteration we discovered a few problems with using AT mode and the XBee modules themselves. We can’t fragment packets without having some form of intervention ourselves and we can’t determine who is sending data which will cause issues for multiple sensors. A simple fix to this is to prefix all incoming data with an identifying name and delimiter, for example "clock:message". However this is most likely overhead as further research has shown that by using API mode we won’t need to do this as source addresses are passed with packets. We did manage to confirm that fragmentation is not possible on XBee S2 networks, see [here] ( www.digi.com/wiki/developer/index.php/Determine_MTU).
 
 #####API Mode
 
-API mode is the more advanced for AT in a lot of ways. The XBee will function the same and you can transmit data to the XBee in the same manner, that’s serial down to the XBee RX pin. However, just sending a stream of bytes won’t make the XBee transmit data. With API mode you have to make the packets as opposed to having them made for you. This has required a lot of research into formats and to do so accurately with good use of examples, we used “Building Wireless Sensor Networks” by Robert Faludi. Faludi provides excellent examples and technical details on the use of API mode.
+API mode is the more advanced version of AT in a lot of ways. The XBee will function the same and you can transmit data to the XBee in the same manner, that’s serial down to the XBee RX pin. However, just sending a stream of bytes won’t make the XBee transmit data. With API mode you have to make the packets as opposed to having them made for you. This has required a lot of research into formats and to do so accurately with good use of examples, we used “Building Wireless Sensor Networks” by Robert Faludi. Faludi provides excellent examples and technical details on the use of API mode.
 
 ![7.4](Images/Networking/IMAGE7.4.PNG)
 
-API mode has many different packets you can create, from investigating the formats of these packets we can see specifically how to form and send data. We would only need 3 different packets format for our system to be fully utilised, those of:
+API mode has many different packets you can create, from investigating the formats of these packets we can see specifically how to form and send data. We will only need 3 different packets format for our system to be fully utilised, those of:
 
 * 0x10 TRANSMIT REQUEST
 * 0x90 RECEIVE PACKET
