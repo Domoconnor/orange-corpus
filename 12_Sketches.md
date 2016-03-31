@@ -195,6 +195,11 @@ To do this, our designs are minimalistic, and implement easily graspable layouts
 	Balsamiq Sketch 9 - Hub interface display - later in this stage, we considered visualisation for the hub, and how a diagnostics system could work. Since it is the centrepoint of the network, this could be used to display information to the user based on which devices are in range, and specific properties of them. 
 	
 
+####Outcome of Iteration
+In our final iteration of sketching and mockups, we have successfully established  a set of design blueprints which can be used to drive our front end visualisation. These designs implement some of the key concepts seen in our earliest form of visualisation, and develops them in a high fidelity manner. This process has added a degree of realness and feasibility to our designs, by effectively filtering out the less reliable forms of visualisation, and drawing the user's attention to more quantitative aspects. These forms of data, implemented as graphs and charts, display sound data in a technical way, and can be used in conjunction of one another to build a holistic description of the sound levels. 
+
+Overall, we felt that the sketching process helped us formulate and refine our ideas, and that over our sequence of iterations there have been continual improvements. Each iteration has marked a significant development in our ideas, as they have become more specific and considerate of the user over time. 
+
 
 
    
