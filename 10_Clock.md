@@ -343,6 +343,9 @@ Since the NeoPixel ring by itself is quite a fragile piece of hardware, it is ne
 
 We also looked into how the device could be mounted, since ideally our focus was on its attention drawing aspect which would be less effective if it had to be picked up or consciously interacted with. This could be achieved with a clip or some form of hook for a wall mount possibility, or perhaps a subtle stand so as to not rely too much on modifying a client’s home to accommodate for it. 
 
+<div id = "designs">
+</div>
+
 ####Designing the case
 
 When it came to designing the case to house the clock, we have several things to bear in mind: 
