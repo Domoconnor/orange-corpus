@@ -79,6 +79,28 @@ From these sketches onwards, more of an emphasis to colour visualisation is made
 ![sketch 15](Images/Sketch%20Images/Jack_10.png)
 
 	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+	
+![sketch 16](Images/Sketch%20Images/Dom_1.jpeg)
+
+	Sketch 16 - Chart and graph view - this is a crossover design featuring a min and max for sound readings, and a date layout in a chart. 
+
+![sketch 17](Images/Sketch%20Images/Dom_2.jpeg)
+
+	Sketch 17 - Sensor scatter graph - very similar to one of the other concepts, this design showed how there were common elements between our work even though they were completed in isolation of one another. 
+
+![sketch 18](Images/Sketch%20Images/Dom_3.jpeg)
+
+	Sketch 18 - Clock view - this sketch reinforces the time element of the monitoring, and incorporates ambient colour. 
+
+![sketch 19](Images/Sketch%20Images/Dom_4.jpeg)
+
+	Sketch 19 - Threshold bar chart - a combination of a bar chart with intervals representing sound thresholds. It features added labels to associate the coloured threshold with a corresponding noise range, e.g. street, nighttime.
+
+![sketch 20](Images/Sketch%20Images/Dom_5.jpeg)
+
+	Sketch 20 - Coloured chart - this combines a less technical overview of data; presenting the high, low, and average decibels to the user. It also uses a colour system to direct the user towards louder time periods, by using more intense colours. 
+
+
 
 <br>
 
