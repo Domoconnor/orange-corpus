@@ -46,6 +46,11 @@ The Case was designed in a way that was intended to aim our microphone at the no
 
 A final version of the code can be found [here](sensor/micTest).
 
+Below is a diagram of the final circuit used.
+
+![6](Images/sensor/diagram.PNG)
+
+
 ### Previous Work
 
 ####Iteration 1 - Researching Hardware
