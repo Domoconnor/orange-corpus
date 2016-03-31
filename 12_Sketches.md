@@ -139,6 +139,43 @@ During our second iteration of sketching, we have developed upon our existing ba
 
 A recurring theme for visualisation during this iteration has been time, and how our system can use it to generate comparable data. It is concluded that time plays a large role in our system; especially since one of the major requirements is to have comparable data between dates. 
 
+###Iteration 3
+
+####Balsamiq, and Interface Mockups
+
+Before we implemented our front end visualisation, it was important to explore different layouts and styles, which could then be translated into code. To do this, we used the lightweight mockup tool, **Balsamiq**, the create several different design mockups. These mockups were intended to simulate our various data platforms, by visualising website and application layouts, and having charts and diagrams to show how our visualisation would work in these contexts. 
+
+In these designs, we aimed to produce easily interpretable interfaces which focus purely on visualisation. We wanted to remove any other distractions from the user, and draw their attention to the main priority: their data. 
+
+To do this, our designs are minimalistic, and implement easily graspable layouts and methods of navigation. There is opportunity to further develop upon these simplistic designs at later points, but these designs capture the essential details. 
+
+**Here are the outcomes of our Balsamiq designs:**
+
+![Balsamiq sketch 1](Images/Sketch%20Images/Balsamiq_1.png)
+
+
+![Balsamiq sketch 2](Images/Sketch%20Images/Balsamiq_2.png)
+
+
+![Balsamiq sketch 3](Images/Sketch%20Images/Balsamiq_3.png)
+
+
+![Balsamiq sketch 4](Images/Sketch%20Images/Balsamiq_4.png)
+
+
+![Balsamiq sketch 5](Images/Sketch%20Images/Balsamiq_5.png)
+
+
+![Balsamiq sketch 6](Images/Sketch%20Images/Balsamiq_6.png)
+
+
+![Balsamiq sketch 7](Images/Sketch%20Images/Balsamiq_7.png)
+
+
+![Balsamiq sketch 8](Images/Sketch%20Images/Balsamiq_8.png)
+
+
+![Balsamiq sketch 9](Images/Sketch%20Images/Balsamiq_9.png)
 
 
 
