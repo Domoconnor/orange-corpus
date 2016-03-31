@@ -12,30 +12,30 @@ We created a user account system with the aim of allowing users to recieve next 
 
 Another part of the web visualisation was a sensor status section. From here the residents could check on things such as battery status and last reading so they could be happy it was working.
 
-![](images/visualisation/status.png)
+![](Images/visualisation/status.png)
 The finised web visualisation used D3.js to create a number of different ways of displaying the data. The main three it uses are the clock, graph, and compare.
 
 ####Clock interface
 The clock is intened to bridge the gap between the phyical parts of the system and the digital parts. It provides a consistent representation of data between the two in an effort to make the user more comfortable. An image of the phyical and digital clocks can be seen below:
 
 
-![](images/visualisation/clock.jpeg)
-![](images/visualisation/clocks.png)
+![](Images/visualisation/clock.jpeg)
+![](Images/visualisation/clocks.png)
 
 The clock view is meant as an overview for the entire system, at a glance you can see what has been chosen. The clock allows you to then click through to a more detialed graph.
 
 ####Graph
 The graph shows a more detailed view of the day allowing you to see what numerical levels the noise reached. It also includes a list of the raw data which consists of timestamps, the raw reading, and decibels. 
 
-![](images/visualisation/graph.png)
-![](images/visualisation/data.png)
+![](Images/visualisation/graph.png)
+![](Images/visualisation/data.png)
 
 The graph combined with the raw data output shows the noise level in an easy to understand way while displying important information. 
 
 ####Compare
 The compare section of the website was created as a way of viewing multiple days worth of data on one page. We previously tried this with graphs but found that it was messy and didn't get the point across. To solve this we created a view that which, like the clock, displayed the data using colours based on the sound level. It displayed hours across the x axis and days on the y axis.
 
-![](images/visualisation/compare.png)
+![](Images/visualisation/compare.png)
 
 As you can see in the image above, on saturday and wednesday evening it was louder than other evenings as they have a yellow colour rather than green.
 
@@ -123,7 +123,7 @@ The previous iteration worked fine techinically, however there were some issues 
 #####Result of iteration
 We created a visualisation that looks similar to the clock as you can see below:
 
-![](images/visualisation/clock1.png)
+![](Images/visualisation/clock1.png)
 
 This was created from the test data we recieved over christmas.
 
@@ -229,11 +229,11 @@ None
 After looking at several sources we decided that we liked how GitHub show
 how often someone commits. You can see an image of one of those graphs below:
 
-![](images/visualisation/github.png)
+![](Images/visualisation/github.png)
 
 As we are working with data where time is important we cannot simply show the day so we changed it to include hours on the x axis and days on the y axis. You can see the graph we created below:
 
-![](images/visualisation/compare2.png)
+![](Images/visualisation/compare2.png)
 
 ####Iteration 6 - Turning graphs into a website
 
