@@ -193,8 +193,8 @@ As shown above the XBees are capable of travelling around 30m and only suffer co
  
 The FRDM-K64F is the current choice for the Hub but not for the sensor, so at some point we will need to test the capability of using an FRDM-K64F to talk to an Arduino style board. This has furthered our understand of using XBees with AT mode, specifically how to progress further and utilise these modules in our future components. 
 
-* <a href="/MBEDXbeeTest/receiver.cpp">Code for FRDM-K64F receiver</a>
-* <a href="/MBEDXbeeTest/transmitter.cpp">Code for FRDM-K64F transmitter</a>
+* <a href="MBEDXbeeTest/receiver.cpp">Code for FRDM-K64F receiver</a>
+* <a href="MBEDXbeeTest/transmitter.cpp">Code for FRDM-K64F transmitter</a>
 
 ####Iteration 3, AT Mode with Hub, Sensor and Clock
 
@@ -232,7 +232,7 @@ https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf
 * Page 12 refers to data input buffers of size 202 bytes
 * Page 11 refers to ‘Packetization Timeout’ from serial to RF
 
-Code used for Hub with AT Mode can be found <a href="/XbeeAPI/Hub/HubAT.py">here</a>.
+Code used for Hub with AT Mode can be found <a href="XbeeAPI/Hub/HubAT.py">here</a>.
 
 ####Iteration 4, API Mode 
 #####Issues with previous Iteration
@@ -341,8 +341,8 @@ The sensor currently uses a set of pins on the XBee to command it to enter sleep
 ######Results of Iteration
 These requirements will allow us to build a robust network capable of recovery upon failure, if a packet isn’t received for example then retransmit it. We will be able to also provide more feedback to the client such as if a node is no longer within range, if they moved the sensor too far away from the Hub for example.
 
-* For implementations of our node code (C++), see <a href="/XbeeAPI/Nodes">here</a>.
-* For implementations of our Hub code (Python), see <a href="/XbeeAPI/Hub">here</a>.
+* For implementations of our node code (C++), see <a href="XbeeAPI/Nodes">here</a>.
+* For implementations of our Hub code (Python), see <a href="XbeeAPI/Hub">here</a>.
 
 ####Iteration 5, Implementing API Mode
 
@@ -356,7 +356,7 @@ We decided to construct a dummy sensor in order to demonstrate range testing and
 
 Although simple in principle, this was not possible with the use of AT mode (Without doing some serious and inefficient modifications). Using status packets we can determine whether a sensor was within range or not and then use this information to alert the client. We’ve decided that this information could be made easier to understand if the Hub was to alert the web server when a sensor was out of range, as this information can be displayed on the website for easier access rather than flashing LEDs.
 
-* For implementations of the dummy sensor code (C++), see <a href="/XbeeAPI/Nodes/DummySensor/XbeeAPI.cpp">here</a>.
+* For implementations of the dummy sensor code (C++), see <a href="XbeeAPI/Nodes/DummySensor/XbeeAPI.cpp">here</a>.
 
 #####Library for coordinator (Hub)
 

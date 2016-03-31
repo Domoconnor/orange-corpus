@@ -351,8 +351,8 @@ The next step is to wire the pre-built microphone amplifier to one of the boards
 
 This was a very simple change and nothing too complicated occurred, but it does benefit us in the long run. The size of the new amplifier works in our favour as its size makes it very easy to adopt into a system where as previously we had a cluster of wires and components. It doesn’t risk being disconnected when compared to our previous amplifier which was held together through loose wires. 
 
-* For a version of this code see <a href="/sensor/initialNoiseLevel/sketch_dec02a/sketch_dec02a.ino">here</a>.
-* For the Java sampling program see <a href="/SensorJavaSamplingCode/">here</a>. 
+* For a version of this code see <a href="sensor/initialNoiseLevel/sketch_dec02a/sketch_dec02a.ino">here</a>.
+* For the Java sampling program see <a href="SensorJavaSamplingCode/">here</a>. 
 
 ####Christmas Deployment
 Over the christmas period we deployed a version of our sensor that wrote data to an SD card. This was designed to go into one of the resident's houses and record data for a short period of time. We used an arduino uno with a shield that contained an SD card reader. 

@@ -51,7 +51,7 @@ We spoke to another client that was meant to be present at the original meeting 
 
 All recordings, notes and questions from the meeting can be found [here](meeting_two/)
 
-<img src="images/OrangeStreet_dist.jpg">
+![](/Images/OrangeStreet_dist.jpg)
 
 ####Other Communication
 
@@ -154,17 +154,17 @@ The sensor samples sound every minute. The microphone in the sensor starts colle
 
 The final sensor is comprised of multiple parts, [Microphone](#mic), [ADC](#adc), [Board](#sensor_board), [Clock](#sensor_clock), [Battery](#battery), [XBee](#sensor_xbee), [Case](#sensor_case):
 
-*<a name="mic"></a>Microphone*
+**<a name="mic"></a>Microphone**
 
 The microphone is an electret microphone with a built in MAX4466 amplifier. This amplifier has adjustable gain which is used to boost the raw signal which is passed from the microphone. In the final version of this sensor we decided that this amp was not enough and that we needed to add another amplifier to the circuit to improve our recordings
 
-*<a name="adc"></a>ADC*
+**<a name="adc"></a>ADC**
 
-The circuit contains an external ADC in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to firther amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
+The circuit contains an external ADC in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to further amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
 
 We found that we were getting a lot of noise coming from the mic which we discovered was caused by the voltage from the board. To counter this voltage coming out of the board with the data coming back from the microphone on the ADC. This allowed us to get the difference and remove any electrical noise from the mic.
 
-*<a name="sensor_board"></a>Board*
+**<a name="sensor_board"></a>Board**
 
 The final board we chose was the Rocket Scream Mini Ultra 8 MHz Plus. The reasons this was chosen are below:
 
@@ -179,18 +179,23 @@ The final board we chose was the Rocket Scream Mini Ultra 8 MHz Plus. The reason
  
  The board is in a near constant sleep state and only wakes up on a pin interrupt to take readings and send the data back to the sensor. This ensures a battery life of around one and a half months. The interrupt is triggered from the clock.
  
-*<a name="sensor_clock"></a>Clock*
+**<a name="sensor_clock"></a>Clock**
 
 The sensor needs a clock to be able to accurately record the time readings are taken. The clock on the sensor also has a further purpose of waking the sensor up at certain times. For this we used a DS3231 which kept time incredibly accurately and also provided an 'alarm' function which could pull a pin high or low based on a set of programmable rules. We set this rule for every minute which means it pulled the pin low every minute. We then had the board sleep listen for an interrupt on that point. 
 
-*<a name="battery"></a>Battery*
+**<a name="battery"></a>Battery**
 
-We used a 1500mah lithium polymer battery for the sensor as it provided a good balance betwwen power and size. In previous iterations we used a 2000mah which provided a longer battery life however we couldn't source another one in time for the final deployment.
+We used a 1500mah lithium polymer battery for the sensor as it provided a good balance between power and size. In previous iterations we used a 2000mah which provided a longer battery life however we couldn't source another one in time for the final deployment.
 
-*<a name="sensor_case"></a>Case*
+**<a name="sensor_case"></a>Case**
 The Case was designed in a way that was intended to aim our microphone at the noisy street and protect the electronics from the elements. It was 3D printed at a high fidelity (high infill of plastic) with a thickness of 3mm as not to allow water in through the printed plastic. It was then sanded and sprayed with a high fill primer to fill any pores left int the plastic left from the printing process. As the case had to be closed around the electronics of the sensor a seam was built in that was filled with a neoprene strip as to stop any water from getting through said seam.
 
-A final version of the code can be found [here](sensor/micTest)
+A final version of the code can be found [here](sensor/micTest).
+
+Below is a diagram of the final circuit used.
+
+![6](Images/sensor/diagram.png)
+
 
 ### Previous Work
 
@@ -205,9 +210,9 @@ Building on the initial ideas we had and also looking back to the client interac
 - Transmit that data back to a hub
 
 
-We looked into how sound works and discovered that we would need to capture a sound wave and subtract the minimum from the maximum to get an overall amplitude of the wave. We could then use this data to calculate other things such as decibels but initialy recording the sound wave was crucial. We planned to use a microphone and microcontroller board to select some points on a sound wave and perform the calculation.
+We looked into how sound works and discovered that we would need to capture a sound wave and subtract the minimum from the maximum to get an overall amplitude of the wave. We could then use this data to calculate other things such as decibels but initially recording the sound wave was crucial. We planned to use a microphone and microcontroller board to select some points on a sound wave and perform the calculation.
 
-*The Microphone Amplifying Circuit*
+**The Microphone Amplifying Circuit**
 
 After talking to the client the important part of the diagram would remain constant throughout the process, which was the amplifying circuit. For a microphone to be able to produce a voltage signal able to be processed for data it must be amplified, we know for certain we are measuring noise levels in this project and so this is a crucial step.
 
@@ -217,7 +222,7 @@ The basic place to start is a non-inverting amplifying circuit, used with any op
 
 The OP-AMP IC we’ve been using is the MCP 6002, the datasheet can be found here. (http://ww1.microchip.com/downloads/en/DeviceDoc/21733j.pdf)
 
-![2](images/sensor/IMAGE2.png)
+![2](Images/sensor/IMAGE2.PNG)
 
 It’s an IC with two OP-AMPS and isn’t designed for anything too complicated, for the time being it’s perfect to get a basic amplifying circuit built.
 
@@ -227,7 +232,7 @@ Most microphones that feed into a amplifying circuit are biased by a resistor va
 
 So far, we’re looking at a circuit like this.
 
-![3](images/sensor/IMAGE3.png)
+![3](Images/sensor/IMAGE3.PNG)
 Other solutions that can be found on the web include using a different IC (As opposed to the MCP 6002) and modifying the circuit above. 
 
 List of other IC’s and amplifiers we looked into.
@@ -253,8 +258,7 @@ List of other IC’s and amplifiers we looked into.
 
 Although some may seem more suitable than others, as of right now we’ve focused on having a working circuit. In the long term, once we are happy with this solution we will most likely have a pre-built circuit instead of designing the non-inverting amplifier ourselves and choosing which OP-AMP to use. 
 
-
-*Processing the Data*
+**Processing the Data**
 
 The next step was to process the data, there were many ways to handle this from Microcontrollers to all-in-one IOT boards. We researched the following methods of taking data from a microphone to then process.
 
@@ -321,7 +325,7 @@ The next step was to process the data, there were many ways to handle this from 
 
 For the purpose of a prototype we decided to work with a IOT Microcontroller, we need to investigate common IOT Microcontroller modules, ones that are ideal for our implementation of this IOT device. 
 
-*Arduino Microcontroller Boards*
+**Arduino Microcontroller Boards**
 
 Arguably one of the most popular development boards commercially available, has a full function IDE written in C++. Multiple different boards designed for different purposes, all having sharing the basic functionality (such as analog inputs) while offering unique differences. They allow for shields to be placed into them which add even further adaptability, allowing for 3rd party hardware to be interfaced easily into the device. This functionality can be as simple as an SD card reader, a WiFi chip or even an external clock. 
 
@@ -341,11 +345,11 @@ This narrowed down our choices to the following Arduino devices.
 	<li>Arduino Uno</li>
 </ul>
 
-![4](images/sensor/IMAGE4.png)
+![4](Images/sensor/IMAGE4.PNG)
 
-*Arduino Nano*
+**Arduino Nano**
 
-![5](images/sensor/IMAGE5.png)
+![5](Images/sensor/IMAGE5.PNG)
 
 (https://www.arduino.cc/en/uploads/Main/ArduinoNanoManual23.pdf)
 
@@ -364,9 +368,9 @@ It requires a minimum of 5v operating power, anything below and functionality is
 
 It can run the ATMega 168 or 328, we would ideally use the 328 as it offers much more space (EEPROM, SRAM and Flash memory) and is a later iteration over the 168. The dimensions of the device are 0.73” x 1.70”.
 
-*Arduino Pro mini*
+**Arduino Pro Mini**
 
-![6](images/sensor/IMAGE6.png)
+![6](Images/sensor/IMAGE6.PNG)
 
 (http://www.atmel.com/images/Atmel-8271-8-bit-AVR-Microcontroller-ATmega48A-48PA-88A-88PA-168A-168PA-328-328P_datasheet_Complete.pdf)
 
@@ -374,9 +378,9 @@ Essentially the Pro Mini is identical to the Arduino Nano except for the added a
 
 “There are two version of the Pro Mini. One runs at 3.3V and 8 MHz, the other at 5V and 16 MHz... The ATmega328 has 32 kB of flash memory for storing code (of which 0.5kB is used for the bootloader). It has 2 kB of SRAM and 1kBs of EEPROM.“ (Arduino.cc, n.d.)
 
-*Arduino Uno*
+**Arduino Uno**
 
-![8](images/sensor/IMAGE8.png)
+![8](Images/sensor/IMAGE8.PNG)
 
 The Uno sticks out in this comparison due to its size difference against the previous 3, which begs the question - why then? Simply put, the Arduino Uno is a very friendly board to use, and for prototyping would be ideal as we would not need to worry about many problems that we could face when going straight in with one of the other solutions. It also shares a lot of common ground with the other 3, except for its size.
 
@@ -384,9 +388,9 @@ It runs the ATmega328P, which has slight differences to the ATmega328 (Slight po
 
 The biggest benefit for us, was that the Uno would offer easy adaptability and help quickly work with a prototype while we decide which microcontrollers to use, their frequency, and work on breadboards instead of soldering straight away. 
 
-*MBED FRDM-K64F*
+**MBED FRDM-K64F**
 
-![9](images/sensor/IMAGE9.png)
+![9](Images/sensor/IMAGE9.PNG)
 
 Another popular developer of IOT boards, using ARM based architecture instead of AVRs. The argument between these two processor architecture is often put down to ARM is powerful, and AVR is not so much. There are variants on the processors but otherwise they tend to stick to those groups. MBEDs have an online compiler and IDE, which works in a similar fashion to Arduinos but is effectively always online which comes with its own problems such as requiring internet access. 
 
@@ -420,7 +424,7 @@ int main(void)
 
 The FRDM-K64F has given us superb accuracy when sampling the microphone, values ranging from 0-65555. This is due to the 16bit analog to digital converter on the board. 
 
-![11](images/sensor/IMAGE11.png)
+![11](Images/sensor/IMAGE11.PNG)
 
 We also sampled using an Arduino Uno:
 
@@ -485,11 +489,11 @@ The size of the amplifier we built was ideally too large for a small sensor, we 
 #####Result of iteration
 We’ve purchased a pre-built amplifier to simplify our circuit, ideally we don’t want wires going everywhere and using a prebuilt amplifier makes our task easier due to less complexity and time required to build one. 
 
-![12](images/sensor/IMAGE12.png)
+![12](Images/sensor/IMAGE12.PNG)
 
 The next step is to wire the pre-built microphone amplifier to one of the boards, we’ve decided to use the FRDM K64F for the time being as its sample range from 0-65555 makes it appealing to work with.
  
-![13](images/sensor/IMAGE13.png)
+![13](Images/sensor/IMAGE13.PNG)
 
 This was a very simple change and nothing too complicated occurred, but it does benefit us in the long run. The size of the new amplifier works in our favour as its size makes it very easy to adopt into a system where as previously we had a cluster of wires and components. It doesn’t risk being disconnected when compared to our previous amplifier which was held together through loose wires. 
 
@@ -528,48 +532,46 @@ We collected a significant amount of data from this and a graph of the levels we
 ![](Images/sensor/graph.png)
 
 
-####Iteration 4 
+####Iteration 4 - Results from Christmas deployment
 #####Issues with previous iteration
 There were several issues that arose with the code and hardware we created during the christmas testing We discovered that the mic signal was not being amplified enough which led to a lot of readings being the same even though the noise levels were vastly different. The previous iteration also recorded data directly to an SD card for us to look at later. This is an issue as we needed some way of transmitting data back to the board.
 
-#####Result of iteration
-We struggled with amplifying the sound as there we were also amplifiying a lot of electrical noise. We pushed this back to a future iteration as we were getting held up by it.
+#####Result of Iteration
+We struggled with amplifying the sound due to also amplifying a lot of electrical noise. We added an XBee module to the board so that we could transmit data back to the hub which worked without any issues.
 
-We added an Xbee to the board so that we could transmit data back to the hub which worked without any issues.
+####Iteration 5 - External Clock and XBees
+#####Issues with previous Iteration
+We noticed some issues with the previous iteration cutting off data after sending large amounts. This is an issue that needs fixing and is caused by the internal hardware of the XBee module (see [Networking](#networking) for more details). We are also currently getting the time for timestamping the data from the internal clock. This is proving to be an issue as the time is not accurate. Over longer periods the time on the board will drift further and further away from the actual time. Another issue is if the sensor runs out of battery the time will be lost.
 
-####Iteration 5
-#####Issues with previous iteration
-We noticed some issues with the previous iteration cutting off data after sending large amounts. This is an issue that needs fixing. We are also currently getting the time for timestamping the data from the internal clock. This is proving to be an issue as the time is not accurate. Over longer periods the time on the board will drift further and further away from the actual time. Also, if the sensor runs out of battery the time will be lost.
+#####Result of Iteration
+The loss of data when transmitting was due to the XBee buffers being overloaded as we sent the data too quickly. To solve this we added small delays in between sending the data. This fixed the issue and the data appears to be being sent without any issues. We also added a clock to the circuit. This has a backup battery so it can still keep time in the event of the sensor losing power. This clock is also accurate and can keep to +/-1 second over a year. 
 
-#####Result of iteration
-The loss of data when transmitting was due to the Xbee buffers being overloaded as we sent the data too quickly. To solve this we added small delays in between sending the data. This fixed the issue and the data appears to be being sent without any issues. We also added a clock to the circuit. This has a backup battery so it can still keep time in the event of the sensor losing power. This clock is also accurate and can keep to +/-1 second over a year. 
+####Iteration 6 - Fixing sensitivity of the Microphone
+The aim of this iteration was to fix the issue in iteration 2 where we discovered that microphone readings were not being amplified enough to pick up changes in the noise level.
 
-####Iteration 6
-The aim of this iteration was to fix the issue in iteration 2 where we discovered that mic readings were not being amplified enough to pick up changes in the noise level.
+#####Issues with previous Iteration
+No issues
 
-#####Issues with previous iteration
+#####Result of Iteration
+We added a 16-bit ADC (Analog to Digital converter) which gives us a higher resolution and also allows us to remove electrical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the microphone output into pin 2. Comparing these 2 pins gave us a wave that was far less noisy, as the power voltages were effectively cancelling each other out. This means that we could produce a wave which had an maximum amplitude that was the same as our resolution. Previously there was a noise baseline which when amplified increased, leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
+
+####Iteration 7 - Rechargeable Batteries
+For this iteration we wanted to add a rechargeable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
+
+#####Issues with previous Iteration
 No issues
 
 #####Result of iteration
-We added a 16-bit adc which gives us a higher resolution and also allows us to remove electical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the mic output into pin 2. Comparing these 2 pins gave us a wave that was much less noisy, as the power voltages were effectively cancelling each other out. This also means that we could produce a wave which had an maximum amplitude of that was the same as our resolution whereas previously there was a noise baseline which, when amplified, also increased leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
+We changed our board from an Arduino Uno to a low power version called the 'Rocket Scream Mini Ultra 8 MHz Plus'. This draws a much lower current than the Arduino due to it's more power efficient on board regulator. This board also comes with a battery connector which allows us to plug a lithium polymer battery into it and provides pins which a source of up to 20V can be plugged in. We began testing by charging it using a standard usb charger and currently it functions fine, albeit slowly as the charging circuit can charge the battery using a max current of 500mA. We also tried a different version of the board which used even less power, the 'Rocket Scream Mini Ultra', however we decided against using this due to lack of features such as as voltage regulator, which we would need to use our battery efficiently and recharging circuits.
 
-####Iteration 7
-For this iteration we wanted to add a rechargable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
+####Iteration 8 - Lowering the Power
+In this iteration we wanted to make sensor run at a lower power so it could last on batteries for as long as possible.
 
-#####Issues with previous iteration
-None
+#####Issues with previous Iteration
+Our testing program was running on the board constantly which led to the battery not being able to fully charge as the code was making the board use a lot of power. This led us to think there was an issue with the charging circuit and look into that. The issue in the end was fixed by making sure the program didn't run and then leaving it to charge for a longer period of time.
 
-#####Result of iteration
-We changed our board from an arduino to a more low power version. This board is called the 'Rocket Scream Mini Ultra 8 MHz Plus' and draws a much lower current than the arduino due to it's more power efficient on board regulator. This board also comes with a battery connector which allows us to plug a lithium polymer battery into it and provides pins which a source of up to 20V can be plugged in. We began testing charging it using a standard usb charger and it seems to work, albeit slowly as the charging circuit can charge the batter using a max current of 500mA compared to the 2A you'd be able to charge a similar sized phone battery at. We also tried a different version of the board which used even less power, the 'Rocket Scream Mini Ultra', however we decided against using this due to lack of features such as as voltage regulator, which we would need to use our battery efficiently, and recharging circuits.
-
-####Iteration 8
-In this iteration we wanted to make sensor run at a lower power so it could last on batteries for much longer.
-
-#####Issues with previous iteration
-Test code was running on the board constantly which led to the battery not being able to fully chage as the code was making the board use a lot of power. This led us to think there was an issue with the charging circuit and look into that. The issue in the end was fixed by making sure the code didn't run and leaving it to charge for a longer period of time.
-
-##### Result of iteration
-We used the [Rocket Scream Low-Power](https://github.com/rocketscream/Low-Power) library which allowed us to turn off all of the functions of the processor we were not using and put it into a deep sleep mode. This deep sleep dramatically reduced power usage. We are using the watchdog timer on the board to allow us to set the amount of time we sleep however the watchdog timer can only count up to 8 seconds so to get it to sleep for 1 minute, we needed to run the it 8 times. Some example code for this can be seen below:
+##### Result of Iteration
+We used the [Rocket Scream Low-Power](https://github.com/rocketscream/Low-Power) library which allowed us to turn off all of the functions of the processor we were not using and put it into a deep sleep mode. This deep sleep dramatically reduced power usage. We are using the watchdog timer on the board to allow us to set the amount of time we sleep. However the watchdog timer can only count up to 8 seconds so to get it to sleep for 1 minute, we needed to run it 8 times. Some example code for this can be seen below:
 
 ```c++
 #include <lowpower.h>
@@ -606,7 +608,7 @@ ISR(WDT_vect)
   }
 }
 
-//Put the processort to sleep until it's woken up bt WDT
+//Put the processort to sleep until it's woken up by WDT
 void sleep()
 {
 	LowPower.powerDown(SLEEP_FOREVER,ADC_OFF, BOD_OFF);  
@@ -616,20 +618,14 @@ void loop()
     // read the data...
 }  
 ```
-####Iteration 9
+####Iteration 9 - Another new clock
 ##### Issues with the previous iteration
-There were several issues we noticed after the iteration. One of these was that the watchdog timer wasn't accurate enough and readings times were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The Xbee was also still drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
+There were several issues we noticed after the previous iteration. One of these problems was that the watchdog timer wasn't accurate enough and microphone sample timestamps were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The XBee was drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
 
 #####Results of iteration
 We changed the clock to a DS3231 which allowed us to fire interrupts at predetermined intervals, such as every minute. We could then use that wake the processor from it's sleep and it could then take the readings. We made some modifications to the DS3231 by removing the power and transmit LEDs to reduce power consumption. The clock ensured that readings were taken at the same point every minute. We also reprogrammed the Xbee to use pin hibernate mode. This meant that when we pulled a pin low on the board, the Xbee would also enter sleep mode. This sleep mode reduced it's power usage down to around 500μA which was acceptable. The Xbee was then only powered on when we wanted to send data, which was a tiny fraction of the time. Changing to interrupt based processor sleep seems to have solved the problem of the board not waking from sleep.
 
-All code mentioned in this section can be found [here](sensor/)
-
-
-### Bibliography
-
-Arduino.cc, (n.d.). Arduino - ArduinoBoardProMini. [online] Available at: https://www.arduino.cc/en/Main/ArduinoBoardProMini [Accessed 16 Jan. 2016].
-<a name="networking"></a>
+All code mentioned in this section can be found [here](sensor/)<a name="networking"></a>
 ##Networking 
 [Back to contents](#contents)
 ###Description
@@ -642,8 +638,25 @@ The sensors were programmed in C++ and the Hub was programmed in Python. We have
 
 The libraries were designed so that one line of code would be required to send a message across the network while abstracting all heavy processing on traffic. The benefit of this was that the library could change and not require a whole body of code to change for the other sections of the project.  
 
+Hub API:
+
+~~~python
+# Send message with API, sensor1 lets the API know which 64bit
+# address we're looking for, returns successful or not
+response = xbee.sendMessage("sensor1", "Hello world!")
+~~~
+
+Sensors API:
+
+~~~c++
+void helloWorld(){
+	// Send message with API, will transmit to the coordinator
+	// Returns 0 if successfull
+	int response = xbee.sendMessage("Hello world!"); 
+}
+~~~
+
 ![13](Images/Networking/IMAGE14.PNG) 
-![1](Images/Networking/IMAGE1.PNG) ![2](Images/Networking/IMAGE2.PNG) 
 
 ###Previous Work
 
@@ -722,8 +735,11 @@ Here is a table that we formulated over common wireless solutions:
 	</tr>
 </table>
 
+Values taken from [Wifi vs Bluetooth power consumption](http://science.opposingviews.com/bluetooth-vs-wifi-power-consumption-17630.html), [Bluetooth power consumption](http://www.digikey.com/en/articles/techzone/2011/dec/bluetooth-goes-ultra-low-power), [XBee power consumption](https://www.sparkfun.com/datasheets/Wireless/Zigbee/XBee-Datasheet.pdf).
+
+
 <br>
-*WiFi*
+**WiFi**
 
 WiFi is widely used and accepted as a way to wirelessly transmit data. This means our clients should be familiar with it in some sense. However WiFi is not really intended to be used in devices that need to be situated in one place for an extended amount of time. This is because WiFi can use a lot of power when sending and receiving data. Hence why smartphones can lose power quickly while connected to a WiFi network.
 
@@ -736,7 +752,7 @@ One of our mains goals for the sensor is to make the battery as long as possible
 Another one of the more problematic issues of WiFi would be the encryption, the data we are sending is not of national security nor anything that could be any real use to anyone aside our clients and in the event that our clients change their WiFi credentials (Encryption key, SSID etc) then we risk jeopardising the sensors.
 
 <br>
-*Bluetooth and Bluetooth Low Energy*
+**Bluetooth and Bluetooth Low Energy**
 
 Bluetooth is also a viable alternative for transferring over a low bandwidth where speed is not too key an issue. Depending on how often we schedule the device to transmit data. Since the range on this is considerably lower (5-30 meters) so we would have to consider integrating this with a hub of some kind to forward our data. Fortunately some of the properties across Orange Street feature flat rooftops; upon which we could attach peripherals such as antennas if we need to.  
 
@@ -745,7 +761,7 @@ Bluetooth smart devices have a typically very low sleep current which equates to
 Bluetooth works on a dynamic network topology called PAN, which supports up to 8 other devices and a minimum of two, although we don’t plan on having an abundance of sensors in one house (Minimum most likely 3) 
 
 <br>
-*XBee S2 and XSC*
+**XBee S2 and XSC**
 
 We found that the S2 in particular was more than adequate for our desires, having one of the lower current draws for transmitting/receiving data, especially that of in sleep with a good data rate (250kbps) and working on a mesh network topology.  Not only this, but the XBee offered full configurable settings on its usage and setup, allowing us greater control of the network than other alternatives.
 
@@ -935,9 +951,14 @@ As show in our previous iteration the XBee didn't support packet fragmentation, 
 ![7.8](Images/Networking/IMAGE7.8.PNG)
 
 ######Arduino String vs Char Array
-When working with the Arduino IDE its been very tempting to use the 'String' class. A class that offers useful functionality similar to that of Java. With it we can work out the length of a string, split it, concat it and do general operations on it. However, this functionality comes as the cost of efficiency. In C, strings don't exist in the format of other languages rather they exist as char arrays and are handled very differently. Arduinos IDE dumbs down the char array into a string. The lack of efficiency comes at the cost of memory, with such a small amount of RAM, the nodes could potentially crash if we are not careful.
+When working with the Arduino IDE its been very tempting to use the 'String' class. A class that offers useful functionality similar to that of Java. With it we can work out the length of a string, split it, concat it and do general operations on it. However, this functionality comes as the cost of efficiency. In C, strings don't exist in the format of other languages rather they exist as char arrays and are handled very differently. Arduinos IDE dumbs down the char array into a string. The lack of efficiency comes at the cost of memory, with such a small amount of RAM, the nodes could potentially crash if we are not careful. 
 
 For us, we want total efficieny above all else. Although it might be easier to implement a string over a char array, we have decided with the later. 
+
+~~~c++
+  char char_array_hello[20] = "Hello world!"; // Using char array to store sentence
+  String string_hello = "Hello world!"; // Using String to store sentence
+~~~
 
 #####XBee Sleep Settings
 Amongst many of the settings available on the XBee, sleep is a must have for our sensors. There are many options available to us when configuring sleep mode. Most importantly how often does the module stay asleep for and then how often to stay awake for. In terms of reserving power this feature is invaluable for the sensor. 
@@ -966,7 +987,7 @@ Although simple in principle, this was not possible with the use of AT mode (Wit
 
 #####Library for coordinator (Hub)
 
-The hubs library is much more extensive than of the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
+The hubs library is much more extensive than the nodes library. It has to offer the hub the ability to address any node, as well node discovery and heartbeats. These features are cruicial in order to maintain network stability and determine missing nodes, which can reported back to the webserver. 
 
 For more information regarding the Hub and API mode, see [**Hub**](#hub).
 
@@ -974,10 +995,109 @@ For more information regarding the Hub and API mode, see [**Hub**](#hub).
 
 The library created for the nodes on the network was simpler than that of the coordinator. The nodes only need to talk to the coordinator on the network as opposed to each other. The coordinators address is constant, set at 0x00, which means no complicated addressing or node discovery.
 
-However packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
+######Packet Fragmentation and Assembly
+
+Packet fragmentation and assembly are supported along with responding to heartbeats automatically when received. This library will only support one stored message however, it only expects one message at a time from one node - the coordinator. Response codes and transmission status packets are available with the library allowing for us to determine successful packet transmission.
+
+######Different Serial Ports
+
+The actual serial connection on the clock and sensor are different, the Flora board has two serial ports whereas the Rocket Scream only has one. This meant that the serial connection the Flora board used was different to the Rocket Scream and they send data down serial in different ways. To accomodate this the HardwareSerial class was used a reference in the API, allowing us to choose which serial port we wanted the API to use. 
+
+For the Rocket Scream, initialising the API can be done as:
+
+~~~c++
+XbeeAPI xbee(&Serial, 0, "test");
+~~~
+
+Whereas for the Flora:
+
+~~~c++
+XbeeAPI xbee(&Serial1, 0, "test");
+~~~
+
+The library handles this construction as follows:
+
+~~~c++
+XbeeAPI::XbeeAPI(HardwareSerial *pserial, const char* name) : name(name)
+{
+  serial = pserial;
+  serial->begin(9600);
+  serial->setTimeout(1000);
+}
+~~~
+
+######Polling
+
+The ATMega architecture struggles with some forms of interrupt handling, due to this storing packets when data is received becomes difficult. When a packet is received the XBee will store it internally and wait to send over serial, it can only send when the board is ready to receive. The sensors are often asleep and won't be listening on serial for incoming data, except for when they wake up. When they wake up to sample sound, they can call a method called 'poll' in the library. This method reads in everything it can from serial and then forms messages for the program to use. This method is designed to bypass the problem of interrupt handling and work within the parameters of a device that may need to be sleeping for a long period of time.
+
+An example of polling:
+
+~~~c++
+// awakening from sleep...
+// take a sample
+bool messageAvailable = poll(3); 
+if(messageAvailable){
+	// respond, read etc ...
+}
+~~~
+
+The parameter passed to the poll function relates to how many times the program wants to poll, each call waits 250 milliseconds before reading everything it can in from serial. The example above would poll 3 times and would take 750 milliseconds to execute, not including time for atomic operations. 
+
+The poll function:
+
+~~~c++
+bool XbeeAPI::poll(uint8_t timesToPoll)
+{
+
+    unsigned char input[INPUT_SIZE + 1]; // Total length of data expected, including + 1 for termination \0
+    unsigned char packet[INPUT_SIZE + 1]; // Total length of data expected, including + 1 for termination \0
+
+    // How many times we want to check for incoming data
+    for(int i = 0; i < timesToPoll; i++){
+    	
+      // Clear arrays with 0
+      memset(input, 0, INPUT_SIZE+1);
+      memset(packet, 0, INPUT_SIZE+1);
+      delay(250);
+      // Read in all data we can up to INPUT_SIZE and store in 'input'
+      uint8_t size = serial->readBytes(input, INPUT_SIZE);
+      input[size] = 0; // Final termination of array \0
+
+
+      unsigned char pos = 0;
+      unsigned char checkPacket = 0;   
+      for(int i = 0; i < size; i++){
+        if(input[i] == 0x7E){
+          if(!checkPacket){
+            checkPacket = 1;
+          // If the packet is valid, we want to continue checking serial data for other packets
+          }else if (validatePacket(packet)){
+            memset(packet, 0, INPUT_SIZE); // Reset packet
+            pos = 0;
+            checkPacket++;
+          // If invalid packet and not checking packet then break 
+          }else{
+            break;
+          }
+        }
+        packet[pos++] = input[i];
+      }
+
+      if(checkPacket == 1){
+        validatePacket(packet);
+      }
+
+      if(message != NULL && message->hasTerminated()){
+        return true;
+      }else{
+        return false;
+      }
+  }
+    }
+~~~
 
 #####Results of Iteration
-With our final iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
+With our recent iteration we've managed to successfully test the sensor out of range, create working libraries to interface with our nodes without changing any existing code to the systems. Overall this iteration has been a massive success towards the structure of the network and ensuring the strength of it. 
 <a name="hub"></a>
 ##Hub
 
@@ -985,32 +1105,34 @@ With our final iteration we've managed to successfully test the sensor out of ra
 
 ![](Images/Hub/IMAGE1.PNG)
 
+The Hub is the coordinator of the network. Its the middleman to all incoming and outgoing traffic from the sensor or clock to the webserver. It will backup data if the network fails at any point, to determine network failure it utilises the libraries provided by the Networking solutions (see [Networking.](#networking)). Using these libraries the hub can maintain a robust network and offer these services:
+* Node Discovery, can determine when nodes disappear or appear and assign them 'nicknames' that can be associated to that node. (e.g "sensor on the balcony")
+* Fragmentation and Assembly of large payloads, large payloads can be fragmented and reassembled when transmitted across the network.
+* Heartbeats, keeping up to date with each node and knowing their current status. Fits into node discovery.
+* Transmission reports, for each packet sent a status packet is returned. With this the hub can identify whether a transmission was successfully or not.
+* If the network fails the hub will backup any data is has locally and any data it is currently trying to transmit until the network connection has been re-established.
+* Will forward all sensor data to the webserver for further processing, if possible otherwise saves locally.
+* Forwards requests from the clock for most recent 24 hours of sound averages and will transmit back the response. If an error occurs will transmit an appropriate error code.
+
+The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee) and [Case](#hub_case).
+
+**<a name="hub_board"></a>Board**
 The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
 
-The hub is comprised of multiple parts: [Board](#hub_board), [Communication / XBee](#hub_xbee), [Case](#hub_case)
+**<a name="hub_xbee"></a>Communication / XBee**
+The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests to the Hub also.
 
-*<a name="hub_board"></a>Board*
-
-The Hub uses a Raspberry Pi Model B+ running Raspbian Jessie Lite, the Pi offers GPIO pins to connect external boards to it. Using these pins, an XBee module is connected on serial and provides the Pi with its position on the network as coordinator. The Pi only requires three connections for it to function, an ethernet connection, the serial connection to the XBee and finally power. The programs controlling the network are written in Python 3.
-
-*<a name="hub_xbee"></a>Communication / XBee*
-
-The XBee module is configured as coordinator on the network, giving the Hub its status and control on the network. The XBee can address any other XBee module on the network or broadcast to all of them. All other XBees address the coordinator as it is the centre point of the network. Sensors forward their data through the XBees to the Hub the Clock makes requests using its XBee to the Hub also.
-
-*<a name="hub_processing"></a>Processing Role*
-
+**<a name="hub_processing"></a>Processing Role**
 It handles data coming in from the sensor and requests from the clock. The clock can request decibel averages of the past 24 hours using the Hub as a middleman, the Hub then forwards this request to the web server and returns the result to the clock. The sensors submit their sampled data to the hub in order for this to then be sent forward to the web server. 
-The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails with sensor data it will save this in the SD card on the Pi, if it cannot request data for the clock it will return an error instead and the clock can react accordingly. 
+The Hub takes into account that it may not be able to reach the web server for various reasons, and will try multiple times to connect. If it fails while transmitting sensor data it will save this on the SD card in the Pi, if it cannot request data for the clock it will return an error code instead. 
 
 Upon a series of failed attempts, once a successful attempt is made the Hub will transmit all previous stored data and delete it afterwards to clear space in memory. 
 
-*<a name="hub_case"></a>Case*
+**<a name="hub_case"></a>Case**
+The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi. The case needed to house the Pi for general concerns of deprecation over time, we didn't want the client to accidently knock a Pi off the shelf without some protection.
 
-The case was a 3D printed design that was required due to the extra components that the Hub required. The Pi has many off the shelf cases that can be used, however due to our requirement of fitting an XBee module these cases would not suffice. The 3D printed case was capable of fitting the XBee module as well as the Pi.
 
-
-###Initial Premise
-
+###Previous Work and Initial Premise
 Unlike the sensor, power consumption was not an issue as the client told us that we could connect to a power outlet. It didn't need to be outside the clients premisses either. This meant we could use any feasible board for this role. We needed a board that could offer the most useful functionality towards our project.
 
 The hub was required to be a middleman between sensors and the web server, forwarding traffic onto the website over ethernet and handling any heavy processing. Initially we planned on using an FRDM-K64F board due to familiarity and easy access to them within the University. 
@@ -1059,7 +1181,7 @@ It is plausible to use a Micro Server in place of the Hub. The server could have
 
 The Raspberry Pi is a well known mini computer in its own right and full of IoT uses too. Following on from the Microserver idea, the premise of having an operating system was very appealing. Especially the idea of being able to remotely access the Hub, in which both the Microserver, Yun and Pi could provide this. The Pi while being smaller and considerably cheaper than its Microserver counterpart did lack internal hardware to boot, but for the purpose we had planned it was more than adequate. It would’t be noisy either. 
 
-The Pi was a good middleground between the Yun and the Microserver. It didn’t have as many Operating Systems to chose from compared to the Microserver (due to its Arm architecture) but it did offer a good selection of Operating Systems in terms of networking and much more compared to the Arudino Yun. Its price was not as expensive as the Yun or the Microserver, averaging around £25. 
+The Pi was a good middleground between the Yun and the Microserver. It didn’t have as many Operating Systems to chose from compared to the Microserver (due to its Arm architecture) but it did offer a good selection of Operating Systems in terms of networking and much more compared to the Arudino Yun. Its price was not as expensive as the Yun or the Microserver, averaging around [£25](http://www.amazon.co.uk/Raspberry-Pi-Model-Desktop-Linux/dp/B00T2U7R7I/ref=sr_1_3?ie=UTF8&qid=1459378213&sr=8-3&keywords=Raspberry+Pi+model+b). 
 
 Internal storage could be managed using a SD card of any size meaning data logging was possible as well. With this being built in as well as an ethernet port it has many advantages over previous entries. The only piece of hardware that is lacking for what we need is an XBee connection. Although solutions are the same as the Arduino Uno, either we use a shield with XBee breakouts or we physically wire an XBee up.
 
@@ -1075,11 +1197,11 @@ We decided to use a Raspberry Pi (Model B+ 512MB). The Pi offered a full operati
 #####Moving forward with the Pi
 The Model B+ will be supplied by the university. The operating system of choice was Raspbian Jessie Lite because it is the officially supported OS of the Pi therefore, recommended by the developers of the Pi. The Pi will have to be connected to the XBee over serial, however in order to use these ports they have to be masked by systemd to force them to be free on startup. 
 
-Then we need to write a program capable of handling incoming AT packets from serial, interpret them and respond accordingly. <span class="todo"><- link to code for this</span> 
+Then we need to write a program capable of handling incoming AT packets from serial, interpret them and respond accordingly.
 
 The program will be written in Python 3 as its easily available on the Pi and offers all the functionality required to create a robust networking program. We will have to modify /etc/rc.local to contain “sudo python hub.py” so that the script will start every time the Operating System starts. If the network was down, or errors occurred on transmit then the Pi will save data locally, and retry on its next attempt.
 
-###Language of Choice: Python <span class="todo">is this description of code or why python was chosen?</span>
+###Language of Choice: Python
 
 *Why Python*
 
@@ -1126,7 +1248,7 @@ Now that serial is free we’ve got to connect the XBee to the Pi, looking at th
 
 ![](Images/Hub/IMAGE7v2.png)
 
-The final step is to make sure we have the libraries we need for python, using pip a tool that installs these libraries we can run a command to install them. Pip had to be installed however, which could be done using.
+The final step is to make sure we have the libraries we need for python, using a program called pip we can install these libraries. First of all pip had to be installed, which could be done using.
 
 ~~~
 python -m pip install -U pip
@@ -1139,7 +1261,7 @@ pip install pyserial
 pip install requests
 ~~~
 
-Now our Pi is ready to act as a coordinator. The next stage is programming it and making sure it knows how to act accordingly to data. We need to consider the possibility of no access to the internet too, what means do we have to ensure data backups. 
+Now our Pi is ready to act as a coordinator. The next stage is programming it and making sure it knows how to act in response to our data. We need to consider the possibility of no access to the internet too, we have to ensure that data isn't lost at any point. 
 
 #####What does the Hub need to do?
 The Hub is the middleman between the webserver and the nodes on the network, it has a responsibility to ensure data from those nodes reaches their destination. We need to be able guarantee data will be logged if it cannot reach its location, or if a request can’t be completed such in the case of the clock. The Hub should wait and listen for any incoming data and once a full set of data has been received act upon it, if it’s a request from the clock - request values from the server and respond back. If it’s data from one of the sensors then that needs to be sent to the webserver. It needs to be able to distinguish between a sensor and a clock otherwise it’ll send data to the wrong nodes or request values from the webserver for the wrong reasons. 
@@ -1184,13 +1306,47 @@ The nicknames for nodes helps in multiple ways, not only does it allow us to for
 
 #####Hub Python Library
 
-For information regarding the process behind designing and researching the API required for the Hub, please see Networking, Iteration 4.
+For information regarding the process behind designing and researching the API required for the Hub, please see [Networking, Iteration 4.](#networking_i4).
 
 The Hub is utilising a library written to handle the API mode of the XBee, the library has many purposes that help make the network as robust as possible. Using these features we’ve been able to make our coordinator incredibly robust as handling large payloads, transmission errors, node discovery and error recovery.
 
 Below is a flowchart diagram demonstrating the new processing behind the Hub.
 
-![10](Images/Hub/IMAGE9.png)
+![10](Images/Hub/IMAGE9.1.png)
+
+######Initialising the Library
+
+Initialising the library consists of a standard object creation in Python with one parameter - the serial port.
+
+~~~python
+# Create API, pass the serial port
+xbee = XbeeAPI("/dev/ttyAMA0")
+~~~
+
+######Receiving messages
+
+Using the library, you can retrieve stored packets using these methods. 
+
+~~~python
+# Get most recent message, returns 
+# None if no messages available
+message = xbee.getMostRecentMessage()
+if not message = None:
+	print message.getPayloadAsString()
+
+# Get oldest message, returns 
+# None if no messages available
+message = xbee.getOldestMessage()
+if not message = None:
+	print message.getPayloadAsString()
+
+# Get all messages, returns 
+# None if no messages available
+messages = xbee.getMessages()
+if not messages = None:
+	for packet in messages:
+		print message.getPayloadAsString()
+~~~
 
 ######Node Discovery and Heartbeats
 
@@ -1233,7 +1389,7 @@ Previously we’ve been unable to determine whether a packet was received or not
     2 = Invalid node, does not exist on network
     3 = Failed to transmit data to device, could not reach node
 
-So the Hub can now act accordingly, 
+So the Hub can now respond as needed.
 
 ~~~python
 sensor = “sensor1”
@@ -1260,7 +1416,7 @@ The Hub stores a list of messages it has received and arranges them based on cur
 
 Due to the structure of the library it is impossible to send frames out of sync, as each frame is checked to ensure it was received before transmitting the next frame. If a packet fails to be terminated after a certain time window of the last frame received it will be dropped. 
 
-##### Results of iteration
+##### Results of Iteration
 The Hub now using its new API Mode library can offer huge benefits to the network and the system as a whole. As the coordinator it controls effectively all data coming in and out. It offers node discovery, error correction and recovery, heartbeats and feedback on any disappearing nodes. With this addition the hub can now report back useful information to the webserver for analysis such as a node disappearing from the network due to battery failure or being out of range. 
 
 
@@ -1276,15 +1432,58 @@ The Hub now using its new API Mode library can offer huge benefits to the networ
 
 As there are multiple users wishing to see data coming from multiple sources we needed some sort of central service that collects the information and displays it in an easy way for the users to see. 
 
-The server acts as an API where all data is sent to and requested from. This allows us to add different visualisations very easily without the data being coupled with the interface. 
-
-Readings that are sent to the api are processed to remove anomolous values and are scaled between 0 and 100. We then store the data in the database and it can be requested by other visualisations by making calls to the API endpoints.
+The server acts as an API where all data is sent to and requested from. This allows us to add different visualisations very easily without the data being coupled with the interface. We then store the data in the database and it can be requested by other visualisations by making calls to the API endpoints.
 
 There is a key which must be sent with each request to ensure that it is a device that is allowed to access that data. The request should be made over HTTPS to avoid exposing the key. The key is hardcoded into the server but can be changed by modifying the code if needed.
 
+To get a development server running first install a copy of [Laravel homested](https://laravel.com/docs/5.2/homestead). Run through the setup guide and clone the repository into the specified directory. After this you can run need to insure all dependancies are installed by running `composer install && bower install`. After this you can run `homestead up` and visit the address you specified in the homestead setup.
+
+As the server is using Laravel you can easily set up the databases without manually running SQL queries.
+
+In the root directory of the app you can run the following command to create all of the database tables.
+
+`php artisan migrate`
+
+This creates tables based on a model definition, an example definition can be seen below: 
+
+```php
+class CreateUsersTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->string('phone');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('users');
+    }
+}
+
+```
+This uses the built in 'schema builder' to turn the php code into sql which is then run on the database.
+
 
 ###API Spec
-The API responds to HTTP requests which conform to [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). 
+The API responds to HTTP requests which conform to status codes set out in [RFC2616](https://www.w3.org/Protocols/rfc2616/rfc2616-sec9.html). 
 
 Key middleware is present throughout the API and it's responses are the following:
 
@@ -1316,7 +1515,7 @@ The endpoints are as follows:
 
 <a name'data+object'></a>
 ####Data object
-The data object is a csv string which contains both a timestamp and a microphone reading. It also contains the battey reading of the sensor. The csv should be formatted as shown below:
+The data object is a csv string which contains both a timestamp and a microphone reading. It also contains the battery reading of the sensor. The csv should be formatted as shown below:
 
 ```
 'id',id
@@ -1399,10 +1598,25 @@ Returns all data recorded between 2 given timestamps averaged over an hourly per
 |200		|`{0:{start:183975627; end:183975687; avg: 12.4;}1:... }`|
 |400| `{"error":{"text": Database Error}}`
 
+#### MVC
+The server is built using the MVC layout which allows for decoupling of elements and helps to make the structure understandable. As seen in the diagram below, data mainly flows one way.
+
+![](Images/visualisation/mvc.png)
+
+In the server, the views are very minimal as it is mainly just displaying json data. While the views aren't the same as in most applications, they still work in the same way.
+
+The server has three main models:
+
+- Device: This represents a physical device and stores things such as battery level and name
+- Reading: This is a data reading and links to a Device. It contains the raw data and timestamps
+- User: This stores the users details such as email, phone number and password
+
+These are all called by the controllers who then pass the data straight onto the views to display it.
+
 ###Previous Work
 
 ####Iteration 1 - Initial Work
-***At this point we had thought visualisation and back end server were the same thing. This was later changed but for documentation purposes we have considered the inital iteratartions of this as part of the server***
+***At this point we had thought visualisation and back end server were the same thing. This was later changed but for documentation purposes we have considered the initial itererations of this as part of the server***
 
 As there are multiple users wishing to see data coming from multiple sources there needs to be some kind of central service that collects the information and displays it in an easy way for the users to see. 
 
@@ -1410,7 +1624,7 @@ One option for this is to use the hubs themselves as servers. This means that th
 
 Another option is to have this service run on the university’s servers, this approach also has several pros and cons. One of the benefits is that all the infrastructure and software to run a server and databases are in place and we would simply have to ask for one to be set up. Another good thing about using the university’s infrastructure is that we have greater control and there are safeguards already in place for if things go wrong. One downside to this method is that currently, to access the servers, you need to be connected to the University’s network by being on campus or over VPN. This could be a big problem as the the devices will not be located on campus and ideally would not be connected to the VPN as it can become complex and is yet another thing that could go wrong. One way around this that has been suggested is to use the server that The Shed has. We have been told by Dan Knox that it would be possible to open up some of the ports on that server to allow connections from outside the University’s network.
 
-Overall the option of having a web server in the university would be the best option as it is already provided as a service and is maintained so there would be less maintence for this project. This decision is relies on being able to open up the sheds servers for outside connections. If it turns out this is not possible then we will have to revisit the hub/server idea and possibly think of some other options.
+Overall the option of having a web server in the university would be the best option as it is already provided as a service and is maintained so there would be less maintenance for this project. This decision is relies on being able to open up the sheds servers for outside connections. If it turns out this is not possible then we will have to revisit the hub/server idea and possibly think of some other options.
 
 #####What we need
 The basic idea of the web end of this project is to provide a place to store large amounts of data over a large period of time and have some sort of mechanism where the user can see those results in a meaningful way. The devices/hubs also need to be able to connect to this service so they can send results directly to it. The user also needs to be made aware of device status such as whether the battery is running low or the device has crashed and needs restarting. This means that the main requirements of the web service are as follows:
@@ -1473,10 +1687,10 @@ CodeIgniter is another widely used MVC framework that provides a lot of features
 After looking at the different frameworks that were available to us we decided that the best one to use was Slim due to its simple nature. It meant that we could all pick it up fast and get working quickly while still having good documentation that would be easy for anyone else to pick up.
 
 ######Version Control
-Version control was necessary for this projects as it provided a log of what had been done which we could revert back to if anything went wrong. It also allowed us all to view the code so it could be looked over to check what was being written and committed was sane.We decided to use git for version control as it is an industry standard and we all had some experience of using it. We are hosting the remote repository on github as it provides an easy to use interface and also allows transfer of repository ownership should someone else wish to take the project on in future. 
+Version control was necessary for this projects as it provided a log of what had been done which we could revert back to if anything went wrong. It also allowed us all to view the code so it could be looked over to check what was being written and committed was sane.We decided to use git for version control as it is an industry standard and we all had some experience of using it. We are hosting the remote repository on Github as it provides an easy to use interface and also allows transfer of repository ownership should someone else wish to take the project on in future. 
 
 ##### Outcome of Iteration
-We produced a system that would take data it recieved from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings. This was written using the slim framework
+We produced a system that would take data it received from requests and store it in a database. This system ran in a local development environment so was no accessible outside of the computer it was running on. It also showed pages that displayed basic data such as a table of timestamps and readings. This was written using the slim framework
 
 
 #### Iteration 2 - Splitting Front and Back End
@@ -1485,28 +1699,28 @@ We produced a system that would take data it recieved from requests and store it
 
 During the previous iteration we discussed putting the application on the university servers however this hasn't been set up so we have used a temporary sever that we are hosting ourselves using digital ocean. The server is using the same technologies as previously mentioned and is running on ubuntu 14.04. 
 
-Another issue we became aware of after the implementation of the first iteration was that the data and the views were very tightly coupled together. We then decided that it would benefit the project to split the front end and back end up into two separate parts. The server would act as an API and the frontend would be used to display the data. This would allow us to add the 'clock', which we weren't aware of at the beginning, to the system without any major issues.
+Another issue we became aware of after the implementation of the first iteration was that the data and the views were very tightly coupled together. We then decided that it would benefit the project to split the front end and back end up into two separate parts. The server would act as an API and the front end would be used to display the data. This would allow us to add the 'clock', which we weren't aware of at the beginning, to the system without any major issues.
 
 
 #####Outcome of iteration
-We worked to split the front end code from the API and the front end so that they could work independantaly without dupilcation of code. We realised some kind of security was also needed so we added key based authentication to provide a basic level of security. 
+We worked to split the front end code from the API and the front end so that they could work independently without duplication of code. We realised some kind of security was also needed so we added key based authentication to provide a basic level of security. 
 
 #### Iteration 3 - Switching Frameworks
 
 ##### Issues with previous iteration
-After we split the front and backend we realised wer were going to be using slim to server the backend and Laravel to serve the frontend. This would mean using someone who was picking this up would have to learn multiple frameworks.
+After we split the front and backend we realised we were going to be using slim to server the backend and Laravel to serve the front end. This would mean using someone who was picking this up would have to learn multiple frameworks.
 
 ##### Result of iteration
 We decided to change the backend the also use laravel to make the system easier to pick up. Most of our code was easily portable as they use the same language and roughly the same MVC layout. 
 
 #### Iteration 4
 #####Issues with previous iteration
-While working on the visualisation we discovered that filtering on the client side was not an option as it took too long to load. This meant that we had to do averageing and filerting on the server side. This was due to loading large amounts of raw data. For example to visualise 1 month worth of dummy data it was having to load ~600,000 (60\*24\*7*4) readings which took a considerable amount of time. It then had to group this data and calculate averages based on this which, again, increased page load time. The total load time of a page loading this amount of data was ~6 seconds
+While working on the visualisation we discovered that filtering on the client side was not an option as it took too long to load. This meant that we had to do averaging and filtering on the server side. This was due to loading large amounts of raw data. For example to visualise 1 month worth of dummy data it was having to load ~600,000 (60\*24\*7*4) readings which took a considerable amount of time. It then had to group this data and calculate averages based on this which, again, increased page load time. The total load time of a page loading this amount of data was ~6 seconds
 
-The sensor was also struggling to create json arrays due to memory limitations. This meant that the format the server was expecting was often not the format it recieved. 
+The sensor was also struggling to create json arrays due to memory limitations. This meant that the format the server was expecting was often not the format it received. 
 
 #####Outcome of iteration
-We changed the format of data being sent to and from the sensor from JSON to CSV. This meant there was less overhead in generating the data on the sensors and also less overhead when recieving data.
+We changed the format of data being sent to and from the sensor from JSON to CSV. This meant there was less overhead in generating the data on the sensors and also less overhead when receiving data.
 
 We moved a majority of the data processing over to the server rather than the client. This was mainly done by using SQL queries to group and average the data. As this is what the database engine is designed for it was able to considerably speed up this process.
 
@@ -1523,21 +1737,21 @@ More information on the framework used and where the main files are located can 
 
 The web visualisation aspect of the system allows users to both get a quick overview of that data that has been recorded but also dive into the data for a much more detailed view of it. This was an important part of the system as it had to make noise levels clear while also providing the raw data that would be used to back that up.
 
-We created a user account system with the aim of allowing users to recieve next notifications for each of the devices. This system lets users register, sign ing, update their information and view the data. Another reason we did this wasm initially, the residents were concerned that the bars may look at this data in some way and use it to try and benefit them. The account system allows only certain people to view the data while also allowing the residents to let people sign up such as council members. The accounts system used Laravel, which was what was also being used for the API.
+We created a user account system with the aim of allowing users to receive next notifications for each of the devices. This system lets users register, sign ing, update their information and view the data. Another reason we did this was initially, the residents were concerned that the bars may look at this data in some way and use it to try and benefit them. The account system allows only certain people to view the data while also allowing the residents to let people sign up such as council members. The accounts system used Laravel, which was what was also being used for the API.
 
 Another part of the web visualisation was a sensor status section. From here the residents could check on things such as battery status and last reading so they could be happy it was working.
 
 ![](images/visualisation/status.png)
-The finised web visualisation used D3.js to create a number of different ways of displaying the data. The main three it uses are the clock, graph, and compare.
+The finished web visualisation used D3.js to create a number of different ways of displaying the data. The main three it uses are the clock, graph, and compare.
 
 ####Clock interface
-The clock is intened to bridge the gap between the phyical parts of the system and the digital parts. It provides a consistent representation of data between the two in an effort to make the user more comfortable. An image of the phyical and digital clocks can be seen below:
+The clock is intended to bridge the gap between the physical parts of the system and the digital parts. It provides a consistent representation of data between the two in an effort to make the user more comfortable. An image of the physical and digital clocks can be seen below:
 
 
 ![](images/visualisation/clock.jpeg)
 ![](images/visualisation/clocks.png)
 
-The clock view is meant as an overview for the entire system, at a glance you can see what has been chosen. The clock allows you to then click through to a more detialed graph.
+The clock view is meant as an overview for the entire system, at a glance you can see what has been chosen. The clock allows you to then click through to a more detailed graph.
 
 ####Graph
 The graph shows a more detailed view of the day allowing you to see what numerical levels the noise reached. It also includes a list of the raw data which consists of timestamps, the raw reading, and decibels. 
@@ -1545,18 +1759,46 @@ The graph shows a more detailed view of the day allowing you to see what numeric
 ![](images/visualisation/graph.png)
 ![](images/visualisation/data.png)
 
-The graph combined with the raw data output shows the noise level in an easy to understand way while displying important information. 
+The graph combined with the raw data output shows the noise level in an easy to understand way while displaying important information. 
 
 ####Compare
 The compare section of the website was created as a way of viewing multiple days worth of data on one page. We previously tried this with graphs but found that it was messy and didn't get the point across. To solve this we created a view that which, like the clock, displayed the data using colours based on the sound level. It displayed hours across the x axis and days on the y axis.
 
 ![](images/visualisation/compare.png)
 
-As you can see in the image above, on saturday and wednesday evening it was louder than other evenings as they have a yellow colour rather than green.
+As you can see in the image above, on Saturday and Wednesday evening it was louder than other evenings as they have a yellow colour rather than green.
+
+####Feedback 
+We received feedback throughout the process on our ideas from the client, however this feedback was very informal and was mainly focused on how it looked rather than the actual functionality. Near the end of the project we tried to get some more formal feedback from the client but unfortunately we could not meet due to various other arrangements. Due to this we had to test it on people we knew. 
+
+We set out some tasks for the testers. One of us sat down and asked the questions while there was another person chosen as an observer. They took notes on anything important. Below is a summary of those
+
+*Task 1 - log in and out*
+We gave the testers some login details and asked them to log in and then back out again.
+
+All of our testers seemed fine with logging in, however, some struggled with logging out as it is in a dropdown below the username. 
+
+*Task 2 - Explain what the clocks mean*
+We showed the testers the clock page and asked them to explain what it represented.
+
+Everyone seemed to understand the general idea behind it although some were confused about whether it was 12 or 24 hours. 
+
+*Task 3 - Show detailed data about specific day*
+We asked the testers to view details about a specific date.
+
+This proved quite difficult for some people, initially they were looking around the top menu for another page as people didn't realise you could click on the clocks. They eventually worked it out but it took some time. Most people were fine.
+
+*Task 4 - Explain the compare page*
+We asked the testers to explain what the graph on the compare page meant.
+
+After looking at the clock, everyone seemed to understand this fairly well and there were no major issues.
+
+
+We'd like to improve on this feedback in future iterations of the site however there is currently not enough time in the project.
 
 ###Previous Work
 #### Iteration 1 - Initial Work
-We wnanted something that we could use to show the data we had gathered from the sensors in an easy way. We began by sing the 5-sketches-or-else method. This started with us each sketching 5 ways we could display this data individually. After we had done that we came together to present our ideas to eachother and discussed what we liked about each one. We then worked together to merge the best elements from all of our designs into new designs. After this we continued to improve these designs until we got to a point we were happy with. You can view all of our initial sketches and improvements [here](sketches/)
+We wanted something that we could use to show the data we had gathered from the sensors in an easy way. We began by using the 5-sketches-or-else method. This started with us each sketching 5 ways we could display this data individually. After we had done that we came together to present our ideas to each other and discussed what we liked about each one. We then worked together to merge the best elements from all of our designs into new designs. After this we continued to improve these designs until we got to a point we were happy with. You can view all of our initial sketches and improvements [here](sketches/)
 
 The main things that came out of this process were the clock, line graphs and a calendar style view. 
 
@@ -1626,21 +1868,21 @@ During this iteration we wanted to display multiple days worth of data on the sa
 Processing the data is taking large amounts of time on every page refresh
 
 #####Result of iteration
-We now have a graph which can display multiple days worth of data. To select these days there is a calendar which you can click on, clicking on the same date again will then deselct it. The graph updates without needing to refresh the page. It is also much quicker than before as we moved the processing of the data from the frontend to the API.  More on this can be found in the [Server section](#server)
+We now have a graph which can display multiple days worth of data. To select these days there is a calendar which you can click on, clicking on the same date again will then deselect it. The graph updates without needing to refresh the page. It is also much quicker than before as we moved the processing of the data from the front end to the API.  More on this can be found in the [Server section](#server)
 
 
 ####Iteration 3 - Clock visualisation
 We wanted to make a bridge between the clock and the website so we decided to create a digital version of the clock that could be displayed on the website. 
 
 #####Issues with previous iteration
-The previous iteration worked fine techinically, however there were some issues with the way the data was displayed. Any more than 3 lines was complicated and meant it's difficult to see what data you are looking. We will improve on this in a future iteration.
+The previous iteration worked fine technically, however there were some issues with the way the data was displayed. Any more than 3 lines was complicated and meant it's difficult to see what data you are looking. We will improve on this in a future iteration.
 
 #####Result of iteration
 We created a visualisation that looks similar to the clock as you can see below:
 
 ![](images/visualisation/clock1.png)
 
-This was created from the test data we recieved over christmas.
+This was created from the test data we received over christmas.
 
 The clock is built on top of D3 using an extension called Circos.js. Below is the code that is used to create these circles
 
@@ -1649,7 +1891,7 @@ The clock is built on top of D3 using an extension called Circos.js. Below is th
 d3.json('http://orange.app/api/get/hourly')
 		.get(function(error, json){
 
-			//Loop over each set of data recieved and convert it into a clock
+			//Loop over each set of data received and convert it into a clock
 			charts[0].forEach(function(x){
 				data = json;
 				parent = d3.select("#"+x.id)[0][0].parentNode;
@@ -1681,7 +1923,7 @@ d3.json('http://orange.app/api/get/hourly')
 
 				var clock_data =[]
 
-				//Turn the data recieved from the api into the correct format and 
+				//Turn the data received from the api into the correct format and 
 				//add it to an array containing all the data from our clock
 				json.forEach( function(d){
 					if(ymd(new Date(d.start)) == ymd(new Date(x.id.substring(1)))) {
@@ -1731,7 +1973,7 @@ The multiple line graph that we created in iteration 2 was confusing hard to und
 #####Issues with previous iteration
 None
 
-#####Resut of this iteration
+#####Result of this iteration
 We changed the way data was graphed so you could no longer select multiple dates. This made the graph much easier to read but we would need another way to compare data. We began to look at ways of comparing however there are no obvious ways and our sketches don't really help with that.
 
 ####Iteration 5 - Fixing data comparison
@@ -1758,7 +2000,9 @@ Up until this point all of the graphs had been standalone, pulling the data from
 There were some issues with aligning the graph labels however this will be left until a future iteration.
 
 #####Result of this iteration
-We created a website that was built in laravel and using bootstrap to improve the interface. We created a user accounts system that would allow access control in the future. The code for the website can be found [here](visualisation/web/resources/assets/js/)<style>
+We created a website that was built in Laravel and using bootstrap to improve the interface. We created a user accounts system that would allow access control in the future. The code for the website can be found [here](visualisation/web/resources/assets/js/)
+
+<style>
 	.todo{ color:red }
 </style>
 [toc]
@@ -2131,6 +2375,12 @@ There are currently further plans to test the clock over an extended time period
 
 The code for this iteration can be found here: [Clock_Cycle_V2]
 
+####Video Explanation
+
+The interaction between the clock and the hub has been recorded in a video, and can be seen <a href = "https://www.youtube.com/watch?v=sQJQwxEeyLs&ab_channel=BillyMitchell">here.</a>
+		
+		The video above explains how the signposting for the user works, and generally gives an overview of how the clock communicates with the hub to plot its data.
+
 
 ![Clock network diagram](Images/Clock%20Images/Clock_network_diagram.png)
 
@@ -2234,6 +2484,9 @@ As a result, the clock is now synchronised with the rest of the system, and can 
 
 ####Outcome of iteration
 At the end of this iteration, we had successfully developed a case for the clock; precisely matching its dimensions and storing all the necessary components. In essence, the functionality for the clock was complete, and had become a fully integrated part of the system.
+
+
+
 
 ### Minutes
 
@@ -2652,3 +2905,230 @@ Research into XBee settings, API mode.
 * Clock updating correctly.
 * Won the poster fair. 
 * We managed to get rid of all our flyers.
+##Sketches
+
+To generate and combine ideas for our forms of data visualisation, we individually produced sketches. These sketches consisted of different formats of visualisation; ranging from the more technical approach of graphs and charts, to ambient forms of colour systems and "heatmaps".  
+
+###Iteration 1
+
+####Five-Sketches-or-Else Method
+
+Our initial sketching phase, the **"5 sketches or else"** method, involved us each individually producing 5 different sketches of our proposed data visualisation. This was to be done in isolation of one another, preventing individual ideas from clashing with the opinions of others, and to promote unique designs amongst group members. 
+
+We set out to design easy, straight forward ways to show data that our sensors had gathered. This premise inspired us to produce simple designs which weren't over complicated, but also ones that weren't limited by specific requirements. This allowed us to express some creative freedom in the process, and produce some interesting designs. 
+
+**Here are our outcomes of the Five-Sketches-or-Else Method:** 
+
+These initial sketches were drawn in pencil, and explored an open ended approach to data visualisation. They were comprised of several unique ideas; varying from typical graph formats, to looking at specific formatting for devices and tablets. 
+
+
+
+![sketch 2](Images/Sketch%20Images/Matt_2.jpeg)
+
+	Sketch 1 - Sensor visualisation. This design focuses on highlighting the location that was most noisy. This was based upon the position of the dot, providing coverage over the course of a day. 
+	
+![sketch 1](Images/Sketch%20Images/Matt_1.jpeg)
+	
+	Sketch 2 - Scatter graph sensor visualisation. This provides a more technical overview, plotting data of specific volume values for each sensor.
+
+![sketch 3](Images/Sketch%20Images/Matt_3.jpeg)
+
+	Sketch 3 - Unique approach to graphing noise volume against time.
+ 
+![sketch 4](Images/Sketch%20Images/Matt_4.jpeg)
+
+	Sketch 4 - 3D graph view. 
+
+![sketch 5](Images/Sketch%20Images/Matt_5.jpeg)
+
+	Sketch 5 - Data visualisation on iOS devices.
+
+<br>
+
+From these sketches onwards, more of an emphasis to colour visualisation is made, drawing inspiration from colour systems to convey data. 
+
+![sketch 6](Images/Sketch%20Images/Jack_1.png)
+	
+	Sketch 6 - Simple daily bar chart view
+
+![sketch 7](Images/Sketch%20Images/Jack_2.png)
+
+	Sketch 7 - Clock display. This is a more novel approach to data visualisation, and uses a clock to plot sound averages as segments. 
+
+![sketch 8](Images/Sketch%20Images/Jack_3.png)
+
+	Sketch 8 - Monthly sound average view. 
+
+![sketch 9](Images/Sketch%20Images/Jack_4.png)
+
+	Sketch 9 - Side by side view of critical noise periods against normal periods.
+
+![sketch 10](Images/Sketch%20Images/Jack_5.png)
+
+	Sketch 10 - Interchangeable bar chart and line graph view. Offers two different views of data, which can be altered according to user preference.
+
+![sketch 11](Images/Sketch%20Images/Jack_6.png)
+
+	Sketch 11 - Line graph plot of average noise, current noise, and previous month's average.
+
+![sketch 12](Images/Sketch%20Images/Jack_7.png)
+
+	Sketch 12 - Histogram view of normal sound levels vs current sound levels.
+
+![sketch 13](Images/Sketch%20Images/Jack_8.png)
+
+	Sketch 13 - Heatmap view - another novel form of visualisation, this is a map of Orange street which is coloured according to noise "hotspots". Used to provide granularity between quieter and noisier areas, and pinpoint disturbances.
+
+![sketch 14](Images/Sketch%20Images/Jack_9.png)
+
+	Sketch 14 - Line graph and colour coded display - intended to establish sound "thresholds", which clearly indicate to the user when the noise level has crossed a certain boundary. 
+
+![sketch 15](Images/Sketch%20Images/Jack_10.png)
+
+	Sketch 15 - Calendar view - A combination of the clock view with a daily/weekly/monthly comparison chart. 
+	
+![sketch 16](Images/Sketch%20Images/Dom_1.jpeg)
+
+	Sketch 16 - Chart and graph view - this is a crossover design featuring a min and max for sound readings, and a date layout in a chart. 
+
+![sketch 17](Images/Sketch%20Images/Dom_2.jpeg)
+
+	Sketch 17 - Sensor scatter graph - very similar to one of the other concepts, this design showed how there were common elements between our work even though they were completed in isolation of one another. 
+
+![sketch 18](Images/Sketch%20Images/Dom_3.jpeg)
+
+	Sketch 18 - Clock view - this sketch reinforces the time element of the monitoring, and incorporates ambient colour. 
+
+![sketch 19](Images/Sketch%20Images/Dom_4.jpeg)
+
+	Sketch 19 - Threshold bar chart - a combination of a bar chart with intervals representing sound thresholds. It features added labels to associate the coloured threshold with a corresponding noise range, e.g. street, nighttime.
+
+![sketch 20](Images/Sketch%20Images/Dom_5.jpeg)
+
+	Sketch 20 - Coloured chart - this combines a less technical overview of data; presenting the high, low, and average decibels to the user. It also uses a colour system to direct the user towards louder time periods, by using more intense colours. 
+
+
+
+<br>
+
+####Outcome of Iteration
+During this iteration, we began to develop our data visualisation platform. We considered individual approaches to visualising sound data; incorporating trusted forms of display such as graphs, diagrams, and chart, as well as experimenting with new, less common ideas. As a result of these experiments, we approached our data visualisation creatively, creating a wide range of possibilities for what we finally provide to our client. 
+
+After this iteration, we have set up a platform to build upon for our data visualisation. We can now look into combining ideas to come up with more dynamic concepts. 
+
+####Iteration 2
+
+####Combined Sketches 
+Once we had each individually developed five sketches, we shared them, and collaborated ideas behind our chosen data formats. This lead to crossovers in ideas, and common themes and designs behind ideas were identified. 
+
+In this phase, we focused on combining our ideas and extending the functionality of our existing designs. As a result, our sketches became more specific, and we began to consider how realistically they could be implemented. 
+
+The focus here, was placed upon what forms of visualisation the client would find most useful. We held onto some of our novel ideas, such as **the clock**, and further developed them alongside other means. 
+
+**Here are our outcomes of the Combined Sketches Method:**
+
+![combined sketch 1](Images/Sketch%20Images/Matt_comb_1.jpeg)
+
+	Combined sketch 1 - Histogram crossed with noise threshold.
+
+![combined sketch 2](Images/Sketch%20Images/Matt_comb_2.jpeg)
+
+	Combined sketch 2 - Graph and clock view - incorporates a clock view to display user, and shows the relative sound level at each time interval.
+
+![combined sketch 3](Images/Sketch%20Images/Matt_comb_3.jpeg)
+
+	Combined sketch 3 - Sensor and decibel level view - combines the ideas of having a sensor centric visualisation which pinpoints activity, and a decibel scaling system.
+
+![combined sketch 4](Images/Sketch%20Images/Jack_comb_1.png)
+
+	Combined sketch 4 - Heatmap and graph visualisation - this sketch integrates the novel approach of the street heatmap with a line graph to reinforce the data.
+
+![combined sketch 5](Images/Sketch%20Images/Jack_comb_2.png)
+
+	Combined sketch 5 - Threshold graph comparison - designed to give the user to ability to compare several different dates in terms of sound thresholds that were crossed. 
+
+![combined sketch 6](Images/Sketch%20Images/Jack_comb_3.png)
+
+	Combined sketch 6 - Touch screen / tablet heatmap view. Adds the extra detail of a colour based averaging system to the heatmap, and implements it for a touchscreen device. 
+
+![combined sketch 7](Images/Sketch%20Images/Dan_1.png)
+
+	Combined sketch 7 - Graphical sensor comparison. This visualisation provides a time scale on the X axis, and the ability to add series from different sensors. 
+
+![combined sketch 8](Images/Sketch%20Images/Dan_2.png)
+
+	Combined sketch 8 - Sensor map view - incorporates a variable time system with a sensor map, where the user can view sensor activity according to their desired time parameters. 
+
+![combined sketch 9](Images/Sketch%20Images/Dan_3.png)
+
+	Combined sketch 9 - Coloured time chart - a colourful approach to visualisation, this sketch creates a coloured sound scaling system, and plots its as a grid. Useful for daily comparisons, and averaging sound activity over time in easily interpreted formats. 
+
+####Outcome of Iteration
+During our second iteration of sketching, we have developed upon our existing bank of data visualisation ideas, and been more conscious in our approach of realistic data formats. This iteration has featured a much more colour oriented approach; drawing more upon ambient visual aids to create signposting for the user. The fidelity of the designs has resultantly increased, and ideas have become more amalgamated together, and specific to the client's needs. 
+
+A recurring theme for visualisation during this iteration has been time, and how our system can use it to generate comparable data. It is concluded that time plays a large role in our system; especially since one of the major requirements is to have comparable data between dates. 
+
+###Iteration 3
+
+####Balsamiq, and Interface Mockups
+
+Before we implemented our front end visualisation, it was important to explore different layouts and styles, which could then be translated into code. To do this, we used the lightweight mockup tool, **Balsamiq**, the create several different design mockups. These mockups were intended to simulate our various data platforms, by visualising website and application layouts, and having charts and diagrams to show how our visualisation would work in these contexts. 
+
+In these designs, we aimed to produce easily interpretable interfaces which focus purely on visualisation. We wanted to remove any other distractions from the user, and draw their attention to the main priority: their data. 
+
+To do this, our designs are minimalistic, and implement easily graspable layouts and methods of navigation. There is opportunity to further develop upon these simplistic designs at later points, but these designs capture the essential details. 
+
+**Here are the outcomes of our Balsamiq designs:**
+
+![Balsamiq sketch 1](Images/Sketch%20Images/Balsamiq_1.png)
+
+	Balsamiq Sketch 1 - Main street view of Orange street. This is intended to be the main interface for the front end visualisation, where the user can add data widgets such as the "graph" and "calendar" to build the data they want to view. 
+
+
+![Balsamiq sketch 2](Images/Sketch%20Images/Balsamiq_2.png)
+
+	Balsamiq Sketch 2 - Specific data view for sensors - the user can click or touch a sensor and access the data for that specific sensor. 
+
+![Balsamiq sketch 3](Images/Sketch%20Images/Balsamiq_3.png)
+
+	Balsamiq Sketch 3 - Graph view - here the earlier graph sketches are represented on a website, featuring a date widget that the user can manipulate to return data from different time periods.
+
+
+![Balsamiq sketch 4](Images/Sketch%20Images/Balsamiq_4.png)
+
+	Balsamiq Sketch 4 - Graph and calendar comparison widgets - having activated both the graph and calendar widgets. The user can compare two sets of data over different time periods, side by side. 
+
+
+![Balsamiq sketch 5](Images/Sketch%20Images/Balsamiq_5.png)
+
+	Balsamiq Sketch 5 - Single graph and calendar widget - if the user wants to add different dates as series on a graph, this view meets their requirement. Extra data series can be added using the "Add data" button.
+
+
+![Balsamiq sketch 6](Images/Sketch%20Images/Balsamiq_6.png)
+
+	Balsamiq Sketch 6 - Map and graph comparison widgets - If the user wants to view general sensor data and compare it to average hourly data, this view can be used. Also featured is the scaling icons, which the user can use to increase, or decrease the size of their widgets; depending upon what they want to see more. 
+
+
+![Balsamiq sketch 7](Images/Sketch%20Images/Balsamiq_7.png)
+
+	Balsamiq Sketch 7 - 4 widget view - the complete package of data widgets, granting data continuity to the user across four separate platforms.
+
+
+![Balsamiq sketch 8](Images/Sketch%20Images/Balsamiq_8.png)
+
+	Balsamiq Sketch 8 - Tablet/mobile view - if the user prefers using other platforms, this sketch demonstrates how the interface might scale depending upon the size it operates in. 
+
+
+![Balsamiq sketch 9](Images/Sketch%20Images/Balsamiq_9.png)
+	
+	Balsamiq Sketch 9 - Hub interface display - later in this stage, we considered visualisation for the hub, and how a diagnostics system could work. Since it is the centrepoint of the network, this could be used to display information to the user based on which devices are in range, and specific properties of them. 
+	
+
+####Outcome of Iteration
+In our final iteration of sketching and mockups, we have successfully established  a set of design blueprints which can be used to drive our front end visualisation. These designs implement some of the key concepts seen in our earliest form of visualisation, and develops them in a high fidelity manner. This process has added a degree of realness and feasibility to our designs, by effectively filtering out the less reliable forms of visualisation, and drawing the user's attention to more quantitative aspects. These forms of data, implemented as graphs and charts, display sound data in a technical way, and can be used in conjunction of one another to build a holistic description of the sound levels. 
+
+Overall, we felt that the sketching process helped us formulate and refine our ideas, and that over our sequence of iterations there have been continual improvements. Each iteration has marked a significant development in our ideas, as they have become more specific and considerate of the user over time. 
+
+
+
+   
