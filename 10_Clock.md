@@ -13,21 +13,29 @@ Every hour, the clock communicates with the hub to receive the average sound lev
 
 Components: Adafruit NeoPixel Ring 24 x WS2812, Adafruit Flora, Communication/XBee (Lilypad XBee), Case. 
 
+
 ####Adafruit NeoPixel Ring 24 x WS2812
 
 The central hardware component of the clock is the Adafruit NeoPixel Ring. One of several NeoPixel models provided by Adafruit, the 24 x WS2812 is a collection of 24 addressable LEDs arranged in a ring. The LEDs were directly addressed by the Arduino code written for the Adafruit Flora, allowing direct control over the display, and timings that each LEDs came on. 
+
 
 ####Adafruit Flora
 
 Lightweight and circular in design, the Adafruit Flora was an effective choice for maintaining the streamlined structure of the clock’s components. Since it is typically used in wearable tech, the Flora is a microcontroller which is smaller than the NeoPixel Ring. This meant the overall size of the clock could be kept compact, allowing more focus to be on the visual display of the NeoPixel Ring. Moreover, it offered the functionality we needed of similar microcontrollers such as the Arduino Uno, but stripped away the unnecessary features. Since the clock device could be powered by mains, the power consumption was not too much of an issue. 
 
+[For more information on hardware, see here](#hardware)
+
 ####Communication/XBee (Lilypad XBee)
 
 As with the other devices in the network, the clock communicated using the Zigbee protocol; using an XBee RF module attached to its microcontroller. It was configured as a router on the network, allowing it to receive the data transmission it required from the hub. Through the iterations, the XBee was interfaced using either a straight connection in the RX/TX ports, or through a Lilypad XBee board. 
 
+[For more information on communication, see here](#communication)
+
 ####Case
 
-The clock’s hardware components are housed in a 3D printed case. As well as maintaining its security, this feature allows the clock to be seen more clearly; using a base to keep it upright. As a result, the clock can be viewed like most normal clocks, and from a multitude of angles in a room. The transparent covering holds the components in place, and optimises the appearance of the lights for viewing by using a frosting film. This was used to prevent glare from the LEDs, and to clearly distinguish one light from another. Since the clock is unique in appearance, it was necessary to develop a case which served its requirements and matched its specific dimensions. Towards the later iterations, the case underwent several changes, and was finalised with the above appearance.    
+The clock’s hardware components are housed in a 3D printed case. As well as maintaining its security, this feature allows the clock to be seen more clearly; using a base to keep it upright. As a result, the clock can be viewed like most normal clocks, and from a multitude of angles in a room. The transparent covering holds the components in place, and optimises the appearance of the lights for viewing by using a frosting film. This was used to prevent glare from the LEDs, and to clearly distinguish one light from another. Since the clock is unique in appearance, it was necessary to develop a case which served its requirements and matched its specific dimensions. Towards the later iterations, the case underwent several changes, and was finalised with the above appearance.  
+
+[For more information on the case design, see here](#designs)
 
 ###Previous Work
 
@@ -90,6 +98,7 @@ This device would in a sense act as an notifier to be coupled alongside the more
 ####Outcome of Iteration
 We have produced several different design proposals for the clock, and have began to consider how a physical device could be produced. We have evaluated what benefits the clock can bring to the project, in that it reinforces the more accurate data and makes for an engaging notifier for the user. There is also potential for this to create data continuity - in the sense that data from a physical device can be cross referenced with that on the web server. Overall, this iteration has set up the requirements for the clock, and given us a few interesting paths to take when developing it. 
 
+<div id = "hardware"></div>
 ####Iteration 2: Hardware and setup phase
 
 After having collected our ideas from lo-fi prototyping, we are now exploring how our clock system can be physically implemented with hardware. 
@@ -213,6 +222,7 @@ After this iteration was completed, we had managed to set up the NeoPixel ring t
 ####Adafruit Flora
 To alleviate the issue of the Arduino Uno, we decided to change our board choice to the Adafruit Flora; a much more compact device. This significantly reduces the dimensions of the clock components, leading to a much more streamlined layout. This changeover will be particularly important for when we consider case design; during which a more condensed layout will be favoured. Furthermore, the Flora offers us the same functionality required of the Arduino Uno, minus the unnecessary features. 
 
+<div id = "communication"></div>
 ####Interfacing with XBee and Networking
 After we had successfully set the NeoPixel ring up to display some dummy values, and having decided upon a colour spectrum in our last iteration, our next task is to integrate the clock with the rest of the network.
 
