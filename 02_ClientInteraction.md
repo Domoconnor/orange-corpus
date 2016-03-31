@@ -32,7 +32,7 @@ We spoke to another client that was meant to be present at the original meeting 
 
 All recordings, notes and questions from the meeting can be found [here](meeting_two/)
 
-<img src="images/OrangeStreet_dist.jpg">
+![](/Images/OrangeStreet_dist.jpg")
 
 ####Other Communication
 
