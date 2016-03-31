@@ -53,7 +53,7 @@ We spoke to another client that was meant to be present at the original meeting 
 
 All recordings, notes and questions from the meeting can be found [here](meeting_two/)
 
-![](/Images/OrangeStreet_dist.jpg)
+![](Images/OrangeStreet_dist.jpg)
 
 ####Other Communication
 
@@ -2928,6 +2928,8 @@ Research into XBee settings, API mode.
 * Clock updating correctly.
 * Won the poster fair. 
 * We managed to get rid of all our flyers.
+
+
 ##Sketches
 
 To generate and combine ideas for our forms of data visualisation, we individually produced sketches. These sketches consisted of different formats of visualisation; ranging from the more technical approach of graphs and charts, to ambient forms of colour systems and "heatmaps".  

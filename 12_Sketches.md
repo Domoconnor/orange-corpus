@@ -1,3 +1,5 @@
+
+
 ##Sketches
 
 To generate and combine ideas for our forms of data visualisation, we individually produced sketches. These sketches consisted of different formats of visualisation; ranging from the more technical approach of graphs and charts, to ambient forms of colour systems and "heatmaps".  
