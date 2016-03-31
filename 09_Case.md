@@ -1,15 +1,6 @@
-<<<<<<< Updated upstream
-<style>
-	.todo{ color:red }
-</style>
-[toc]
-
-##Manufacture / Casing [cont.](#contents)
-=======
 ##Manufacture / Casing
 
 [Back to contents](#contents)
->>>>>>> Stashed changes
 
 ###Initial Research
 
@@ -47,7 +38,7 @@ There are two grooves on the longer sides of the base, inside the base, that all
 
 The lid is designed to be reversible for ease of use. The longer sides of the lid has sections that sit inside the base. These sections are as long as the inside of the base so that it does not slide around when fitted. These extruded sections have further extruded lines that click into the grooves on the base. To remove the lid squeeze the sides and pull off. It was designed in this way for ease of access.
 
-Pictures pf both:
+Pictures of both parts:
 ![hub base](Images/case/hubf.jpg)
 
 #####Refinements
@@ -118,7 +109,7 @@ The first iteration of the lid was printed.
 
 ######Issues with Previous Iteration
 
-we found that it didn't fit in its intended base as the corners that were printed were too tight. This is because in Base - Iteration 3 there were some plastic artefacts (misprints) left from its printing.
+We found that it didn't fit in its intended base as the corners that were printed were too tight. This is because in Base - Iteration 3 there were some plastic artefacts (misprints) left from its printing.
 
 A problem arose when the lid was tested, putting the board in with the shield on as well was not considered. Although the height was, the added size of the shield meant that it did not fit in the gap between the structures inside that were meant to hold the board in place.
 
@@ -325,6 +316,11 @@ The clock needed a face to cover the ring so that it is displayed but still prot
 To hold the faces against the case, two fixings were cut out of clear plastic that had holes in them that lined up with the holes in the case so that they could all be screwed together
 
 ![Final Clock](Images/Clock%20Images/clock_final.jpg)
+
+Some alternate views of the clock
+![Final Clock](Images/Case%20Images/Case_1.jpg)
+![Final Clock](Images/Case%20Images/Case_2.jpg)
+![Final Clock](Images/Case%20Images/Case_7.jpg)
 
 #####Refinements
 
