@@ -14,7 +14,7 @@ The microphone is an electret microphone with a built in MAX4466 amplifier. This
 
 **<a name="adc"></a>ADC**
 
-The circuit contains an external ADC (Analog to Digital Converter) in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to firther amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
+The circuit contains an external ADC in the form of an ADS1115. This was chosen for three main reasons. The 16 bit resolution allowed us to work with a larger range of values which we would not have got using the onboard ADC of the board. It also contained a programmable amplifier which we could use to firther amplify the signal coming from the mic. The other reason was that it allowed comparison between 2 analog inputs. 
 
 We found that we were getting a lot of noise coming from the mic which we discovered was caused by the voltage from the board. To counter this voltage coming out of the board with the data coming back from the microphone on the ADC. This allowed us to get the difference and remove any electrical noise from the mic.
 
@@ -48,7 +48,7 @@ A final version of the code can be found [here](sensor/micTest).
 
 Below is a diagram of the final circuit used.
 
-![6](Images/sensor/diagram.PNG)
+![6](Images/sensor/diagram.png)
 
 
 ### Previous Work
