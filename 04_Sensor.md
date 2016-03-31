@@ -467,7 +467,7 @@ void loop()
     // read the data...
 }  
 ```
-####Iteration 9
+####Iteration 9 - Another new clock
 ##### Issues with the previous iteration
 There were several issues we noticed after the previous iteration. One of these problems was that the watchdog timer wasn't accurate enough and microphone sample timestamps were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The XBee was drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
 
