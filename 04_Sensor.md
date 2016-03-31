@@ -381,48 +381,46 @@ We collected a significant amount of data from this and a graph of the levels we
 ![](Images/sensor/graph.png)
 
 
-####Iteration 4 
+####Iteration 4 - Results from Christmas deployment
 #####Issues with previous iteration
 There were several issues that arose with the code and hardware we created during the christmas testing We discovered that the mic signal was not being amplified enough which led to a lot of readings being the same even though the noise levels were vastly different. The previous iteration also recorded data directly to an SD card for us to look at later. This is an issue as we needed some way of transmitting data back to the board.
 
-#####Result of iteration
-We struggled with amplifying the sound as there we were also amplifiying a lot of electrical noise. We pushed this back to a future iteration as we were getting held up by it.
+#####Result of Iteration
+We struggled with amplifying the sound due to also amplifiying a lot of electrical noise. We added an XBee module to the board so that we could transmit data back to the hub which worked without any issues.
 
-We added an Xbee to the board so that we could transmit data back to the hub which worked without any issues.
+####Iteration 5 - External Clock and XBees
+#####Issues with previous Iteration
+We noticed some issues with the previous iteration cutting off data after sending large amounts. This is an issue that needs fixing and is caused by the internal hardware of the XBee module (see [Networking](#networking) for more details). We are also currently getting the time for timestamping the data from the internal clock. This is proving to be an issue as the time is not accurate. Over longer periods the time on the board will drift further and further away from the actual time. Another issue is if the sensor runs out of battery the time will be lost.
 
-####Iteration 5
-#####Issues with previous iteration
-We noticed some issues with the previous iteration cutting off data after sending large amounts. This is an issue that needs fixing. We are also currently getting the time for timestamping the data from the internal clock. This is proving to be an issue as the time is not accurate. Over longer periods the time on the board will drift further and further away from the actual time. Also, if the sensor runs out of battery the time will be lost.
+#####Result of Iteration
+The loss of data when transmitting was due to the XBee buffers being overloaded as we sent the data too quickly. To solve this we added small delays in between sending the data. This fixed the issue and the data appears to be being sent without any issues. We also added a clock to the circuit. This has a backup battery so it can still keep time in the event of the sensor losing power. This clock is also accurate and can keep to +/-1 second over a year. 
 
-#####Result of iteration
-The loss of data when transmitting was due to the Xbee buffers being overloaded as we sent the data too quickly. To solve this we added small delays in between sending the data. This fixed the issue and the data appears to be being sent without any issues. We also added a clock to the circuit. This has a backup battery so it can still keep time in the event of the sensor losing power. This clock is also accurate and can keep to +/-1 second over a year. 
+####Iteration 6 - Fixing sensitivity of the Microphone
+The aim of this iteration was to fix the issue in iteration 2 where we discovered that microphone readings were not being amplified enough to pick up changes in the noise level.
 
-####Iteration 6
-The aim of this iteration was to fix the issue in iteration 2 where we discovered that mic readings were not being amplified enough to pick up changes in the noise level.
+#####Issues with previous Iteration
+No issues
 
-#####Issues with previous iteration
+#####Result of Iteration
+We added a 16-bit ADC (Analog to Digital converter) which gives us a higher resolution and also allows us to remove electical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the microphone output into pin 2. Comparing these 2 pins gave us a wave that was far less noisy, as the power voltages were effectively cancelling each other out. This means that we could produce a wave which had an maximum amplitude that was the same as our resolution. Previously there was a noise baseline which when amplified increased, leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
+
+####Iteration 7 - Rechargeable Batteries
+For this iteration we wanted to add a rechargable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
+
+#####Issues with previous Iteration
 No issues
 
 #####Result of iteration
-We added a 16-bit adc which gives us a higher resolution and also allows us to remove electical noise using a comparison of two pins. To do this we used a potential divider to half the 3.3v signal that the board was running off and put in pin 1 of the ADC, we then put the mic output into pin 2. Comparing these 2 pins gave us a wave that was much less noisy, as the power voltages were effectively cancelling each other out. This also means that we could produce a wave which had an maximum amplitude of that was the same as our resolution whereas previously there was a noise baseline which, when amplified, also increased leading to us not being able to amplify it too much. These changes allow us to see the noise level change in much more detail and also pick up smaller changes.
+We changed our board from an Arduino Uno to a low power version called the 'Rocket Scream Mini Ultra 8 MHz Plus'. This draws a much lower current than the Arduino due to it's more power efficient on board regulator. This board also comes with a battery connector which allows us to plug a lithium polymer battery into it and provides pins which a source of up to 20V can be plugged in. We began testing by charging it using a standard usb charger and currently it functions fine, albeit slowly as the charging circuit can charge the battery using a max current of 500mA. We also tried a different version of the board which used even less power, the 'Rocket Scream Mini Ultra', however we decided against using this due to lack of features such as as voltage regulator, which we would need to use our battery efficiently and recharging circuits.
 
-####Iteration 7
-For this iteration we wanted to add a rechargable battery to the circuit so the client could charge it in their house without having to buy standard alkaline batteries. We also wanted to think about low power.
+####Iteration 8 - Lowering the Power
+In this iteration we wanted to make sensor run at a lower power so it could last on batteries for as long as possible.
 
-#####Issues with previous iteration
-None
+#####Issues with previous Iteration
+Our testing program was running on the board constantly which led to the battery not being able to fully chage as the code was making the board use a lot of power. This led us to think there was an issue with the charging circuit and look into that. The issue in the end was fixed by making sure the program didn't run and then leaving it to charge for a longer period of time.
 
-#####Result of iteration
-We changed our board from an arduino to a more low power version. This board is called the 'Rocket Scream Mini Ultra 8 MHz Plus' and draws a much lower current than the arduino due to it's more power efficient on board regulator. This board also comes with a battery connector which allows us to plug a lithium polymer battery into it and provides pins which a source of up to 20V can be plugged in. We began testing charging it using a standard usb charger and it seems to work, albeit slowly as the charging circuit can charge the batter using a max current of 500mA compared to the 2A you'd be able to charge a similar sized phone battery at. We also tried a different version of the board which used even less power, the 'Rocket Scream Mini Ultra', however we decided against using this due to lack of features such as as voltage regulator, which we would need to use our battery efficiently, and recharging circuits.
-
-####Iteration 8
-In this iteration we wanted to make sensor run at a lower power so it could last on batteries for much longer.
-
-#####Issues with previous iteration
-Test code was running on the board constantly which led to the battery not being able to fully chage as the code was making the board use a lot of power. This led us to think there was an issue with the charging circuit and look into that. The issue in the end was fixed by making sure the code didn't run and leaving it to charge for a longer period of time.
-
-##### Result of iteration
-We used the [Rocket Scream Low-Power](https://github.com/rocketscream/Low-Power) library which allowed us to turn off all of the functions of the processor we were not using and put it into a deep sleep mode. This deep sleep dramatically reduced power usage. We are using the watchdog timer on the board to allow us to set the amount of time we sleep however the watchdog timer can only count up to 8 seconds so to get it to sleep for 1 minute, we needed to run the it 8 times. Some example code for this can be seen below:
+##### Result of Iteration
+We used the [Rocket Scream Low-Power](https://github.com/rocketscream/Low-Power) library which allowed us to turn off all of the functions of the processor we were not using and put it into a deep sleep mode. This deep sleep dramatically reduced power usage. We are using the watchdog timer on the board to allow us to set the amount of time we sleep. However the watchdog timer can only count up to 8 seconds so to get it to sleep for 1 minute, we needed to run it 8 times. Some example code for this can be seen below:
 
 ```c++
 #include <lowpower.h>
@@ -471,7 +469,7 @@ void loop()
 ```
 ####Iteration 9
 ##### Issues with the previous iteration
-There were several issues we noticed after the iteration. One of these was that the watchdog timer wasn't accurate enough and readings times were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The Xbee was also still drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
+There were several issues we noticed after the previous iteration. One of these problems was that the watchdog timer wasn't accurate enough and microphone sample timestamps were drifting a lot. We also found that the code sometimes failed and just stopped working completely. The XBee was drawing a large amount of power as it was running in transmit mode all of the time, even when it was not being used by the program.
 
 #####Results of iteration
 We changed the clock to a DS3231 which allowed us to fire interrupts at predetermined intervals, such as every minute. We could then use that wake the processor from it's sleep and it could then take the readings. We made some modifications to the DS3231 by removing the power and transmit LEDs to reduce power consumption. The clock ensured that readings were taken at the same point every minute. We also reprogrammed the Xbee to use pin hibernate mode. This meant that when we pulled a pin low on the board, the Xbee would also enter sleep mode. This sleep mode reduced it's power usage down to around 500μA which was acceptable. The Xbee was then only powered on when we wanted to send data, which was a tiny fraction of the time. Changing to interrupt based processor sleep seems to have solved the problem of the board not waking from sleep.
